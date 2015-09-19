@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Measurement" representedClassName="Measurement" syncable="YES">
+        <attribute name="absoluteMoleDiameter" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="absoluteReferenceDiameter" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="measurementDiameter" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="measurementID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measurementPhoto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measurementX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="measurementY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="referenceDiameter" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="referenceObject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="referenceX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="referenceY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="whichMole" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mole" inverseName="measurements" inverseEntity="Mole" syncable="YES"/>
+    </entity>
+    <entity name="Mole" representedClassName="Mole" syncable="YES">
+        <attribute name="moleID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="moleName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="moleX" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="moleY" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="measurements" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Measurement" inverseName="whichMole" inverseEntity="Measurement" syncable="YES"/>
+        <relationship name="whichZone" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Zone" inverseName="moles" inverseEntity="Zone" syncable="YES"/>
+    </entity>
+    <entity name="Zone" representedClassName="Zone" syncable="YES">
+        <attribute name="zoneID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zonePhoto" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="moles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mole" inverseName="whichZone" inverseEntity="Mole" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Measurement" positionX="205" positionY="108" width="128" height="238"/>
+        <element name="Mole" positionX="-11" positionY="102" width="128" height="133"/>
+        <element name="Zone" positionX="-218" positionY="114" width="128" height="90"/>
+    </elements>
+</model>

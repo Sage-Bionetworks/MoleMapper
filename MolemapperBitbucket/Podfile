@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+pod 'AFNetworking', '~> 2.5'
+platform :ios, '8.0'
+pod 'ResearchKit', '~> 1.0'
+platform :ios, '8.0'
+pod 'KLCPopup', :head
+platform :ios, '8.0'
+pod 'NSString-Hashes', '~>1.2.2'
+platform :ios, '8.0'
+pod 'zipzap', '~> 8.0'

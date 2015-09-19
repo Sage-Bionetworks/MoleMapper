@@ -1,0 +1,42 @@
+PODS:
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - KLCPopup (HEAD based on 1.0)
+  - NSString-Hashes (1.2.2)
+  - ResearchKit (1.0.0)
+  - zipzap (8.0.4)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.5)
+  - KLCPopup (HEAD)
+  - NSString-Hashes (~> 1.2.2)
+  - ResearchKit (~> 1.0)
+  - zipzap (~> 8.0)
+
+SPEC CHECKSUMS:
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
+  NSString-Hashes: c3848d809e92650e4fb17db5d8cc4bd2aa1eaddd
+  ResearchKit: 86f9101e2091007006a06999fc2376cc42b2243b
+  zipzap: 45be5e182aead61fbb8300ddb4766f8e82a557c4
+
+COCOAPODS: 0.37.2
