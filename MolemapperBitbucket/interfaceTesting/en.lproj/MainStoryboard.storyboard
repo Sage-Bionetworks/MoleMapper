@@ -2171,7 +2171,7 @@ Altruistic code-sharing by Chris Miles </string>
                     <navigationItem key="navigationItem" id="FPL-Yh-ujm"/>
                     <connections>
                         <outlet property="tableView" destination="gpl-on-v9e" id="coC-VM-o7b"/>
-                        <segue destination="7Pt-34-3sv" kind="push" id="BBr-84-rPS"/>
+                        <segue destination="7Pt-34-3sv" kind="push" identifier="dashboardSegueToMoleView" id="BBr-84-rPS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZp-Vn-Vsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
