@@ -39,7 +39,85 @@
     return _sharedObject;
 }
 
+
+
 #pragma mark - Statistics from local data
+
+-(NSNumber *)totalNumberOfMolesMeasured
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
+    
+    NSError *error = nil;
+    NSArray *allMoles = [self.context executeFetchRequest:request error:&error];
+    
+    int totalNumberOfMeasuredMoles = 0;
+    
+    for (Mole *mole in allMoles)
+    {
+        NSSet *measurementsForMole = mole.measurements;
+        if (measurementsForMole.count == 0)
+        {
+            continue; //If no measurements for a given mole, has never been measured
+        }
+        else if (measurementsForMole.count > 1) //Has at least one measurement
+        {
+            totalNumberOfMeasuredMoles++;
+        }
+        else
+        {
+            NSLog(@"Strange situaiton in which you have a negative return value for fetching measurements for a mole.");
+        }
+    }
+    return [NSNumber numberWithInt:totalNumberOfMeasuredMoles];
+}
+
+/*
+ Get the current date, Get the date since last survey, the date of most recent measurement for all moles
+ If more than the number of days in a followup period has elapsed, this number will be zero. Otherwise
+ checks to see if measurement date falls within the time period of now and last time a survey was taken
+ */
+-(NSNumber *)numberOfMolesMeasuredSinceLastFollowup
+{
+    
+    int numberOfMolesMeasuredSinceLastFollowup = 0;
+    NSDate *now = [NSDate date];
+    NSDate *lastTimeAsurveyWasTaken;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    lastTimeAsurveyWasTaken = [ud valueForKey:@"dateOfLastSurveyCompleted"];
+    
+    NSInteger numberOfDaysBetweenNowAndLastFollowup = [self daysBetweenDate:now andDate:lastTimeAsurveyWasTaken];
+    if (numberOfDaysBetweenNowAndLastFollowup > numberOfDaysInFollowupPeriod)
+    {
+        //Since the followup period changes every 30 days, if that amount of time has elapsed, reset
+        numberOfMolesMeasuredSinceLastFollowup = 0;
+    }
+    else
+    {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
+        
+        NSError *error = nil;
+        NSArray *allMoles = [self.context executeFetchRequest:request error:&error];
+        
+        int totalNumberOfMeasuredMoles = 0;
+        
+        for (Mole *mole in allMoles)
+        {
+            Measurement *mostRecent = [Measurement getMostRecentMoleMeasurementForMole:mole withContext:self.context];
+            if (mostRecent)
+            {
+                NSDate *dateOfMeasurement = mostRecent.date;
+                if ([self date:dateOfMeasurement isBetweenDate:lastTimeAsurveyWasTaken andDate:now])
+                {
+                    totalNumberOfMeasuredMoles++;
+                }
+            }
+        }
+    }
+    
+    return [NSNumber numberWithInt:numberOfMolesMeasuredSinceLastFollowup];
+}
 
 -(NSNumber *)daysUntilNextMeasurementPeriod
 {
@@ -50,7 +128,7 @@
     lastTimeAsurveyWasTaken = [ud valueForKey:@"dateOfLastSurveyCompleted"];
     
     NSInteger daysSinceLastSurvey = [self daysBetweenDate:lastTimeAsurveyWasTaken andDate:now];
-    NSInteger daysUntilNextMeasurementPeriod = daysSinceLastSurvey % 30;
+    NSInteger daysUntilNextMeasurementPeriod = daysSinceLastSurvey % numberOfDaysInFollowupPeriod;
     NSNumber *returnValue = [NSNumber numberWithInteger:daysUntilNextMeasurementPeriod];
     return returnValue;
 }
@@ -162,7 +240,8 @@
     return averageMoleSize;
 }
 
-//Returns a mapping of human-readable zone name (like left shoulder) to number of moles within that zone
+//Returns a sorted array (highest to lowest number of moles in Zone) of human-readable zone name (like left shoulder) to number of moles within that zone
+// [{"name": zoneName, "count": numberOfMolesInZone(NSNumber)}, ...]
 -(NSDictionary *)zoneNameToNumberOfMolesInZoneDictionary
 {
     NSMutableDictionary *zonesToMoles = [NSMutableDictionary dictionary];
@@ -292,12 +371,6 @@
     float initialRounded = ceilf(initialDiameter * 10.0f) / 10.0f;
     float mostRecentRounded = ceilf(mostRecentDiameter * 10.0f) / 10.0f;
     
-    if ([mole.moleName isEqualToString:@"Moley Cyrus"])
-    {
-        NSLog(@"initial: %f",initialRounded);
-        NSLog(@"recent: %f", mostRecentRounded);
-    }
-    
     if (initialDiameter && mostRecentDiameter && initialDiameter != 0.0f)
     {
         float percentChangeFloat = ((mostRecentRounded / initialRounded) * 100.0f) - 100.0f;
@@ -334,6 +407,17 @@
                                                fromDate:fromDate toDate:toDate options:0];
     
     return [difference day];
+}
+
+-(BOOL)date:(NSDate*)date isBetweenDate:(NSDate*)beginDate andDate:(NSDate*)endDate
+{
+    if ([date compare:beginDate] == NSOrderedAscending)
+        return NO;
+    
+    if ([date compare:endDate] == NSOrderedDescending)
+        return NO;
+    
+    return YES;
 }
 
 //Helper method to check if file exists for a given zone, indicating it has been documented

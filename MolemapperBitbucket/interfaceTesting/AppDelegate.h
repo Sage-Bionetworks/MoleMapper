@@ -39,5 +39,6 @@
 - (void)showOnboarding;
 - (void)showBodyMap;
 
+#define numberOfDaysInFollowupPeriod 30
 
 @end
