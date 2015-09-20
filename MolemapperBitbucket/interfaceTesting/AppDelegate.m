@@ -147,7 +147,8 @@
 
 - (void) setUpRootViewController: (UIViewController*) viewController
 {
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navController.navigationBar.translucent = NO;
         
     [UIView transitionWithView:self.window

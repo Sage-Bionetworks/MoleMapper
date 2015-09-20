@@ -242,7 +242,7 @@
 
 //Returns a sorted array (highest to lowest number of moles in Zone) of human-readable zone name (like left shoulder) to number of moles within that zone
 // [{"name": zoneName, "count": numberOfMolesInZone(NSNumber)}, ...]
--(NSDictionary *)zoneNameToNumberOfMolesInZoneDictionary
+-(NSArray *)zoneNameToNumberOfMolesInZoneDictionary
 {
     NSMutableDictionary *zonesToMoles = [NSMutableDictionary dictionary];
     
@@ -251,7 +251,7 @@
     [fetchRequest setEntity:entity];
     NSError *error = nil;
     NSArray *matches = [self.context executeFetchRequest:fetchRequest error:&error];
-    //NSArray *arrayOfDictionaries
+    NSMutableArray *arrayOfDictionaries = [NSMutableArray array];
     for (Zone *zone in matches)
     {
         NSSet *moles = zone.moles;
@@ -261,13 +261,12 @@
         NSString *zoneName = [Zone zoneNameForZoneID:zoneID];
         [zonesToMoles setValue:zoneName forKey:@"name"];
         [zonesToMoles setValue:numberOfMoles forKey:@"numberOfMolesInZone"];
+        [arrayOfDictionaries addObject:zonesToMoles];
     }
-    
     
     NSSortDescriptor *sortByMoles = [[NSSortDescriptor alloc] initWithKey:@"numberOfMolesInZone" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortByMoles];
-    //return [zonesToMoles sortedArrayUsingDescriptors:sortDescriptors];
-
+    return [arrayOfDictionaries sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 /*
