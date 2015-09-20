@@ -14,6 +14,6 @@
 @property (nonatomic, retain)  IBOutlet UITableView *tableViewInside;
 @property NSInteger rowNumber;
 @property NSDictionary* allMolesDicitionary;
-@property DashboardViewController *dashBoardViewController;
+@property (nonatomic, strong) DashboardViewController *dashBoardViewController;
 
 @end

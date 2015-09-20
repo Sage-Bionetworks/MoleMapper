@@ -93,9 +93,20 @@
 
 #pragma mark - ViewController Life Cycle
 
+- (IBAction)closeViewController:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeViewController)];
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+    [barButtonItem setTarget:self];
+    [barButtonItem setAction:@selector(closeViewController:)];
+
     self.automaticallyAdjustsScrollViewInsets = YES;
     vars = [VariableStore sharedVariableStore];
     vars.moleViewStepperIncrement = self.stepperIncrement;

@@ -76,7 +76,7 @@
     
     if ([cell isKindOfClass:[DBSizeOverTimeCellTableViewCell class]]) {
         
-        NSString* idx = [NSString stringWithFormat:@"%i", (int)((DBSizeOverTimeCellTableViewCell*)cell).idx];
+        /*NSString* idx = [NSString stringWithFormat:@"%i", (int)((DBSizeOverTimeCellTableViewCell*)cell).idx];
         NSDictionary* mole = [_allMolesDicitionary objectForKey:idx];
         
         Measurement *measurement = [mole objectForKey:@"measurement"];
@@ -89,12 +89,16 @@
         NSNumber *zoneIDForSegue = @([measurement.whichMole.whichZone.zoneID intValue]);
         
         moleViewController.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
-        moleViewController.measurement = measurement;
+        moleViewController.measurement = measurement;*/
 
     }
     
+    //MyViewController *myViewController = [[MyViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:moleViewController];
     
-    [_dashBoardViewController performSegueWithIdentifier: @"dashboardSegueToMoleView" sender: _dashBoardViewController];
+    [_dashBoardViewController presentViewController:navigationController animated:YES completion:nil];
+    
+    //[_dashBoardViewController performSegueWithIdentifier: @"dashboardSegueToMoleView" sender: _dashBoardViewController];
 }
 
 #pragma mark - Table view delegate
