@@ -14,6 +14,7 @@
 #import "DashboardBiggestMoleCell.h"
 #import "DashboardSizeOvertimeCell.h"
 #import "DashboardModel.h"
+#import "MoleViewController.h"
 
 @interface DashboardViewController ()
 
@@ -184,6 +185,27 @@
 {
     //Change the selected background view of the cell.
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"dashboardSegueToMoleView"])
+    {
+        MoleViewController *destVC = (MoleViewController *)segue.destinationViewController;
+        
+        /*
+        destVC.mole = moleForSegue;
+        destVC.moleID = moleForSegue.moleID;
+        destVC.moleName = moleForSegue.moleName;
+        destVC.context = self.context;
+        destVC.zoneID = moleForSegue.whichZone.zoneID;
+        
+        NSNumber *zoneIDForSegue = @([moleForSegue.whichZone.zoneID intValue]);
+        
+        destVC.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
+        destVC.measurement = measurementForSegue;
+         */
+    }
 }
 
 @end
