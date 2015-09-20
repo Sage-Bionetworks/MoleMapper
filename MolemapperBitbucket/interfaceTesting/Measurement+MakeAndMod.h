@@ -47,6 +47,8 @@
 
 + (Measurement *)getMostRecentMoleMeasurementForMole:(Mole *)mole withContext:(NSManagedObjectContext *)context;
 
++ (Measurement *)getInitialMoleMeasurementForMole:(Mole *)mole withContext:(NSManagedObjectContext *)context;
+
 //Calculates the absolute mole diameter in millimeters (mm) from the measurements in points (pts) following formula below:
 /*
  abs measurement diameter (mm) / abs ref diameter (mm) = measurement pts / ref pts

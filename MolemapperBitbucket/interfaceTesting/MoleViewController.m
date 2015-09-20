@@ -898,7 +898,8 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
                                                 withReferenceDiameter:[NSNumber numberWithFloat:self.referenceMeasure.diameter]
                                         withAbsoluteReferenceDiameter:absoluteReferenceDiameter];
     
-        NSString* formattedSize = [NSString stringWithFormat:@"%.1f", [absoluteMoleDiameter floatValue]];
+        //Round here to show user precision that is used for percent change calculations
+        NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([absoluteMoleDiameter floatValue] * 10) / 10];
         formattedSize = [formattedSize stringByAppendingString:@" mm"];
         NSString *sizeText = @"Mole Size: ";
         sizeText = [sizeText stringByAppendingString:formattedSize];
@@ -908,7 +909,7 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
 
 -(void)updateMoleSizeFromCurrentMeasurement
 {
-    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", [self.measurement.absoluteMoleDiameter floatValue]];
+    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.measurement.absoluteMoleDiameter floatValue] * 10) / 10];
     formattedSize = [formattedSize stringByAppendingString:@" mm"];
     NSString *sizeText = @"Mole Size: ";
     sizeText = [sizeText stringByAppendingString:formattedSize];

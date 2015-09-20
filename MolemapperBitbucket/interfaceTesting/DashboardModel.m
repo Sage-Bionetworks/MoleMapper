@@ -14,6 +14,7 @@
 #import "Mole+MakeAndMod.h"
 #import "Zone.h"
 #import "Zone+MakeAndMod.h"
+#import "Math.h"
 
 @implementation DashboardModel
 
@@ -40,7 +41,7 @@
 
 #pragma mark - Statistics from local data
 
--(NSNumber *)daysSinceLastFollowup
+-(NSNumber *)daysUntilNextMeasurementPeriod
 {
     NSDate *now = [NSDate date];
     NSDate *lastTimeAsurveyWasTaken;
@@ -48,8 +49,10 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     lastTimeAsurveyWasTaken = [ud valueForKey:@"dateOfLastSurveyCompleted"];
     
-    NSNumber *daysSinceLastSurvey = [NSNumber numberWithInteger:[self daysBetweenDate:lastTimeAsurveyWasTaken andDate:now]];
-    return daysSinceLastSurvey;
+    NSInteger daysSinceLastSurvey = [self daysBetweenDate:lastTimeAsurveyWasTaken andDate:now];
+    NSInteger daysUntilNextMeasurementPeriod = daysSinceLastSurvey % 30;
+    NSNumber *returnValue = [NSNumber numberWithInteger:daysUntilNextMeasurementPeriod];
+    return returnValue;
 }
 
 -(NSNumber *)numberOfZonesDocumented
@@ -184,22 +187,18 @@
 /*
  - (NSMutableDictionary*)rankedListOfMoleSizeChangeAndMetadata {}
  - Return in order of highest upward variance //no need that from now on
- - Returns: [{"name": @"", "Size": NSNumber*, "percentChange": NSNumber*, "measurement": Measurement*}, ...]
+ - Returns: [{"name": @"", "size": NSNumber*, "percentChange": NSNumber*, "measurement": Measurement*}, ...]
  */
 -(NSMutableDictionary*) rankedListOfMoleSizeChangeAndMetadata
 {
+    NSArray *sortedMoles = [self measurementsInOrderOfMostIncreasedPercentage];
+    
     NSMutableDictionary *listOfMoles = [NSMutableDictionary dictionary];
     
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < sortedMoles.count; ++i)
     {
         NSString *key = [NSString stringWithFormat:@"%i",i];
-        
-        NSMutableDictionary *moleDict = [NSMutableDictionary dictionary];
-        [moleDict setObject:@"holymoly" forKey:@"name"];
-        [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"size"];
-        [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"percentChange"];
-        [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"measurement"];
-        
+        NSMutableDictionary *moleDict = sortedMoles[i];
         [listOfMoles setObject:moleDict forKey: key];
     }
     
@@ -208,7 +207,81 @@
 
 -(NSArray *)measurementsInOrderOfMostIncreasedPercentage
 {
+    NSArray *measurementsInOrderOfMostIncreasedPercentage = [NSMutableArray array];
     
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
+    
+    NSError *error = nil;
+    NSArray *allMoles = [self.context executeFetchRequest:request error:&error];
+    
+    NSMutableArray *arrayOfMeasurementMetadata = [NSMutableArray array];
+    
+    for (Mole *mole in allMoles)
+    {
+        NSMutableDictionary *measurementMetadata = [NSMutableDictionary dictionary];
+        
+        NSSet *measurementsForMole = mole.measurements;
+        if (measurementsForMole.count == 0)
+        {
+            continue; //If no measurements for a given mole, don't include in the changed list
+        }
+        else if (measurementsForMole.count == 1) //Only 1 measurement, so no basis for comparison: 0% change
+        {
+            Measurement *onlyMeasurement = [Measurement getMostRecentMoleMeasurementForMole:mole withContext:self.context];
+            
+            [measurementMetadata setValue:mole.moleName forKey:@"name"];
+            [measurementMetadata setValue:onlyMeasurement.absoluteMoleDiameter forKey:@"size"];
+            [measurementMetadata setValue:@0 forKey:@"percentChange"];
+            [measurementMetadata setValue:onlyMeasurement forKey:@"measurement"];
+        }
+        else if (measurementsForMole.count > 1)
+        {
+            Measurement *mostRecentMeasurement = [Measurement getMostRecentMoleMeasurementForMole:mole withContext:self.context];
+            NSNumber *percentChange = [self percentChangeInSizeForMole:mole];
+            
+            [measurementMetadata setValue:mole.moleName forKey:@"name"];
+            [measurementMetadata setValue:mostRecentMeasurement.absoluteMoleDiameter forKey:@"size"];
+            [measurementMetadata setValue:percentChange forKey:@"percentChange"];
+            [measurementMetadata setValue:mostRecentMeasurement forKey:@"measurement"];
+        }
+        else {NSLog(@"Strange situaiton in which you have a negative return value for fetching measurements for a mole.");}
+    
+        [arrayOfMeasurementMetadata addObject:measurementMetadata];
+    }
+    
+    NSSortDescriptor *sortByPercent = [[NSSortDescriptor alloc] initWithKey:@"percentChange" ascending:YES];
+    //sortByPercent = [sortByPercent reversedSortDescriptor];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortByPercent];
+    measurementsInOrderOfMostIncreasedPercentage = [arrayOfMeasurementMetadata sortedArrayUsingDescriptors:sortDescriptors];
+    
+    return measurementsInOrderOfMostIncreasedPercentage;
+}
+
+-(NSNumber *)percentChangeInSizeForMole:(Mole *)mole
+{
+    NSNumber *percentChange = @0;
+    Measurement *initial = [Measurement getInitialMoleMeasurementForMole:mole withContext:self.context];
+    Measurement *mostRecent = [Measurement getMostRecentMoleMeasurementForMole:mole withContext:self.context];
+    float initialDiameter = [initial.absoluteMoleDiameter floatValue];
+    float mostRecentDiameter = [mostRecent.absoluteMoleDiameter floatValue];
+    //Round the floating point values so that small changes in size don't look out of place due mismatch between user-visible measurement (1 decimal) vs. behind the scenes precision
+    
+    float initialRounded = ceilf(initialDiameter * 10) / 10;
+    float mostRecentRounded = ceilf(mostRecentDiameter * 10) / 10;
+    
+    if ([mole.moleName isEqualToString:@"Moley Cyrus"])
+    {
+        NSLog(@"initial: %f",initialRounded);
+        NSLog(@"recent: %f", mostRecentRounded);
+    }
+    
+    if (initialDiameter && mostRecentDiameter && initialDiameter != 0)
+    {
+        float percentChangeFloat = ((mostRecentRounded / initialRounded) * 100) - 100;
+        percentChange = [NSNumber numberWithFloat:percentChangeFloat];
+    }
+    return percentChange;
 }
 
 //If user has provided their zip code during initial onboarding, this will

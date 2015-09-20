@@ -13,7 +13,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 + (id)sharedInstance;
--(NSNumber *)daysSinceLastFollowup;
+-(NSNumber *)daysUntilNextMeasurementPeriod;
 -(NSDictionary *)zoneNameToNumberOfMolesInZoneDictionary;
 -(NSNumber *)numberOfZonesDocumented;
 -(NSArray *)allMoleMeasurements;

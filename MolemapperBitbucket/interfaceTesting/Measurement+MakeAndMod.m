@@ -135,6 +135,20 @@
     return mostRecentMeasurement;    
 }
 
++ (Measurement *)getInitialMoleMeasurementForMole:(Mole *)mole withContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];
+    NSSortDescriptor *sortMeasurementsByDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    sortMeasurementsByDate = [sortMeasurementsByDate reversedSortDescriptor];
+    request.sortDescriptors = @[sortMeasurementsByDate];
+    request.predicate = [NSPredicate predicateWithFormat:@"whichMole.moleID = %@", mole.moleID];
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    Measurement *initialMeasurement = [matches lastObject];
+    return initialMeasurement;
+}
+
 //Calculates the absolute mole diameter in millimeters (mm) from the measurements in points (pts) following formula below:
 /*
  abs measurement diameter (mm) / abs ref diameter (mm) = measurement pts / ref pts

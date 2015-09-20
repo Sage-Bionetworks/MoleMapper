@@ -29,7 +29,7 @@
 {
     NSString* text = @"";
     
-    if ([[DashboardModel sharedInstance] daysSinceLastFollowup]/*[_dbModel daysSinceLastFollowup]*/ == 0)
+    if ([[DashboardModel sharedInstance] daysUntilNextMeasurementPeriod]/*[_dbModel daysSinceLastFollowup]*/ == 0)
     {
         text = [NSString stringWithFormat:@"Today, %@", [self getFormatedDate]];
     }
@@ -44,7 +44,7 @@
 //date formatter to get the most accurate date in string
 - (NSString*) getFormatedDate
 {
-    NSNumber* lastDate = [[DashboardModel sharedInstance] daysSinceLastFollowup];//[_dbModel daysSinceLastFollowup];
+    NSNumber* lastDate = [[DashboardModel sharedInstance] daysUntilNextMeasurementPeriod];//[_dbModel daysSinceLastFollowup];
     
     NSDate* date = [NSDate date];
     

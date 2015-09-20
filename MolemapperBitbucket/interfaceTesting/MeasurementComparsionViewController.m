@@ -86,7 +86,7 @@
     
     NSString *stringFromDate = [formatter stringFromDate:self.moleMeasurement.date];
     stringFromDate = [stringFromDate stringByAppendingString:@"\nMole Size: "];
-    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", [self.moleMeasurement.absoluteMoleDiameter floatValue]];
+    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.moleMeasurement.absoluteMoleDiameter floatValue] * 10) / 10];
     stringFromDate = [stringFromDate stringByAppendingString:formattedSize];
     stringFromDate = [stringFromDate stringByAppendingString:@" mm"];
     dateLabel.text = stringFromDate;
