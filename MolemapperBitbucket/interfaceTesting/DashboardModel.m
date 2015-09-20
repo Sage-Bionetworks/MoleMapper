@@ -241,7 +241,7 @@
 }
 
 //Returns a sorted array (highest to lowest number of moles in Zone) of human-readable zone name (like left shoulder) to number of moles within that zone
-// [{"name": zoneName, "count": numberOfMolesInZone(NSNumber)}, ...]
+// [{"name": zoneName, "count": numberOfMolesInZone(NSNumber)}, "zone" : Zone object]
 -(NSArray *)zoneNameToNumberOfMolesInZoneDictionary
 {
     NSMutableDictionary *zonesToMoles = [NSMutableDictionary dictionary];
@@ -256,11 +256,15 @@
     {
         NSSet *moles = zone.moles;
         int moleNum = (int)[moles count];
+        
+        //Skip zones with no moles
+        if (moleNum == 0) {continue;}
         NSNumber *numberOfMoles = [NSNumber numberWithInt:moleNum];
         NSNumber *zoneID = @([zone.zoneID intValue]);
         NSString *zoneName = [Zone zoneNameForZoneID:zoneID];
         [zonesToMoles setValue:zoneName forKey:@"name"];
         [zonesToMoles setValue:numberOfMoles forKey:@"numberOfMolesInZone"];
+        [zonesToMoles setValue:zone forKey:@"zone"];
         [arrayOfDictionaries addObject:zonesToMoles];
     }
     

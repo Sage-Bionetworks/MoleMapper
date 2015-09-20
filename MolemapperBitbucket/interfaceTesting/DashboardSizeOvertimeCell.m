@@ -76,7 +76,7 @@
     
     if ([cell isKindOfClass:[DBSizeOverTimeCellTableViewCell class]]) {
         
-        /*NSString* idx = [NSString stringWithFormat:@"%i", (int)((DBSizeOverTimeCellTableViewCell*)cell).idx];
+        NSString* idx = [NSString stringWithFormat:@"%i", (int)((DBSizeOverTimeCellTableViewCell*)cell).idx];
         NSDictionary* mole = [_allMolesDicitionary objectForKey:idx];
         
         Measurement *measurement = [mole objectForKey:@"measurement"];
@@ -89,7 +89,7 @@
         NSNumber *zoneIDForSegue = @([measurement.whichMole.whichZone.zoneID intValue]);
         
         moleViewController.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
-        moleViewController.measurement = measurement;*/
+        moleViewController.measurement = measurement;
 
     }
     

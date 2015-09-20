@@ -14,7 +14,7 @@
 
 + (id)sharedInstance;
 -(NSNumber *)daysUntilNextMeasurementPeriod;
--(NSDictionary *)zoneNameToNumberOfMolesInZoneDictionary;
+-(NSArray *)zoneNameToNumberOfMolesInZoneDictionary;
 -(NSNumber *)numberOfZonesDocumented;
 -(NSArray *)allMoleMeasurements;
 -(NSString *)nameForBiggestMole;
