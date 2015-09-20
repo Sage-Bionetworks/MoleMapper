@@ -267,8 +267,8 @@
     float mostRecentDiameter = [mostRecent.absoluteMoleDiameter floatValue];
     //Round the floating point values so that small changes in size don't look out of place due mismatch between user-visible measurement (1 decimal) vs. behind the scenes precision
     
-    float initialRounded = ceilf(initialDiameter * 10) / 10;
-    float mostRecentRounded = ceilf(mostRecentDiameter * 10) / 10;
+    float initialRounded = ceilf(initialDiameter * 10.0f) / 10.0f;
+    float mostRecentRounded = ceilf(mostRecentDiameter * 10.0f) / 10.0f;
     
     if ([mole.moleName isEqualToString:@"Moley Cyrus"])
     {
@@ -276,9 +276,9 @@
         NSLog(@"recent: %f", mostRecentRounded);
     }
     
-    if (initialDiameter && mostRecentDiameter && initialDiameter != 0)
+    if (initialDiameter && mostRecentDiameter && initialDiameter != 0.0f)
     {
-        float percentChangeFloat = ((mostRecentRounded / initialRounded) * 100) - 100;
+        float percentChangeFloat = ((mostRecentRounded / initialRounded) * 100.0f) - 100.0f;
         percentChange = [NSNumber numberWithFloat:percentChangeFloat];
     }
     return percentChange;

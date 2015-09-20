@@ -24,8 +24,8 @@
     NSNumber* size = [mole objectForKey:@"size"];
     NSNumber* percentChange = [mole objectForKey:@"percentChange"];
     
-    _moleSizeLabel.text = [NSString stringWithFormat:@"%@ mm", size];
-    _moleProgressLabel.text = [NSString stringWithFormat:@"%2.0f%%", [percentChange floatValue]];
+    _moleSizeLabel.text = [NSString stringWithFormat:@"%2.1f%% mm", [size floatValue]];
+    _moleProgressLabel.text = [NSString stringWithFormat:@"%2.1f%%", [percentChange floatValue]];
     
     // Configure the view for the selected state
 }
