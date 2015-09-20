@@ -169,6 +169,7 @@
         //probably nondebug
         NSDictionary *moleDictionary = [[DashboardModel sharedInstance] rankedListOfMoleSizeChangeAndMetadata];
         cell.allMolesDicitionary = moleDictionary;
+        cell.dashBoardViewController = self;
         height = @(([moleDictionary count] + 1) * 62);
         
         CGRect bounds = [cell.tableViewInside bounds];
@@ -189,9 +190,11 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
+
     if ([segue.identifier isEqualToString:@"dashboardSegueToMoleView"])
     {
-        MoleViewController *destVC = (MoleViewController *)segue.destinationViewController;
+        //MoleViewController *destVC = (MoleViewController *)segue.destinationViewController;
         
         /*
         destVC.mole = moleForSegue;

@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DashboardViewController.h"
 
 @interface DashboardSizeOvertimeCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain)  IBOutlet UITableView *tableViewInside;
 @property NSInteger rowNumber;
 @property NSDictionary* allMolesDicitionary;
+@property DashboardViewController *dashBoardViewController;
 
 @end

@@ -9,6 +9,7 @@
 #import "DashboardSizeOvertimeCell.h"
 #import "DBSizeOverTimeCellTableViewCell.h"
 #import "DashboardModel.h"
+#import "MoleViewController.h"
 
 @implementation DashboardSizeOvertimeCell
 
@@ -57,6 +58,39 @@
     }
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle: nil];
+    MoleViewController *moleViewController = (MoleViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"MoleViewController"];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([cell isKindOfClass:[DBSizeOverTimeCellTableViewCell class]]) {
+        
+        NSString* idx = [NSString stringWithFormat:@"%i", (int)((DBSizeOverTimeCellTableViewCell*)cell).idx];
+        NSDictionary* mole = [_allMolesDicitionary objectForKey:idx];
+        
+        //_moleViewController.mole = moleForSegue;
+        //_moleViewController.moleID = moleForSegue.moleID;
+        moleViewController.moleName = [mole objectForKey:@"name"];
+        moleViewController.context = _dashBoardViewController.context;
+        //_moleViewController.zoneID = moleForSegue.whichZone.zoneID;
+        
+        //NSNumber *zoneIDForSegue = @([moleForSegue.whichZone.zoneID intValue]);
+        
+        //_moleViewController.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
+        //_moleViewController.measurement = measurementForSegue;
+
+    }
+    
+    
+    [_dashBoardViewController performSegueWithIdentifier: @"dashboardSegueToMoleView" sender: _dashBoardViewController];
 }
 
 #pragma mark - Table view delegate

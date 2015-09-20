@@ -16,7 +16,10 @@
 
 @property NSDictionary* moleDictionary;
 @property NSInteger idx;
-
 @property NSNumber* lastProgress;
+
+@property NSString* name;
+@property NSNumber* size;
+@property NSDate* measurement;
 
 @end
