@@ -2110,7 +2110,7 @@ Altruistic code-sharing by Chris Miles </string>
                     </tabBar>
                     <connections>
                         <segue destination="aVk-gy-KeW" kind="relationship" relationship="viewControllers" id="1RW-kR-IBc"/>
-                        <segue destination="lfl-RN-HkS" kind="relationship" relationship="viewControllers" id="MKd-td-aCR"/>
+                        <segue destination="02h-tF-XMe" kind="relationship" relationship="viewControllers" id="1eV-yK-CQJ"/>
                         <segue destination="P4w-Od-lec" kind="relationship" relationship="viewControllers" id="pgs-Tf-yZB"/>
                         <segue destination="caK-Wl-T6W" kind="relationship" relationship="viewControllers" id="bJ1-ne-MgD"/>
                     </connections>
@@ -2118,6 +2118,23 @@ Altruistic code-sharing by Chris Miles </string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74j-rx-cdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1582" y="-161"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="cTd-yB-4G6">
+            <objects>
+                <navigationController id="02h-tF-XMe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="nqw-9t-ryv"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7OQ-b3-EyB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lfl-RN-HkS" kind="relationship" relationship="rootViewController" id="e2J-UA-vDl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjj-vg-K6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1940" y="673"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="KCf-W5-Nda">
@@ -2152,7 +2169,7 @@ Altruistic code-sharing by Chris Miles </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZp-Vn-Vsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1582" y="690"/>
+            <point key="canvasLocation" x="-1526" y="673"/>
         </scene>
     </scenes>
     <resources>
@@ -2178,8 +2195,8 @@ Altruistic code-sharing by Chris Miles </string>
         <image name="up-normal.png" width="80" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LrF-aI-9pc"/>
         <segue reference="S2T-Mw-bSz"/>
+        <segue reference="LrF-aI-9pc"/>
         <segue reference="QHA-vm-6oo"/>
     </inferredMetricsTieBreakers>
 </document>

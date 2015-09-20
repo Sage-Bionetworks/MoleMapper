@@ -27,6 +27,7 @@
     [super viewDidLoad];
     _cellList = [[NSMutableArray alloc] init];
     [self setupCellList];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"moleMapperLogo"]];
 }
 
 -(void) setupCellList
