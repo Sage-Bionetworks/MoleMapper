@@ -22,12 +22,15 @@
     NSDictionary *mole = [_moleDictionary objectForKey:key];
     
     _moleNameLabel.text = [mole objectForKey:@"name"];
-    NSNumber* size = [mole objectForKey:@"size"];
-    NSNumber* percentChange = [mole objectForKey:@"percentChange"];
+    //NSNumber* size = [mole objectForKey:@"size"];
+    //NSNumber* percentChange = [mole objectForKey:@"percentChange"];
     //Measurement* measurement = [mole objectForKey:@"measurement"];
     //NSDate* date = measurement.date;
     
-    _moleSizeLabel.text = [NSString stringWithFormat:@"%2.1f mm, April 12 2087", [size floatValue]];
+    NSNumber* size = [NSNumber numberWithFloat:2.3f];
+    NSNumber* percentChange = [NSNumber numberWithFloat:0.1f];
+    
+    _moleSizeLabel.text = [NSString stringWithFormat:@"Size: %2.1f mm\nMeasured: April 12, 2087", [size floatValue]];
     _moleProgressLabel.text = [percentChange floatValue] > 0.0f ? [NSString stringWithFormat:@"%2.1f%%", [percentChange floatValue]] : @"0.0%%";
     
     // Configure the view for the selected state

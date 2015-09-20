@@ -189,6 +189,7 @@
  - Return in order of highest upward variance //no need that from now on
  - Returns: [{"name": @"", "size": NSNumber*, "percentChange": NSNumber*, "measurement": Measurement*}, ...]
  */
+
 -(NSMutableDictionary*) rankedListOfMoleSizeChangeAndMetadata
 {
     NSArray *sortedMoles = [self measurementsInOrderOfMostIncreasedPercentage];
@@ -202,6 +203,18 @@
         [listOfMoles setObject:moleDict forKey: key];
     }
     
+    //USE FOR DEBUG ON SIMULATOR
+    /*for (int i = 0; i < 10; ++i)
+    {
+        NSString *key = [NSString stringWithFormat:@"%i",i];
+        NSMutableDictionary *moleDict = [NSMutableDictionary dictionary];
+        [moleDict setObject:@"holymoly" forKey:@"name"];
+        [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"size"];
+        [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"percentChange"];
+        [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"measurement"];
+        [listOfMoles setObject:moleDict forKey: key];
+    }*/
+
     return listOfMoles;
 }
 
