@@ -41,7 +41,3 @@
 
 
 @end
-
-//there is a few settings.. bad... :) hold on...
-
-//LOL

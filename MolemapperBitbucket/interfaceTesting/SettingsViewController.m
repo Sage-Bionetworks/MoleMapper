@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *genderSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISwitch *activateDemoSwitch;
 
+//This is a comment
 @end
 
 @implementation SettingsViewController

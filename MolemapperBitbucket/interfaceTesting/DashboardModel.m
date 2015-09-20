@@ -206,6 +206,10 @@
     return listOfMoles;
 }
 
+-(NSArray *)measurementsInOrderOfMostIncreasedPercentage
+{
+    
+}
 
 //If user has provided their zip code during initial onboarding, this will
 //return their zip code as a string
