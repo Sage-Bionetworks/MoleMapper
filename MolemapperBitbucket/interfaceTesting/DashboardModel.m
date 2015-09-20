@@ -251,6 +251,7 @@
     [fetchRequest setEntity:entity];
     NSError *error = nil;
     NSArray *matches = [self.context executeFetchRequest:fetchRequest error:&error];
+    //NSArray *arrayOfDictionaries
     for (Zone *zone in matches)
     {
         NSSet *moles = zone.moles;
@@ -258,9 +259,15 @@
         NSNumber *numberOfMoles = [NSNumber numberWithInt:moleNum];
         NSNumber *zoneID = @([zone.zoneID intValue]);
         NSString *zoneName = [Zone zoneNameForZoneID:zoneID];
-        [zonesToMoles setValue:numberOfMoles forKey:zoneName];
+        [zonesToMoles setValue:zoneName forKey:@"name"];
+        [zonesToMoles setValue:numberOfMoles forKey:@"numberOfMolesInZone"];
     }
-    return zonesToMoles;
+    
+    
+    NSSortDescriptor *sortByMoles = [[NSSortDescriptor alloc] initWithKey:@"numberOfMolesInZone" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortByMoles];
+    //return [zonesToMoles sortedArrayUsingDescriptors:sortDescriptors];
+
 }
 
 /*

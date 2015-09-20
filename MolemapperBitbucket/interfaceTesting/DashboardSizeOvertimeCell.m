@@ -10,6 +10,9 @@
 #import "DBSizeOverTimeCellTableViewCell.h"
 #import "DashboardModel.h"
 #import "MoleViewController.h"
+#import "Zone.h"
+#import "Zone+MakeAndMod.h"
+#import "AppDelegate.h"
 
 @implementation DashboardSizeOvertimeCell
 
@@ -76,16 +79,17 @@
         NSString* idx = [NSString stringWithFormat:@"%i", (int)((DBSizeOverTimeCellTableViewCell*)cell).idx];
         NSDictionary* mole = [_allMolesDicitionary objectForKey:idx];
         
-        //_moleViewController.mole = moleForSegue;
-        //_moleViewController.moleID = moleForSegue.moleID;
+        Measurement *measurement = [mole objectForKey:@"measurement"];
+        moleViewController.mole = measurement.whichMole;
+        moleViewController.moleID = measurement.whichMole.moleID;
         moleViewController.moleName = [mole objectForKey:@"name"];
         moleViewController.context = _dashBoardViewController.context;
-        //_moleViewController.zoneID = moleForSegue.whichZone.zoneID;
+        moleViewController.zoneID = measurement.whichMole.whichZone.zoneID;
         
-        //NSNumber *zoneIDForSegue = @([moleForSegue.whichZone.zoneID intValue]);
+        NSNumber *zoneIDForSegue = @([measurement.whichMole.whichZone.zoneID intValue]);
         
-        //_moleViewController.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
-        //_moleViewController.measurement = measurementForSegue;
+        moleViewController.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
+        moleViewController.measurement = measurement;
 
     }
     

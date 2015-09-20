@@ -15,6 +15,7 @@
 #import "DashboardSizeOvertimeCell.h"
 #import "DashboardModel.h"
 #import "MoleViewController.h"
+#import "AppDelegate.h"
 
 @interface DashboardViewController ()
 
@@ -29,6 +30,8 @@
     _cellList = [[NSMutableArray alloc] init];
     [self setupCellList];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"moleMapperLogo"]];
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    self.context = ad.managedObjectContext;
 }
 
 -(void) setupCellList
