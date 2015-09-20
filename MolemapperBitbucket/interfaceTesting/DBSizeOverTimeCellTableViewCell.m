@@ -22,36 +22,31 @@
     NSDictionary *mole = [_moleDictionary objectForKey:key];
     
     _moleNameLabel.text = [mole objectForKey:@"name"];
-    //NSNumber* size = [mole objectForKey:@"size"];
-    //NSNumber* percentChange = [mole objectForKey:@"percentChange"];
-    //Measurement* measurement = [mole objectForKey:@"measurement"];
-    //NSDate* date = measurement.date;
+    //_moleNameLabel.text = @"Franklin D. Molesvelt";
+    NSNumber* size = [mole objectForKey:@"size"];
+    NSNumber* percentChange = [mole objectForKey:@"percentChange"];
+    Measurement* measurement = [mole objectForKey:@"measurement"];
+    NSDate* date = measurement.date;
     
-    NSNumber* size = [NSNumber numberWithFloat:2.3f];
-    NSNumber* percentChange = [NSNumber numberWithFloat:0.1f];
+    //debug
+    //NSDate* date = [mole objectForKey:@"measurement"];
+    //NSNumber* size = [NSNumber numberWithFloat:2.3f];
+    //NSNumber* percentChange = [NSNumber numberWithFloat:0.1f];
     
-    _moleSizeLabel.text = [NSString stringWithFormat:@"Size: %2.1f mm\nMeasured: April 12, 2087", [size floatValue]];
-    _moleProgressLabel.text = [percentChange floatValue] > 0.0f ? [NSString stringWithFormat:@"%2.1f%%", [percentChange floatValue]] : @"0.0%%";
+    NSString* dateString = [NSString stringWithFormat:@"%@", [self getFormatedDate:date]];
+    
+    percentChange = [NSNumber numberWithFloat:fabsf([percentChange floatValue])];
+    _moleSizeLabel.text = [NSString stringWithFormat:@"Size: %2.1f mm\nLast measured: %@", [size floatValue], dateString];
+    _moleProgressLabel.text = [percentChange floatValue] > 0.0f ? [NSString stringWithFormat:@"%2.1f%%", [percentChange floatValue]] : @"0.0%";
     
     // Configure the view for the selected state
 }
 
-- (NSString*) getFormatedDate
+- (NSString*) getFormatedDate: (NSDate*) date;
 {
-    NSNumber* lastDate = [[DashboardModel sharedInstance] daysUntilNextMeasurementPeriod];//[_dbModel daysSinceLastFollowup];
-    
-    NSDate* date = [NSDate date];
-    
-    NSDateComponents* comps = [[NSDateComponents alloc]init];
-    comps.day = -lastDate.integerValue;
-    
-    NSCalendar* calendar = [NSCalendar currentCalendar];
-    
-    NSDate* correctedDay = [calendar dateByAddingComponents:comps toDate:date options:nil];
-    
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-    formatter.dateFormat = @"MMMM dd";
-    NSString* dateString = [formatter stringFromDate:correctedDay];
+    formatter.dateFormat = @"MMM dd, yyyy";
+    NSString* dateString = [formatter stringFromDate:date];
     
     return dateString;
 }

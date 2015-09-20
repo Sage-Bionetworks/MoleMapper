@@ -22,12 +22,12 @@
 
 - (void)setupLabels
 {
-    //NSString* biggestMoleName = [_dbModel nameForBiggestMole];
-    //NSString* zoneMoleName = [_dbModel zoneNameForBiggestMole];
+    NSString* biggestMoleName = [[DashboardModel sharedInstance] nameForBiggestMole];
+    NSString* zoneMoleName = [[DashboardModel sharedInstance] zoneNameForBiggestMole];
     
     //debug version
-    NSString* biggestMoleName = @"Holy Mollie";
-    NSString* zoneMoleName = @"left upper arm";
+    //NSString* biggestMoleName = @"Holy Mollie";
+    //NSString* zoneMoleName = @"left upper arm";
     
     _biggestMoleLabel.text = biggestMoleName;
     _locatedMoleLabel.text = @"";

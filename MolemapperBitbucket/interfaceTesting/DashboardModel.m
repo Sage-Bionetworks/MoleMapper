@@ -206,12 +206,21 @@
     //USE FOR DEBUG ON SIMULATOR
     /*for (int i = 0; i < 10; ++i)
     {
+        
+        //NSDate *date = [NSDate date];
+        
+        NSDateComponents *comps = [[NSDateComponents alloc] init];
+        [comps setDay:27];
+        [comps setMonth:2];
+        [comps setYear:1987];
+        NSDate* correctedDay = [[NSCalendar currentCalendar] dateFromComponents:comps];
+        
         NSString *key = [NSString stringWithFormat:@"%i",i];
         NSMutableDictionary *moleDict = [NSMutableDictionary dictionary];
         [moleDict setObject:@"holymoly" forKey:@"name"];
         [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"size"];
         [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"percentChange"];
-        [moleDict setObject:[NSNumber numberWithFloat:i] forKey:@"measurement"];
+        [moleDict setObject:[NSDate date] forKey:@"measurement"];
         [listOfMoles setObject:moleDict forKey: key];
     }*/
 
