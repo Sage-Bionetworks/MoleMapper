@@ -20,8 +20,6 @@
 
 @property DashboardViewController* dashBoardViewController;
 
-@property
-
 //@property DashboardModel* dbModel;
 
 @end
