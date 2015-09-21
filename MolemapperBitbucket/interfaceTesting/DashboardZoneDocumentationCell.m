@@ -74,8 +74,16 @@
     label.textColor = _progressView.tintColor;
     _progressView.centralView = label;
     
-    _progressView.progressChangedBlock = ^(UAProgressView *progressView, CGFloat progress) {
-        [(UILabel*)_progressView.centralView setText:[NSString stringWithFormat:@"%2.3f%%", progress * 100]];
+    _progressView.progressChangedBlock = ^(UAProgressView *progressView, CGFloat progress)
+    {
+        if (progress == 100)
+        {
+            [(UILabel*)_progressView.centralView setText:[NSString stringWithFormat:@"%3.0f%%", progress * 100]];
+        }
+        else
+        {
+            [(UILabel*)_progressView.centralView setText:[NSString stringWithFormat:@"%2.0f%%", progress * 100]];
+        }
     };
 }
 
