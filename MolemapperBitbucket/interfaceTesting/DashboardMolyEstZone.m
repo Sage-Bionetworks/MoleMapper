@@ -37,21 +37,24 @@
     ChartYAxis *leftAxis = _chartView.leftAxis;
     leftAxis.drawGridLinesEnabled = NO;
     leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-    leftAxis.labelCount = 8;
+    
+    NSArray *zones = [[DashboardModel sharedInstance] zoneNameToNumberOfMolesInZoneDictionary];
+    
+    leftAxis.labelCount = [zones count];
     leftAxis.valueFormatter = [[NSNumberFormatter alloc] init];
-    leftAxis.valueFormatter.maximumFractionDigits = 0;
+    leftAxis.valueFormatter.maximumFractionDigits = 1;
     leftAxis.valueFormatter.negativeSuffix = @"";
     leftAxis.valueFormatter.positiveSuffix = @"";
     leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
-    leftAxis.spaceTop = 0.15;
+    leftAxis.spaceTop = 0.5;
     
     ChartYAxis *rightAxis = _chartView.rightAxis;
     rightAxis.drawGridLinesEnabled = NO;
     rightAxis.valueFormatter.maximumFractionDigits = 0;
-    rightAxis.labelFont = [UIFont systemFontOfSize:10.f];
-    rightAxis.labelCount = 8;
+    rightAxis.labelFont = [UIFont systemFontOfSize:0.f];
+    rightAxis.labelCount = 0;
     rightAxis.valueFormatter = leftAxis.valueFormatter;
-    rightAxis.spaceTop = 0.15;
+    rightAxis.spaceTop = 0.5;
     
     _chartView.legend.position = ChartLegendPositionBelowChartLeft;
     _chartView.legend.form = ChartLegendFormSquare;
@@ -59,7 +62,7 @@
     _chartView.legend.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
     _chartView.legend.xEntrySpace = 4.0;
     
-    NSArray *zones = [[DashboardModel sharedInstance] zoneNameToNumberOfMolesInZoneDictionary];
+    //NSArray *zones = [[DashboardModel sharedInstance] zoneNameToNumberOfMolesInZoneDictionary];
     
     NSInteger count = [zones count] > 5 ? 5 : [zones count];
     
@@ -70,24 +73,25 @@
 {
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
     NSArray *zones = [[DashboardModel sharedInstance] zoneNameToNumberOfMolesInZoneDictionary];
-    
-    for (int i = 0; i < count; i++)
+
+    for (int i = count - 1; i >= 0; i--)
     {
-        [xVals addObject:zones[i % [zones count]]];
+        NSDictionary *dict = zones[i];
+        NSString* name = [dict objectForKey:@"name"];
+        [xVals addObject:name];
     }
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < count; i++)
     {
-        NSDictionary* dict = [xVals objectAtIndex:i];
+        NSDictionary* dict = zones[i];
         NSNumber* value = [dict objectForKey:@"numberOfMolesInZone"];
         NSInteger zoneNumber = [value integerValue];
-        //NSInteger val = (double) (arc4random_uniform(mult));
-        [yVals addObject:[[BarChartDataEntry alloc] initWithValue:zoneNumber xIndex:i]];
+        [yVals addObject:[[BarChartDataEntry alloc] initWithValue:zoneNumber xIndex:(count - 1) - i]];
     }
     
-    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithYVals:yVals label:@"DataSet"];
+    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithYVals:yVals label:@"Moles in Zones"];
     set1.barSpace = 0.35;
     
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
