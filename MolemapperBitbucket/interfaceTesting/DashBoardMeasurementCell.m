@@ -7,6 +7,9 @@
 //
 
 #import "DashBoardMeasurementCell.h"
+#import "MoleViewController.h"
+#import "Zone.h"
+#import "Zone+MakeAndMod.h"
 
 @implementation DashBoardMeasurementCell
 
@@ -98,4 +101,24 @@
     [self setupLabels];
 }
 
+- (IBAction)presentMoleViewController:(UIButton *)sender {
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle: nil];
+    MoleViewController *moleViewController = (MoleViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"MoleViewController"];
+    
+    Measurement *measurement = [[DashboardModel sharedInstance] measurementForBiggestMole];
+    moleViewController.mole = measurement.whichMole;
+    moleViewController.moleID = measurement.whichMole.moleID;
+    moleViewController.moleName = [[DashboardModel sharedInstance] nameForBiggestMole];
+    moleViewController.context = [[DashboardModel sharedInstance] context];
+    moleViewController.zoneID = measurement.whichMole.whichZone.zoneID;
+    
+    NSNumber *zoneIDForSegue = @([measurement.whichMole.whichZone.zoneID intValue]);
+    
+    moleViewController.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
+    moleViewController.measurement = measurement;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:moleViewController];
+    [_dashBoardViewController presentViewController:navigationController animated:YES completion:nil];
+}
 @end

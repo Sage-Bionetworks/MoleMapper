@@ -172,6 +172,7 @@
     if (indexPath.row == 2)
     {
         DashBoardMeasurementCell* cell = (DashBoardMeasurementCell*)[_cellList objectAtIndex:indexPath.row];
+        cell.dashBoardViewController = self;
         height = @(cell.bounds.size.height);
     }
     

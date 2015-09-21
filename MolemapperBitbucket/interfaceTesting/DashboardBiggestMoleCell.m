@@ -20,16 +20,16 @@
     
     [super setSelected:selected animated:animated];
     
-    /*NSNumber* avSize = [[DashboardModel sharedInstance] sizeOfAverageMole];
+    NSNumber* avSize = [[DashboardModel sharedInstance] sizeOfAverageMole];
     NSNumber* bgSize = [[DashboardModel sharedInstance] sizeOfBiggestMole];
     
     NSNumber* averageScale = avSize > [NSNumber numberWithFloat:1.0] ? [NSNumber numberWithFloat:1.0] : avSize;
     NSNumber* biggestScale = bgSize > [NSNumber numberWithFloat:1.0] ? [NSNumber numberWithFloat:1.0] : bgSize;
-    */
+    
     
     //set average from model if there is any DEBUG
-    NSNumber* averageScale = [NSNumber numberWithFloat:6.7];
-    NSNumber* biggestScale = [NSNumber numberWithFloat:9.2];
+    //NSNumber* averageScale = [NSNumber numberWithFloat:6.7];
+    //NSNumber* biggestScale = [NSNumber numberWithFloat:9.2];
     
     _innerCircleLabel.text = [NSString stringWithFormat:@"%@ mm", averageScale];
     _outerCircleLabel.text = [NSString stringWithFormat:@"%@ mm", biggestScale];
