@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@import Charts;
 
-@interface DashboardMolyEstZone : UITableViewCell
+@interface DashboardMolyEstZone : UITableViewCell <ChartViewDelegate>
+@property (strong, nonatomic) IBOutlet BarChartView *chartView;
 
 @end

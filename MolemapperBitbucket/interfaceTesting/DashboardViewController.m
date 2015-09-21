@@ -13,6 +13,7 @@
 #import "DashBoardMeasurementCell.h"
 #import "DashboardBiggestMoleCell.h"
 #import "DashboardSizeOvertimeCell.h"
+#import "DashboardMolyEstZone.h"
 #import "DashboardModel.h"
 #import "MoleViewController.h"
 #import "AppDelegate.h"
@@ -91,17 +92,30 @@
         cell5 = [nib objectAtIndex:0];
     }
     
+    //DashboardMolyestZone
+    cell_id = @"DashboardMolyEstZone";
+    
+    DashboardMolyEstZone *cell6 = (DashboardMolyEstZone*)[_tableView dequeueReusableCellWithIdentifier:cell_id];
+    
+    if (cell6 == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cell_id owner:self options:nil];
+        cell6 = [nib objectAtIndex:0];
+    }
+    
     cell1.clipsToBounds = YES;
     cell2.clipsToBounds = YES;
     cell3.clipsToBounds = YES;
     cell4.clipsToBounds = YES;
     cell5.clipsToBounds = YES;
+    cell6.clipsToBounds = YES;
     
     [_cellList addObject:cell1];
     [_cellList addObject:cell2];
     [_cellList addObject:cell3];
     [_cellList addObject:cell4];
     [_cellList addObject:cell5];
+    [_cellList addObject:cell6];
     
     
 }
@@ -182,6 +196,12 @@
                                         (bounds.size.height + [moleDictionary count] * 62))];
     }
     
+    if (indexPath.row == 5)
+    {
+        DashboardMolyEstZone* cell = (DashboardMolyEstZone*)[_cellList objectAtIndex:indexPath.row];
+        height = @(cell.bounds.size.height);
+    }
+    
     return [height floatValue];
 }
 
@@ -191,27 +211,5 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-
-    if ([segue.identifier isEqualToString:@"dashboardSegueToMoleView"])
-    {
-        //MoleViewController *destVC = (MoleViewController *)segue.destinationViewController;
-        
-        /*
-        destVC.mole = moleForSegue;
-        destVC.moleID = moleForSegue.moleID;
-        destVC.moleName = moleForSegue.moleName;
-        destVC.context = self.context;
-        destVC.zoneID = moleForSegue.whichZone.zoneID;
-        
-        NSNumber *zoneIDForSegue = @([moleForSegue.whichZone.zoneID intValue]);
-        
-        destVC.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
-        destVC.measurement = measurementForSegue;
-         */
-    }
-}
 
 @end

@@ -73,6 +73,8 @@
 @property (strong, nonatomic) MeasuringTool *selectedMeasuringTool;
 @property BOOL measuringEnabled;
 
+@property BOOL isPresentView;
+
 @property  float oldZoomScale;
 
 @end

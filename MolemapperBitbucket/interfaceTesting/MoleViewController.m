@@ -102,10 +102,14 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeViewController)];
-    self.navigationItem.leftBarButtonItem = barButtonItem;
-    [barButtonItem setTarget:self];
-    [barButtonItem setAction:@selector(closeViewController:)];
+    if (_isPresentView)
+    {
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeViewController)];
+        self.navigationItem.leftBarButtonItem = barButtonItem;
+        [barButtonItem setTarget:self];
+        [barButtonItem setAction:@selector(closeViewController:)];
+        _isPresentView = NO;
+    }
 
     self.automaticallyAdjustsScrollViewInsets = YES;
     vars = [VariableStore sharedVariableStore];

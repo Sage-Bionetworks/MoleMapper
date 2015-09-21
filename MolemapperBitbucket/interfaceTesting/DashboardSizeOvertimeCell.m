@@ -69,6 +69,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle: nil];
     MoleViewController *moleViewController = (MoleViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"MoleViewController"];
     
@@ -93,12 +95,8 @@
 
     }
     
-    //MyViewController *myViewController = [[MyViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:moleViewController];
-    
     [_dashBoardViewController presentViewController:navigationController animated:YES completion:nil];
-    
-    //[_dashBoardViewController performSegueWithIdentifier: @"dashboardSegueToMoleView" sender: _dashBoardViewController];
 }
 
 #pragma mark - Table view delegate
