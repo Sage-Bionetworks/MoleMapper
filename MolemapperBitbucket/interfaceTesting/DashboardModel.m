@@ -100,8 +100,6 @@
         NSError *error = nil;
         NSArray *allMoles = [self.context executeFetchRequest:request error:&error];
         
-        int totalNumberOfMeasuredMoles = 0;
-        
         for (Mole *mole in allMoles)
         {
             Measurement *mostRecent = [Measurement getMostRecentMoleMeasurementForMole:mole withContext:self.context];
@@ -110,7 +108,7 @@
                 NSDate *dateOfMeasurement = mostRecent.date;
                 if ([self date:dateOfMeasurement isBetweenDate:lastTimeAsurveyWasTaken andDate:now])
                 {
-                    totalNumberOfMeasuredMoles++;
+                    numberOfMolesMeasuredSinceLastFollowup++;
                 }
             }
         }
