@@ -88,9 +88,9 @@
     for (int i = 0; i < count; i++)
     {
         NSInteger zoneNumber = [[zones objectAtIndex:0] objectForKey:@"numberOfMolesInZone"];
-        double mult = (zoneNumber + 1);
-        double val = (double) (arc4random_uniform(mult));
-        [yVals addObject:[[BarChartDataEntry alloc] initWithValue:val xIndex:i]];
+        NSInteger mult = (zoneNumber + 1);
+        //NSInteger val = (double) (arc4random_uniform(mult));
+        [yVals addObject:[[BarChartDataEntry alloc] initWithValue:(double)mult xIndex:i]];
     }
     
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithYVals:yVals label:@"DataSet"];
@@ -104,7 +104,6 @@
     
     _chartView.data = data;
 }
-
 
 -(void) viewDidLoad
 {
