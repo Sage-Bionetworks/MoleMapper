@@ -103,6 +103,7 @@
 
     }
     
+    moleViewController.isPresentView = YES;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:moleViewController];
     [_dashBoardViewController presentViewController:navigationController animated:YES completion:nil];
 }
