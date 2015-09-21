@@ -11,5 +11,5 @@
 
 @interface DashboardMolyEstZone : UITableViewCell <ChartViewDelegate>
 @property (strong, nonatomic) IBOutlet BarChartView *chartView;
-
+-(void) setDataToChart;
 @end

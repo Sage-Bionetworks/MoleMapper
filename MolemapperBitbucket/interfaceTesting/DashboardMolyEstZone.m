@@ -13,24 +13,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    
-    /*self.title = @"Bar Chart";
-     
-     self.options = @[
-     @{@"key": @"toggleValues", @"label": @"Toggle Values"},
-     @{@"key": @"toggleHighlight", @"label": @"Toggle Highlight"},
-     @{@"key": @"toggleHighlightArrow", @"label": @"Toggle Highlight Arrow"},
-     @{@"key": @"animateX", @"label": @"Animate X"},
-     @{@"key": @"animateY", @"label": @"Animate Y"},
-     @{@"key": @"animateXY", @"label": @"Animate XY"},
-     @{@"key": @"toggleStartZero", @"label": @"Toggle StartZero"},
-     @{@"key": @"saveToGallery", @"label": @"Save to Camera Roll"},
-     @{@"key": @"togglePinchZoom", @"label": @"Toggle PinchZoom"},
-     @{@"key": @"toggleAutoScaleMinMax", @"label": @"Toggle auto scale min/max"},
-     ];*/
-    
-    //_chartView.delegate = self;
-    
+    [self setDataToChart];
+}
+
+-(void) setDataToChart
+{
     _chartView.descriptionText = @"";
     _chartView.noDataTextDescription = @"You need to provide data for the chart.";
     
@@ -48,10 +35,11 @@
     xAxis.spaceBetweenLabels = 2.0;
     
     ChartYAxis *leftAxis = _chartView.leftAxis;
+    leftAxis.drawGridLinesEnabled = NO;
     leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
     leftAxis.labelCount = 8;
     leftAxis.valueFormatter = [[NSNumberFormatter alloc] init];
-    leftAxis.valueFormatter.maximumFractionDigits = 1;
+    leftAxis.valueFormatter.maximumFractionDigits = 0;
     leftAxis.valueFormatter.negativeSuffix = @"";
     leftAxis.valueFormatter.positiveSuffix = @"";
     leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
@@ -59,6 +47,7 @@
     
     ChartYAxis *rightAxis = _chartView.rightAxis;
     rightAxis.drawGridLinesEnabled = NO;
+    rightAxis.valueFormatter.maximumFractionDigits = 0;
     rightAxis.labelFont = [UIFont systemFontOfSize:10.f];
     rightAxis.labelCount = 8;
     rightAxis.valueFormatter = leftAxis.valueFormatter;
@@ -70,10 +59,14 @@
     _chartView.legend.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
     _chartView.legend.xEntrySpace = 4.0;
     
-    //[self setDataCount:5];
+    NSArray *zones = [[DashboardModel sharedInstance] zoneNameToNumberOfMolesInZoneDictionary];
+    
+    NSInteger count = [zones count] > 5 ? 5 : [zones count];
+    
+    [self setDataCount:(int)count withRange:10];
 }
 
-- (void)setDataCount:(int)count
+- (void)setDataCount:(int)count withRange: (double)range
 {
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
     NSArray *zones = [[DashboardModel sharedInstance] zoneNameToNumberOfMolesInZoneDictionary];
@@ -87,10 +80,11 @@
     
     for (int i = 0; i < count; i++)
     {
-        NSInteger zoneNumber = [[zones objectAtIndex:0] objectForKey:@"numberOfMolesInZone"];
-        NSInteger mult = (zoneNumber + 1);
+        NSDictionary* dict = [xVals objectAtIndex:i];
+        NSNumber* value = [dict objectForKey:@"numberOfMolesInZone"];
+        NSInteger zoneNumber = [value integerValue];
         //NSInteger val = (double) (arc4random_uniform(mult));
-        [yVals addObject:[[BarChartDataEntry alloc] initWithValue:(double)mult xIndex:i]];
+        [yVals addObject:[[BarChartDataEntry alloc] initWithValue:zoneNumber xIndex:i]];
     }
     
     BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithYVals:yVals label:@"DataSet"];

@@ -153,6 +153,11 @@
         //[(DashboardZoneDocumentationCell*)[_cellList objectAtIndex:indexPath.row] setDataToProgressView:0.95];
     }
     
+    if (indexPath.row == 5)
+    {
+        [(DashboardMolyEstZone*)[_cellList objectAtIndex:indexPath.row] setDataToChart];
+    }
+    
     return [_cellList objectAtIndex:indexPath.row];
 }
 

@@ -252,8 +252,6 @@
 // [{"name": zoneName, "count": numberOfMolesInZone(NSNumber)}, "zone" : Zone object]
 -(NSArray *)zoneNameToNumberOfMolesInZoneDictionary
 {
-    NSMutableDictionary *zonesToMoles = [NSMutableDictionary dictionary];
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Zone" inManagedObjectContext:self.context];
     [fetchRequest setEntity:entity];
@@ -270,9 +268,12 @@
         NSNumber *numberOfMoles = [NSNumber numberWithInt:moleNum];
         NSNumber *zoneID = @([zone.zoneID intValue]);
         NSString *zoneName = [Zone zoneNameForZoneID:zoneID];
+        
+        NSMutableDictionary *zonesToMoles = [NSMutableDictionary dictionary];
         [zonesToMoles setValue:zoneName forKey:@"name"];
         [zonesToMoles setValue:numberOfMoles forKey:@"numberOfMolesInZone"];
-        [zonesToMoles setValue:zone forKey:@"zone"];
+        [zonesToMoles setValue:zoneID forKey:@"zone"];
+
         [arrayOfDictionaries addObject:zonesToMoles];
     }
     

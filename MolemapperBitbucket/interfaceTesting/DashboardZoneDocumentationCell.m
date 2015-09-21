@@ -28,6 +28,7 @@
     [self setupProgress];
     _isTimerInvalidated = YES;
     _documentedZones.text = [NSString stringWithFormat:@"%@ Zones", [[DashboardModel sharedInstance] numberOfZonesDocumented]];
+    [self initZonesDocumented];
 }
 
 - (void) initZonesDocumented
@@ -115,7 +116,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    [self initZonesDocumented];
+    //[self initZonesDocumented];
 
     
     //need to set all of the bodyparts and also those which is already covered
