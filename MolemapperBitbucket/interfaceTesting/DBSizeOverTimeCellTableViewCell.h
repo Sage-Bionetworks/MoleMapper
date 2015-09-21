@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *moleNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moleSizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moleProgressLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *arrowImageView;
 
 @property NSDictionary* moleDictionary;
 @property NSInteger idx;

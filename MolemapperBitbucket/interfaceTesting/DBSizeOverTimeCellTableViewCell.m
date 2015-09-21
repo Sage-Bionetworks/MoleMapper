@@ -35,6 +35,20 @@
     
     NSString* dateString = [NSString stringWithFormat:@"%@", [self getFormatedDate:date]];
     
+    if ([percentChange floatValue] > 0)
+    {
+        _arrowImageView.image = [UIImage imageNamed:@"arrowup"];
+    }
+    else if ([percentChange floatValue] < 0)
+    {
+        _arrowImageView.image = [UIImage imageNamed:@"arrowdown"];
+    }
+    else if ([percentChange floatValue] == 0)
+    {
+        _arrowImageView.image = [UIImage imageNamed:@"arrowNil"];
+    }
+    
+    
     percentChange = [NSNumber numberWithFloat:fabsf([percentChange floatValue])];
     _moleSizeLabel.text = [NSString stringWithFormat:@"Size: %2.1f mm\nLast measured: %@", [size floatValue], dateString];
     _moleProgressLabel.text = [percentChange floatValue] > 0.0f ? [NSString stringWithFormat:@"%2.1f%%", [percentChange floatValue]] : @"0.0%";
