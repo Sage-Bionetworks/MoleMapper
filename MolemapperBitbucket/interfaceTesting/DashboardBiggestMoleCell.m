@@ -23,19 +23,22 @@
     NSNumber* avSize = [[DashboardModel sharedInstance] sizeOfAverageMole];
     NSNumber* bgSize = [[DashboardModel sharedInstance] sizeOfBiggestMole];
     
-    NSNumber* averageScale = avSize > [NSNumber numberWithFloat:1.0] ? [NSNumber numberWithFloat:1.0] : avSize;
-    NSNumber* biggestScale = bgSize > [NSNumber numberWithFloat:1.0] ? [NSNumber numberWithFloat:1.0] : bgSize;
+    float avRounded = ceilf([avSize floatValue] * 10.0f) / 10.0f;
+    float bgRounded = ceilf([bgSize floatValue] * 10.0f) / 10.0f;
     
-    
+    NSNumber* biggestScale = [NSNumber numberWithFloat:1.0f];
+    NSNumber* averageScale = [NSNumber numberWithFloat:1.0f / [avSize floatValue]];;
+
     //set average from model if there is any DEBUG
     //NSNumber* averageScale = [NSNumber numberWithFloat:6.7];
     //NSNumber* biggestScale = [NSNumber numberWithFloat:9.2];
     
-    _innerCircleLabel.text = [NSString stringWithFormat:@"%@ mm", averageScale];
-    _outerCircleLabel.text = [NSString stringWithFormat:@"%@ mm", biggestScale];
+    _innerCircleLabel.text = [NSString stringWithFormat:@"%2.1f mm", avRounded];
+    _outerCircleLabel.text = [NSString stringWithFormat:@"%2.1f mm", bgRounded];
     
-    [[AnimationManager sharedInstance] scaleUIImageWithImageView:_innerCircle withDuration:0.3 withDelay:0.3 withPosFrom:0.0 withPosTo:[averageScale floatValue] * 0.1];
-    [[AnimationManager sharedInstance] scaleUIImageWithImageView:_outerCircle withDuration:0.4 withDelay:0.3 withPosFrom:0.0 withPosTo:[biggestScale floatValue] * 0.1];
+    [[AnimationManager sharedInstance] scaleUIImageWithImageView:_outerCircle withDuration:0.4 withDelay:0.3 withPosFrom:0.0 withPosTo:[biggestScale floatValue]];
+    [[AnimationManager sharedInstance] scaleUIImageWithImageView:_innerCircle withDuration:0.3 withDelay:0.3 withPosFrom:0.0 withPosTo:[averageScale floatValue]];
+    
 }
 
 @end
