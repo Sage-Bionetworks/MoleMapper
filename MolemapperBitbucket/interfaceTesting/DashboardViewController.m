@@ -18,6 +18,7 @@
 #import "MoleViewController.h"
 #import "AppDelegate.h"
 
+
 @interface DashboardViewController ()
 
 @end
@@ -33,10 +34,29 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"moleMapperLogo"]];
     AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.context = ad.managedObjectContext;
+    
+    _refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:_refreshControl];
+    [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)refreshTable {
+    //TODO: refresh your data
+    [_refreshControl endRefreshing];
+    [self.tableView reloadData];
+
+    /*[self setupCellList];
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    self.context = ad.managedObjectContext;*/
 }
 
 -(void) setupCellList
 {
+    if ([_cellList count] > 0)
+    {
+        [_cellList removeAllObjects];
+    }
+    
     static NSString *cell_id = @"DashboardActivityCompletionCell";
     
     DashboardActivityCompletionCell *cell1 = (DashboardActivityCompletionCell *)[_tableView dequeueReusableCellWithIdentifier:cell_id];
@@ -130,11 +150,8 @@
 
     if (indexPath.row == 0)
     {
-        NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
-        NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
-        float numb = 0.0;
-        if ([total floatValue] > 0.0) {numb = [last floatValue] / [total floatValue];};
-        [(DashboardActivityCompletionCell*)[_cellList objectAtIndex:indexPath.row] setDataToProgressView:numb];
+        
+        //[(DashboardActivityCompletionCell*)[_cellList objectAtIndex:indexPath.row] setDataToProgressView:numb];
     }
     
     if (indexPath.row == 0)

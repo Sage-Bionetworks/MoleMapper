@@ -13,6 +13,13 @@
 @implementation DashboardActivityCompletionCell
 
 - (void)awakeFromNib {
+    
+    NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
+    NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
+    float numb = 0.0;
+    if ([total floatValue] > 0.0) {numb = [last floatValue] / [total floatValue];};
+    [self setDataToProgressView:numb];
+    
     [self setupProgress];
     
     //_dbModel = [[DashboardModel alloc] init];

@@ -10,6 +10,7 @@
 //org.ANCRapps.MoleMapper
 
 #import <UIKit/UIKit.h>
+#import "UIRefreshControl+AFNetworking.h"
 
 @class DashboardSizeOvertimeCell;
 
@@ -19,5 +20,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property NSMutableArray* cellList;
+@property UIRefreshControl* refreshControl;
 
 @end

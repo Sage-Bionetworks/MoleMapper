@@ -57,23 +57,11 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DBSizeOverTimeCellTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         cell.moleDictionary = _allMolesDicitionary;
-        
-        cell.idx = ([_allMolesDicitionary count] - 1) - indexPath.row;
+        cell.idx = indexPath.row;
     }
     
     return cell;
 }
-
-/*-(NSDictionary*) getPercentChangeByIndex:(NSInteger) index
-{
-    /*for (int i = 0; i < [_allMolesDicitionary count]; ++i)
-    {
-        [_allMolesDicitionary ]
-    }
-    
-    return nil;
-}*/
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
