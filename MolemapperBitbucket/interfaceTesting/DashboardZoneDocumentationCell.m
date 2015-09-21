@@ -32,6 +32,8 @@
 
 - (void) initZonesDocumented
 {
+    _documentedZones.text = [NSString stringWithFormat:@"%@ Zones", [[DashboardModel sharedInstance] numberOfZonesDocumented]];
+    
     _currentProgress = 0.0;
     _localProgress = 0.0;
     [_progressView setProgress:_currentProgress animated:YES];

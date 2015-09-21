@@ -69,7 +69,10 @@
 - (void)createDotsOnBar
 {
     NSArray* dotsArray = [[DashboardModel sharedInstance] allMoleMeasurements];// [_dbModel allMoleMeasurements];
-    
+    for (int i = 0; i < [dotsArray count]; ++i)
+    {
+        [[_dotSubviews objectAtIndex:i] removeFromSuperview];
+    }
     //debug version
     /*NSArray* dotsArray = [NSArray arrayWithObjects:
                           [NSNumber numberWithFloat:0.3],
@@ -90,6 +93,7 @@
         NSInteger posx = [[dotsArray objectAtIndex:i] floatValue] * multiplier;
         UIImageView *myImage = [[UIImageView alloc] initWithFrame:CGRectMake(posx, 95, 3, 3)];
         myImage.image = [UIImage imageNamed:@"dot.png"];
+        [_dotSubviews addObject:myImage];
         [self addSubview:myImage];
     }
 }

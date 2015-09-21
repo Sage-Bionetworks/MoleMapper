@@ -27,6 +27,6 @@
 -(NSNumber *)numberOfMolesMeasuredSinceLastFollowup;
 -(NSInteger) getAllZoneNumber;
 -(Measurement *)measurementForBiggestMole;
-
+-(void) refreshContext;
 
 @end

@@ -42,6 +42,7 @@
 
 - (void)refreshTable {
     //TODO: refresh your data
+    [[DashboardModel sharedInstance] refreshContext];
     [self setupCellList];
     [_refreshControl endRefreshing];
     [self.tableView reloadData];

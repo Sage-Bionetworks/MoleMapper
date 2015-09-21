@@ -18,7 +18,7 @@
 
 @implementation DashboardModel
 
--(instancetype)init{
+-(instancetype)initModel{
     self = [super init];
     if (self) {
         AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -33,13 +33,17 @@
     
     __strong static id _sharedObject = nil;
     dispatch_once(&p, ^{
-        _sharedObject = [[self alloc] init];
+        _sharedObject = [[self alloc] initModel];
     });
     
     return _sharedObject;
 }
 
-
+-(void) refreshContext
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.context = ad.managedObjectContext;
+}
 
 #pragma mark - Statistics from local data
 

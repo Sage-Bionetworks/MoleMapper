@@ -19,6 +19,7 @@
 - (IBAction)presentMoleViewController:(UIButton *)sender;
 
 @property DashboardViewController* dashBoardViewController;
+@property NSMutableArray *dotSubviews;
 
 //@property DashboardModel* dbModel;
 
