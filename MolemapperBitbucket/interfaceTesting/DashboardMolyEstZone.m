@@ -70,7 +70,7 @@
     _chartView.legend.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
     _chartView.legend.xEntrySpace = 4.0;
     
-    [self setDataCount:5];
+    //[self setDataCount:5];
 }
 
 - (void)setDataCount:(int)count

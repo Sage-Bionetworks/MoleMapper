@@ -27,11 +27,10 @@
     NSNumber* biggestScale = bgSize > [NSNumber numberWithFloat:1.0] ? [NSNumber numberWithFloat:1.0] : bgSize;
     */
     
-    
     //set average from model if there is any DEBUG
     NSNumber* averageScale = [NSNumber numberWithFloat:6.7];
     NSNumber* biggestScale = [NSNumber numberWithFloat:9.2];
-
+    
     _innerCircleLabel.text = [NSString stringWithFormat:@"%@ mm", averageScale];
     _outerCircleLabel.text = [NSString stringWithFormat:@"%@ mm", biggestScale];
     
