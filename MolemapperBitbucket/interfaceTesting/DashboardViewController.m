@@ -42,10 +42,11 @@
 
 - (void)refreshTable {
     //TODO: refresh your data
+    [self setupCellList];
     [_refreshControl endRefreshing];
     [self.tableView reloadData];
 
-    /*[self setupCellList];
+    /*
     AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.context = ad.managedObjectContext;*/
 }
@@ -56,70 +57,62 @@
     {
         [_cellList removeAllObjects];
     }
-    
-    static NSString *cell_id = @"DashboardActivityCompletionCell";
-    
-    DashboardActivityCompletionCell *cell1 = (DashboardActivityCompletionCell *)[_tableView dequeueReusableCellWithIdentifier:cell_id];
+
+    //DashboardActivityCompletionCell
+    DashboardActivityCompletionCell *cell1 = (DashboardActivityCompletionCell *)[_tableView dequeueReusableCellWithIdentifier:@"DashboardActivityCompletionCell"];
     
     if (cell1 == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cell_id owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardActivityCompletionCell" owner:self options:nil];
         cell1 = [nib objectAtIndex:0];
     }
+    /////
     
-    cell_id = @"DashboardZoneDocumentationCell";
-    
-    DashboardZoneDocumentationCell *cell2 = (DashboardZoneDocumentationCell *)[_tableView dequeueReusableCellWithIdentifier:cell_id];
+    //DashboardZoneDocumentationCell
+    DashboardZoneDocumentationCell *cell2 = (DashboardZoneDocumentationCell *)[_tableView dequeueReusableCellWithIdentifier:@"DashboardZoneDocumentationCell"];
     
     if (cell2 == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cell_id owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardZoneDocumentationCell" owner:self options:nil];
         cell2 = [nib objectAtIndex:0];
     }
+    /////
     
     //DashBoardMeasurementCell
-    
-    cell_id = @"DashBoardMeasurementCell";
-    
-    DashBoardMeasurementCell *cell3 = (DashBoardMeasurementCell *)[_tableView dequeueReusableCellWithIdentifier:cell_id];
+    DashBoardMeasurementCell *cell3 = (DashBoardMeasurementCell *)[_tableView dequeueReusableCellWithIdentifier:@"DashBoardMeasurementCell"];
     
     if (cell3 == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cell_id owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashBoardMeasurementCell" owner:self options:nil];
         cell3 = [nib objectAtIndex:0];
     }
+    /////
     
     //DashboardBiggestMoleCell
-    cell_id = @"DashboardBiggestMoleCell";
-    
-    DashboardBiggestMoleCell *cell4 = (DashboardBiggestMoleCell*)[_tableView dequeueReusableCellWithIdentifier:cell_id];
+    DashboardBiggestMoleCell *cell4 = (DashboardBiggestMoleCell*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardBiggestMoleCell"];
     
     if (cell4 == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cell_id owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardBiggestMoleCell" owner:self options:nil];
         cell4 = [nib objectAtIndex:0];
     }
-    
+    /////
     
     //DashboardSizeOvertimeCell
-    cell_id = @"DashboardSizeOvertimeCell";
-    
-    DashboardSizeOvertimeCell *cell5 = (DashboardSizeOvertimeCell*)[_tableView dequeueReusableCellWithIdentifier:cell_id];
+    DashboardSizeOvertimeCell *cell5 = (DashboardSizeOvertimeCell*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardSizeOvertimeCell"];
     
     if (cell5 == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cell_id owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardSizeOvertimeCell" owner:self options:nil];
         cell5 = [nib objectAtIndex:0];
     }
     
     //DashboardMolyestZone
-    cell_id = @"DashboardMolyEstZone";
-    
-    DashboardMolyEstZone *cell6 = (DashboardMolyEstZone*)[_tableView dequeueReusableCellWithIdentifier:cell_id];
+    DashboardMolyEstZone *cell6 = (DashboardMolyEstZone*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardMolyEstZone"];
     
     if (cell6 == nil)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cell_id owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardMolyEstZone" owner:self options:nil];
         cell6 = [nib objectAtIndex:0];
     }
     
