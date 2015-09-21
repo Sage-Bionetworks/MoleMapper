@@ -7,6 +7,7 @@
 //
 
 #import "DashboardMolyEstZone.h"
+#import "DashboardModel.h"
 
 @implementation DashboardMolyEstZone
 
@@ -69,29 +70,25 @@
     _chartView.legend.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
     _chartView.legend.xEntrySpace = 4.0;
     
-    [self setDataCount:5 range:10];
-
+    [self setDataCount:5];
 }
 
-- (void)setDataCount:(int)count range:(double)range
+- (void)setDataCount:(int)count
 {
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
-    NSArray *months = @[ @"Jan", @"Feb", @"Mar",
-                         @"Apr", @"May", @"Jun",
-                         @"Jul", @"Aug", @"Sep",
-                         @"Oct", @"Nov", @"Dec"
-                       ];
+    NSArray *zones = [[DashboardModel sharedInstance] zoneNameToNumberOfMolesInZoneDictionary];
     
     for (int i = 0; i < count; i++)
     {
-        [xVals addObject:months[i % 12]];
+        [xVals addObject:zones[i % [zones count]]];
     }
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < count; i++)
     {
-        double mult = (range + 1);
+        NSInteger zoneNumber = [[zones objectAtIndex:0] objectForKey:@"numberOfMolesInZone"];
+        double mult = (zoneNumber + 1);
         double val = (double) (arc4random_uniform(mult));
         [yVals addObject:[[BarChartDataEntry alloc] initWithValue:val xIndex:i]];
     }
