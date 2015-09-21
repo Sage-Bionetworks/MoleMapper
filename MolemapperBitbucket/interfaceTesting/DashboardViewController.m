@@ -116,8 +116,6 @@
     [_cellList addObject:cell4];
     [_cellList addObject:cell5];
     [_cellList addObject:cell6];
-    
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -132,7 +130,10 @@
 
     if (indexPath.row == 0)
     {
-        [(DashboardActivityCompletionCell*)[_cellList objectAtIndex:indexPath.row] setDataToProgressView:0.13];
+        NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
+        NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
+        float numb = [last floatValue] / [total floatValue];
+        [(DashboardActivityCompletionCell*)[_cellList objectAtIndex:indexPath.row] setDataToProgressView:numb];
     }
     
     if (indexPath.row == 0)

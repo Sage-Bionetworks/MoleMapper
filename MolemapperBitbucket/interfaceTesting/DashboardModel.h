@@ -22,5 +22,7 @@
 -(NSNumber *)sizeOfBiggestMole;
 -(NSNumber *)sizeOfAverageMole;
 -(NSMutableDictionary*) rankedListOfMoleSizeChangeAndMetadata;
+-(NSNumber *)totalNumberOfMolesMeasured;
+-(NSNumber *)numberOfMolesMeasuredSinceLastFollowup;
 
 @end
