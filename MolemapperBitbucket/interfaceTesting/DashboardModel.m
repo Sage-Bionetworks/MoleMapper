@@ -366,7 +366,7 @@
     }
     
     NSSortDescriptor *sortByPercent = [[NSSortDescriptor alloc] initWithKey:@"percentChange" ascending:YES];
-    //sortByPercent = [sortByPercent reversedSortDescriptor];
+    sortByPercent = [sortByPercent reversedSortDescriptor];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortByPercent];
     measurementsInOrderOfMostIncreasedPercentage = [arrayOfMeasurementMetadata sortedArrayUsingDescriptors:sortDescriptors];
     
