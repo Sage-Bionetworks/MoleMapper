@@ -187,6 +187,7 @@
         }];
     }
     NSArray *arrayWithAddedMeasurements = [NSArray arrayWithArray:measurementsAlreadySent];
+    
     [ud setObject:arrayWithAddedMeasurements forKey:@"measurementsAlreadySentToBridge"];
 }
 

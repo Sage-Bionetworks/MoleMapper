@@ -58,8 +58,6 @@
     
 [self setOnboardingBooleansBackToInitialValues];
     
-//[self.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
-    
     if ([self shouldShowOnboarding])
     {
         [self showOnboarding];
