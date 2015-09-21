@@ -75,7 +75,7 @@
     _progressView.centralView = label;
     
     _progressView.progressChangedBlock = ^(UAProgressView *progressView, CGFloat progress) {
-        [(UILabel*)_progressView.centralView setText:[NSString stringWithFormat:@"%2.0f%%", progress * 100]];
+        [(UILabel*)_progressView.centralView setText:[NSString stringWithFormat:@"%2.3f%%", progress * 100]];
     };
 }
 
