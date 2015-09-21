@@ -88,18 +88,18 @@
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rWR-Li-aZ4" id="MfV-9Y-H8T">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="FAQs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w64-O5-4C3">
-                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <rect key="frame" x="74" y="0.0" width="211" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="tvc_faq" id="VNd-Un-EAb">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -117,18 +117,18 @@
                                         <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NnY-cP-7an" id="Vs9-OH-8Nq">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Mole Statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GEx-oz-cgg">
-                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <rect key="frame" x="74" y="0.0" width="211" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="tvc_stats" id="ffS-hc-oCt">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -146,18 +146,18 @@
                                         <rect key="frame" x="0.0" y="227" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="57e-eN-OlS" id="63g-69-Wag">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Feedback/Support" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SoD-sv-JKh">
-                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <rect key="frame" x="74" y="0.0" width="211" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="tvc_feedback" id="2Ci-F9-qOc">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -175,18 +175,18 @@
                                         <rect key="frame" x="0.0" y="291" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cnt-yE-eYs" id="Uf1-aS-E99">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="OHSU War on Melanoma" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vD0-ou-dHf">
-                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <rect key="frame" x="74" y="0.0" width="211" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ohsuLogoTVC" id="1iS-q1-ipt">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -201,18 +201,18 @@
                                         <rect key="frame" x="0.0" y="355" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZLo-27-SmT" id="RTR-cI-djf">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Origins of Mole Mapper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nbK-am-bI9">
-                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <rect key="frame" x="74" y="0.0" width="211" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="tvc_story" id="hcC-8u-0Nm">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -230,18 +230,18 @@
                                         <rect key="frame" x="0.0" y="419" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EbN-ri-oXJ" id="dha-D4-Ues">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Credits" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lkx-Ie-ZcF">
-                                                    <rect key="frame" x="73" y="0.0" width="212" height="43"/>
+                                                    <rect key="frame" x="74" y="0.0" width="211" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="tvc_credits" id="wHQ-6L-3hp">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -345,56 +345,84 @@
                                 <rect key="frame" x="16" y="0.0" width="288" height="517"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Technical support for the App:">
+                                    <fragment content="Technical support for the App">
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="18" name="HelveticaNeue-Bold"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
+                                                <tabStops>
+                                                    <textTab alignment="left" location="0.0"/>
+                                                    <textTab alignment="left" location="35.400001525878906"/>
+                                                    <textTab alignment="left" location="70.800003051757812"/>
+                                                    <textTab alignment="left" location="106.19999694824219"/>
+                                                    <textTab alignment="left" location="141.60000610351562"/>
+                                                    <textTab alignment="left" location="177"/>
+                                                    <textTab alignment="left" location="212.39999389648438"/>
+                                                    <textTab alignment="left" location="247.80000305175781"/>
+                                                    <textTab alignment="left" location="283.20001220703125"/>
+                                                    <textTab alignment="left" location="318.60000610351562"/>
+                                                    <textTab alignment="left" location="354"/>
+                                                    <textTab alignment="left" location="389.39999389648438"/>
+                                                    <textTab alignment="left" location="424.79998779296875"/>
+                                                </tabStops>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">  Mole Mapper is a small team effort and the app is in active development. We may not respond to every suggestion for improvement, but please know your feedback is read and carefully considered. If you find a bug or something broken, please let us know.  You can email us at </string>
+                                        <string key="content">:  Mole Mapper is a small team effort and the app is in active development. We may not respond to every suggestion for improvement, but please know your feedback is read and carefully considered. If you find a bug or something broken, please let us know.  You can email us at </string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
+                                                <tabStops>
+                                                    <textTab alignment="left" location="0.0"/>
+                                                    <textTab alignment="left" location="35.400001525878906"/>
+                                                    <textTab alignment="left" location="70.800003051757812"/>
+                                                    <textTab alignment="left" location="106.19999694824219"/>
+                                                    <textTab alignment="left" location="141.60000610351562"/>
+                                                    <textTab alignment="left" location="177"/>
+                                                    <textTab alignment="left" location="212.39999389648438"/>
+                                                    <textTab alignment="left" location="247.80000305175781"/>
+                                                    <textTab alignment="left" location="283.20001220703125"/>
+                                                    <textTab alignment="left" location="318.60000610351562"/>
+                                                    <textTab alignment="left" location="354"/>
+                                                    <textTab alignment="left" location="389.39999389648438"/>
+                                                    <textTab alignment="left" location="424.79998779296875"/>
+                                                </tabStops>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment content="molemapper@gmail.com">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
                                             <url key="NSLink" string="mailto:molemapper@gmail.com"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
+                                                <tabStops>
+                                                    <textTab alignment="left" location="0.0"/>
+                                                    <textTab alignment="left" location="35.400001525878906"/>
+                                                    <textTab alignment="left" location="70.800003051757812"/>
+                                                    <textTab alignment="left" location="106.19999694824219"/>
+                                                    <textTab alignment="left" location="141.60000610351562"/>
+                                                    <textTab alignment="left" location="177"/>
+                                                    <textTab alignment="left" location="212.39999389648438"/>
+                                                    <textTab alignment="left" location="247.80000305175781"/>
+                                                    <textTab alignment="left" location="283.20001220703125"/>
+                                                    <textTab alignment="left" location="318.60000610351562"/>
+                                                    <textTab alignment="left" location="354"/>
+                                                    <textTab alignment="left" location="389.39999389648438"/>
+                                                    <textTab alignment="left" location="424.79998779296875"/>
+                                                </tabStops>
                                             </paragraphStyle>
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
                                     <fragment>
                                         <string key="content" base64-UTF8="YES">
-Cg
+Cgo
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                            <integer key="NSUnderline" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
                                                 <tabStops>
                                                     <textTab alignment="left" location="0.0"/>
                                                     <textTab alignment="left" location="35.400001525878906"/>
@@ -416,10 +444,11 @@ Cg
                                     </fragment>
                                     <fragment>
                                         <string key="content">If you like Mole Mapper, tell a friend or rate us on the App Store here: http://tinyurl.com/nwb9kjk. In your review, feel free to tell us about your favorite mole name or suggest a clever mole name that we will put in to the app for its next release.
+
 </string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops>
                                                     <textTab alignment="left" location="0.0"/>
                                                     <textTab alignment="left" location="35.400001525878906"/>
@@ -435,6 +464,121 @@ Cg
                                                     <textTab alignment="left" location="389.39999389648438"/>
                                                     <textTab alignment="left" location="424.79998779296875"/>
                                                 </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Study questions">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="0.0"/>
+                                                    <textTab alignment="left" location="35.400001525878906"/>
+                                                    <textTab alignment="left" location="70.800003051757812"/>
+                                                    <textTab alignment="left" location="106.19999694824219"/>
+                                                    <textTab alignment="left" location="141.60000610351562"/>
+                                                    <textTab alignment="left" location="177"/>
+                                                    <textTab alignment="left" location="212.39999389648438"/>
+                                                    <textTab alignment="left" location="247.80000305175781"/>
+                                                    <textTab alignment="left" location="283.20001220703125"/>
+                                                    <textTab alignment="left" location="318.60000610351562"/>
+                                                    <textTab alignment="left" location="354"/>
+                                                    <textTab alignment="left" location="389.39999389648438"/>
+                                                    <textTab alignment="left" location="424.79998779296875"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">:  If you have questions at any time before, during, or after the study, you can contact:
+
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="0.0"/>
+                                                    <textTab alignment="left" location="35.400001525878906"/>
+                                                    <textTab alignment="left" location="70.800003051757812"/>
+                                                    <textTab alignment="left" location="106.19999694824219"/>
+                                                    <textTab alignment="left" location="141.60000610351562"/>
+                                                    <textTab alignment="left" location="177"/>
+                                                    <textTab alignment="left" location="212.39999389648438"/>
+                                                    <textTab alignment="left" location="247.80000305175781"/>
+                                                    <textTab alignment="left" location="283.20001220703125"/>
+                                                    <textTab alignment="left" location="318.60000610351562"/>
+                                                    <textTab alignment="left" location="354"/>
+                                                    <textTab alignment="left" location="389.39999389648438"/>
+                                                    <textTab alignment="left" location="424.79998779296875"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Scientific study team:  Dr. Stephen Friend, the study principal investigator or Dr. Andrew Trister, the medical monitor by email at </string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="molemapperstudy@sagebase.org">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <url key="NSLink" string="mailto:molemapperstudy@sagebase.org"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> or call &lt;study phone line&gt; 
+
+ </string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="War on Melanoma Community Registry">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=": Dr. Sancy Leachman at 1-844-300-SPOT (7768) or ">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="WarOnMelanoma@ohsu.edu">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <url key="NSLink" string="mailto:WarOnMelanoma@ohsu.edu"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
@@ -443,130 +587,8 @@ Cg
 Cg
 </string>
                                         <attributes>
-                                            <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Study questions:">
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="18" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="0.0"/>
-                                                    <textTab alignment="left" location="35.400001525878906"/>
-                                                    <textTab alignment="left" location="70.800003051757812"/>
-                                                    <textTab alignment="left" location="106.19999694824219"/>
-                                                    <textTab alignment="left" location="141.60000610351562"/>
-                                                    <textTab alignment="left" location="177"/>
-                                                    <textTab alignment="left" location="212.39999389648438"/>
-                                                    <textTab alignment="left" location="247.80000305175781"/>
-                                                    <textTab alignment="left" location="283.20001220703125"/>
-                                                    <textTab alignment="left" location="318.60000610351562"/>
-                                                    <textTab alignment="left" location="354"/>
-                                                    <textTab alignment="left" location="389.39999389648438"/>
-                                                    <textTab alignment="left" location="424.79998779296875"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">  If you have questions at any time before, during, or after the study, you can contact:
-
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="0.0"/>
-                                                    <textTab alignment="left" location="35.400001525878906"/>
-                                                    <textTab alignment="left" location="70.800003051757812"/>
-                                                    <textTab alignment="left" location="106.19999694824219"/>
-                                                    <textTab alignment="left" location="141.60000610351562"/>
-                                                    <textTab alignment="left" location="177"/>
-                                                    <textTab alignment="left" location="212.39999389648438"/>
-                                                    <textTab alignment="left" location="247.80000305175781"/>
-                                                    <textTab alignment="left" location="283.20001220703125"/>
-                                                    <textTab alignment="left" location="318.60000610351562"/>
-                                                    <textTab alignment="left" location="354"/>
-                                                    <textTab alignment="left" location="389.39999389648438"/>
-                                                    <textTab alignment="left" location="424.79998779296875"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Scientific study team:">
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="18" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="  Dr. Stephen Friend, the study principal investigator or Dr. Andrew Trister, the medical monitor by email at ">
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="molemapperstudy@sagebase.org">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <url key="NSLink" string="mailto:molemapperstudy@sagebase.org"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                            <integer key="NSUnderline" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content"> or call &lt;STUDY_PHONE_LINE&gt;
-
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="War on Melanoma Community Registry:">
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="18" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="0.0"/>
-                                                    <textTab alignment="left" location="35.400001525878906"/>
-                                                    <textTab alignment="left" location="70.800003051757812"/>
-                                                    <textTab alignment="left" location="106.19999694824219"/>
-                                                    <textTab alignment="left" location="141.60000610351562"/>
-                                                    <textTab alignment="left" location="177"/>
-                                                    <textTab alignment="left" location="212.39999389648438"/>
-                                                    <textTab alignment="left" location="247.80000305175781"/>
-                                                    <textTab alignment="left" location="283.20001220703125"/>
-                                                    <textTab alignment="left" location="318.60000610351562"/>
-                                                    <textTab alignment="left" location="354"/>
-                                                    <textTab alignment="left" location="389.39999389648438"/>
-                                                    <textTab alignment="left" location="424.79998779296875"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">  Dr. Sancy Leachman at 503-494-6968
-
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
                                                 <tabStops>
                                                     <textTab alignment="left" location="0.0"/>
                                                     <textTab alignment="left" location="35.400001525878906"/>
@@ -588,9 +610,8 @@ Cg
                                     <fragment content="Privacy">
                                         <attributes>
                                             <color key="NSColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="18" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
@@ -598,8 +619,8 @@ Cg
                                     <fragment content=": For questions, comments or requests regarding the privacy policy or our processing of your information, please contact:  ">
                                         <attributes>
                                             <color key="NSColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
@@ -607,9 +628,9 @@ Cg
                                     <fragment content="privacypolicy@sagebase.org">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
                                             <url key="NSLink" string="mailto:privacypolicy@sagebase.org"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                             <integer key="NSUnderline" value="1"/>
@@ -621,30 +642,19 @@ Cg
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="Independent Contact">
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="18" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="-35.900001525878906"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
                                     <fragment>
-                                        <string key="content">: If you are not satisfied with how this study is being conducted, if you have questions about your rights as a research participant or if you have questions, concerns, input, or complaints about the research, please contact the Western Institutional Review Board (WIRB) to speak to someone independent of the research team:
+                                        <string key="content">Independent Contact: If you are not satisfied with how this study is being conducted, if you have questions about your rights as a research participant or if you have questions, concerns, input, or complaints about the research, please contact the Western Institutional Review Board (WIRB) to speak to someone independent of the research team:
 
-	Western Institutional Review Board</string>
+Western Institutional Review Board</string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops>
                                                     <textTab alignment="left" location="-35.900001525878906"/>
                                                 </tabStops>
@@ -653,8 +663,8 @@ Cg
                                     </fragment>
                                     <fragment content="®">
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops>
                                                     <textTab alignment="left" location="-35.900001525878906"/>
                                                 </tabStops>
@@ -664,8 +674,8 @@ Cg
                                     </fragment>
                                     <fragment content=" (WIRB">
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops>
                                                     <textTab alignment="left" location="-35.900001525878906"/>
                                                 </tabStops>
@@ -674,8 +684,8 @@ Cg
                                     </fragment>
                                     <fragment content="®">
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops>
                                                     <textTab alignment="left" location="-35.900001525878906"/>
                                                 </tabStops>
@@ -687,8 +697,8 @@ Cg
                                         <string key="content">)
 </string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops>
                                                     <textTab alignment="left" location="-35.900001525878906"/>
                                                 </tabStops>
@@ -698,45 +708,43 @@ Cg
                                     <fragment>
                                         <string key="content">1019 39th Avenue SE Suite 120
 Puyallup, WA 98374-2115
+Telephone:  1-800-562-4789 or 360-252-2500
 </string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" firstLineHeadIndent="36" headIndent="36" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">	Telephone:  1-800-562-4789 or 360-252-2500
-	E-mail: Help@wirb.com.
-
+                                        <string key="content">E-mail: Help@wirb.com.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 WIRB is a group of people who perform independent review of research.
 
-
 </string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">The MoleMapper study and its mobile application are not designed to and do not provide medical advice, professional diagnosis, opinion, treatment or healthcare services to you or any other individual. Mole Mapper is for research purposes only. You should not use the information provided in the app, phone, email correspondence or website in place of a visit, call consultation or advice from your physician or other healthcare provider.  Sage Bionetworks is not liable or responsible for any advice, course of treatment, diagnosis or any other information, services or product you obtain through the app.</string>
+                                        <string key="content">The MoleMapper study and its mobile application are not designed to and do not provide medical advice, professional diagnosis, opinion, treatment or healthcare services to you or any other individual. Mole Mapper is for research purposes only. You should not use the information provided in the app, phone, email correspondence or website in place of a visit, call consultation or advice from your physician or other healthcare provider.  Sage Bionetworks is not liable or responsible for any advice, course of treatment, diagnosis or any other information, services or product you obtain through the app.  </string>
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="18" name="HelveticaNeue-LightItalic"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="  ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
@@ -746,20 +754,43 @@ WIRB is a group of people who perform independent review of research.
 Cg
 </string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
                                     <fragment>
                                         <string key="content">
-
-Thanks for your support!
+Thanks for your support!</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="0.0"/>
+                                                    <textTab alignment="left" location="35.400001525878906"/>
+                                                    <textTab alignment="left" location="70.800003051757812"/>
+                                                    <textTab alignment="left" location="106.19999694824219"/>
+                                                    <textTab alignment="left" location="141.60000610351562"/>
+                                                    <textTab alignment="left" location="177"/>
+                                                    <textTab alignment="left" location="212.39999389648438"/>
+                                                    <textTab alignment="left" location="247.80000305175781"/>
+                                                    <textTab alignment="left" location="283.20001220703125"/>
+                                                    <textTab alignment="left" location="318.60000610351562"/>
+                                                    <textTab alignment="left" location="354"/>
+                                                    <textTab alignment="left" location="389.39999389648438"/>
+                                                    <textTab alignment="left" location="424.79998779296875"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
 </string>
                                         <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="33.700000000000003">
+                                            <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops>
                                                     <textTab alignment="left" location="0.0"/>
                                                     <textTab alignment="left" location="35.400001525878906"/>
@@ -780,7 +811,7 @@ Thanks for your support!
                                     </fragment>
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1272,18 +1303,18 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Alo-Hk-IUX" id="BD9-Fo-dHK">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Zones Documented" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="per-G7-mdE">
-                                                    <rect key="frame" x="15" y="11" width="154" height="22"/>
+                                                    <rect key="frame" x="15" y="11" width="153.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a4T-KF-8jq">
-                                                    <rect key="frame" x="261" y="11" width="44" height="22"/>
+                                                    <rect key="frame" x="261.5" y="11" width="43.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1300,18 +1331,18 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1oB-qd-62x" id="qwQ-1W-600">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Total Moles Documented" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sWP-dR-S1w">
-                                                    <rect key="frame" x="15" y="11" width="193" height="22"/>
+                                                    <rect key="frame" x="15" y="11" width="192.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v1t-fe-wHm">
-                                                    <rect key="frame" x="261" y="11" width="44" height="22"/>
+                                                    <rect key="frame" x="261.5" y="11" width="43.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1328,18 +1359,18 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="227" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yXI-mw-BXu" id="sEn-L6-pNE">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Total Mole Measurements" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6MW-HX-Ony">
-                                                    <rect key="frame" x="15" y="11" width="198" height="22"/>
+                                                    <rect key="frame" x="15" y="11" width="198" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V7h-EG-afs">
-                                                    <rect key="frame" x="261" y="11" width="44" height="22"/>
+                                                    <rect key="frame" x="261.5" y="11" width="43.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1356,18 +1387,18 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="291" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W9f-RU-aez" id="Ubj-Gb-mcU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Average Mole Size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y5O-G3-kzq">
-                                                    <rect key="frame" x="15" y="11" width="143" height="22"/>
+                                                    <rect key="frame" x="15" y="11" width="143" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QxR-FP-Hyl">
-                                                    <rect key="frame" x="261" y="11" width="44" height="22"/>
+                                                    <rect key="frame" x="261.5" y="11" width="43.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1384,18 +1415,18 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="355" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZE4-By-a3G" id="pgw-95-mM1">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Biggest Mole" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bsp-vT-wNn">
-                                                    <rect key="frame" x="15" y="3" width="102" height="22"/>
+                                                    <rect key="frame" x="15" y="4" width="101.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ktl-ea-hV3">
-                                                    <rect key="frame" x="15" y="25" width="39" height="15"/>
+                                                    <rect key="frame" x="15" y="25.5" width="39" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1415,18 +1446,18 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="419" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WGb-yE-lW6" id="8GI-aD-jFu">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Moley-est Zone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m65-Ow-oUQ">
-                                                    <rect key="frame" x="15" y="3" width="121" height="22"/>
+                                                    <rect key="frame" x="15" y="4" width="120.5" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JyE-CI-QGZ">
-                                                    <rect key="frame" x="15" y="25" width="29" height="15"/>
+                                                    <rect key="frame" x="15" y="25.5" width="29" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1544,7 +1575,7 @@ Altruistic code-sharing by Chris Miles </string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ErY-id-gv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-341" y="301"/>
+            <point key="canvasLocation" x="-324" y="212"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="Tne-Gs-NoD">
@@ -1562,18 +1593,18 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fml-pa-vQH" id="UA6-VZ-0TG">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Study Enrollment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LHk-qL-Fg0">
-                                                    <rect key="frame" x="15" y="11" width="132" height="22"/>
+                                                    <rect key="frame" x="15" y="11" width="132" height="21.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VoJ-vC-dYQ">
-                                                    <rect key="frame" x="243" y="13" width="42" height="20"/>
+                                                    <rect key="frame" x="243.5" y="13" width="41.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -1590,11 +1621,11 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zVS-WQ-f9W" id="laX-cP-VRC">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sharing Options" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uhm-g3-ZWB">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1614,11 +1645,11 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="227" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oar-bv-9MT" id="IDB-5U-4qm">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="External ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8ek-FM-6Ty">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1638,11 +1669,11 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="291" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nu0-LI-4uu" id="0ky-Tc-qdg">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Review Consent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="exD-WY-9Kf">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1662,11 +1693,11 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="355" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3rJ-PP-mKi" id="FX9-dz-Pbb">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AQ6-Js-7Op">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1683,11 +1714,11 @@ Altruistic code-sharing by Chris Miles </string>
                                         <rect key="frame" x="0.0" y="419" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2J5-9r-de8" id="mzf-ir-Kvn">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="License Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mxU-Z0-hkw">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

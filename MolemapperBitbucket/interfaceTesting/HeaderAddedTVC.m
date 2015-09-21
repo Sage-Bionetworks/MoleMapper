@@ -18,7 +18,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == 3)
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ohsu.edu/xd/health/services/dermatology/melanoma-community-registry/"]];
     }

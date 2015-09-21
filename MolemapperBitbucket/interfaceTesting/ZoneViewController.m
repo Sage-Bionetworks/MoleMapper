@@ -166,12 +166,14 @@
         [self showPhotoPopup:self];
     }
 
+    /*
     //If this isn't part of a demo and it's an undocumented zone, automatically open the camera
     if (self.hasValidImageData == NO &&
         [ud valueForKey:@"showDemoInfo"] == [NSNumber numberWithBool:NO])
     {
         [self openCamera:self];
     }
+     */
     
     //If you are using demo mode or this is the first time you're seeing a valid photo
     if (([ud objectForKey:@"firstViewPinButton"] == [NSNumber numberWithBool:YES] && self.hasValidImageData) ||
