@@ -60,7 +60,7 @@
         {
             continue; //If no measurements for a given mole, has never been measured
         }
-        else if (measurementsForMole.count > 1) //Has at least one measurement
+        else if (measurementsForMole.count > 0) //Has at least one measurement
         {
             totalNumberOfMeasuredMoles++;
         }

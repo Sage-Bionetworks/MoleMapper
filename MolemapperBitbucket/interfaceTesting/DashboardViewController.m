@@ -132,7 +132,8 @@
     {
         NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
         NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
-        float numb = [last floatValue] / [total floatValue];
+        float numb = 0.0;
+        if ([total floatValue] > 0.0) {numb = [last floatValue] / [total floatValue];};
         [(DashboardActivityCompletionCell*)[_cellList objectAtIndex:indexPath.row] setDataToProgressView:numb];
     }
     
