@@ -23,8 +23,6 @@
 
 @implementation DashboardZoneDocumentationCell
 
-#define totalNumberOfZones 61
-
 - (void)awakeFromNib {
     // Initialization code
     [self setupProgress];
@@ -37,17 +35,16 @@
     _currentProgress = 0.0;
     _localProgress = 0.0;
     [_progressView setProgress:_currentProgress animated:YES];
-
+    
     if (_isTimerInvalidated)
     {
         _isTimerInvalidated = NO;
         _ns_timer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(updateProgress:) userInfo:nil repeats:YES];
         
         //need to set all of the bodyparts and also those which is already covered
-        float bodyparts = totalNumberOfZones;
-        float bodypartsCovered = 10;
-        
-        float percent = bodypartsCovered / bodyparts;
+        float bodyparts = (float)[[DashboardModel sharedInstance] getAllZoneNumber];
+        float bodypartsCovered = (float)[[[DashboardModel sharedInstance] numberOfZonesDocumented] floatValue];
+        float percent = bodyparts > 0.0 ? bodypartsCovered / bodyparts : 0.0;
         
         [self setDataToProgressView:percent];
     }

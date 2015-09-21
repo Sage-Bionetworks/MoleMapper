@@ -117,6 +117,12 @@
     return [NSNumber numberWithInt:numberOfMolesMeasuredSinceLastFollowup];
 }
 
+-(NSInteger) getAllZoneNumber
+{
+    return [[Zone allZoneIDs] count];
+}
+
+
 -(NSNumber *)daysUntilNextMeasurementPeriod
 {
     NSDate *now = [NSDate date];

@@ -80,7 +80,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60.0, 60.0)];
     [label setTextAlignment:NSTextAlignmentCenter];
     label.userInteractionEnabled = NO; // Allows tap to pass through to the progress view.
-    label.text = @"0%%";
+    label.text = @"0%";
     label.numberOfLines = 0;
     label.font = [UIFont systemFontOfSize:21];
     label.textColor = _progressView.tintColor;
@@ -91,7 +91,8 @@
         [(UILabel*)_progressView.centralView setText:[NSString stringWithFormat:@"%2.0f%%", progress * 100]];
     };
 }
-            //asdasdasdasdasdasd such merge... very stuff here...
+
+//asdasdasdasdasdasd such merge... very stuff here...
 //update the progress bar on startup with updated string
 - (void)updateProgress:(NSTimer *)timer
 {

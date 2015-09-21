@@ -24,5 +24,7 @@
 -(NSMutableDictionary*) rankedListOfMoleSizeChangeAndMetadata;
 -(NSNumber *)totalNumberOfMolesMeasured;
 -(NSNumber *)numberOfMolesMeasuredSinceLastFollowup;
+-(NSInteger) getAllZoneNumber;
+
 
 @end
