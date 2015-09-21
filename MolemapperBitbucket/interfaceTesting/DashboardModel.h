@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Measurement.h"
 
 @interface DashboardModel : NSObject
 
@@ -25,6 +26,7 @@
 -(NSNumber *)totalNumberOfMolesMeasured;
 -(NSNumber *)numberOfMolesMeasuredSinceLastFollowup;
 -(NSInteger) getAllZoneNumber;
+-(Measurement *)measurementForBiggestMole;
 
 
 @end
