@@ -147,13 +147,22 @@
     NSError *error = nil;
     NSArray *fetchedMeasurements = [self.context executeFetchRequest:request error:&error];
     
-    int i = 0;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    //Contains a set of all of the measurementIDs that have successfully been sent
+    NSArray *immutable = [ud objectForKey:@"measurementsAlreadySentToBridge"];
+    NSMutableArray *measurementsAlreadySent = [immutable mutableCopy];
+    
     for (Measurement *measurement in fetchedMeasurements)
     {
-        if (i > 0) {continue;} //Limit the test data to just 1 measurements for now
-        AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSLog(@"BridgeSigninEmail = %@",ad.user.bridgeSignInEmail);
-        NSLog(@"BridgeSigninPassword = %@",ad.user.bridgeSignInPassword);
+        if ([measurementsAlreadySent containsObject:measurement.measurementID])
+        {
+            continue; //Don't send duplicate measurements to Bridge
+        }
+        
+        //AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        //NSLog(@"BridgeSigninEmail = %@",ad.user.bridgeSignInEmail);
+        //NSLog(@"BridgeSigninPassword = %@",ad.user.bridgeSignInPassword);
+        
         NSDictionary *measurementData = [self dictionaryForMeasurement:measurement];
         
         //Get .png file for Bridge File
@@ -168,12 +177,17 @@
         
         //Using call from APCBaseTaskViewController here
         [uploader encryptAndUploadArchive:archive withCompletion:^(NSError *error) {
-            if (! error) { NSLog(@"Encrypt/uploading followup..."); }
+            if (! error)
+            {
+                NSLog(@"Encrypt/uploading mole measurement for mole: %@",measurement.whichMole.moleName);
+                //Ideally would only add here after successfully sent, but the whole archive is encrypted and sent off at this point
+                [measurementsAlreadySent addObject:measurement.measurementID];
+            }
             else { APCLogError2(error); }
         }];
-        
-        i++;
     }
+    NSArray *arrayWithAddedMeasurements = [NSArray arrayWithArray:measurementsAlreadySent];
+    [ud setObject:arrayWithAddedMeasurements forKey:@"measurementsAlreadySentToBridge"];
 }
 
 //Mole Measurement Schema

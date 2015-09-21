@@ -56,11 +56,6 @@
             APCDataEncryptor *encryptor = [[APCDataEncryptor alloc] init];
             [encryptor encryptFileAtURL:archive.unencryptedURL withCompletion:^(NSURL *encryptedURL, NSError *encryptorError) {
                 error = encryptorError;
-                
-                //log the archive
-//#ifdef USE_DATA_VERIFICATION_SERVER
-//                [APCDataVerificationClient uploadDataFromFileAtPath: archive.unencryptedURL.relativePath];
-//#endif
                 if (! encryptorError) {
                     //remove the archive after encryption
                     [archive removeArchive];

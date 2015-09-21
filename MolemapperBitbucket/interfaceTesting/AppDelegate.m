@@ -326,6 +326,10 @@
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"shouldShowConsent"];
     }
+    if (![standardUserDefaults objectForKey:@"measurementsAlreadySentToBridge"])
+    {
+        [standardUserDefaults setObject:[NSArray array] forKey:@"measurementsAlreadySentToBridge"];
+    }
 }
 
 //Loads all zones into persistent storage if they don't yet exist there, and sets bool for has image for each zone
