@@ -29,12 +29,18 @@
     NSDate *lastTimeAsurveyWasTaken = [ud valueForKey:@"dateOfLastSurveyCompleted"];
     
     NSNumber *daysSinceLastSurvey = [NSNumber numberWithInteger:[self daysBetweenDate:lastTimeAsurveyWasTaken andDate:now]];
+    NSLog(@"It has been %@ days since the last survey was taken",daysSinceLastSurvey);
+    
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (ad.user.hasEnrolled == NO)
+    {
+        return NO;
+    }
     if ([daysSinceLastSurvey intValue] >= numberOfDaysInFollowupPeriod)
     {
         shouldShowFollowupSurvey = YES;
     }
-    return YES;
-    //return shouldShowFollowupSurvey;
+    return shouldShowFollowupSurvey;
 }
 
 -(NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
