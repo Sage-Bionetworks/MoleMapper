@@ -40,6 +40,8 @@
 		4B7FCE991BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7FCE971BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4B99E0D51BA9F575005B3B50 /* moleMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */; settings = {ASSET_TAGS = (); }; };
 		4BC594DE1BAAD18E00255F6F /* AnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC594DD1BAAD18E00255F6F /* AnimationManager.m */; settings = {ASSET_TAGS = (); }; };
+		4BC88CE71BB1463000687E68 /* DashboardUVExposure.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */; settings = {ASSET_TAGS = (); }; };
+		4BC88CE81BB1463000687E68 /* DashboardUVExposure.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */; settings = {ASSET_TAGS = (); }; };
 		4BF5AADF1BA9833F0012B490 /* DashboardBiggestMoleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF5AADD1BA9833F0012B490 /* DashboardBiggestMoleCell.m */; settings = {ASSET_TAGS = (); }; };
 		4BF5AAE01BA9833F0012B490 /* DashboardBiggestMoleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF5AADE1BA9833F0012B490 /* DashboardBiggestMoleCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4BFF614F1BAC936B00FE7853 /* MMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF614E1BAC936B00FE7853 /* MMUser.m */; settings = {ASSET_TAGS = (); }; };
@@ -307,6 +309,9 @@
 		4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = moleMapper.xcassets; sourceTree = "<group>"; };
 		4BC594DC1BAAD18E00255F6F /* AnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationManager.h; sourceTree = "<group>"; };
 		4BC594DD1BAAD18E00255F6F /* AnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationManager.m; sourceTree = "<group>"; };
+		4BC88CE41BB1463000687E68 /* DashboardUVExposure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardUVExposure.h; sourceTree = "<group>"; };
+		4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardUVExposure.m; sourceTree = "<group>"; };
+		4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardUVExposure.xib; sourceTree = "<group>"; };
 		4BF5AADC1BA9833F0012B490 /* DashboardBiggestMoleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardBiggestMoleCell.h; sourceTree = "<group>"; };
 		4BF5AADD1BA9833F0012B490 /* DashboardBiggestMoleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardBiggestMoleCell.m; sourceTree = "<group>"; };
 		4BF5AADE1BA9833F0012B490 /* DashboardBiggestMoleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardBiggestMoleCell.xib; sourceTree = "<group>"; };
@@ -556,6 +561,9 @@
 		43D993351BA506670077073D /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4BC88CE41BB1463000687E68 /* DashboardUVExposure.h */,
+				4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */,
+				4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */,
 				43D993361BA5067E0077073D /* DashboardActivityCompletionCell.h */,
 				43D993371BA5067E0077073D /* DashboardActivityCompletionCell.m */,
 				43D993381BA5067E0077073D /* DashboardActivityCompletionCell.xib */,
@@ -1161,6 +1169,7 @@
 				4B6090861BA87E440042E9C5 /* DashboardZoneDocumentationCell.xib in Resources */,
 				E6F93E8E16DB273B0068B7B6 /* InfoPlist.strings in Resources */,
 				43D9933A1BA5067E0077073D /* DashboardActivityCompletionCell.xib in Resources */,
+				4BC88CE81BB1463000687E68 /* DashboardUVExposure.xib in Resources */,
 				E6FDF8961B8B2EFC00EE7037 /* ohsu-molemapper.pem in Resources */,
 				E6AC48D31A3870AD00A9F118 /* measurementDemo_2014_12_09.mov in Resources */,
 				E6F93E9D16DB273B0068B7B6 /* MainStoryboard.storyboard in Resources */,
@@ -1231,6 +1240,7 @@
 				E6443C051B798072007DE110 /* IneligibleViewController.m in Sources */,
 				E64CE58E1B882443007105FB /* BridgeSignUpRKModule.m in Sources */,
 				E6A9B1311B4BFB4A009B3393 /* FollowupSurveyRKModule.m in Sources */,
+				4BC88CE71BB1463000687E68 /* DashboardUVExposure.m in Sources */,
 				E6883B851B95D43E00F5A9A5 /* NSDate+Helper.m in Sources */,
 				E604CD2619532D4500651A66 /* SMCalloutView.m in Sources */,
 				E6FF63221791BFC000A1BC28 /* Zone+MakeAndMod.m in Sources */,
