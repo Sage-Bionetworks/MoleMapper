@@ -151,9 +151,9 @@ NSString *const UAProgressViewProgressAnimationKey = @"UAProgressViewProgressAni
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated {
     progress = MAX(MIN(progress, 1.0), 0.0);  // keep it between 0 and 1
     
-    if (_progress == progress) {
+    /*if (_progress == progress) {
         return;
-    }
+    }*/
     
     if (animated) {
         [self animateToProgress:progress];

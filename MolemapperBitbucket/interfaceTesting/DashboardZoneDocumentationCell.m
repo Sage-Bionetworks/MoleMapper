@@ -32,8 +32,8 @@
 
 - (void) initZonesDocumented
 {
-    
-    _documentedZones.text = [NSString stringWithFormat:@"%@ Zones", [[DashboardModel sharedInstance] numberOfZonesDocumented]];
+    NSNumber* zonesDoced = [[DashboardModel sharedInstance] numberOfZonesDocumented];
+    _documentedZones.text = [NSString stringWithFormat:@"%i Zones", (int)[zonesDoced integerValue]];
     
     _currentProgress = 0.0;
     _localProgress = 0.0;
@@ -46,8 +46,8 @@
         
         //need to set all of the bodyparts and also those which is already covered
         float bodyparts = (float)[[DashboardModel sharedInstance] getAllZoneNumber];
-        float bodypartsCovered = (float)[[[DashboardModel sharedInstance] numberOfZonesDocumented] floatValue];
-        float percent = bodyparts > 0.0 ? bodypartsCovered / bodyparts : 0.0;
+        float bodypartsCovered = [[DashboardModel sharedInstance] correctFloat:[zonesDoced floatValue]];
+        float percent = bodyparts > 0.0 ? [[DashboardModel sharedInstance] correctFloat:(float)bodypartsCovered / (float)bodyparts] : 0.0;
         
         [self setDataToProgressView:percent];
     }
@@ -99,6 +99,8 @@
     }
     else
     {
+        if (_currentProgress == 1)
+            [(UILabel*)_progressView.centralView setText:@"100%"];
         _isTimerInvalidated = YES;
         [_ns_timer invalidate];
     }

@@ -29,4 +29,6 @@
 -(Measurement *)measurementForBiggestMole;
 -(void) refreshContext;
 
+-(float) correctFloat:(float) value;
+
 @end

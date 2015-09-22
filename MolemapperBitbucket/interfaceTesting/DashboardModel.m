@@ -465,5 +465,9 @@
     return measurementForBiggestMole;
 }
 
+-(float) correctFloat:(float) value
+{
+    return ceilf(value * 10.0f) / 10.0f;
+}
 
 @end

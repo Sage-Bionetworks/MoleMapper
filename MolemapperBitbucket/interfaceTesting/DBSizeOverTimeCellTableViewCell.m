@@ -28,7 +28,7 @@
     Measurement* measurement = [mole objectForKey:@"measurement"];
     NSDate* date = measurement.date;
     
-    float sizeFloat = ceilf([size floatValue] * 10.0f) / 10.0f;
+    float sizeFloat = [[DashboardModel sharedInstance] correctFloat:[size floatValue]];
     
     //debug
     //NSDate* date = [mole objectForKey:@"measurement"];

@@ -15,8 +15,8 @@
 - (void)awakeFromNib {
     NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
     NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
-    float numb = 0.0;
-    if ([total floatValue] > 0.0) {numb = [last floatValue] / [total floatValue];};
+    float numb = 0.0f;
+    if ([total floatValue] > 0.0) {numb = [[DashboardModel sharedInstance] correctFloat:[last floatValue] / [total floatValue]];};
     [self setDataToProgressView:numb];
     
     [self setupProgress];
@@ -103,13 +103,15 @@
 //update the progress bar on startup with updated string
 - (void)updateProgress:(NSTimer *)timer
 {
-    if (_localProgress < _currentProgress - 0.01)
+    if (_localProgress < _currentProgress - 0.01f)
     {
         _localProgress = ((int)((_localProgress * 100.0f) + 1.01) % 100) / 100.0f;
         [_progressView setProgress:_localProgress];
     }
     else
     {
+        if (_currentProgress == 1)
+            [(UILabel*)_progressView.centralView setText:@"100%"];
         [_ns_timer invalidate];
     }
 }

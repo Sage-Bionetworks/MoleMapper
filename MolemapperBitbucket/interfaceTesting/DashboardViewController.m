@@ -60,7 +60,8 @@
         for (int i = 0; i < [_cellList count]; ++i)
         {
             id data = [_cellList objectAtIndex:0];
-            data = nil;
+            if (data != nil) data = nil;
+            else continue;
         }
         
         [_cellList removeAllObjects];
@@ -68,6 +69,8 @@
 
     //DashboardActivityCompletionCell
     DashboardActivityCompletionCell *cell1 = (DashboardActivityCompletionCell *)[_tableView dequeueReusableCellWithIdentifier:@"DashboardActivityCompletionCell"];
+    
+    cell1 = nil;
     
     if (cell1 == nil)
     {
@@ -79,6 +82,8 @@
     //DashboardZoneDocumentationCell
     DashboardZoneDocumentationCell *cell2 = (DashboardZoneDocumentationCell *)[_tableView dequeueReusableCellWithIdentifier:@"DashboardZoneDocumentationCell"];
     
+    cell2 = nil;
+    
     if (cell2 == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardZoneDocumentationCell" owner:self options:nil];
@@ -88,6 +93,8 @@
     
     //DashBoardMeasurementCell
     DashBoardMeasurementCell *cell3 = (DashBoardMeasurementCell *)[_tableView dequeueReusableCellWithIdentifier:@"DashBoardMeasurementCell"];
+    
+    cell3 = nil;
     
     if (cell3 == nil)
     {
@@ -99,6 +106,8 @@
     //DashboardBiggestMoleCell
     DashboardBiggestMoleCell *cell4 = (DashboardBiggestMoleCell*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardBiggestMoleCell"];
     
+    cell4 = nil;
+    
     if (cell4 == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardBiggestMoleCell" owner:self options:nil];
@@ -109,6 +118,8 @@
     //DashboardSizeOvertimeCell
     DashboardSizeOvertimeCell *cell5 = (DashboardSizeOvertimeCell*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardSizeOvertimeCell"];
     
+    cell5 = nil;
+    
     if (cell5 == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardSizeOvertimeCell" owner:self options:nil];
@@ -118,6 +129,8 @@
     //DashboardMolyestZone
     DashboardMolyEstZone *cell6 = (DashboardMolyEstZone*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardMolyEstZone"];
     
+    cell6 = nil;
+    
     if (cell6 == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardMolyEstZone" owner:self options:nil];
@@ -126,6 +139,8 @@
     
     //DashboardUVExposure
     DashboardUVExposure *cell7 = (DashboardUVExposure*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardUVExposure"];
+    
+    cell7 = nil;
     
     if (cell7 == nil)
     {

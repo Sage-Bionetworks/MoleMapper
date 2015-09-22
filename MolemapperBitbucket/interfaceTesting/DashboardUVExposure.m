@@ -7,6 +7,7 @@
 //
 
 #import "DashboardUVExposure.h"
+#import "APCoreDataKit.h"
 
 @implementation DashboardUVExposure
 
