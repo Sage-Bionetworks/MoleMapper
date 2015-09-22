@@ -225,9 +225,6 @@
     }
     [self saveMeasurementData];
 
-#pragma warning TURN ON FOR TESTING THE MEASUREMENTS
-    //AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    //[ad.bridgeManager signInAndSendMeasurements];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -604,7 +601,7 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
 
 /* Returns measurementID of photo, saves Measurement info into core data,
  sets the Measurement object that is created to its property within moleViewController, and
- sets the boolean value coming back.
+ sets the boolean value coming back.  Also sends this new mole to BridgeServer
  The name format looks like this:
  2delimitDec_29,_2014_17colon45colon56.png
  */
@@ -655,6 +652,9 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
                                        withReferenceObject:self.currentReference.titleLabel.text
                                     inManagedObjectContext:self.context];
     
+    
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [ad.bridgeManager signInAndSendMeasurements];
     return measurementName;
 }
 
