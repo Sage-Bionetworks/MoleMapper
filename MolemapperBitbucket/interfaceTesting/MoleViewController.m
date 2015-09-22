@@ -700,59 +700,49 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
 
 - (IBAction)deleteButtonTapped
 {
-    NSString *title = [NSString stringWithFormat:@"Delete this measurement\nof %@?",self.moleName];
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:@"Delete Measurement"
-                                                    otherButtonTitles:nil];
-    [actionSheet showInView:self.view];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0)
-    {
-        /*
-        //Fetch the mole measurement currently on screen
-        Measurement *currentMeasurement = [Measurement moleMeasurementForMole:self.mole
-                                                                     withDate:nil withPhoto:nil
-                                                      withMeasurementDiameter:nil
-                                                             withMeasurementX:nil
-                                                             withMeasurementY:nil
-                                                        withReferenceDiameter:nil
-                                                               withReferenceX:nil
-                                                               withReferenceY:nil
-                                                            withMeasurementID:self.measurement.measurementID
-                                                withAbsoluteReferenceDiameter:nil
-                                                     withAbsoluteMoleDiameter:nil
-                                                          withReferenceObject:nil
-                                                       inManagedObjectContext:self.context];
-         */
-        //Delete measurement from persistant store
-        if (self.measurement)
-        {
-            [self.context deleteObject:self.measurement];
-            AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-            [appDelegate saveContext];
-            //reset the measurement here for the automatic save that takes place on viewWillDisappear
-            self.measurement = [Measurement getMostRecentMoleMeasurementForMole:self.mole withContext:self.context];
-        }
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self.scrollView addSubview:self.moleImageView];
-        
-        //set current photo to nil, reload the measurement photo
-    }
-
-    else
-    {
-        NSLog(@"Unknown value for button index on UIActionSheet for delete");
-    }
-}
-
-- (void)actionSheetCancel:(UIActionSheet *)actionSheet
-{
+    NSString *title = [NSString stringWithFormat:@"Delete this measurement\nof %@?",self.measurement.whichMole.moleName];
+    UIAlertController *deleteMole = [UIAlertController alertControllerWithTitle:title message:@"If this mole was removed by a doctor, please tap the 'Mole Removed by Doctor' button" preferredStyle:UIAlertControllerStyleActionSheet];
     
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete Measurement from App" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self deleteMole];
+    }];
+    
+    UIAlertAction *moleWasRemoved = [UIAlertAction actionWithTitle:@"Mole Removed by Doctor" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self moleWasRemoved];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        [self cancelMoleDeletion];
+    }];
+    
+    [deleteMole addAction:moleWasRemoved];
+    [deleteMole addAction:delete];
+    [deleteMole addAction:cancel];
+    
+    [self presentViewController:deleteMole animated:YES completion:nil];
+}
+
+-(void)deleteMole
+{
+    if (self.measurement)
+    {
+        [self.context deleteObject:self.measurement];
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        [appDelegate saveContext];
+        //reset the measurement here for the automatic save that takes place on viewWillDisappear
+        self.measurement = [Measurement getMostRecentMoleMeasurementForMole:self.mole withContext:self.context];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)moleWasRemoved
+{
+    NSLog(@"Mole: %@ was set to 'removed' by user",self.measurement.whichMole.moleName);
+}
+
+-(void)cancelMoleDeletion
+{
+    NSLog(@"Mole Deletion Cancelled");
 }
 
 #pragma mark - Handle Touch Events

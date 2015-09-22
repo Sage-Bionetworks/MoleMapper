@@ -750,59 +750,58 @@
 - (IBAction)deleteMolePinButtonTapped:(MolePin *)sender
 {
     NSString *title = [NSString stringWithFormat:@"Delete mole named %@?",sender.moleName];
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:@"Delete Mole"
-                                                    otherButtonTitles:nil];
-    [actionSheet showInView:self.view];
+    UIAlertController *deleteMole = [UIAlertController alertControllerWithTitle:title message:@"If this mole was removed by a doctor, please tap the 'Mole Removed by Doctor' button" preferredStyle:UIAlertControllerStyleActionSheet];
     
-    }
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete Mole from App" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self deleteMole];
+    }];
+    
+    UIAlertAction *moleWasRemoved = [UIAlertAction actionWithTitle:@"Mole Removed by Doctor" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self moleWasRemoved];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        [self cancelMoleDeletion];
+    }];
+    
+    [deleteMole addAction:moleWasRemoved];
+    [deleteMole addAction:delete];
+    [deleteMole addAction:cancel];
+    
+    [self presentViewController:deleteMole animated:YES completion:nil];
+    
+}
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+-(void)deleteMole
 {
-    if (buttonIndex == 0)
+    MolePin *molePinToDelete = self.moleToBeDeleted;
+    
+    if (molePinToDelete)
     {
-        /* Old way to select a highlighted mole for deletion
-        MolePin *molePinToDelete = nil;
-        for (MolePin *molePin in self.molePinsOnImage)
+        [molePinToDelete.calloutView dismissCalloutAnimated:NO];
+        [molePinToDelete removeFromSuperview];                  // remove from superview
+        [self.molePinsOnImage removeObject:molePinToDelete];    // remove from array
+        if (molePinToDelete.mole)
         {
-            if (molePin.molePin_State == MolePinStateSelected)
-            {
-                molePinToDelete = molePin;
-                break;
-            }
-        };
-        */
-        
-        MolePin *molePinToDelete = self.moleToBeDeleted;
-        
-        if (molePinToDelete)
-        {
-            [molePinToDelete.calloutView dismissCalloutAnimated:NO];
-            [molePinToDelete removeFromSuperview];                  // remove from superview
-            [self.molePinsOnImage removeObject:molePinToDelete];    // remove from array
-            if (molePinToDelete.mole)
-            {
-                [self.context deleteObject:molePinToDelete.mole]; // remove from persistant store
-                AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-                [appDelegate saveContext];
-            }
-            
+            [self.context deleteObject:molePinToDelete.mole]; // remove from persistant store
+            AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+            [appDelegate saveContext];
         }
-        [self updateMolePinBarButtonStates];
-        [self dismissAllCallouts];
+        
     }
-    else
-    {
-        NSLog(@"Unknown value for button index on UIActionSheet for delete");
-    }
+    [self updateMolePinBarButtonStates];
+    [self dismissAllCallouts];
     self.moleToBeDeleted = nil;
 }
 
-- (void)actionSheetCancel:(UIActionSheet *)actionSheet
+-(void)moleWasRemoved
 {
-   self.moleToBeDeleted = nil;
+    NSLog(@"Mole: %@ was set to 'removed' by user",self.moleToBeDeleted.moleName);
+}
+
+-(void)cancelMoleDeletion
+{
+    self.moleToBeDeleted = nil;
 }
 
 - (void)updateMolePinBarButtonStates
