@@ -108,6 +108,120 @@
     
 }
 
+
+-(void)signInAndSendInitialData:(NSDictionary *)initialData
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+    {
+        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                password: ad.user.bridgeSignInPassword
+                                              completion: ^(NSURLSessionDataTask * __unused task,
+                                                            id responseObject,
+                                                            NSError *signInError)
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (!signInError)
+                 {
+                     /*
+                      NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                      if (responseDictionary)
+                      {
+                      NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                      NSLog(@"Data sharing scope integer is %@",dataSharing);
+                      }
+                      */
+                     
+                     NSLog(@"User is Signed In");
+                     [ad.bridgeManager zipEncryptAndShipInitialData:initialData];
+                 }
+                 else
+                 {
+                     NSLog(@"Error during log in before followup: %@",signInError);
+                 }
+                 
+             });
+         }
+         ];
+    }
+}
+
+
+-(void)signInAndSendFollowupData:(NSDictionary *)followupData
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+    {
+        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                password: ad.user.bridgeSignInPassword
+                                              completion: ^(NSURLSessionDataTask * __unused task,
+                                                            id responseObject,
+                                                            NSError *signInError)
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (!signInError)
+                 {
+                     /*
+                      NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                      if (responseDictionary)
+                      {
+                      NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                      NSLog(@"Data sharing scope integer is %@",dataSharing);
+                      }
+                      */
+                     
+                     NSLog(@"User is Signed In");
+                     [ad.bridgeManager zipEncryptAndShipFollowupData:followupData];
+                 }
+                 else
+                 {
+                     NSLog(@"Error during log in before followup: %@",signInError);
+                 }
+                 
+             });
+         }
+         ];
+    }
+}
+
+-(void)signInAndSendMeasurements
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+    {
+        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                password: ad.user.bridgeSignInPassword
+                                              completion: ^(NSURLSessionDataTask * __unused task,
+                                                            id responseObject,
+                                                            NSError *signInError)
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (!signInError)
+                 {
+                     /*
+                      NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                      if (responseDictionary)
+                      {
+                      NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                      NSLog(@"Data sharing scope integer is %@",dataSharing);
+                      }
+                      */
+                     
+                     NSLog(@"User is Signed In");
+                     [ad.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
+                 }
+                 else
+                 {
+                     NSLog(@"Error during log in: %@",signInError);
+                 }
+                 
+             });
+         }
+         ];
+    }
+    
+}
+
 -(void)zipEncryptAndShipInitialData:(NSDictionary *)initialData
 {
     APCDataArchive *archive = [[APCDataArchive alloc] initWithReference:@"initialData"];
@@ -136,45 +250,9 @@
         if (! error) { NSLog(@"Encrypt/uploading followup..."); }
         else { APCLogError2(error); }
     }];
-
+    
 }
 
--(void)signInAndSendMeasurements
-{
-    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
-                                            password: ad.user.bridgeSignInPassword
-                                          completion: ^(NSURLSessionDataTask * __unused task,
-                                                        id responseObject,
-                                                        NSError *signInError)
-     {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (!signInError)
-             {
-                 /*
-                  NSDictionary *responseDictionary = (NSDictionary *) responseObject;
-                  if (responseDictionary)
-                  {
-                  NSNumber *dataSharing = responseDictionary[@"dataSharing"];
-                  NSLog(@"Data sharing scope integer is %@",dataSharing);
-                  }
-                  */
-                 
-                 NSLog(@"User is Signed In");
-                 [ad.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
-             }
-             else
-             {
-                 NSLog(@"Error during log in: %@",signInError);
-             }
-             
-         });
-     }
-     ];
-}
-
-
-//Currently, this just sends the mole data and mole photos to the tmp directory
 -(void)zipEncryptAndShipAllMoleMeasurementData
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];

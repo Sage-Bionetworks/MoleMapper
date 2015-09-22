@@ -21,14 +21,13 @@
 - (void) updateProfileOnCompletion:(void (^)(NSError *))completionBlock;
 
 //This includes the consent data and initial survey/demographic info or the followup survey data
--(void)zipEncryptAndShipInitialData:(NSDictionary *)initialData;
+-(void)signInAndSendInitialData:(NSDictionary *)initialData;
 
 //This includes the followup survey
--(void)zipEncryptAndShipFollowupData:(NSDictionary *)followupData;
+-(void)signInAndSendFollowupData:(NSDictionary *)followupData;
 
+//Sign in to Bridge and then send all Mole Measurements and their attendant photos
 -(void)signInAndSendMeasurements;
 
-//This includes the mole measurements and their attendant photos
--(void)zipEncryptAndShipAllMoleMeasurementData;
 
 @end

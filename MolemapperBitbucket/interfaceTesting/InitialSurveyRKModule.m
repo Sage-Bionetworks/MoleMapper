@@ -173,7 +173,7 @@
             NSDictionary *parsedData = [self parsedDataFromTaskResult:taskResult];
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             
-            [ad.bridgeManager zipEncryptAndShipInitialData:parsedData];
+            [ad.bridgeManager signInAndSendInitialData:parsedData];
             
             [ad.bridgeManager sendUserConsentedToBridgeOnCompletion:^(NSError *error){
                 NSLog(@"Updated birthdate for User Profile");

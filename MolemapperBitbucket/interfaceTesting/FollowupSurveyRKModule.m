@@ -21,7 +21,6 @@
 //NEED TO TEST THIS TO MAKE SURE IT IS WORKING CORRECTLY
 -(BOOL)shouldShowFollowupSurvey
 {
-    return NO;
     BOOL shouldShowFollowupSurvey = NO;
     
     NSDate *now = [NSDate date];
@@ -30,11 +29,12 @@
     NSDate *lastTimeAsurveyWasTaken = [ud valueForKey:@"dateOfLastSurveyCompleted"];
     
     NSNumber *daysSinceLastSurvey = [NSNumber numberWithInteger:[self daysBetweenDate:lastTimeAsurveyWasTaken andDate:now]];
-    if ([daysSinceLastSurvey intValue] >= [self.numberOfDaysBetweenFollowups intValue])
+    if ([daysSinceLastSurvey intValue] >= numberOfDaysInFollowupPeriod)
     {
         shouldShowFollowupSurvey = YES;
     }
-    return shouldShowFollowupSurvey;
+    return YES;
+    //return shouldShowFollowupSurvey;
 }
 
 -(NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
@@ -57,10 +57,17 @@
 
 -(void)showSurvey
 {
+    ORKInstructionStep *intro = [[ORKInstructionStep alloc] initWithIdentifier:@"intro"];
+    intro.title = @"Monthly Followup";
+    intro.text = @"\nWe'd like to ask you 5 quick questions about your activities and health in the last month";
+    
+    intro.image = [UIImage imageNamed:@"moleMapperIconLarge"];
+
+    
     NSMutableArray *followupItems = [NSMutableArray new];
     ORKFormStep *followupInfo =
     [[ORKFormStep alloc] initWithIdentifier:@"followupInfo"
-                                      title:@"Monthly Followup Survey"
+                                      title:@"Monthly Followup Questions"
                                        text:@""];
     
     ORKAnswerFormat *tan = [ORKAnswerFormat booleanAnswerFormat];
@@ -91,7 +98,7 @@
     
     ORKOrderedTask *task =
     [[ORKOrderedTask alloc] initWithIdentifier:@"followupTask"
-                                         steps:@[followupInfo, thankYouStep]];
+                                         steps:@[intro, followupInfo, thankYouStep]];
     
     // Create a task view controller using the task and set a delegate.
     ORKTaskViewController *taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
@@ -111,21 +118,14 @@
     {
         case ORKTaskViewControllerFinishReasonCompleted:
         {
-            // Archive the result object first
-            //NSData *data = [NSKeyedArchiver archivedDataWithRootObject:taskViewController.result];
-            
             NSDate *dateOfLastSurveyCompleted = taskResult.endDate;
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
             [ud setValue:dateOfLastSurveyCompleted forKey:@"dateOfLastSurveyCompleted"];
             
             NSDictionary *parsedData = [self parsedDataFromTaskResult:taskResult];
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [ad.bridgeManager zipEncryptAndShipFollowupData:parsedData];
+            [ad.bridgeManager signInAndSendFollowupData:parsedData];
             
-            // Save the data to disk with file protection
-            // or upload to a remote server securely.
-            
-            // If any file results are expected, also zip up the outputDirectory.
             break;
         }
             

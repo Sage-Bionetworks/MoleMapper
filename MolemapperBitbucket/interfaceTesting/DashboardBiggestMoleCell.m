@@ -27,7 +27,7 @@
     float bgRounded = ceilf([bgSize floatValue] * 10.0f) / 10.0f;
     
     NSNumber* biggestScale = [NSNumber numberWithFloat:1.0f];
-    NSNumber* averageScale = [NSNumber numberWithFloat:1.0f / [avSize floatValue]];;
+    NSNumber* averageScale = [NSNumber numberWithFloat:1.0f * ([avSize floatValue]/[bgSize floatValue])];
 
     //set average from model if there is any DEBUG
     //NSNumber* averageScale = [NSNumber numberWithFloat:6.7];

@@ -111,6 +111,7 @@
     MoleViewController *moleViewController = (MoleViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"MoleViewController"];
     
     Measurement *measurement = [[DashboardModel sharedInstance] measurementForBiggestMole];
+    Measurement *mostRecent = [Measurement getMostRecentMoleMeasurementForMole:measurement.whichMole withContext:[[DashboardModel sharedInstance] context]];
     moleViewController.mole = measurement.whichMole;
     moleViewController.moleID = measurement.whichMole.moleID;
     moleViewController.moleName = [[DashboardModel sharedInstance] nameForBiggestMole];
@@ -120,7 +121,7 @@
     NSNumber *zoneIDForSegue = @([measurement.whichMole.whichZone.zoneID intValue]);
     
     moleViewController.zoneTitle = [Zone zoneNameForZoneID:zoneIDForSegue];
-    moleViewController.measurement = measurement;
+    moleViewController.measurement = mostRecent;
     
     moleViewController.isPresentView = YES;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:moleViewController];
