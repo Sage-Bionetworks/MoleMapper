@@ -76,18 +76,12 @@
             NSString *email = [parsedData valueForKey:@"email"];
             NSString *password = [parsedData valueForKey:@"password"];
             
-            //In case of skip
-            if (email.length == 0 || password.length == 0)
+            if ([self NSStringIsValidEmail:email] == NO || password.length < 2)
             {
                 [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
-                [self leaveOnboardingByCancelTapped];
-                return;
+                [self emailOrPasswordNotValid];
+                break;
             }
-            
-//Make a check here on whether or not the email and password are valid
-//Protect against: length, has a lower and uppercase letter, at least one symbol
-//Also segue to a screen that is the inbetween onboarding and mole map to give them the chance to go back
-//Or just have a popup?
             
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             ad.user.bridgeSignInEmail = email;
@@ -128,7 +122,8 @@
         case ORKTaskViewControllerFinishReasonDiscarded:
         {
             [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
-            [self leaveOnboardingByCancelTapped];            break;
+            [self leaveOnboardingByCancelTapped];
+            break;
         }
             
         case ORKTaskViewControllerFinishReasonSaved:
@@ -142,6 +137,16 @@
     
     // Then, dismiss the task view controller.
     //[self.presentingVC dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = NO; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
+    NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+    NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
 }
 
 -(void)leaveOnboardingByCancelTapped
@@ -163,7 +168,19 @@
     [leaveOnboarding addAction:cancel];
     
     [self.presentingVC presentViewController:leaveOnboarding animated:YES completion:nil];
+}
+
+-(void)emailOrPasswordNotValid
+{
+    UIAlertController *notValid = [UIAlertController alertControllerWithTitle:@"Invalid Email/Password" message:@"We detected an improperly formatted email address or a password shorter than 2 characters.  Please try with different information" preferredStyle:UIAlertControllerStyleActionSheet];
     
+    UIAlertAction *reEnter = [UIAlertAction actionWithTitle:@"Re-enter Email/Password" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        [self showSignUp];
+    }];
+    
+    [notValid addAction:reEnter];
+    
+    [self.presentingVC presentViewController:notValid animated:YES completion:nil];
 }
 
 -(NSDictionary *)parsedDataFromTaskResult:(ORKTaskResult *)taskResult
