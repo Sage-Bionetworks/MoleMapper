@@ -28,6 +28,8 @@
     Measurement* measurement = [mole objectForKey:@"measurement"];
     NSDate* date = measurement.date;
     
+    float sizeFloat = ceilf([size floatValue] * 10.0f) / 10.0f;
+    
     //debug
     //NSDate* date = [mole objectForKey:@"measurement"];
     //NSNumber* size = [NSNumber numberWithFloat:2.3f];
@@ -50,7 +52,7 @@
     
     
     percentChange = [NSNumber numberWithFloat:fabsf([percentChange floatValue])];
-    _moleSizeLabel.text = [NSString stringWithFormat:@"Size: %2.1f mm\nLast measured: %@", [size floatValue], dateString];
+    _moleSizeLabel.text = [NSString stringWithFormat:@"Size: %2.1f mm\nLast measured: %@", sizeFloat, dateString];
     _moleProgressLabel.text = [percentChange floatValue] > 0.0f ? [NSString stringWithFormat:@"%2.1f%%", [percentChange floatValue]] : @"0.0%";
     
     // Configure the view for the selected state
