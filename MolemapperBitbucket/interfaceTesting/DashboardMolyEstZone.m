@@ -19,7 +19,7 @@
 -(void) setDataToChart
 {
     _chartView.descriptionText = @"";
-    _chartView.noDataTextDescription = @"You need to provide data for the chart.";
+    _chartView.noDataTextDescription = @"";
     
     _chartView.drawBarShadowEnabled = NO;
     _chartView.drawValueAboveBarEnabled = YES;
