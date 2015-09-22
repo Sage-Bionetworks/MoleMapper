@@ -224,9 +224,10 @@
       inManagedObjectContext:self.context];
     }
     [self saveMeasurementData];
-    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-#pragma Turn this back on after debug and use signInAndSend
-    //[ad.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
+
+#pragma warning TURN ON FOR TESTING THE MEASUREMENTS
+    //AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //[ad.bridgeManager signInAndSendMeasurements];
 }
 
 -(void)viewDidDisappear:(BOOL)animated

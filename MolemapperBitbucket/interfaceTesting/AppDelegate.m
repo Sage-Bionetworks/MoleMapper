@@ -38,16 +38,16 @@
     self.dataUploader = [[APCDataUploader alloc] init];
     self.user = [[MMUser alloc] init];
     
-    //Turn off for Debug
     /*
     if (self.user.bridgeSignInEmail && self.user.bridgeSignInPassword && self.user.hasEnrolled)
     {
         NSLog(@"Username: %@",self.user.bridgeSignInEmail);
         NSLog(@"Password: %@",self.user.bridgeSignInPassword);
         
-        [self signInAndSendMeasurements];
+        [self.bridgeManager signInAndSendMeasurements];
     }
      */
+    
     
     [self loadAllZonesWithContext:self.managedObjectContext];
     
@@ -71,39 +71,6 @@
     }
     
     return YES;
-}
-
--(void)signInAndSendMeasurements
-{
-    [SBBComponent(SBBAuthManager) signInWithUsername: self.user.bridgeSignInEmail
-                                            password: self.user.bridgeSignInPassword
-                                          completion: ^(NSURLSessionDataTask * __unused task,
-                                                        id responseObject,
-                                                        NSError *signInError)
-     {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (!signInError)
-             {
-                 /*
-                 NSDictionary *responseDictionary = (NSDictionary *) responseObject;
-                 if (responseDictionary)
-                 {
-                     NSNumber *dataSharing = responseDictionary[@"dataSharing"];
-                     NSLog(@"Data sharing scope integer is %@",dataSharing);
-                 }
-                 */
-                
-                 NSLog(@"User is Signed In");
-                 [self.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
-             }
-             else
-             {
-                 NSLog(@"Error during log in: %@",signInError);
-             }
-             
-         });
-     }
-     ];
 }
 
 -(void)setOnboardingBooleansBackToInitialValues

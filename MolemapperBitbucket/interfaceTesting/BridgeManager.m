@@ -139,6 +139,41 @@
 
 }
 
+-(void)signInAndSendMeasurements
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                            password: ad.user.bridgeSignInPassword
+                                          completion: ^(NSURLSessionDataTask * __unused task,
+                                                        id responseObject,
+                                                        NSError *signInError)
+     {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             if (!signInError)
+             {
+                 /*
+                  NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                  if (responseDictionary)
+                  {
+                  NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                  NSLog(@"Data sharing scope integer is %@",dataSharing);
+                  }
+                  */
+                 
+                 NSLog(@"User is Signed In");
+                 [ad.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
+             }
+             else
+             {
+                 NSLog(@"Error during log in: %@",signInError);
+             }
+             
+         });
+     }
+     ];
+}
+
+
 //Currently, this just sends the mole data and mole photos to the tmp directory
 -(void)zipEncryptAndShipAllMoleMeasurementData
 {

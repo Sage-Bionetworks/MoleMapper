@@ -26,6 +26,8 @@
 //This includes the followup survey
 -(void)zipEncryptAndShipFollowupData:(NSDictionary *)followupData;
 
+-(void)signInAndSendMeasurements;
+
 //This includes the mole measurements and their attendant photos
 -(void)zipEncryptAndShipAllMoleMeasurementData;
 
