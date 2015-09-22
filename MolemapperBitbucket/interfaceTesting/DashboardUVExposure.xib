@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DashboardUVExposure" rowHeight="252" id="KGk-i7-Jjw" customClass="DashboardUVExposure">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DashboardUVExposure" rowHeight="325" id="KGk-i7-Jjw" customClass="DashboardUVExposure">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="251"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="324"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BNQ-8y-xr1" userLabel="Header">
@@ -26,13 +26,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i2c-KC-mne" userLabel="ChartView" customClass="LineChartView" customModule="Charts">
+                        <rect key="frame" x="8" y="71" width="304" height="243"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="chartView" destination="i2c-KC-mne" id="10C-pN-WOQ"/>
                 <outlet property="header" destination="BNQ-8y-xr1" id="1mA-hc-FbU"/>
                 <outlet property="headerTitle" destination="HFO-tW-P3P" id="NCY-wN-pRd"/>
             </connections>
-            <point key="canvasLocation" x="568" y="265"/>
+            <point key="canvasLocation" x="568" y="301.5"/>
         </tableViewCell>
     </objects>
 </document>
