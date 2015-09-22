@@ -201,7 +201,8 @@
         NSString *subtitle = @"Mole Size: ";
         if (self.mostRecentMeasurement.absoluteMoleDiameter)
         {
-            NSString* formattedSize = [NSString stringWithFormat:@"%.1f", [self.mostRecentMeasurement.absoluteMoleDiameter floatValue]];
+            
+            NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.mostRecentMeasurement.absoluteMoleDiameter floatValue] * 10.0f) / 10.0f];
             subtitle = [subtitle stringByAppendingString:formattedSize];
             subtitle = [subtitle stringByAppendingString:@" mm"];
         }

@@ -167,7 +167,8 @@
     
     NSString *stringFromDate = [formatter stringFromDate:measurement.date];
     stringFromDate = [stringFromDate stringByAppendingString:@": "];
-    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", [measurement.absoluteMoleDiameter floatValue]];
+    //ceilf(initialDiameter * 10.0f) / 10.0f;
+    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([measurement.absoluteMoleDiameter floatValue] * 10.0f) / 10.0f];
     stringFromDate = [stringFromDate stringByAppendingString:formattedSize];
     stringFromDate = [stringFromDate stringByAppendingString:@" mm\n"];
     
