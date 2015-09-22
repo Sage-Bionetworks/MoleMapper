@@ -25,6 +25,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
+    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     [self setupProgress];
     _isTimerInvalidated = YES;

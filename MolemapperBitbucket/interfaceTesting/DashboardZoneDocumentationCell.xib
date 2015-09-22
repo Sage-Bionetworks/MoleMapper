@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764705882346" green="0.96862745098039216" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdO-H6-0Qa" userLabel="Gray Circle" customClass="UAProgressView">
                         <rect key="frame" x="89" y="149" width="144" height="144"/>
@@ -51,6 +51,7 @@
             <connections>
                 <outlet property="documentedZones" destination="Amt-2z-Pfb" id="EeH-P6-YT1"/>
                 <outlet property="grayCircle" destination="SdO-H6-0Qa" id="6TH-8k-q4r"/>
+                <outlet property="header" destination="DMg-Ol-b43" id="d2f-20-KGZ"/>
                 <outlet property="headerTitle" destination="Ffw-zC-Tk9" id="l5D-iX-KKK"/>
                 <outlet property="progressView" destination="Nf9-ml-Dbf" id="Q26-Xc-2oQ"/>
             </connections>

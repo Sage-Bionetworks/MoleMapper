@@ -14,8 +14,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" id="qCm-Tu-HuQ" userLabel="Header">
-                        <rect key="frame" x="-1" y="0.0" width="320" height="54"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, May 17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Hq1-wW-5lI">
+                        <rect key="frame" x="0.0" y="66" width="320" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" id="ZVd-Ch-nTn" customClass="UAProgressView">
+                        <rect key="frame" x="97" y="104" width="124" height="124"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </view>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" id="nBY-7U-0iL" customClass="UAProgressView">
+                        <rect key="frame" x="97" y="104" width="124" height="124"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </view>
+                    <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="qCm-Tu-HuQ" userLabel="Header">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="f1t-c9-n5K">
@@ -32,26 +47,12 @@
                                 <rect key="frame" x="0.0" y="16" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.6705882352941176" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, May 17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Hq1-wW-5lI">
-                        <rect key="frame" x="0.0" y="66" width="320" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <view userInteractionEnabled="NO" contentMode="scaleToFill" id="ZVd-Ch-nTn" customClass="UAProgressView">
-                        <rect key="frame" x="97" y="104" width="124" height="124"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </view>
-                    <view userInteractionEnabled="NO" contentMode="scaleToFill" id="nBY-7U-0iL" customClass="UAProgressView">
-                        <rect key="frame" x="97" y="104" width="124" height="124"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.93725490196078431" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </subviews>
                 <color key="tintColor" red="0.0" green="0.6705882353" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,11 +60,12 @@
             <connections>
                 <outlet property="dateLbl" destination="Hq1-wW-5lI" id="E4R-XB-nTb"/>
                 <outlet property="grayCircle" destination="ZVd-Ch-nTn" id="PBn-XR-vNc"/>
+                <outlet property="header" destination="qCm-Tu-HuQ" id="O6V-3L-jgO"/>
                 <outlet property="headerTitle" destination="acL-Cg-KBA" id="36h-zy-Ws9"/>
                 <outlet property="progressView" destination="nBY-7U-0iL" id="UlU-yU-pxb"/>
                 <outlet property="questionButton" destination="f1t-c9-n5K" id="crA-F2-Ws4"/>
             </connections>
-            <point key="canvasLocation" x="354" y="365"/>
+            <point key="canvasLocation" x="568" y="351"/>
         </tableViewCell>
     </objects>
 </document>

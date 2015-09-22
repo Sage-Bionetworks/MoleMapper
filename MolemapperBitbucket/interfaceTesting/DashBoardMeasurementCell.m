@@ -17,6 +17,7 @@
     // Initialization code
     
     //_dbModel = [[DashboardModel alloc] init];
+    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
     _viewMoleBtn.layer.cornerRadius = 5; // this value vary as per your desire

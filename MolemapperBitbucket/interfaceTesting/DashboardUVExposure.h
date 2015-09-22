@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DashboardUVExposure : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerTitle;
 @end

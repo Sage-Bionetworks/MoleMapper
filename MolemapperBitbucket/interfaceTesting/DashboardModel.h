@@ -31,5 +31,6 @@
 
 -(float) correctFloat:(float) value;
 -(UIColor*) getColorForDashboardTextAndButtons;
+-(UIColor*) getColorForHeader;
 
 @end

@@ -10,6 +10,7 @@
 #import "DashboardModel.h"
 
 @interface DashboardBiggestMoleCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *innerCircle;
 @property (weak, nonatomic) IBOutlet UIImageView *outerCircle;

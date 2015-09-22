@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your biggest mole size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxB-KG-cz4">
                         <rect key="frame" x="8" y="86" width="124" height="21"/>
@@ -70,6 +70,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="header" destination="oPe-fh-Kam" id="TPX-EQ-cSg"/>
                 <outlet property="headerTitle" destination="Mxg-fz-NTg" id="XxU-7U-Gw2"/>
                 <outlet property="innerCircle" destination="oe8-C2-ase" id="Gar-bH-doj"/>
                 <outlet property="innerCircleLabel" destination="Db9-6k-DA2" id="v8h-mv-xjJ"/>

@@ -11,6 +11,7 @@
 #import "DashboardModel.h"
 
 @interface DashboardZoneDocumentationCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerTitle;
 @property (weak, nonatomic) IBOutlet UAProgressView *grayCircle;
 @property (weak, nonatomic) IBOutlet UAProgressView *progressView;

@@ -24,11 +24,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="header" destination="BNQ-8y-xr1" id="1mA-hc-FbU"/>
                 <outlet property="headerTitle" destination="HFO-tW-P3P" id="NCY-wN-pRd"/>
             </connections>
             <point key="canvasLocation" x="568" y="265"/>

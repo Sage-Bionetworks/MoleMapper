@@ -13,6 +13,7 @@
 @implementation DashboardActivityCompletionCell
 
 - (void)awakeFromNib {
+    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
     NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];

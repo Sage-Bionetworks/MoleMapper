@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="62" id="bJk-Ek-xT7"/>
                         </constraints>
@@ -56,6 +56,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="header" destination="FI7-CN-hhI" id="wrA-JX-Zc3"/>
                 <outlet property="headerTitle" destination="qLI-SL-Oml" id="vf6-yO-XNz"/>
                 <outlet property="tableViewInside" destination="Er6-dV-lfJ" id="l5F-vr-Pom"/>
             </connections>

@@ -126,10 +126,39 @@
     return [[Zone allZoneIDs] count];
 }
 
+-(UIColor*) getColorForHeader
+{
+    //203,229,255
+    /*float rateRed = (203.0f / 255.0f) / (0.01f / 255.0f);
+    float rateGreen = (229.0f / 255.0f) / (122.0f / 255.0f);
+    
+    UIColor* c = [self getColorForDashboardTextAndButtons];
+    CGColorRef color = [c CGColor];
+    
+    int numComponents = (int)CGColorGetNumberOfComponents(color);
+    
+    if (numComponents == 4)
+    {
+        const CGFloat *components = CGColorGetComponents(color);
+        CGFloat red = components[0];
+        CGFloat green = components[1];
+        //CGFloat blue = components[2];
+        //CGFloat alpha = components[3];
+        
+        red /= rateRed;
+        green /= rateGreen;
+        
+        c = [UIColor colorWithRed:red green:green blue:1.0 alpha:1.0];
+    }*/
+    
+    UIColor* c = [UIColor colorWithRed:234 / 255.0 green:239.0 / 255.0 blue:1.0 alpha:1.0];
+    return  c;
+}
+
 -(UIColor*) getColorForDashboardTextAndButtons
 {
     UIColor* c = [UIColor colorWithRed:0 / 255.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
-    return c;
+    return  c;
 }
 
 -(NSNumber *)daysUntilNextMeasurementPeriod

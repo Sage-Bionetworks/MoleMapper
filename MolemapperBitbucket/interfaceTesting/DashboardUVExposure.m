@@ -15,6 +15,7 @@
 - (void)awakeFromNib {
     // Initialization code
     //Heal
+    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
 }
 

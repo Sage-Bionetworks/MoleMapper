@@ -11,6 +11,7 @@
 #import "DashboardViewController.h"
 
 @interface DashBoardMeasurementCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerTitle;
 @property (weak, nonatomic) IBOutlet UIButton *viewMoleBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *lineOfMeasurement;

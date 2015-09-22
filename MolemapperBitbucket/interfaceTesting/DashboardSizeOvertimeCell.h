@@ -11,6 +11,7 @@
 
 @interface DashboardSizeOvertimeCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerTitle;
 @property (nonatomic, retain)  IBOutlet UITableView *tableViewInside;
 @property NSInteger rowNumber;

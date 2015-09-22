@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your biggest mole is blablablablabla and is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-KW-MWk">
                         <rect key="frame" x="0.0" y="184" width="320" height="21"/>
@@ -98,6 +98,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="biggestMoleLabel" destination="Xef-KW-MWk" id="hzV-b0-lLi"/>
+                <outlet property="header" destination="CyW-Ju-QP9" id="EjJ-M5-Yyh"/>
                 <outlet property="headerTitle" destination="HZH-9E-Xy5" id="9zr-BK-Aj5"/>
                 <outlet property="lineOfMeasurement" destination="lWR-Lz-P36" id="gud-n2-ox4"/>
                 <outlet property="locatedMoleLabel" destination="944-Mr-i8D" id="YBh-iR-vCz"/>

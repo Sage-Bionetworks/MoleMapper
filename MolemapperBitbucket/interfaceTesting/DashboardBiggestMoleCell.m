@@ -12,6 +12,7 @@
 @implementation DashboardBiggestMoleCell
 
 - (void)awakeFromNib {
+    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
 }
 
