@@ -14,6 +14,7 @@
 - (void)awakeFromNib {
     // Initialization code
     [self setDataToChart];
+    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
 }
 
 -(void) setDataToChart

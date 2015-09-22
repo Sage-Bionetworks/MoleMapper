@@ -30,5 +30,6 @@
 -(void) refreshContext;
 
 -(float) correctFloat:(float) value;
+-(UIColor*) getColorForDashboardTextAndButtons;
 
 @end

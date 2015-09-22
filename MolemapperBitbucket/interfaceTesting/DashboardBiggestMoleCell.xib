@@ -55,6 +55,7 @@
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="innenDot" translatesAutoresizingMaskIntoConstraints="NO" id="oe8-C2-ase">
                         <rect key="frame" x="160" y="87" width="210" height="210"/>
+                        <color key="tintColor" red="0.0" green="0.55310703228659885" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-N9-kgQ">
                         <rect key="frame" x="113" y="191" width="152" height="2"/>
@@ -69,6 +70,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="headerTitle" destination="Mxg-fz-NTg" id="XxU-7U-Gw2"/>
                 <outlet property="innerCircle" destination="oe8-C2-ase" id="Gar-bH-doj"/>
                 <outlet property="innerCircleLabel" destination="Db9-6k-DA2" id="v8h-mv-xjJ"/>
                 <outlet property="outerCircle" destination="JaO-3U-FcH" id="C27-f2-CoK"/>

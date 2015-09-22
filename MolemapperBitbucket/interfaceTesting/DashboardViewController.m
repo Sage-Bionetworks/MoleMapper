@@ -127,7 +127,7 @@
     }
     
     //DashboardMolyestZone
-    DashboardMolyEstZone *cell6 = (DashboardMolyEstZone*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardMolyEstZone"];
+    /*DashboardMolyEstZone *cell6 = (DashboardMolyEstZone*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardMolyEstZone"];
     
     cell6 = nil;
     
@@ -135,7 +135,7 @@
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardMolyEstZone" owner:self options:nil];
         cell6 = [nib objectAtIndex:0];
-    }
+    }*/
     
     //DashboardUVExposure
     DashboardUVExposure *cell7 = (DashboardUVExposure*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardUVExposure"];
@@ -153,7 +153,7 @@
     cell3.clipsToBounds = YES;
     cell4.clipsToBounds = YES;
     cell5.clipsToBounds = YES;
-    cell6.clipsToBounds = YES;
+    //cell6.clipsToBounds = YES;
     cell7.clipsToBounds = YES;
     
     [_cellList addObject:cell1];
@@ -161,7 +161,7 @@
     [_cellList addObject:cell3];
     [_cellList addObject:cell4];
     [_cellList addObject:cell5];
-    [_cellList addObject:cell6];
+    //[_cellList addObject:cell6];
     [_cellList addObject:cell7];
 }
 
@@ -186,10 +186,10 @@
         //[(DashboardZoneDocumentationCell*)[_cellList objectAtIndex:indexPath.row] setDataToProgressView:0.95];
     }
     
-    if (indexPath.row == 5)
+    /*if (indexPath.row == 5)
     {
         [(DashboardMolyEstZone*)[_cellList objectAtIndex:indexPath.row] setDataToChart];
-    }
+    }*/
     
     return [_cellList objectAtIndex:indexPath.row];
 }
@@ -248,11 +248,11 @@
                                         (bounds.size.height + [moleDictionary count] * 62))];
     }
     
-    if (indexPath.row == 5)
+    /*if (indexPath.row == 5)
     {
         DashboardMolyEstZone* cell = (DashboardMolyEstZone*)[_cellList objectAtIndex:indexPath.row];
         height = @(cell.bounds.size.height);
-    }
+    }*/
     
     if (indexPath.row == 5)
     {

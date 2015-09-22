@@ -20,6 +20,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

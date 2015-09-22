@@ -17,6 +17,7 @@
     // Initialization code
     
     //_dbModel = [[DashboardModel alloc] init];
+    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
     _viewMoleBtn.layer.cornerRadius = 5; // this value vary as per your desire
     _viewMoleBtn.clipsToBounds = YES;
@@ -49,7 +50,7 @@
 {
     
     
-    UIColor *c_bcolor = [UIColor colorWithRed:0 / 255.0 green:171.0 / 255.0 blue:235.0 / 255.0 alpha:1.0];
+    UIColor *c_bcolor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
     NSMutableAttributedString *text =
     [[NSMutableAttributedString alloc]

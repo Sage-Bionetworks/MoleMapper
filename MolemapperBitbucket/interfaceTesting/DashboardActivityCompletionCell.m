@@ -13,6 +13,7 @@
 @implementation DashboardActivityCompletionCell
 
 - (void)awakeFromNib {
+    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
     NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
     float numb = 0.0f;
@@ -78,7 +79,7 @@
     _grayCircle.lineWidth = 10.0;
     [_grayCircle setProgress:1.0];
     
-    UIColor *c_bcolor = [UIColor colorWithRed:0 / 255.0 green:171.0 / 255.0 blue:235.0 / 255.0 alpha:1.0];
+    UIColor *c_bcolor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     _progressView.tintColor = c_bcolor;
     _progressView.borderWidth = 10.0;
     _progressView.lineWidth = 10.0;

@@ -12,6 +12,7 @@
 #import "DashboardModel.h"
 
 @interface DashboardActivityCompletionCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *headerTitle;
 @property (weak, nonatomic) IBOutlet UAProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UAProgressView *grayCircle;
 @property (weak, nonatomic) IBOutlet UIButton *questionButton;

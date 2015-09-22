@@ -34,6 +34,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="chartView" destination="1PA-6R-umn" id="KC4-5J-oKb"/>
+                <outlet property="headerTitle" destination="hKR-fW-Kcv" id="NpP-BD-gsf"/>
             </connections>
             <point key="canvasLocation" x="522" y="328.5"/>
         </tableViewCell>

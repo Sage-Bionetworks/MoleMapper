@@ -18,6 +18,8 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     
+    _moleProgressLabel.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
+    
     NSString *key = [NSString stringWithFormat:@"%i",  (int)_idx];
     NSDictionary *mole = [_moleDictionary objectForKey:key];
     
@@ -47,7 +49,7 @@
     }
     else if ([percentChange floatValue] == 0)
     {
-        _arrowImageView.image = [UIImage imageNamed:@"arrowNil"];
+        _arrowImageView.image = [UIImage imageNamed:@""];
     }
     
     

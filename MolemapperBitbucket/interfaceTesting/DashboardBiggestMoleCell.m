@@ -12,7 +12,7 @@
 @implementation DashboardBiggestMoleCell
 
 - (void)awakeFromNib {
-    
+    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,7 +32,8 @@
     //set average from model if there is any DEBUG
     //NSNumber* averageScale = [NSNumber numberWithFloat:6.7];
     //NSNumber* biggestScale = [NSNumber numberWithFloat:9.2];
-    
+    _innerCircleLabel.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
+    _outerCircleLabel.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     _innerCircleLabel.text = [NSString stringWithFormat:@"%2.1f mm", avRounded];
     _outerCircleLabel.text = [NSString stringWithFormat:@"%2.1f mm", bgRounded];
     

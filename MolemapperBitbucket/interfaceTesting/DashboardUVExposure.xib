@@ -28,6 +28,9 @@
                     </view>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="headerTitle" destination="HFO-tW-P3P" id="NCY-wN-pRd"/>
+            </connections>
             <point key="canvasLocation" x="568" y="265"/>
         </tableViewCell>
     </objects>

@@ -10,6 +10,7 @@
 @import Charts;
 
 @interface DashboardMolyEstZone : UITableViewCell <ChartViewDelegate>
+@property (strong, nonatomic) IBOutlet UILabel *headerTitle;
 @property (strong, nonatomic) IBOutlet BarChartView *chartView;
 -(void) setDataToChart;
 @end

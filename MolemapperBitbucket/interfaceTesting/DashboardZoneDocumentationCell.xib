@@ -51,6 +51,7 @@
             <connections>
                 <outlet property="documentedZones" destination="Amt-2z-Pfb" id="EeH-P6-YT1"/>
                 <outlet property="grayCircle" destination="SdO-H6-0Qa" id="6TH-8k-q4r"/>
+                <outlet property="headerTitle" destination="Ffw-zC-Tk9" id="l5D-iX-KKK"/>
                 <outlet property="progressView" destination="Nf9-ml-Dbf" id="Q26-Xc-2oQ"/>
             </connections>
             <point key="canvasLocation" x="199" y="383"/>

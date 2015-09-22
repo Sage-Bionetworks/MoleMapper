@@ -25,6 +25,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     [self setupProgress];
     _isTimerInvalidated = YES;
     [self initZonesDocumented];
@@ -33,6 +34,8 @@
 - (void) initZonesDocumented
 {
     NSNumber* zonesDoced = [[DashboardModel sharedInstance] numberOfZonesDocumented];
+    
+    _documentedZones.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     _documentedZones.text = [NSString stringWithFormat:@"%i Zones", (int)[zonesDoced integerValue]];
     
     _currentProgress = 0.0;
@@ -62,7 +65,7 @@
     _grayCircle.lineWidth = 10.0;
     [_grayCircle setProgress:1.0];
     
-    UIColor *c_bcolor = [UIColor colorWithRed:0 / 255.0 green:171.0 / 255.0 blue:235.0 / 255.0 alpha:1.0];
+    UIColor *c_bcolor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     _progressView.tintColor = c_bcolor;
     _progressView.borderWidth = 10.0;
     _progressView.lineWidth = 10.0;
