@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    Heal
+    //Heal
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

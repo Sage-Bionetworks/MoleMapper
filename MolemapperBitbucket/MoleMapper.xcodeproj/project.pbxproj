@@ -561,9 +561,6 @@
 		43D993351BA506670077073D /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4BC88CE41BB1463000687E68 /* DashboardUVExposure.h */,
-				4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */,
-				4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */,
 				43D993361BA5067E0077073D /* DashboardActivityCompletionCell.h */,
 				43D993371BA5067E0077073D /* DashboardActivityCompletionCell.m */,
 				43D993381BA5067E0077073D /* DashboardActivityCompletionCell.xib */,
@@ -585,6 +582,9 @@
 				380B92181BAC50700026D052 /* DashboardMolyEstZone.h */,
 				380B92191BAC50700026D052 /* DashboardMolyEstZone.m */,
 				380B921A1BAC50700026D052 /* DashboardMolyEstZone.xib */,
+				4BC88CE41BB1463000687E68 /* DashboardUVExposure.h */,
+				4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */,
+				4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */,
 			);
 			name = "TableView Cells";
 			sourceTree = "<group>";

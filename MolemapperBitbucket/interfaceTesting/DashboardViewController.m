@@ -14,6 +14,7 @@
 #import "DashboardBiggestMoleCell.h"
 #import "DashboardSizeOvertimeCell.h"
 #import "DashboardMolyEstZone.h"
+#import "DashboardUVExposure.h"
 #import "DashboardModel.h"
 #import "MoleViewController.h"
 #import "AppDelegate.h"
@@ -117,12 +118,22 @@
         cell6 = [nib objectAtIndex:0];
     }
     
+    //DashboardUVExposure
+    DashboardUVExposure *cell7 = (DashboardUVExposure*)[_tableView dequeueReusableCellWithIdentifier:@"DashboardUVExposure"];
+    
+    if (cell7 == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"DashboardUVExposure" owner:self options:nil];
+        cell7 = [nib objectAtIndex:0];
+    }
+    
     cell1.clipsToBounds = YES;
     cell2.clipsToBounds = YES;
     cell3.clipsToBounds = YES;
     cell4.clipsToBounds = YES;
     cell5.clipsToBounds = YES;
     cell6.clipsToBounds = YES;
+    cell7.clipsToBounds = YES;
     
     [_cellList addObject:cell1];
     [_cellList addObject:cell2];
@@ -130,6 +141,7 @@
     [_cellList addObject:cell4];
     [_cellList addObject:cell5];
     [_cellList addObject:cell6];
+    [_cellList addObject:cell7];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -218,6 +230,12 @@
     if (indexPath.row == 5)
     {
         DashboardMolyEstZone* cell = (DashboardMolyEstZone*)[_cellList objectAtIndex:indexPath.row];
+        height = @(cell.bounds.size.height);
+    }
+    
+    if (indexPath.row == 5)
+    {
+        DashboardUVExposure* cell = (DashboardUVExposure*)[_cellList objectAtIndex:indexPath.row];
         height = @(cell.bounds.size.height);
     }
     
