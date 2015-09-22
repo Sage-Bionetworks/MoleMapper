@@ -13,7 +13,6 @@
 @implementation DashboardActivityCompletionCell
 
 - (void)awakeFromNib {
-    
     NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
     NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
     float numb = 0.0;
@@ -29,6 +28,7 @@
     
     //_dbModel = [[DashboardModel alloc] init];
     _dateLbl.text = [self setDateLabelTextWithDate];
+   
 }
 
 //logic if is today or not

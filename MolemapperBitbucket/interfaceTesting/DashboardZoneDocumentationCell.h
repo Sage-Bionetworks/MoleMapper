@@ -25,7 +25,6 @@
 
 //@property DashboardModel* dbModel;
 @property BOOL isTimerInvalidated;
-
 -(void)setDataToProgressView:(CGFloat) progress;
 
 @end

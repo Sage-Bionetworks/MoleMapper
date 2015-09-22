@@ -27,12 +27,12 @@
     // Initialization code
     [self setupProgress];
     _isTimerInvalidated = YES;
-    _documentedZones.text = [NSString stringWithFormat:@"%@ Zones", [[DashboardModel sharedInstance] numberOfZonesDocumented]];
     [self initZonesDocumented];
 }
 
 - (void) initZonesDocumented
 {
+    
     _documentedZones.text = [NSString stringWithFormat:@"%@ Zones", [[DashboardModel sharedInstance] numberOfZonesDocumented]];
     
     _currentProgress = 0.0;

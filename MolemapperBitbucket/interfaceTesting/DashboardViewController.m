@@ -57,6 +57,12 @@
 {
     if ([_cellList count] > 0)
     {
+        for (int i = 0; i < [_cellList count]; ++i)
+        {
+            id data = [_cellList objectAtIndex:0];
+            data = nil;
+        }
+        
         [_cellList removeAllObjects];
     }
 

@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/KLCPopup" "${PODS_ROOT}/Headers/Public/NSString-Hashes" "${PODS_ROOT}/Headers/Public/ResearchKit" "${PODS_ROOT}/Headers/Public/zipzap"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/KLCPopup" "${PODS_ROOT}/Headers/Public/NSString-Hashes" "${PODS_ROOT}/Headers/Public/ResearchKit" "${PODS_ROOT}/Headers/Public/zipzap"
 OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/KLCPopup" -isystem "${PODS_ROOT}/Headers/Public/NSString-Hashes" -isystem "${PODS_ROOT}/Headers/Public/ResearchKit" -isystem "${PODS_ROOT}/Headers/Public/zipzap"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-AFNetworking" -l"Pods-KLCPopup" -l"Pods-NSString-Hashes" -l"Pods-ResearchKit" -l"Pods-zipzap" -l"z" -framework "CoreGraphics" -framework "Foundation" -framework "ImageIO" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
+OTHER_LDFLAGS = -ObjC -l"Pods-AFNetworking" -l"Pods-KLCPopup" -l"Pods-NSString-Hashes" -l"Pods-ResearchKit" -l"Pods-zipzap" -l"z" -framework "CoreGraphics" -framework "Foundation" -framework "ImageIO" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods
