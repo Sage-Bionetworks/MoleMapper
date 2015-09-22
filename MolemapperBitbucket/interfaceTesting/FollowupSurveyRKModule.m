@@ -67,7 +67,7 @@
     NSMutableArray *followupItems = [NSMutableArray new];
     ORKFormStep *followupInfo =
     [[ORKFormStep alloc] initWithIdentifier:@"followupInfo"
-                                      title:@"Monthly Followup Questions"
+                                      title:@""
                                        text:@""];
     
     ORKAnswerFormat *tan = [ORKAnswerFormat booleanAnswerFormat];
@@ -175,22 +175,31 @@
     date = [self iso8601stringFromDate:endDate];
     [parsedData setValue:date forKey:@"date"];
     
-    ORKCollectionResult *firstResult = (ORKCollectionResult *)taskResult.results[0];
-    NSArray *questionResults = firstResult.results;
-    for (ORKBooleanQuestionResult *questionResult in questionResults)
+    NSArray *firstLevelResults = taskResult.results;
+    for (ORKCollectionResult *firstLevel in firstLevelResults)
     {
-        NSString *label = questionResult.identifier;
-        //1 for yes, 0 for no, BridgeServer schema is expecting an int here
-        NSNumber *booleanValue = ([questionResult.booleanAnswer isEqual:@1]) ? @1 : @0;
+        if ([firstLevel.identifier isEqualToString:@"intro"])
+        {
+            NSLog(@"Processing intro here");
+            continue;
+        }
+        else if ([firstLevel.identifier isEqualToString:@"followupInfo"])
+        {
+            for (ORKBooleanQuestionResult *questionResult in firstLevel.results)
+            {
+                NSString *label = questionResult.identifier;
+                //1 for yes, 0 for no, BridgeServer schema is expecting an int here
+                NSNumber *booleanValue = ([questionResult.booleanAnswer isEqual:@1]) ? @1 : @0;
         
-        if ([label isEqualToString:@"tan"])             {[parsedData setValue:booleanValue forKey:@"tan"];}
-        else if ([label isEqualToString:@"burn"])       {[parsedData setValue:booleanValue forKey:@"sunburn"];}
-        else if ([label isEqualToString:@"sunscreen"])  {[parsedData setValue:booleanValue forKey:@"sunscreen"];}
-        else if ([label isEqualToString:@"sick"])       {[parsedData setValue:booleanValue forKey:@"sick"];}
-        else if ([label isEqualToString:@"removed"])    {[parsedData setValue:booleanValue forKey:@"moleRemoved"];}
-        else {NSLog(@"in followup survey results, found an unexpected answer format identifier!: %@",label);}
+                if ([label isEqualToString:@"tan"])             {[parsedData setValue:booleanValue forKey:@"tan"];}
+                else if ([label isEqualToString:@"burn"])       {[parsedData setValue:booleanValue forKey:@"sunburn"];}
+                else if ([label isEqualToString:@"sunscreen"])  {[parsedData setValue:booleanValue forKey:@"sunscreen"];}
+                else if ([label isEqualToString:@"sick"])       {[parsedData setValue:booleanValue forKey:@"sick"];}
+                else if ([label isEqualToString:@"removed"])    {[parsedData setValue:booleanValue forKey:@"moleRemoved"];}
+                else {NSLog(@"in followup survey results, found an unexpected answer format identifier!: %@",label);}
+            }
+        }
     }
-
     return parsedData;
 }
 
