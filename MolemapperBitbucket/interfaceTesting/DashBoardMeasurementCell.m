@@ -23,7 +23,16 @@
     _viewMoleBtn.layer.cornerRadius = 5; // this value vary as per your desire
     _viewMoleBtn.clipsToBounds = YES;
     
-    }
+    float lastFloat = ceilf([[[DashboardModel sharedInstance] sizeOfBiggestMole] floatValue]);
+    _offset = lastFloat / 5.0f;
+    
+    _secondLabel.text = [NSString stringWithFormat:@"%2.1f", _offset];
+    _thirdLabel.text = [NSString stringWithFormat:@"%2.1f", _offset * 2];
+    _forthLabel.text = [NSString stringWithFormat:@"%2.1f", _offset * 3];
+    _fifthLabel.text = [NSString stringWithFormat:@"%2.1f", _offset * 4];
+    _sixthLabel.text = [NSString stringWithFormat:@"%2.1f", lastFloat];
+}
+
 
 - (void)setupLabels
 {
@@ -75,24 +84,14 @@
     {
         [[_dotSubviews objectAtIndex:i] removeFromSuperview];
     }
-    //debug version
-    /*NSArray* dotsArray = [NSArray arrayWithObjects:
-                          [NSNumber numberWithFloat:0.3],
-                          [NSNumber numberWithFloat:1.1],
-                          [NSNumber numberWithFloat:3.3],
-                          [NSNumber numberWithFloat:2.9],
-                          [NSNumber numberWithFloat:4.9],
-                          [NSNumber numberWithFloat:4.5],
-                          [NSNumber numberWithFloat:6.1],
-                          [NSNumber numberWithFloat:6.2],
-                          [NSNumber numberWithFloat:9.4],
-                          nil];*/
     
-    float multiplier = _lineOfMeasurement.bounds.size.width / 10;
+    float lastFloat = ceilf([[[DashboardModel sharedInstance] sizeOfBiggestMole] floatValue]);
+    float multiplier = _lineOfMeasurement.bounds.size.width / lastFloat;
+    //multiplier = multiplier / (_offset * 10);
     //[NSNumber numberWithFloat: myfloatvalue];
     for (int i = 0; i < [dotsArray count]; ++i)
     {
-        NSInteger posx = [[dotsArray objectAtIndex:i] floatValue] * multiplier;
+        NSInteger posx = 10 + [[dotsArray objectAtIndex:i] floatValue] * multiplier;
         UIImageView *myImage = [[UIImageView alloc] initWithFrame:CGRectMake(posx, 95, 3, 3)];
         myImage.image = [UIImage imageNamed:@"dot.png"];
         [_dotSubviews addObject:myImage];

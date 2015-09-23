@@ -18,10 +18,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *biggestMoleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locatedMoleLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *secondLabel;
+@property (strong, nonatomic) IBOutlet UILabel *thirdLabel;
+@property (strong, nonatomic) IBOutlet UILabel *forthLabel;
+@property (strong, nonatomic) IBOutlet UILabel *fifthLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sixthLabel;
+
 - (IBAction)presentMoleViewController:(UIButton *)sender;
 
 @property DashboardViewController* dashBoardViewController;
 @property NSMutableArray *dotSubviews;
+@property float offset;
 
 //@property DashboardModel* dbModel;
 

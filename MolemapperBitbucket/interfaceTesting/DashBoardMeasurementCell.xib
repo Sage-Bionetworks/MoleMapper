@@ -58,32 +58,26 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fi-a9-ffv" userLabel="2">
-                        <rect key="frame" x="69" y="120" width="14" height="14"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3Z-70-pAd">
-                        <rect key="frame" x="128" y="120" width="14" height="14"/>
+                        <rect key="frame" x="118" y="120" width="30" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZy-V7-dfB">
-                        <rect key="frame" x="187" y="120" width="14" height="14"/>
+                        <rect key="frame" x="175" y="120" width="30" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJR-nS-bBr">
-                        <rect key="frame" x="246" y="120" width="14" height="14"/>
+                        <rect key="frame" x="231" y="120" width="30" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4n-B3-Uwr">
-                        <rect key="frame" x="294" y="120" width="16" height="14"/>
+                        <rect key="frame" x="282" y="120" width="30" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -94,14 +88,25 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="77.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fi-a9-ffv" userLabel="2">
+                        <rect key="frame" x="62" y="120" width="29" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="biggestMoleLabel" destination="Xef-KW-MWk" id="hzV-b0-lLi"/>
+                <outlet property="fifthLabel" destination="OJR-nS-bBr" id="CnQ-6i-gcC"/>
+                <outlet property="forthLabel" destination="BZy-V7-dfB" id="v2n-uo-SgZ"/>
                 <outlet property="header" destination="CyW-Ju-QP9" id="EjJ-M5-Yyh"/>
                 <outlet property="headerTitle" destination="HZH-9E-Xy5" id="9zr-BK-Aj5"/>
                 <outlet property="lineOfMeasurement" destination="lWR-Lz-P36" id="gud-n2-ox4"/>
                 <outlet property="locatedMoleLabel" destination="944-Mr-i8D" id="YBh-iR-vCz"/>
+                <outlet property="secondLabel" destination="7Fi-a9-ffv" id="dmT-Hd-Lbx"/>
+                <outlet property="sixthLabel" destination="z4n-B3-Uwr" id="Db5-Pl-FzC"/>
+                <outlet property="thirdLabel" destination="r3Z-70-pAd" id="fhV-ej-MwW"/>
                 <outlet property="viewMoleBtn" destination="KJI-zD-dms" id="Qtv-3q-LRi"/>
             </connections>
             <point key="canvasLocation" x="584" y="374"/>

@@ -18,25 +18,29 @@
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BNQ-8y-xr1" userLabel="Header">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UV Exposure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-tW-P3P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UV Index In Your Area" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFO-tW-P3P">
                                 <rect key="frame" x="0.0" y="21" width="320" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.6705882353" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zm9-jc-8aa">
+                                <rect key="frame" x="278" y="22" width="22" height="22"/>
+                                <color key="tintColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2c-KC-mne" userLabel="ChartView" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="20" y="100" width="281" height="206"/>
+                        <rect key="frame" x="8" y="84" width="304" height="222"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="i2c-KC-mne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="92" id="0tk-4g-NGA"/>
+                    <constraint firstItem="i2c-KC-mne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="76" id="0tk-4g-NGA"/>
                     <constraint firstAttribute="bottomMargin" secondItem="i2c-KC-mne" secondAttribute="bottom" id="6vz-tc-vp9"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="i2c-KC-mne" secondAttribute="trailing" constant="11" id="Of7-5X-pZT"/>
-                    <constraint firstItem="i2c-KC-mne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="uwJ-Ap-Zue"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="i2c-KC-mne" secondAttribute="trailing" id="Of7-5X-pZT"/>
+                    <constraint firstItem="i2c-KC-mne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="uwJ-Ap-Zue"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -44,7 +48,7 @@
                 <outlet property="header" destination="BNQ-8y-xr1" id="1mA-hc-FbU"/>
                 <outlet property="headerTitle" destination="HFO-tW-P3P" id="NCY-wN-pRd"/>
             </connections>
-            <point key="canvasLocation" x="568" y="296.5"/>
+            <point key="canvasLocation" x="588" y="401.5"/>
         </tableViewCell>
     </objects>
 </document>

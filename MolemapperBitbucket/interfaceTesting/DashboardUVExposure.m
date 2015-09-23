@@ -32,7 +32,7 @@
     }
     else
     {
-        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
                                                             message:@"To re-enable, please go to Settings and turn on Location Service for this app."
                                                            delegate:nil
@@ -40,12 +40,7 @@
                                                   otherButtonTitles:nil];
             [alert show];
         }
-
     }
-    
-    
-    
-    // Configure the view for the selected state
 }
 
 -(void) getUVJsonDataByZipCode
@@ -77,7 +72,6 @@
     _chartView.dragEnabled = NO;
     [_chartView setScaleEnabled:NO];
     _chartView.pinchZoomEnabled = NO;
-    //_chartView.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _chartView.drawGridBackgroundEnabled = YES;
     _chartView.gridBackgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     
@@ -92,13 +86,12 @@
     
     ChartXAxis *xAxis = _chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
-    xAxis.labelFont = [UIFont systemFontOfSize:8.f];
+    xAxis.labelFont = [UIFont systemFontOfSize:6.f];
     xAxis.drawGridLinesEnabled = YES;
     xAxis.spaceBetweenLabels = 2.0;
     
     _chartView.rightAxis.enabled = NO;
 
-    
     [self setDataCount];
     [_chartView animateWithXAxisDuration:0.0 yAxisDuration:3.0];
 }
@@ -122,17 +115,14 @@
     }
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
-    //NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < 8; i++)
     {
         int val = (int)[self getUVBasedIndex:i + startPos];
         [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-        //[yVals2 addObject:[[ChartDataEntry alloc] initWithValue:0 xIndex:i]];
     }
     
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
-    //LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithYVals:yVals2 label:@""];
     
     set1.lineDashLengths = @[@1.f, @1.0f];
     [set1 setColor:UIColor.whiteColor];
@@ -147,24 +137,9 @@
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:set1];
     
-    /*set2.lineDashLengths = @[@0.f, @0.0f];
-    [set2 setColor:UIColor.whiteColor];
-    [set2 setCircleColor:[[DashboardModel sharedInstance] getColorForDashboardTextAndButtons]];
-    set2.lineWidth = 0.0;
-    set2.circleRadius = 3.0;
-    set2.drawCircleHoleEnabled = YES;
-    set2.valueFont = [UIFont systemFontOfSize:0.f];
-    set2.fillAlpha = 255/255.0;
-    set2.fillColor = UIColor.blackColor;
-    
-    NSMutableArray *dataSets2 = [[NSMutableArray alloc] init];
-    [dataSets addObject:set2];*/
-    
     LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
-    //LineChartData *data2 = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets2];
-    
+
     _chartView.data = data;
-    //_chartView.data = data2;
 }
 
 -(int) getUVBasedIndex: (int) idx
