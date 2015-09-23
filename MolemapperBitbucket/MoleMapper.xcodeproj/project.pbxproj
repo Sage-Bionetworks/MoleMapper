@@ -51,7 +51,6 @@
 		4BFF616B1BAC992100FE7853 /* ExternalIDRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF61661BAC992100FE7853 /* ExternalIDRKModule.m */; settings = {ASSET_TAGS = (); }; };
 		4BFF616C1BAC992100FE7853 /* ReviewConsentOnlyRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF61681BAC992100FE7853 /* ReviewConsentOnlyRKModule.m */; settings = {ASSET_TAGS = (); }; };
 		4BFF616D1BAC992100FE7853 /* SharingOptionsOnlyRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF616A1BAC992100FE7853 /* SharingOptionsOnlyRKModule.m */; settings = {ASSET_TAGS = (); }; };
-		4BFF616F1BAC99D000FE7853 /* InformationSheetWOM_2015_09_16.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4BFF616E1BAC99D000FE7853 /* InformationSheetWOM_2015_09_16.pdf */; settings = {ASSET_TAGS = (); }; };
 		4BFF61721BAC9A5F00FE7853 /* PDFViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF61711BAC9A5F00FE7853 /* PDFViewerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4BFF61851BAC9BFE00FE7853 /* APCJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF61771BAC9BFE00FE7853 /* APCJSONSerializer.m */; settings = {ASSET_TAGS = (); }; };
 		4BFF61861BAC9BFE00FE7853 /* BlockOfTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF61791BAC9BFE00FE7853 /* BlockOfTextViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -62,7 +61,6 @@
 		E604453818568AFA00AD75A1 /* StatisticsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E604453718568AFA00AD75A1 /* StatisticsTVC.m */; };
 		E604CD2619532D4500651A66 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = E604CD2519532D4500651A66 /* SMCalloutView.m */; };
 		E60FC7921A12F5AB0036369F /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = E60FC7911A12F5AB0036369F /* CMPopTipView.m */; };
-		E61A5CB21995860300DAC053 /* measurementHelpMovie.mov in Resources */ = {isa = PBXBuildFile; fileRef = E61A5CB11995860300DAC053 /* measurementHelpMovie.mov */; };
 		E61B0A521874F6E20081FFA5 /* ReferenceConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = E61B0A511874F6E20081FFA5 /* ReferenceConverter.m */; };
 		E61B0A581875E1530081FFA5 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = E61B0A571875E1530081FFA5 /* Measurement.m */; };
 		E61E726C1760EA3300DBB216 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E726B1760EA3300DBB216 /* MobileCoreServices.framework */; };
@@ -101,7 +99,6 @@
 		E6883BA01B95E3AB00F5A9A5 /* APCDataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B9D1B95E3AB00F5A9A5 /* APCDataUploader.m */; };
 		E6883BA41B95E65000F5A9A5 /* APCCMS.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883BA31B95E65000F5A9A5 /* APCCMS.m */; };
 		E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */ = {isa = PBXBuildFile; fileRef = E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */; };
-		E6883BA81B969D5E00F5A9A5 /* bodyMap.png in Resources */ = {isa = PBXBuildFile; fileRef = E6883BA71B969D5E00F5A9A5 /* bodyMap.png */; };
 		E688C92E186A049500E70BBA /* ReferenceSetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */; };
 		E691FE5A187A560300028548 /* learnMoreViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = E691FE59187A560300028548 /* learnMoreViewContoller.m */; };
 		E6944602198B130E003DD7BD /* HelpMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6944601198B130E003DD7BD /* HelpMovieViewController.m */; };
@@ -329,7 +326,6 @@
 		4BFF61681BAC992100FE7853 /* ReviewConsentOnlyRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewConsentOnlyRKModule.m; sourceTree = "<group>"; };
 		4BFF61691BAC992100FE7853 /* SharingOptionsOnlyRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharingOptionsOnlyRKModule.h; sourceTree = "<group>"; };
 		4BFF616A1BAC992100FE7853 /* SharingOptionsOnlyRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharingOptionsOnlyRKModule.m; sourceTree = "<group>"; };
-		4BFF616E1BAC99D000FE7853 /* InformationSheetWOM_2015_09_16.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = InformationSheetWOM_2015_09_16.pdf; sourceTree = "<group>"; };
 		4BFF61701BAC9A5F00FE7853 /* PDFViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewerViewController.h; sourceTree = "<group>"; };
 		4BFF61711BAC9A5F00FE7853 /* PDFViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewerViewController.m; sourceTree = "<group>"; };
 		4BFF61761BAC9BFE00FE7853 /* APCJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCJSONSerializer.h; sourceTree = "<group>"; };
@@ -352,7 +348,6 @@
 		E604CD2519532D4500651A66 /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
 		E60FC7901A12F5AB0036369F /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		E60FC7911A12F5AB0036369F /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
-		E61A5CB11995860300DAC053 /* measurementHelpMovie.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = measurementHelpMovie.mov; sourceTree = "<group>"; };
 		E61B0A501874F6E20081FFA5 /* ReferenceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceConverter.h; sourceTree = "<group>"; };
 		E61B0A511874F6E20081FFA5 /* ReferenceConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceConverter.m; sourceTree = "<group>"; };
 		E61B0A561875E1530081FFA5 /* Measurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Measurement.h; sourceTree = "<group>"; };
@@ -423,7 +418,6 @@
 		E6883BA21B95E65000F5A9A5 /* APCCMS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCCMS.h; sourceTree = "<group>"; };
 		E6883BA31B95E65000F5A9A5 /* APCCMS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCCMS.m; sourceTree = "<group>"; };
 		E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roundedRectButtonBackground3.png; path = moleMapper.xcassets/roundedRectButtonBackground3.imageset/roundedRectButtonBackground3.png; sourceTree = "<group>"; };
-		E6883BA71B969D5E00F5A9A5 /* bodyMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyMap.png; sourceTree = "<group>"; };
 		E688C92C186A049500E70BBA /* ReferenceSetterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceSetterViewController.h; sourceTree = "<group>"; };
 		E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceSetterViewController.m; sourceTree = "<group>"; };
 		E691FE58187A560300028548 /* learnMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = learnMoreViewController.h; sourceTree = "<group>"; };
@@ -482,9 +476,6 @@
 		E6FDF8791B89922C00EE7037 /* secureDatabase@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "secureDatabase@2x.m4v"; sourceTree = "<group>"; };
 		E6FDF87A1B89922C00EE7037 /* visitingDoctor@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "visitingDoctor@2x.m4v"; sourceTree = "<group>"; };
 		E6FDF87B1B89922C00EE7037 /* recontact@2x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "recontact@2x.m4v"; sourceTree = "<group>"; };
-		E6FDF87C1B89923600EE7037 /* secureDatabase@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "secureDatabase@3x.m4v"; sourceTree = "<group>"; };
-		E6FDF87D1B89923600EE7037 /* visitingDoctor@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "visitingDoctor@3x.m4v"; sourceTree = "<group>"; };
-		E6FDF87E1B89923600EE7037 /* recontact@3x.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "recontact@3x.m4v"; sourceTree = "<group>"; };
 		E6FDF87F1B8AC52600EE7037 /* UIAlertController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Helper.h"; sourceTree = "<group>"; };
 		E6FDF8801B8AC52600EE7037 /* UIAlertController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Helper.m"; sourceTree = "<group>"; };
 		E6FDF8821B8AD47000EE7037 /* ThankYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThankYouViewController.h; sourceTree = "<group>"; };
@@ -952,18 +943,12 @@
 		E6F93E8A16DB273B0068B7B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4BFF616E1BAC99D000FE7853 /* InformationSheetWOM_2015_09_16.pdf */,
 				4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */,
 				E6FDF8951B8B2EFC00EE7037 /* ohsu-molemapper.pem */,
 				E6FDF8791B89922C00EE7037 /* secureDatabase@2x.m4v */,
 				E6FDF87A1B89922C00EE7037 /* visitingDoctor@2x.m4v */,
 				E6FDF87B1B89922C00EE7037 /* recontact@2x.m4v */,
-				E6FDF87C1B89923600EE7037 /* secureDatabase@3x.m4v */,
-				E6FDF87D1B89923600EE7037 /* visitingDoctor@3x.m4v */,
-				E6FDF87E1B89923600EE7037 /* recontact@3x.m4v */,
 				E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */,
-				E6883BA71B969D5E00F5A9A5 /* bodyMap.png */,
-				E61A5CB11995860300DAC053 /* measurementHelpMovie.mov */,
 				E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */,
 				E6F93E8B16DB273B0068B7B6 /* MoleMapper-Info.plist */,
 				E6F93E8C16DB273B0068B7B6 /* InfoPlist.strings */,
@@ -1158,9 +1143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6FDF8F61B91632900EE7037 /* secureDatabase@2x.m4v in Resources */,
-				4BFF616F1BAC99D000FE7853 /* InformationSheetWOM_2015_09_16.pdf in Resources */,
 				4B99E0D51BA9F575005B3B50 /* moleMapper.xcassets in Resources */,
-				E6883BA81B969D5E00F5A9A5 /* bodyMap.png in Resources */,
 				E6FDF8F71B91632900EE7037 /* visitingDoctor@2x.m4v in Resources */,
 				4B04CF991BA9A577000C05AB /* PopupView.xib in Resources */,
 				E6FDF8F81B91632900EE7037 /* recontact@2x.m4v in Resources */,
@@ -1179,7 +1162,6 @@
 				4B6DB7AB1BA977AE000EE645 /* DashBoardMeasurementCell.xib in Resources */,
 				E65F29881972C421000F90BB /* appIcon.xcassets in Resources */,
 				E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */,
-				E61A5CB21995860300DAC053 /* measurementHelpMovie.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
