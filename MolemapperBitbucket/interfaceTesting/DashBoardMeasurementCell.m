@@ -31,8 +31,23 @@
     _forthLabel.text = [NSString stringWithFormat:@"%2.1f", _offset * 3];
     _fifthLabel.text = [NSString stringWithFormat:@"%2.1f", _offset * 4];
     _sixthLabel.text = [NSString stringWithFormat:@"%2.1f", lastFloat];
+    
+    float half = _secondLabel.bounds.size.width;
+    _secondLabel.frame = [self getPositionOfLabels:lastFloat offsetFloat:_offset withHalfOfLabel:half withLabel:_secondLabel];
+    _thirdLabel.frame = [self getPositionOfLabels:lastFloat offsetFloat:_offset * 2 withHalfOfLabel:half withLabel:_thirdLabel];
+    _forthLabel.frame = [self getPositionOfLabels:lastFloat offsetFloat:_offset * 3 withHalfOfLabel:half withLabel:_forthLabel];
+    _fifthLabel.frame = [self getPositionOfLabels:lastFloat offsetFloat:_offset * 4 withHalfOfLabel:half withLabel:_fifthLabel];
+    _sixthLabel.frame = [self getPositionOfLabels:lastFloat offsetFloat:lastFloat withHalfOfLabel:half withLabel:_sixthLabel];
 }
 
+-(CGRect) getPositionOfLabels: (float) biggestFloat offsetFloat: (float) offset withHalfOfLabel: (float) half withLabel:(UILabel*) label
+{
+    float multiplier = _lineOfMeasurement.bounds.size.width / biggestFloat;
+    NSInteger posx = _lineOfMeasurement.bounds.origin.x + offset * multiplier;
+    CGRect rect = label.frame;
+    rect.origin.x = posx;
+    return rect;
+}
 
 - (void)setupLabels
 {
@@ -91,7 +106,7 @@
     //[NSNumber numberWithFloat: myfloatvalue];
     for (int i = 0; i < [dotsArray count]; ++i)
     {
-        NSInteger posx = 10 + [[dotsArray objectAtIndex:i] floatValue] * multiplier;
+        NSInteger posx = _lineOfMeasurement.bounds.origin.x + [[dotsArray objectAtIndex:i] floatValue] * multiplier;
         UIImageView *myImage = [[UIImageView alloc] initWithFrame:CGRectMake(posx, 95, 3, 3)];
         myImage.image = [UIImage imageNamed:@"dot.png"];
         [_dotSubviews addObject:myImage];
