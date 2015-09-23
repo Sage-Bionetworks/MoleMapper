@@ -9,11 +9,6 @@
 #import "DashboardUVExposure.h"
 #import "DashboardModel.h"
 #import "PopupManager.h"
-#import <AddressBookUI/AddressBookUI.h>
-#import <CoreLocation/CLGeocoder.h>
-#import <CoreLocation/CLPlacemark.h>
-#import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
 
 
 @implementation DashboardUVExposure
@@ -27,40 +22,35 @@
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
     [self setupLocationService];
-    //[self getUVJsonDataByZipCode];
 }
 
-- (NSString*)reverseGeocodeLocation:(CLLocation *)location
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    __block NSString *ppostalCode = @"";
-    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-    [geoCoder reverseGeocodeLocation:self.locationManager.location // You can pass aLocation here instead
-                   completionHandler:^(NSArray *placemarks, NSError *error) {
-                       
-                       dispatch_async(dispatch_get_main_queue(),^ {
-                           // do stuff with placemarks on the main thread
-                           
-                           
-                               
-                               CLPlacemark *place = [placemarks objectAtIndex:0];
-                               // NSLog([place postalCode]);
-                               NSString* addressString1 = [place thoroughfare];
-                               addressString1 = [addressString1 stringByAppendingString:[NSString stringWithFormat:@"%@",[place.addressDictionary objectForKey:(NSString*)kABPersonAddressZIPKey]]];//
-                               
-                               ppostalCode = [NSString stringWithFormat:@"%@",place.postalCode];
-                               NSLog(@"%@",addressString1);// is null ??
-                               NSLog(@"%@",place.postalCode);//is null ??
-                               
-                               //[self performSelectorInBackground:@selector(log) withObject:nil];
-                           
-                           
-                       });
-                   }];
+    [_locationManager stopUpdatingLocation];
     
-    return ppostalCode;
+    NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
+    NSLog(@"%@",theLocation);
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder reverseGeocodeLocation:_locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if(error){
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        
+        CLPlacemark *placemark = [placemarks lastObject];
+        NSLog(@"%@", placemark.postalCode);
+        
+        [self getUVJsonDataWithZipCode:placemark.postalCode];
+    }];
 }
+
 -(void)setupLocationService
 {
+    self.locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //[_locationManager startUpdatingLocation];
+    
     if (self.locationManager==nil) {
         self.locationManager = [[CLLocationManager alloc]init];
     }
@@ -73,8 +63,13 @@
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
         {
             [self.locationManager requestAlwaysAuthorization];
-            [self getUVJsonDataByZipCode];
+            //[self getUVJsonDataByZipCode];
         }
+    }
+    
+    if (status == kCLAuthorizationStatusAuthorizedAlways)
+    {
+        //[self getUVJsonDataByZipCode];
     }
     
     
@@ -92,32 +87,22 @@
     }
 }
 
-/*-(NSString *)getAddressFromLatLon:(double)pdblLatitude withLongitude:(double)pdblLongitude
- {
- NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%f,%f&output=csv",pdblLatitude, pdblLongitude];
- NSError* error;
- NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSASCIIStringEncoding error:&error];
- // NSLog(@"%@",locationString);
- 
- locationString = [locationString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
- return [locationString substringFromIndex:6];
- }*/
 
--(void) getUVJsonDataByZipCode
+-(void) getUVJsonDataWithZipCode: (NSString*) zipCode
 {
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+   /* CLLocationManager *locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = kCLDistanceFilterNone;
-    [locationManager startUpdatingLocation];
+    [locationManager startUpdatingLocation];*/
     //CLLocation *location = [locationManager location];
     //NSString* zipCode = [self reverseGeocodeLocation:locationManager.location];
     
-    //NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+    NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
     
-    NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+    //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
     
-    //NSURL * url = [[NSURL alloc] initWithString:urlString];
+    NSURL * url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
     @try
@@ -145,19 +130,6 @@
         [alertView show];
     }
 }
-
-/*- (CLLocationCoordinate2D) getLocation{
- CLLocationManager *locationManager = [[CLLocationManager alloc] init];
- locationManager.delegate = self;
- locationManager.desiredAccuracy = kCLLocationAccuracyBest;
- locationManager.distanceFilter = kCLDistanceFilterNone;
- [locationManager startUpdatingLocation];
- CLLocation *location = [locationManager location];
- //[self reverseGeocodeLocation: location];
- CLLocationCoordinate2D coordinate = [location coordinate];
- 
- return coordinate;
- }*/
 
 -(void)setupChartView
 {
