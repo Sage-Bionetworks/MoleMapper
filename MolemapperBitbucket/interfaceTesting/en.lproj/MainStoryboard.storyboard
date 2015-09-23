@@ -31,9 +31,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="5eF-NK-ORa" secondAttribute="bottom" constant="44" id="jVP-Ec-az5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mole Map" image="moleMapSelected" id="KFT-Uo-C9o">
-                        <inset key="imageInsets" minX="3" minY="4" maxX="3" maxY="4"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Mole Map" image="moleMapUnselected" selectedImage="moleMapSelected" id="KFT-Uo-C9o"/>
                     <navigationItem key="navigationItem" id="Nck-qm-ows">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="jRp-By-RQ9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bDt-RQ-7pD">
@@ -260,9 +258,7 @@
                             <outlet property="delegate" destination="RRd-Pw-e8I" id="1aN-Gh-hYA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Learn More" image="learnMoreSelected" id="VDa-hu-0Me">
-                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Learn More" image="learnMoreUnselected" selectedImage="learnMoreSelected" id="VDa-hu-0Me"/>
                     <navigationItem key="navigationItem" id="M2p-OZ-Y6o"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgw-pF-za7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1563,9 +1559,7 @@ Altruistic code-sharing by Chris Miles </string>
         <scene sceneID="Xy5-au-TcB">
             <objects>
                 <navigationController id="caK-Wl-T6W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profileSelected" id="ewF-dv-X5j">
-                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileUnselected" selectedImage="profileSelected" id="ewF-dv-X5j"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aTl-qG-BZv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2118,9 +2112,7 @@ Altruistic code-sharing by Chris Miles </string>
         <scene sceneID="ZW8-5K-CIZ">
             <objects>
                 <navigationController storyboardIdentifier="bodyMapBase" definesPresentationContext="YES" id="aVk-gy-KeW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mole Map" image="moleMapSelected" id="krT-5h-fds">
-                        <inset key="imageInsets" minX="3" minY="4" maxX="3" maxY="4"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Mole Map" id="krT-5h-fds"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wjA-5B-bee">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2200,9 +2192,7 @@ Altruistic code-sharing by Chris Miles </string>
                             <constraint firstAttribute="bottom" secondItem="gpl-on-v9e" secondAttribute="bottom" id="n6k-3A-1Ub"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboardSelected" id="j0B-iQ-yr8">
-                        <inset key="imageInsets" minX="5" minY="4" maxX="5" maxY="4"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboardUnselected" selectedImage="dashboardSelected" id="j0B-iQ-yr8"/>
                     <navigationItem key="navigationItem" id="FPL-Yh-ujm"/>
                     <connections>
                         <outlet property="tableView" destination="gpl-on-v9e" id="coC-VM-o7b"/>
@@ -2218,15 +2208,19 @@ Altruistic code-sharing by Chris Miles </string>
         <image name="Map-Marker.png" width="16" height="20"/>
         <image name="Stack.png" width="16" height="23"/>
         <image name="barButtonSettings" width="42" height="42"/>
-        <image name="dashboardSelected" width="55" height="40"/>
+        <image name="dashboardSelected" width="25" height="25"/>
+        <image name="dashboardUnselected" width="25" height="25"/>
         <image name="dec-normal.png" width="67" height="80"/>
         <image name="dn-normal.png" width="80" height="64"/>
         <image name="inc-normal.png" width="67" height="80"/>
-        <image name="learnMoreSelected" width="47" height="40"/>
+        <image name="learnMoreSelected" width="25" height="25"/>
+        <image name="learnMoreUnselected" width="25" height="25"/>
         <image name="lt-normal.png" width="64" height="80"/>
-        <image name="moleMapSelected" width="28" height="40"/>
+        <image name="moleMapSelected" width="25" height="25"/>
+        <image name="moleMapUnselected" width="25" height="25"/>
         <image name="ohsuLogoTVC" width="75" height="75"/>
-        <image name="profileSelected" width="40" height="40"/>
+        <image name="profileSelected" width="25" height="25"/>
+        <image name="profileUnselected" width="25" height="25"/>
         <image name="roundedRectButtonBackground3.png" width="585" height="126"/>
         <image name="rt-normal.png" width="64" height="80"/>
         <image name="tvc_credits" width="150" height="150"/>
@@ -2237,8 +2231,8 @@ Altruistic code-sharing by Chris Miles </string>
         <image name="up-normal.png" width="80" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Va-Ir-QxI"/>
-        <segue reference="cDv-kA-7Vi"/>
+        <segue reference="LrF-aI-9pc"/>
+        <segue reference="BBr-84-rPS"/>
         <segue reference="S2T-Mw-bSz"/>
     </inferredMetricsTieBreakers>
 </document>

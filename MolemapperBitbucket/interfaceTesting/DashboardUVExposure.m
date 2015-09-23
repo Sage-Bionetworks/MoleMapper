@@ -40,7 +40,7 @@
                        dispatch_async(dispatch_get_main_queue(),^ {
                            // do stuff with placemarks on the main thread
                            
-                           if (placemarks.count == 1) {
+                           
                                
                                CLPlacemark *place = [placemarks objectAtIndex:0];
                                // NSLog([place postalCode]);
@@ -52,7 +52,7 @@
                                NSLog(@"%@",place.postalCode);//is null ??
                                
                                //[self performSelectorInBackground:@selector(log) withObject:nil];
-                           }
+                           
                            
                        });
                    }];
@@ -110,14 +110,14 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     [locationManager startUpdatingLocation];
-    CLLocation *location = [locationManager location];
-    NSString* zipCode = [self reverseGeocodeLocation:location];
+    //CLLocation *location = [locationManager location];
+    //NSString* zipCode = [self reverseGeocodeLocation:locationManager.location];
     
-    NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+    //NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
     
-    //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+    NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
     
-    NSURL * url = [[NSURL alloc] initWithString:urlString];
+    //NSURL * url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
     @try

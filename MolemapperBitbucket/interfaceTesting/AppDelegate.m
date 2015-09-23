@@ -76,7 +76,7 @@
 -(void)setOnboardingBooleansBackToInitialValues
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:YES forKey:@"shouldShowIntroAndEligible"];
+    [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
     [ud setBool:NO forKey:@"shouldShowConsent"];
