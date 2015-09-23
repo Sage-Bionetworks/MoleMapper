@@ -39,6 +39,8 @@
 		4B7FCE981BAA34820064DEB6 /* DashboardSizeOvertimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7FCE961BAA34820064DEB6 /* DashboardSizeOvertimeCell.m */; settings = {ASSET_TAGS = (); }; };
 		4B7FCE991BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7FCE971BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4B99E0D51BA9F575005B3B50 /* moleMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */; settings = {ASSET_TAGS = (); }; };
+		4B9EB56A1BB2802800560AC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9EB5691BB2802800560AC5 /* CoreLocation.framework */; };
+		4B9EB5771BB2802D00560AC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9EB5761BB2802D00560AC5 /* MapKit.framework */; };
 		4BC594DE1BAAD18E00255F6F /* AnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC594DD1BAAD18E00255F6F /* AnimationManager.m */; settings = {ASSET_TAGS = (); }; };
 		4BC88CE71BB1463000687E68 /* DashboardUVExposure.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */; settings = {ASSET_TAGS = (); }; };
 		4BC88CE81BB1463000687E68 /* DashboardUVExposure.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */; settings = {ASSET_TAGS = (); }; };
@@ -305,6 +307,8 @@
 		4B7FCE961BAA34820064DEB6 /* DashboardSizeOvertimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardSizeOvertimeCell.m; sourceTree = "<group>"; };
 		4B7FCE971BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardSizeOvertimeCell.xib; sourceTree = "<group>"; };
 		4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = moleMapper.xcassets; sourceTree = "<group>"; };
+		4B9EB5691BB2802800560AC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4B9EB5761BB2802D00560AC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4BC594DC1BAAD18E00255F6F /* AnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationManager.h; sourceTree = "<group>"; };
 		4BC594DD1BAAD18E00255F6F /* AnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationManager.m; sourceTree = "<group>"; };
 		4BC88CE41BB1463000687E68 /* DashboardUVExposure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardUVExposure.h; sourceTree = "<group>"; };
@@ -501,6 +505,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B9EB5771BB2802D00560AC5 /* MapKit.framework in Frameworks */,
+				4B9EB56A1BB2802800560AC5 /* CoreLocation.framework in Frameworks */,
 				E6883B971B95DA9500F5A9A5 /* libc++.dylib in Frameworks */,
 				439C513F1BA3633100A09FE1 /* Charts.framework in Frameworks */,
 				E6FDF8F01B8BCF1F00EE7037 /* CMSSupport.framework in Frameworks */,
@@ -896,6 +902,8 @@
 		E6F93E8216DB273A0068B7B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B9EB5761BB2802D00560AC5 /* MapKit.framework */,
+				4B9EB5691BB2802800560AC5 /* CoreLocation.framework */,
 				E6883B961B95DA9500F5A9A5 /* libc++.dylib */,
 				E6FDF8E41B8BCEB400EE7037 /* openssl.xcodeproj */,
 				E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */,

@@ -36,7 +36,7 @@
     
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted)
     {
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+        /*if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
         {
             NSString *title;
             title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
@@ -60,21 +60,20 @@
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
             [alertView show];
-        }
+        }*/
     }
     else if (status == kCLAuthorizationStatusNotDetermined)
     {
          if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
          {
              [self.locationManager requestAlwaysAuthorization];
+             [self getUVJsonDataByZipCode];
          }
     }
+
     
-    if (status == kCLAuthorizationStatusAuthorizedAlways)
-    {
-        [self.locationManager startUpdatingLocation];
-        [self getUVJsonDataByZipCode];
-    }
+    [self.locationManager startUpdatingLocation];
+
 }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
