@@ -8,6 +8,7 @@
 
 #import "DashboardUVExposure.h"
 #import "DashboardModel.h"
+@import CoreLocation;
 
 @implementation DashboardUVExposure
 
@@ -15,6 +16,35 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     [self getUVJsonDataByZipCode];
+    
+    if([CLLocationManager locationServicesEnabled]){
+        
+        NSLog(@"Location Services Enabled");
+        
+        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
+                                               message:@"To re-enable, please go to Settings and turn on Location Service for this app."
+                                              delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    else
+    {
+        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
+                                                            message:@"To re-enable, please go to Settings and turn on Location Service for this app."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+
+    }
+    
+    
+    
     // Configure the view for the selected state
 }
 
@@ -37,6 +67,7 @@
 
 -(void)setupChartView
 {
+
     _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
@@ -46,11 +77,13 @@
     _chartView.dragEnabled = NO;
     [_chartView setScaleEnabled:NO];
     _chartView.pinchZoomEnabled = NO;
-    _chartView.drawGridBackgroundEnabled = NO;
+    //_chartView.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
+    _chartView.drawGridBackgroundEnabled = YES;
+    _chartView.gridBackgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     
     ChartYAxis *leftAxis = _chartView.leftAxis;
     [leftAxis removeAllLimitLines];
-    leftAxis.customAxisMax = [self getHighestUVValueFromJson] - 0.1f;
+    leftAxis.customAxisMax = [self getHighestUVValueFromJson];
     leftAxis.customAxisMin = 0;
     leftAxis.startAtZeroEnabled = NO;
     leftAxis.gridLineDashLengths = @[@1.f, @1.f];
@@ -89,17 +122,17 @@
     }
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
-    NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
+    //NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < 8; i++)
     {
         int val = (int)[self getUVBasedIndex:i + startPos];
         [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-        [yVals2 addObject:[[ChartDataEntry alloc] initWithValue:0 xIndex:i]];
+        //[yVals2 addObject:[[ChartDataEntry alloc] initWithValue:0 xIndex:i]];
     }
     
     LineChartDataSet *set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
-    LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithYVals:yVals2 label:@""];
+    //LineChartDataSet *set2 = [[LineChartDataSet alloc] initWithYVals:yVals2 label:@""];
     
     set1.lineDashLengths = @[@1.f, @1.0f];
     [set1 setColor:UIColor.whiteColor];
@@ -114,7 +147,7 @@
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:set1];
     
-    set2.lineDashLengths = @[@0.f, @0.0f];
+    /*set2.lineDashLengths = @[@0.f, @0.0f];
     [set2 setColor:UIColor.whiteColor];
     [set2 setCircleColor:[[DashboardModel sharedInstance] getColorForDashboardTextAndButtons]];
     set2.lineWidth = 0.0;
@@ -125,13 +158,13 @@
     set2.fillColor = UIColor.blackColor;
     
     NSMutableArray *dataSets2 = [[NSMutableArray alloc] init];
-    [dataSets addObject:set2];
+    [dataSets addObject:set2];*/
     
     LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
-    LineChartData *data2 = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets2];
+    //LineChartData *data2 = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets2];
     
     _chartView.data = data;
-    _chartView.data = data2;
+    //_chartView.data = data2;
 }
 
 -(int) getUVBasedIndex: (int) idx
@@ -197,7 +230,7 @@
 {
     int dataRate = 7;
     
-    int order = [currentUvData objectForKey:@"ORDER"];
+    int order = (int)[(NSNumber*)[currentUvData objectForKey:@"ORDER"] integerValue];
     
     if (order - dataRate >= 1 && order + dataRate < [_jsonUVIndexDictionary count])
     {
