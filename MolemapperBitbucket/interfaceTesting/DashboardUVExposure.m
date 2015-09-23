@@ -82,18 +82,33 @@
     leftAxis.startAtZeroEnabled = NO;
     leftAxis.gridLineDashLengths = @[@1.f, @1.f];
     leftAxis.drawLimitLinesBehindDataEnabled = YES;
-    leftAxis.gridColor = [UIColor blackColor];
+    leftAxis.gridColor = [UIColor clearColor];
+    leftAxis.valueFormatter = [[NSNumberFormatter alloc] init];
+    leftAxis.valueFormatter.maximumFractionDigits = 0;
+    leftAxis.xOffset = 9.0;
+    
+    ChartYAxis *rightAxis = _chartView.rightAxis;
+    [rightAxis removeAllLimitLines];
+    rightAxis.customAxisMax = [self getHighestUVValueFromJson];
+    rightAxis.customAxisMin = 0;
+    rightAxis.startAtZeroEnabled = NO;
+    rightAxis.gridLineDashLengths = @[@1.f, @1.f];
+    rightAxis.drawLimitLinesBehindDataEnabled = YES;
+    rightAxis.gridColor = [UIColor clearColor];
+    rightAxis.valueFormatter = [[NSNumberFormatter alloc] init];
+    rightAxis.valueFormatter.maximumFractionDigits = 0;
+    rightAxis.xOffset = 9.0;
     
     ChartXAxis *xAxis = _chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
-    xAxis.labelFont = [UIFont systemFontOfSize:6.f];
+    xAxis.labelFont = [UIFont systemFontOfSize:9.f];
     xAxis.drawGridLinesEnabled = YES;
-    xAxis.spaceBetweenLabels = 2.0;
+    xAxis.spaceBetweenLabels = 1.0;
     
-    _chartView.rightAxis.enabled = NO;
+    _chartView.rightAxis.enabled = YES;
 
     [self setDataCount];
-    [_chartView animateWithXAxisDuration:0.0 yAxisDuration:3.0];
+    [_chartView animateWithXAxisDuration:0.0 yAxisDuration:1.0];
 }
 
 - (void)setDataCount
@@ -128,11 +143,11 @@
     [set1 setColor:UIColor.whiteColor];
     [set1 setCircleColor:[[DashboardModel sharedInstance] getColorForDashboardTextAndButtons]];
     set1.lineWidth = 0.0;
-    set1.circleRadius = 3.0;
+    set1.circleRadius = 6.0;
     set1.drawCircleHoleEnabled = YES;
-    set1.valueFont = [UIFont systemFontOfSize:9.f];
+    set1.valueFont = [UIFont systemFontOfSize:0.f];
     set1.fillAlpha = 255/255.0;
-    set1.fillColor = UIColor.blackColor;
+    set1.fillColor = UIColor.clearColor;
     
     NSMutableArray *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:set1];
