@@ -48,6 +48,7 @@
                                                       answerFormat:password]];
     
     signUpInfo.formItems = signUpItems;
+    signUpInfo.optional = NO;
     
     ORKOrderedTask *task =
     [[ORKOrderedTask alloc] initWithIdentifier:@"signUpTask"
@@ -56,6 +57,7 @@
     // Create a task view controller using the task and set a delegate.
     ORKTaskViewController *taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
     taskViewController.delegate = self;
+    taskViewController.showsProgressInNavigationBar = NO;
     
     // Present the task view controller.
     [self.presentingVC presentViewController:taskViewController animated:YES completion:nil];

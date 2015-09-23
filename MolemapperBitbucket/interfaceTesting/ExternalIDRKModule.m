@@ -19,6 +19,7 @@
     [[ORKFormStep alloc] initWithIdentifier:@"externalID"
                                       title:@"External ID"
                                        text:@"The External ID functionality enables you to link your Mole Mapper data to an external data record.\n\nPlease enter the External ID below if you received one (Optional)"];
+    externalIDInfo.optional = NO;
     
     ORKTextAnswerFormat *externalID = [ORKAnswerFormat textAnswerFormat];
     externalID.multipleLines = NO;
@@ -37,10 +38,12 @@
     ORKOrderedTask *task =
     [[ORKOrderedTask alloc] initWithIdentifier:@"externalID"
                                          steps:@[externalIDInfo]];
+
     
     // Create a task view controller using the task and set a delegate.
     ORKTaskViewController *taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
     taskViewController.delegate = self;
+    taskViewController.showsProgressInNavigationBar = NO;
     
     // Present the task view controller.
     [self.presentingVC presentViewController:taskViewController animated:YES completion:nil];

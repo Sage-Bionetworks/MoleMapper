@@ -38,7 +38,6 @@
     
     intro.image = [UIImage imageNamed:@"moleMapperIconLarge"];
     
-    
     ORKInstructionStep *help = [[ORKInstructionStep alloc] initWithIdentifier:@"help"];
     help.title = @"Would you like to help our research?";
     help.text = @"\nTap “Get Started” to learn about this iPhone-based research study run by OHSU and Sage Bionetworks or click “Cancel” to begin mapping";
@@ -76,6 +75,7 @@
     ORKTaskViewController *taskViewController =
     [[ORKTaskViewController alloc] initWithTask:introAndEligibleTask taskRunUUID:nil];
     taskViewController.delegate = self;
+    taskViewController.showsProgressInNavigationBar = NO;
     [self.presentingVC presentViewController:taskViewController animated:YES completion:nil];
 
 }
