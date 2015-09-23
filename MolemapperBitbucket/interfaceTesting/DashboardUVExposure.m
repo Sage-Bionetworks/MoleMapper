@@ -9,6 +9,12 @@
 #import "DashboardUVExposure.h"
 #import "DashboardModel.h"
 #import "PopupManager.h"
+#import <AddressBookUI/AddressBookUI.h>
+#import <CoreLocation/CLGeocoder.h>
+#import <CoreLocation/CLPlacemark.h>
+#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+
 
 @implementation DashboardUVExposure
 
@@ -22,10 +28,37 @@
     
     [self setupLocationService];
     //[self getUVJsonDataByZipCode];
-    
-    
 }
 
+- (NSString*)reverseGeocodeLocation:(CLLocation *)location
+{
+    __block NSString *ppostalCode = @"";
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:self.locationManager.location // You can pass aLocation here instead
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                       
+                       dispatch_async(dispatch_get_main_queue(),^ {
+                           // do stuff with placemarks on the main thread
+                           
+                           if (placemarks.count == 1) {
+                               
+                               CLPlacemark *place = [placemarks objectAtIndex:0];
+                               // NSLog([place postalCode]);
+                               NSString* addressString1 = [place thoroughfare];
+                               addressString1 = [addressString1 stringByAppendingString:[NSString stringWithFormat:@"%@",[place.addressDictionary objectForKey:(NSString*)kABPersonAddressZIPKey]]];//
+                               
+                               ppostalCode = [NSString stringWithFormat:@"%@",place.postalCode];
+                               NSLog(@"%@",addressString1);// is null ??
+                               NSLog(@"%@",place.postalCode);//is null ??
+                               
+                               //[self performSelectorInBackground:@selector(log) withObject:nil];
+                           }
+                           
+                       });
+                   }];
+    
+    return ppostalCode;
+}
 -(void)setupLocationService
 {
     if (self.locationManager==nil) {
@@ -34,46 +67,18 @@
     self.locationManager.delegate = self;
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     
-    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted)
-    {
-        /*if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
-        {
-            NSString *title;
-            title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
-            NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings";
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
-                                                                message:message
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Cancel"
-                                                      otherButtonTitles:@"Settings", nil];
-            [alertView setTag:1001];
-            [alertView show];
-        }
-        else{
-            NSString *titles;
-            titles = @"Location setup";
-            NSString *msg = @"Location services are off. To use location services you must turn on 'Always' in the Location Services Settings from Click on 'Settings' > 'Privacy' > 'Location Services'. Enable the 'Location Services' ('ON')";
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titles
-                                                                message:msg
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }*/
-    }
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted){  }
     else if (status == kCLAuthorizationStatusNotDetermined)
     {
-         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
-         {
-             [self.locationManager requestAlwaysAuthorization];
-             [self getUVJsonDataByZipCode];
-         }
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+        {
+            [self.locationManager requestAlwaysAuthorization];
+            [self getUVJsonDataByZipCode];
+        }
     }
-
+    
     
     [self.locationManager startUpdatingLocation];
-
 }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -82,34 +87,46 @@
     {
         if (buttonIndex == 1)
         {
-            NSURL*url=[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"];
             [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
         }
     }
 }
 
+/*-(NSString *)getAddressFromLatLon:(double)pdblLatitude withLongitude:(double)pdblLongitude
+ {
+ NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%f,%f&output=csv",pdblLatitude, pdblLongitude];
+ NSError* error;
+ NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSASCIIStringEncoding error:&error];
+ // NSLog(@"%@",locationString);
+ 
+ locationString = [locationString stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+ return [locationString substringFromIndex:6];
+ }*/
+
 -(void) getUVJsonDataByZipCode
 {
-    // Prepare the link that is going to be used on the GET request
-    CLLocationCoordinate2D coordinate = [self getLocation];
-    NSString *latitude = [NSString stringWithFormat:@"%f", coordinate.latitude];
-    NSString *longitude = [NSString stringWithFormat:@"%f", coordinate.longitude];
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    CLLocation *location = [locationManager location];
+    NSString* zipCode = [self reverseGeocodeLocation:location];
     
-    /*MKReverseGeocoder *geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:coord];
-     [geocoder setDelegate:self];
-     [geocoder start]*/
+    NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
     
-    NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+    //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+    
+    NSURL * url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
     @try
     {
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[NSOperationQueue mainQueue]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                                   _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                                            options:0
-                                                                                              error:nil];
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) { _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                                                                                               options:0
+                                                                                                                                                                                 error:nil];
                                    [self setupChartView];
                                    NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
                                }];
@@ -129,17 +146,18 @@
     }
 }
 
-- (CLLocationCoordinate2D) getLocation{
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    [locationManager startUpdatingLocation];
-    CLLocation *location = [locationManager location];
-    CLLocationCoordinate2D coordinate = [location coordinate];
-    
-    return coordinate;
-}
+/*- (CLLocationCoordinate2D) getLocation{
+ CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+ locationManager.delegate = self;
+ locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+ locationManager.distanceFilter = kCLDistanceFilterNone;
+ [locationManager startUpdatingLocation];
+ CLLocation *location = [locationManager location];
+ //[self reverseGeocodeLocation: location];
+ CLLocationCoordinate2D coordinate = [location coordinate];
+ 
+ return coordinate;
+ }*/
 
 -(void)setupChartView
 {
@@ -318,7 +336,7 @@
 
 - (IBAction)popupPressed:(UIButton *)sender {
     NSString *text = @"This localized UV Index forecast, provided by the US EPA, is on a scale of 0 (least risk) to 11 (most risk).\n\nTo enable, please activate Location Services in Settings. For more information, go to http://www2.epa.gov/sunsafety/uv-index-0";
-
+    
     [[PopupManager sharedInstance] createPopupWithText:text];
 }
 
