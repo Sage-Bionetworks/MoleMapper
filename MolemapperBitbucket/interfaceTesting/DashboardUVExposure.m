@@ -22,7 +22,7 @@
         NSLog(@"Location Services Enabled");
         
         if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Permission Denied"
                                                message:@"To re-enable, please go to Settings and turn on Location Service for this app."
                                               delegate:nil
                                      cancelButtonTitle:@"OK"
@@ -33,7 +33,7 @@
     else
     {
         if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Permission Denied"
                                                             message:@"To re-enable, please go to Settings and turn on Location Service for this app."
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
@@ -67,7 +67,7 @@
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
     _chartView.descriptionText = @"";
-    _chartView.noDataTextDescription = @"You need to provide data for the chart.";
+    _chartView.noDataTextDescription = @"Please provide location permission to see UV Index information in your area";
     
     _chartView.dragEnabled = NO;
     [_chartView setScaleEnabled:NO];
