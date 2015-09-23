@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *enrollmentStatus;
 //@property (weak, nonatomic) IBOutlet UITableViewCell *sharingOptions;
 
-#define NAME_OF_INFORMATION_SHEET_FOR_WOM @"InformationSheetWOM_2015_09_16"
+#define NAME_OF_PRIVACY_POLICY_DOC @"PrivacyPolicy-MoleMapper-20Sept2015-EN"
 
 @end
 
@@ -158,10 +158,10 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"womInfoSheet"])
+    if ([segue.identifier isEqualToString:@"privacyPolicy"])
     {
         PDFViewerViewController *destVC = (PDFViewerViewController *)[segue destinationViewController];
-        destVC.filename = NAME_OF_INFORMATION_SHEET_FOR_WOM;
+        destVC.filename = NAME_OF_PRIVACY_POLICY_DOC;
     }
     else if ([segue.identifier isEqualToString:@"sharingOptions"])
     {

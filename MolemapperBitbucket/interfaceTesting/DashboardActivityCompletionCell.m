@@ -125,7 +125,7 @@
 
 //placeholder popup string, need to change when correct data is added
 - (IBAction)showDescription:(UIButton *)sender {
-    NSString *text = @"For each 30-day followup period, we ask that you re-measure the moles that you have measured previously. This allows us to see how your moles may be changing over time. This progress graph will re-set each time a followup period has elapsed. Thank you for contributing to our research!";
+    NSString *text = @"For each 30-day followup period, we ask that you re-measure the moles that you have measured previously to capture any changes over time.\n\nThis progress graph will re-set each time a followup period has elapsed. Thank you for contributing to our research!";
     [[PopupManager sharedInstance] createPopupWithText:text];
 }
 

@@ -536,7 +536,7 @@ Cgo
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content"> or call &lt;study phone line&gt; 
+                                        <string key="content"> or call +1 206-667-2115 
 
  </string>
                                         <attributes>
@@ -1045,7 +1045,7 @@ Cgo
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content"> Design elements from David Reese, Steve Salgado, Chris Webster, Thread Research.
-Icons by Freepik can be found at </string>
+ Icons by Freepik can be found at </string>
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
@@ -1140,7 +1140,7 @@ Altruistic code-sharing by Chris Miles </string>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=", Orlando Aleman ">
+                                    <fragment content=", István Karpács, Orlando Aleman ">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
@@ -1706,6 +1706,9 @@ Altruistic code-sharing by Chris Miles </string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="RHk-Af-c9d" kind="push" identifier="privacyPolicy" id="H10-hc-suL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

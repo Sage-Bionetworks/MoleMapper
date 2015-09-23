@@ -64,6 +64,7 @@
 		E61B0A521874F6E20081FFA5 /* ReferenceConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = E61B0A511874F6E20081FFA5 /* ReferenceConverter.m */; };
 		E61B0A581875E1530081FFA5 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = E61B0A571875E1530081FFA5 /* Measurement.m */; };
 		E61E726C1760EA3300DBB216 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E726B1760EA3300DBB216 /* MobileCoreServices.framework */; };
+		E62A0CAC1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */; settings = {ASSET_TAGS = (); }; };
 		E62CB4C6189583A00045ED4A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CB4C5189583A00045ED4A /* MessageUI.framework */; };
 		E62CB4C91895AF1A0045ED4A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */; };
 		E634434917E161BF00728FB6 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = E634434817E161BF00728FB6 /* Zone.m */; };
@@ -353,6 +354,7 @@
 		E61B0A561875E1530081FFA5 /* Measurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Measurement.h; sourceTree = "<group>"; };
 		E61B0A571875E1530081FFA5 /* Measurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Measurement.m; sourceTree = "<group>"; };
 		E61E726B1760EA3300DBB216 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf"; sourceTree = "<group>"; };
 		E62CB4C5189583A00045ED4A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E62CB4C71895AF1A0045ED4A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -950,6 +952,7 @@
 				E6FDF87B1B89922C00EE7037 /* recontact@2x.m4v */,
 				E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */,
 				E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */,
+				E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */,
 				E6F93E8B16DB273B0068B7B6 /* MoleMapper-Info.plist */,
 				E6F93E8C16DB273B0068B7B6 /* InfoPlist.strings */,
 				E6F93E8F16DB273B0068B7B6 /* main.m */,
@@ -1145,6 +1148,7 @@
 				E6FDF8F61B91632900EE7037 /* secureDatabase@2x.m4v in Resources */,
 				4B99E0D51BA9F575005B3B50 /* moleMapper.xcassets in Resources */,
 				E6FDF8F71B91632900EE7037 /* visitingDoctor@2x.m4v in Resources */,
+				E62A0CAC1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf in Resources */,
 				4B04CF991BA9A577000C05AB /* PopupView.xib in Resources */,
 				E6FDF8F81B91632900EE7037 /* recontact@2x.m4v in Resources */,
 				380B921F1BAC50700026D052 /* DashboardMolyEstZone.xib in Resources */,

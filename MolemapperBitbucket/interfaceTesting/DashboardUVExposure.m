@@ -243,7 +243,7 @@
 }
 
 - (IBAction)popupPressed:(UIButton *)sender {
-    NSString *text = @"This UV Index forecast, provided by the US Environmental Protection Agency, operates on a scale of 0 (least risk) to 11 (most risk). The UV Index measurement here is based on your current zip code. To enable this information, please provide permissions for Location Services in Settings.";
+    NSString *text = @"This localized UV Index forecast, provided by the US EPA, is on a scale of 0 (least risk) to 11 (most risk).\n\nTo enable, please activate Location Services in Settings. For more information, go to http://www2.epa.gov/sunsafety/uv-index-0";
     [[PopupManager sharedInstance] createPopupWithText:text];
 }
 
