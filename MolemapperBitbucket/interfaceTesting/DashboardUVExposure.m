@@ -8,6 +8,7 @@
 
 #import "DashboardUVExposure.h"
 #import "DashboardModel.h"
+#import "PopupManager.h"
 @import CoreLocation;
 
 @implementation DashboardUVExposure
@@ -15,9 +16,13 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    
+    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
+    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
+    
     [self getUVJsonDataByZipCode];
     
-    if([CLLocationManager locationServicesEnabled]){
+    /*if([CLLocationManager locationServicesEnabled]){
         
         NSLog(@"Location Services Enabled");
         
@@ -40,7 +45,7 @@
                                                   otherButtonTitles:nil];
             [alert show];
         }
-    }
+    }*/
 }
 
 -(void) getUVJsonDataByZipCode
@@ -63,8 +68,7 @@
 -(void)setupChartView
 {
 
-    _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
-    _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
+    
     
     _chartView.descriptionText = @"";
     _chartView.noDataTextDescription = @"Please provide location permission to see UV Index information in your area";
@@ -236,6 +240,11 @@
     }
     
     return nil;
+}
+
+- (IBAction)popupPressed:(UIButton *)sender {
+    NSString *text = @"This UV Index forecast, provided by the US Environmental Protection Agency, operates on a scale of 0 (least risk) to 11 (most risk). The UV Index measurement here is based on your current zip code. To enable this information, please provide permissions for Location Services in Settings.";
+    [[PopupManager sharedInstance] createPopupWithText:text];
 }
 
 
