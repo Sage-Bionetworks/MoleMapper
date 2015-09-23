@@ -90,31 +90,21 @@
 
 -(void) getUVJsonDataWithZipCode: (NSString*) zipCode
 {
-   /* CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    [locationManager startUpdatingLocation];*/
-    //CLLocation *location = [locationManager location];
-    //NSString* zipCode = [self reverseGeocodeLocation:locationManager.location];
-    
     NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
     
     //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
-    
     NSURL * url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
     @try
     {
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[NSOperationQueue mainQueue]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) { _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                                                                                                                               options:0
-                                                                                                                                                                                 error:nil];
-                                   [self setupChartView];
-                                   NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
-                               }];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+        {
+            _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            [self setupChartView];
+            NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+        }];
         
     }
     @catch (NSException * e) {
