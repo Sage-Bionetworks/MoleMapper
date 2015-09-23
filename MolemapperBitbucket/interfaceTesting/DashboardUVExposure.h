@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 @import Charts;
 
-@interface DashboardUVExposure : UITableViewCell <ChartViewDelegate>
+@interface DashboardUVExposure : UITableViewCell <ChartViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet LineChartView *chartView;
 @property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerTitle;
+@property CLLocationManager *locationManager;
 - (IBAction)popupPressed:(UIButton *)sender;
 @property __block NSArray* jsonUVIndexDictionary;
 @end

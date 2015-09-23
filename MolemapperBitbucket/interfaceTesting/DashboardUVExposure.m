@@ -9,10 +9,10 @@
 #import "DashboardUVExposure.h"
 #import "DashboardModel.h"
 #import "PopupManager.h"
-@import CoreLocation;
 
 @implementation DashboardUVExposure
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -20,58 +20,132 @@
     _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
-    [self getUVJsonDataByZipCode];
+    [self setupLocationService];
+    //[self getUVJsonDataByZipCode];
     
-    /*if([CLLocationManager locationServicesEnabled]){
-        
-        NSLog(@"Location Services Enabled");
-        
-        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Permission Denied"
-                                               message:@"To re-enable, please go to Settings and turn on Location Service for this app."
-                                              delegate:nil
-                                     cancelButtonTitle:@"OK"
-                                     otherButtonTitles:nil];
-            [alert show];
+    
+}
+
+-(void)setupLocationService
+{
+    if (self.locationManager==nil) {
+        self.locationManager = [[CLLocationManager alloc]init];
+    }
+    self.locationManager.delegate = self;
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted)
+    {
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+        {
+            NSString *title;
+            title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
+            NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings";
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                                message:message
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Cancel"
+                                                      otherButtonTitles:@"Settings", nil];
+            [alertView setTag:1001];
+            [alertView show];
+        }
+        else{
+            NSString *titles;
+            titles = @"Location setup";
+            NSString *msg = @"Location services are off. To use location services you must turn on 'Always' in the Location Services Settings from Click on 'Settings' > 'Privacy' > 'Location Services'. Enable the 'Location Services' ('ON')";
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titles
+                                                                message:msg
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+            [alertView show];
         }
     }
-    else
+    else if (status == kCLAuthorizationStatusNotDetermined)
     {
-        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Permission Denied"
-                                                            message:@"To re-enable, please go to Settings and turn on Location Service for this app."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+         {
+             [self.locationManager requestAlwaysAuthorization];
+         }
+    }
+    
+    if (status == kCLAuthorizationStatusAuthorizedAlways)
+    {
+        [self.locationManager startUpdatingLocation];
+        [self getUVJsonDataByZipCode];
+    }
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // Is this my Alert View?
+    if (alertView.tag == 1001)
+    {
+        if (buttonIndex == 1)
+        {
+            NSURL*url=[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"];
+            [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
         }
-    }*/
+    }
 }
 
 -(void) getUVJsonDataByZipCode
 {
     // Prepare the link that is going to be used on the GET request
+    CLLocationCoordinate2D coordinate = [self getLocation];
+    NSString *latitude = [NSString stringWithFormat:@"%f", coordinate.latitude];
+    NSString *longitude = [NSString stringWithFormat:@"%f", coordinate.longitude];
+    
+    /*MKReverseGeocoder *geocoder = [[MKReverseGeocoder alloc] initWithCoordinate:coord];
+     [geocoder setDelegate:self];
+     [geocoder start]*/
+    
     NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    
+    @try
+    {
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                   _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                            options:0
+                                                                                              error:nil];
+                                   [self setupChartView];
+                                   NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+                               }];
+        
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+        NSString *titles;
+        titles = @"Bad region";
+        NSString *msg = @"Service is not available on your region.";
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titles
+                                                            message:msg
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+}
 
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                                        options:0
-                                                                                          error:nil];
-                               [self setupChartView];
-                               NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
-                           }];
+- (CLLocationCoordinate2D) getLocation{
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    CLLocation *location = [locationManager location];
+    CLLocationCoordinate2D coordinate = [location coordinate];
+    
+    return coordinate;
 }
 
 -(void)setupChartView
 {
-
-    
-    
     _chartView.descriptionText = @"";
-    _chartView.noDataTextDescription = @"Please provide location permission to see UV Index information in your area";
+    //_chartView.noDataTextDescription = @"Please provide location permission to see UV Index information in your area";
     
     _chartView.dragEnabled = NO;
     [_chartView setScaleEnabled:NO];
@@ -110,8 +184,9 @@
     xAxis.spaceBetweenLabels = 1.0;
     
     _chartView.rightAxis.enabled = YES;
-
-    [self setDataCount];
+    
+    if ([_jsonUVIndexDictionary count] > 0)
+        [self setDataCount];
     [_chartView animateWithXAxisDuration:0.0 yAxisDuration:1.0];
 }
 
@@ -157,7 +232,7 @@
     [dataSets addObject:set1];
     
     LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
-
+    
     _chartView.data = data;
 }
 
@@ -244,6 +319,7 @@
 
 - (IBAction)popupPressed:(UIButton *)sender {
     NSString *text = @"This localized UV Index forecast, provided by the US EPA, is on a scale of 0 (least risk) to 11 (most risk).\n\nTo enable, please activate Location Services in Settings. For more information, go to http://www2.epa.gov/sunsafety/uv-index-0";
+
     [[PopupManager sharedInstance] createPopupWithText:text];
 }
 
