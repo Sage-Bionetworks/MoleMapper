@@ -10,7 +10,6 @@
 #import "DashboardModel.h"
 #import "PopupManager.h"
 
-
 @implementation DashboardUVExposure
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -71,7 +70,6 @@
     {
         //[self getUVJsonDataByZipCode];
     }
-    
     
     [self.locationManager startUpdatingLocation];
 }

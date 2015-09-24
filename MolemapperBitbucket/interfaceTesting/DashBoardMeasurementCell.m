@@ -73,8 +73,6 @@
 
 - (void) updateStringColorWithLabel:(UILabel*) label withString:(NSString*) string
 {
-    
-    
     UIColor *c_bcolor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
     NSMutableAttributedString *text =
@@ -119,6 +117,14 @@
     
     [self createDotsOnBar];
     [self setupLabels];
+    
+    /* //POSSIBLE HIDE FOR LATER USE
+     NSNumber *biggestSize = [[DashboardModel sharedInstance] sizeOfBiggestMole];
+    if ([biggestSize integerValue] > 0)
+        [self setupLabels];
+    else {
+        
+    }*/
 }
 
 - (IBAction)presentMoleViewController:(UIButton *)sender {

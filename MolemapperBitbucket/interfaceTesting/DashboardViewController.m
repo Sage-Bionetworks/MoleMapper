@@ -21,7 +21,6 @@
 
 
 @interface DashboardViewController ()
-
 @end
 
 @implementation DashboardViewController
@@ -30,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _cellList = [[NSMutableArray alloc] init];
     [self setupCellList];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"moleMapperLogo"]];
@@ -39,6 +39,14 @@
     _refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:_refreshControl];
     [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    _isLoaded = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (!_isLoaded)
+        [self.tableView reloadData];
+    else _isLoaded = NO;
 }
 
 - (void)refreshTable {

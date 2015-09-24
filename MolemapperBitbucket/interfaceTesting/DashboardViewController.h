@@ -21,5 +21,6 @@
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property NSMutableArray* cellList;
 @property UIRefreshControl* refreshControl;
+@property BOOL isLoaded;
 
 @end

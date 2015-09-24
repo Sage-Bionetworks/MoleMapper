@@ -504,4 +504,15 @@
     return ceilf(value * 10.0f) / 10.0f;
 }
 
+-(UILabel*) getNoDataLabel
+{
+    UILabel *noDataLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 50, 0, 0)];
+    [noDataLabel setBackgroundColor:[UIColor clearColor]];
+    [noDataLabel setText:@"NO DATA AVAILABLE"];
+    noDataLabel.textAlignment = NSTextAlignmentCenter;
+    noDataLabel.textColor = [UIColor darkGrayColor];
+    
+    return noDataLabel;
+}
+
 @end
