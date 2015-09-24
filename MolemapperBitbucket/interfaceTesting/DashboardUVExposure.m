@@ -170,7 +170,7 @@
     
     _chartView.rightAxis.enabled = YES;
     
-    if ([_jsonUVIndexDictionary count] > 0)
+    if ([_jsonUVIndexDictionary count] > 0)
         [self setDataCount];
     [_chartView animateWithXAxisDuration:0.0 yAxisDuration:1.0];
 }

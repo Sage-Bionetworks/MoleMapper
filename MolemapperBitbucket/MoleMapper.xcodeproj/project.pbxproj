@@ -139,9 +139,6 @@
 		E6FDF8841B8AD47000EE7037 /* ThankYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FDF8831B8AD47000EE7037 /* ThankYouViewController.m */; };
 		E6FDF8961B8B2EFC00EE7037 /* ohsu-molemapper.pem in Resources */ = {isa = PBXBuildFile; fileRef = E6FDF8951B8B2EFC00EE7037 /* ohsu-molemapper.pem */; };
 		E6FDF8B31B8BA24D00EE7037 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6FDF8501B882B2500EE7037 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6FDF8F01B8BCF1F00EE7037 /* CMSSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FDF8E11B8BCE9300EE7037 /* CMSSupport.framework */; };
-		E6FDF8F11B8BCF4200EE7037 /* CMSSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6FDF8E11B8BCE9300EE7037 /* CMSSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6FDF8F21B8BCF5900EE7037 /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6FDF8EB1B8BCEB400EE7037 /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6FDF8F51B8F17B000EE7037 /* QuizQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FDF8F41B8F17B000EE7037 /* QuizQuestionViewController.m */; };
 		E6FDF8F61B91632900EE7037 /* secureDatabase@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E6FDF8791B89922C00EE7037 /* secureDatabase@2x.m4v */; };
 		E6FDF8F71B91632900EE7037 /* visitingDoctor@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E6FDF87A1B89922C00EE7037 /* visitingDoctor@2x.m4v */; };
@@ -229,13 +226,6 @@
 			remoteGlobalIDString = 60674AEE1B30A93900A1917D;
 			remoteInfo = opensslTests;
 		};
-		E6FDF8EE1B8BCEE100EE7037 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 601E8A411B2B58F000BB02FB;
-			remoteInfo = CMSSupport;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -245,9 +235,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E6FDF8F21B8BCF5900EE7037 /* openssl.framework in Embed Frameworks */,
 				439C51401BA3633100A09FE1 /* Charts.framework in Embed Frameworks */,
-				E6FDF8F11B8BCF4200EE7037 /* CMSSupport.framework in Embed Frameworks */,
 				E6FDF8B31B8BA24D00EE7037 /* BridgeSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -510,7 +498,6 @@
 				4B9EB56A1BB2802800560AC5 /* CoreLocation.framework in Frameworks */,
 				E6883B971B95DA9500F5A9A5 /* libc++.dylib in Frameworks */,
 				439C513F1BA3633100A09FE1 /* Charts.framework in Frameworks */,
-				E6FDF8F01B8BCF1F00EE7037 /* CMSSupport.framework in Frameworks */,
 				E6FDF8591B882B7300EE7037 /* BridgeSDK.framework in Frameworks */,
 				E6FC804D1AF8567400C460E9 /* HealthKit.framework in Frameworks */,
 				E6AC48C71A31255B00A9F118 /* CoreData.framework in Frameworks */,
@@ -1026,7 +1013,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E6FDF8EF1B8BCEE100EE7037 /* PBXTargetDependency */,
 				E6FDF8581B882B6500EE7037 /* PBXTargetDependency */,
 				439C51421BA3633100A09FE1 /* PBXTargetDependency */,
 			);
@@ -1339,11 +1325,6 @@
 			name = BridgeSDK;
 			targetProxy = E6FDF8571B882B6500EE7037 /* PBXContainerItemProxy */;
 		};
-		E6FDF8EF1B8BCEE100EE7037 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CMSSupport;
-			targetProxy = E6FDF8EE1B8BCEE100EE7037 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1430,7 +1411,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dan Webster (27HCE7U32T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1448,7 +1429,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
 				PRODUCT_NAME = MoleMapper;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "97aa715c-6b92-4431-aefd-9fe250e4f49a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
@@ -1466,7 +1447,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dan Webster (27HCE7U32T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1484,7 +1465,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
 				PRODUCT_NAME = MoleMapper;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "97aa715c-6b92-4431-aefd-9fe250e4f49a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
