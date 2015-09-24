@@ -38,7 +38,7 @@
     self.dataUploader = [[APCDataUploader alloc] init];
     self.user = [[MMUser alloc] init];
     
-    /*
+#pragma warning CHANGE THIS BEFORE SHIP
     if (self.user.bridgeSignInEmail && self.user.bridgeSignInPassword && self.user.hasEnrolled)
     {
         NSLog(@"Username: %@",self.user.bridgeSignInEmail);
@@ -46,7 +46,7 @@
         
         [self.bridgeManager signInAndSendMeasurements];
     }
-     */
+    
     
     
     [self loadAllZonesWithContext:self.managedObjectContext];
