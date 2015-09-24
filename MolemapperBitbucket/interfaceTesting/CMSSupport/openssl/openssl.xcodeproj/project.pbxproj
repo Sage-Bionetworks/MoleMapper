@@ -473,7 +473,7 @@
 				60674ADF1B30A93900A1917D /* Frameworks */,
 				60674AE01B30A93900A1917D /* Headers */,
 				60674AE11B30A93900A1917D /* Resources */,
-				80A9C1881B30EC950058A3B0 /* Run Script */,
+				80A9C1881B30EC950058A3B0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -509,7 +509,7 @@
 		60674ADA1B30A93900A1917D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Erin Mounts";
 				TargetAttributes = {
 					60674AE21B30A93900A1917D = {
@@ -573,7 +573,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export COMMAND_MODE=unix2003\nexport VERSION=\"1.0.2c\"\n# ./build-libssl.sh";
+			shellScript = "export COMMAND_MODE=unix2003\nexport VERSION=\"1.0.2c\"\n./build-libssl.sh";
 		};
 		60674B061B30A9E000A1917D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -586,21 +586,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# clear out any old version\n# rm -rf libssl\n# copy appropriate libssl products here\n# cp -R \"${BUILT_PRODUCTS_DIR}/libssl\" .\n";
+			shellScript = "# clear out any old version\nrm -rf libssl\n# copy appropriate libssl products here\ncp -R \"${BUILT_PRODUCTS_DIR}/libssl\" .\n";
 		};
-		80A9C1881B30EC950058A3B0 /* Run Script */ = {
+		80A9C1881B30EC950058A3B0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# ok we're done with libssl so get rid of it\n# rm -rf libssl";
+			shellScript = "# ok we're done with libssl so get rid of it\nrm -rf libssl";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -640,6 +639,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -658,7 +661,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -688,6 +690,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -742,7 +748,6 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sagebase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -765,7 +770,6 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sagebase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -784,7 +788,6 @@
 				);
 				INFOPLIST_FILE = opensslTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sagebase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -798,7 +801,6 @@
 				);
 				INFOPLIST_FILE = opensslTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.sagebase.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

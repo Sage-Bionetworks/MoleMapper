@@ -87,7 +87,6 @@
     }
 }
 
-
 -(void) getUVJsonDataWithZipCode: (NSString*) zipCode
 {
     NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
@@ -99,7 +98,7 @@
     @try
     {
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+                                    completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
         {
             _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             [self setupChartView];

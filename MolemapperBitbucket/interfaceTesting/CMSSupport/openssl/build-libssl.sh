@@ -26,6 +26,18 @@
 #                                                                         #
 #VERSION="1.0.2c"													      #
 SDKVERSION=`xcrun -sdk iphoneos --show-sdk-version`						  #
+if [[ "${ENABLE_BITCODE}" == "YES" ]]; then
+    if [[ "${BITCODE_GENERATION_MODE}" == "bitcode" ]]; then
+        BITCODE_FLAG=" -fembed-bitcode"
+    else
+        BITCODE_FLAG=" -fembed-bitcode-marker"
+    fi
+    echo "Bitcode flag: ${BITCODE_FLAG}"
+else
+    BITCODE_FLAG=""
+    echo "No bitcode flag"
+fi
+
 #																		  #
 ###########################################################################
 #																		  #
@@ -92,6 +104,7 @@ tar zxf openssl-${VERSION}.tar.gz -C "${DERIVED_FILE_DIR}/src"
 cd "${DERIVED_FILE_DIR}/src/openssl-${VERSION}"
 
 echo "Building openssl-${VERSION} for ${ARCHS}"
+
 for ARCH in ${ARCHS}
 do
 	if [[ "${ARCH}" == "i386" || "${ARCH}" == "x86_64" ]];
@@ -129,7 +142,9 @@ do
     fi
 
 	# add -isysroot to CC=
-	sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -miphoneos-version-min=7.0 !" "Makefile"
+	sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} -miphoneos-version-min=7.0${BITCODE_FLAG} !" "Makefile"
+
+    echo `grep ^CFLAG= Makefile`
 
 	if [ "$1" == "verbose" ];
 	then
