@@ -163,6 +163,13 @@
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = Charts;
 		};
+		4B1633121BB443C700ACE6B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 601E8A411B2B58F000BB02FB;
+			remoteInfo = CMSSupport;
+		};
 		E6FDF84F1B882B2500EE7037 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6FDF8441B882B2500EE7037 /* BridgeSDK.xcodeproj */;
@@ -1013,6 +1020,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B1633131BB443C700ACE6B8 /* PBXTargetDependency */,
 				E6FDF8581B882B6500EE7037 /* PBXTargetDependency */,
 				439C51421BA3633100A09FE1 /* PBXTargetDependency */,
 			);
@@ -1319,6 +1327,11 @@
 			isa = PBXTargetDependency;
 			name = Charts;
 			targetProxy = 439C51411BA3633100A09FE1 /* PBXContainerItemProxy */;
+		};
+		4B1633131BB443C700ACE6B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CMSSupport;
+			targetProxy = 4B1633121BB443C700ACE6B8 /* PBXContainerItemProxy */;
 		};
 		E6FDF8581B882B6500EE7037 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
