@@ -19,13 +19,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *questionButton;
 @property (weak, nonatomic) IBOutlet UILabel *dateLbl;
 
-@property (nonatomic, assign) CGFloat localProgress;
-@property (nonatomic, assign) CGFloat currentProgress;
+@property (nonatomic, assign) float localProgress;
+@property (nonatomic, assign) float currentProgress;
 @property (nonatomic, assign) NSTimer* ns_timer;
 
 //@property DashboardModel *dbModel;
 
--(void)setDataToProgressView:(CGFloat) progress;
+-(void)setDataToProgressView:(float) progress;
 - (IBAction)showDescription:(UIButton *)sender;
 
 @end

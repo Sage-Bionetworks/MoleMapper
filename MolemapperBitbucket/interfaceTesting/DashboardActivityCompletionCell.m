@@ -18,7 +18,7 @@
     NSNumber* total = [[DashboardModel sharedInstance] totalNumberOfMolesMeasured];
     NSNumber* last = [[DashboardModel sharedInstance] numberOfMolesMeasuredSinceLastFollowup];
     float numb = 0.0f;
-    if ([total floatValue] > 0.0) {numb = [[DashboardModel sharedInstance] correctFloat:[last floatValue] / [total floatValue]];};
+    if ([total floatValue] > 0.0) {numb = (float)[last floatValue] / (float)[total floatValue];};
     [self setDataToProgressView:numb];
     
     [self setupProgress];
@@ -112,13 +112,23 @@
     }
     else
     {
-        if (_currentProgress == 1)
+        if (_currentProgress > 0.999999f)
+        {
+            [_progressView setProgress:1];
             [(UILabel*)_progressView.centralView setText:@"100%"];
+        }
+        else if (_currentProgress < 0.01f && _currentProgress > 0.00f)
+        {
+            [_progressView setProgress:0.01f];
+            [(UILabel*)_progressView.centralView setText:@"1%"];
+        }
+
+        
         [_ns_timer invalidate];
     }
 }
 
--(void)setDataToProgressView:(CGFloat) progress
+-(void)setDataToProgressView:(float) progress
 {
     _currentProgress = progress;
 }

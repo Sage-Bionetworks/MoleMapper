@@ -89,20 +89,27 @@
 
 -(void) getUVJsonDataWithZipCode: (NSString*) zipCode
 {
-    NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
-    
-    //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
-    NSURL * url = [[NSURL alloc] initWithString:urlString];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
     @try
     {
+        NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+        
+        //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+        NSURL * url = [[NSURL alloc] initWithString:urlString];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+
+        
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                                     completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
         {
-            _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            [self setupChartView];
-            NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+            
+            if (data != nil)
+            {
+                _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                [self setupChartView];
+                NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+            }
+            
         }];
         
     }

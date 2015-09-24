@@ -52,7 +52,8 @@
         //need to set all of the bodyparts and also those which is already covered
         float bodyparts = (float)[[DashboardModel sharedInstance] getAllZoneNumber];
         float bodypartsCovered = [[DashboardModel sharedInstance] correctFloat:[zonesDoced floatValue]];
-        float percent = bodyparts > 0.0 ? [[DashboardModel sharedInstance] correctFloat:(float)bodypartsCovered / (float)bodyparts] : 0.0;
+        //float bodypartsCovered = 30.0f;
+        float percent = bodyparts > 0.0 ? (float)bodypartsCovered / (float)bodyparts : 0.0;
         
         [self setDataToProgressView:percent];
     }
@@ -97,15 +98,23 @@
 
 - (void)updateProgress:(NSTimer *)timer
 {
-    if (_localProgress <= _currentProgress)
+    if (_localProgress < _currentProgress - 0.01f)
     {
         _localProgress = ((int)((_localProgress * 100.0f) + 1.01) % 100) / 100.0f;
         [_progressView setProgress:_localProgress];
     }
     else
     {
-        if (_currentProgress == 1)
+        if (_currentProgress > 0.999999f)
+        {
+            [_progressView setProgress:1];
             [(UILabel*)_progressView.centralView setText:@"100%"];
+        }
+        else if (_currentProgress < 0.01f && _currentProgress > 0)
+        {
+            [_progressView setProgress:0.01f];
+            [(UILabel*)_progressView.centralView setText:@"1%"];
+        }
         _isTimerInvalidated = YES;
         [_ns_timer invalidate];
     }
@@ -116,9 +125,9 @@
     _parentViewController = vc;
 }
 
-- (void)setDataToProgressView:(CGFloat) progress
+- (void)setDataToProgressView:(float) progress
 {
-    _currentProgress = progress - 0.01;
+    _currentProgress = progress;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

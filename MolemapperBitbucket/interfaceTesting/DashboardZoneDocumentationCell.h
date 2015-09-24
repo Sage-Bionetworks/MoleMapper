@@ -20,13 +20,13 @@
 //@property (retain, nonatomic) IBOutlet UIView *bodyFronView;
 //@property (retain, nonatomic) IBOutlet UIView *bodyBackView;
 
-@property (nonatomic, assign) CGFloat localProgress;
-@property (nonatomic, assign) CGFloat currentProgress;
+@property (nonatomic, assign) float localProgress;
+@property (nonatomic, assign) float currentProgress;
 @property (nonatomic, assign) NSTimer* ns_timer;
 @property (nonatomic, assign) UIViewController* parentViewController;
 
 //@property DashboardModel* dbModel;
 @property BOOL isTimerInvalidated;
--(void)setDataToProgressView:(CGFloat) progress;
+-(void)setDataToProgressView:(float) progress;
 
 @end
