@@ -38,7 +38,7 @@
     self.dataUploader = [[APCDataUploader alloc] init];
     self.user = [[MMUser alloc] init];
     
-#pragma warning CHANGE THIS BEFORE SHIP
+/*
     if (self.user.bridgeSignInEmail && self.user.bridgeSignInPassword && self.user.hasEnrolled)
     {
         NSLog(@"Username: %@",self.user.bridgeSignInEmail);
@@ -46,7 +46,7 @@
         
         [self.bridgeManager signInAndSendMeasurements];
     }
-    
+*/
     
     
     [self loadAllZonesWithContext:self.managedObjectContext];
@@ -76,7 +76,7 @@
 -(void)setOnboardingBooleansBackToInitialValues
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:YES forKey:@"shouldShowIntroAndEligible"];
+    [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
     [ud setBool:NO forKey:@"shouldShowConsent"];

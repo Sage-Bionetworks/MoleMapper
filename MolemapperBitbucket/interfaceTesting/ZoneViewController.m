@@ -23,6 +23,7 @@
 #import "HelpMovieViewController.h"
 #import "CMPopTipView.h"
 #import "KLCPopup.h"
+#import "MoleWasRemovedRKModule.h"
 
 @interface ZoneViewController () <UIScrollViewDelegate,CMPopTipViewDelegate>
 {
@@ -39,6 +40,8 @@
 @property (strong, nonatomic) CMPopTipView *popTipViewPointToPinButton;
 @property (strong, nonatomic) CMPopTipView *popTipViewExport;
 @property (strong, nonatomic) CMPopTipView *popTipViewPinTap;
+
+@property (strong, nonatomic) MoleWasRemovedRKModule *removed;
 
 @end
 
@@ -749,6 +752,7 @@
 
 - (IBAction)deleteMolePinButtonTapped:(MolePin *)sender
 {
+    self.moleToBeDeleted = sender;
     NSString *title = [NSString stringWithFormat:@"Delete mole named %@?",sender.moleName];
     UIAlertController *deleteMole = [UIAlertController alertControllerWithTitle:title message:@"If this mole was removed by a doctor, please tap the 'Mole Removed by Doctor' button" preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -797,6 +801,10 @@
 -(void)moleWasRemoved
 {
     NSLog(@"Mole: %@ was set to 'removed' by user",self.moleToBeDeleted.moleName);
+    self.removed = [[MoleWasRemovedRKModule alloc] init];
+    self.removed.removedMole = self.moleToBeDeleted.mole;
+    self.removed.presentingVC = self;
+    [self.removed showMoleRemoved];
 }
 
 -(void)cancelMoleDeletion

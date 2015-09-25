@@ -70,6 +70,7 @@
 		E62A0D4B1BB4E3E5005FF87B /* CMSSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */; };
 		E62A0D4C1BB4E418005FF87B /* CMSSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E62A0D4D1BB4E436005FF87B /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D461BB4E398005FF87B /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E62A0D501BB500D0005FF87B /* MoleWasRemovedRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E62A0D4F1BB500D0005FF87B /* MoleWasRemovedRKModule.m */; settings = {ASSET_TAGS = (); }; };
 		E62CB4C6189583A00045ED4A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CB4C5189583A00045ED4A /* MessageUI.framework */; };
 		E62CB4C91895AF1A0045ED4A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */; };
 		E634434917E161BF00728FB6 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = E634434817E161BF00728FB6 /* Zone.m */; };
@@ -362,6 +363,8 @@
 		E62A0CD61BB28EE1005FF87B /* MoleMapper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MoleMapper.entitlements; sourceTree = SOURCE_ROOT; };
 		E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CMSSupport.xcodeproj; path = interfaceTesting/CMSSupport/CMSSupport.xcodeproj; sourceTree = "<group>"; };
 		E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = interfaceTesting/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
+		E62A0D4E1BB500D0005FF87B /* MoleWasRemovedRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleWasRemovedRKModule.h; sourceTree = "<group>"; };
+		E62A0D4F1BB500D0005FF87B /* MoleWasRemovedRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleWasRemovedRKModule.m; sourceTree = "<group>"; };
 		E62CB4C5189583A00045ED4A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E62CB4C71895AF1A0045ED4A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -824,6 +827,8 @@
 				E6A9B1301B4BFB4A009B3393 /* FollowupSurveyRKModule.m */,
 				E6F7517E17BA9B6A00A7AB5A /* ZoneViewController.h */,
 				E6F7517F17BA9B6A00A7AB5A /* ZoneViewController.m */,
+				E62A0D4E1BB500D0005FF87B /* MoleWasRemovedRKModule.h */,
+				E62A0D4F1BB500D0005FF87B /* MoleWasRemovedRKModule.m */,
 				E682EEB217076EBD007A0654 /* MoleViewController.h */,
 				E682EEB317076EBD007A0654 /* MoleViewController.m */,
 				E6944600198B130E003DD7BD /* HelpMovieViewController.h */,
@@ -1312,6 +1317,7 @@
 				E634434C17E161BF00728FB6 /* Mole.m in Sources */,
 				4BF5AADF1BA9833F0012B490 /* DashboardBiggestMoleCell.m in Sources */,
 				E64808191820E5D400A7E644 /* MeasurementComparsionViewController.m in Sources */,
+				E62A0D501BB500D0005FF87B /* MoleWasRemovedRKModule.m in Sources */,
 				E65CABB617ECF20100AAC5D3 /* UIImage+Extras.m in Sources */,
 				E6883B701B95D2EE00F5A9A5 /* APCDataArchive.m in Sources */,
 				360089AB1819AE47004486C0 /* UIImage+Alpha.m in Sources */,
