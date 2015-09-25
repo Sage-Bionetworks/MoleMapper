@@ -166,14 +166,11 @@
         [self showPopTipViewWelcome];
         [self showPopTipViewGreyedOut];
     }
-    
-    if ([standardUserDefaults valueForKey:@"firstViewOfBodyMap"] == [NSNumber numberWithBool:YES])
+    if (self.shouldShowMoleRemovedPopup)
     {
-        [self showPopTipViewWelcome];
-        [self showPopTipViewGreyedOut];
-        [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"firstViewOfBodyMap"];
+        self.shouldShowMoleRemovedPopup = NO;
+        [self showMoleRemovedPopup:self];
     }
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -307,6 +304,66 @@
     
     [popup show];
 }
+
+- (void)showMoleRemovedPopup:(id)sender
+{
+    // Generate content view to present
+    UIView* contentView = [[UIView alloc] init];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    contentView.backgroundColor = [UIColor whiteColor];
+    contentView.layer.cornerRadius = 12.0;
+    
+    UILabel* welcomeLabel = [[UILabel alloc] init];
+    welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    welcomeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    welcomeLabel.numberOfLines = 0;
+    welcomeLabel.backgroundColor = [UIColor clearColor];
+    welcomeLabel.textColor = [UIColor blackColor];
+    welcomeLabel.textAlignment = NSTextAlignmentCenter;
+    welcomeLabel.font = [UIFont systemFontOfSize:16.0];
+    welcomeLabel.text = @"You indicated that you had a mole removed this past month.\n\nPlease let us know which one it was by tapping on that mole's settings icon";
+    
+    UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"moleRemovedDemo"]];
+    
+    UIButton* nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.translatesAutoresizingMaskIntoConstraints = NO;
+    nextButton.contentEdgeInsets = UIEdgeInsetsMake(12, 50, 12, 50);
+    nextButton.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nextButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
+    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    [nextButton setTitle:@"OK" forState:UIControlStateNormal];
+    nextButton.layer.cornerRadius = 6.0;
+    [nextButton addTarget:self action:@selector(okPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:welcomeLabel];
+    [contentView addSubview:demoShot];
+    [contentView addSubview:nextButton];
+    
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoShot, welcomeLabel);
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(5)-[demoShot]-(16)-[welcomeLabel]-(16)-[nextButton]-(10)-|"
+                                             options:NSLayoutFormatAlignAllCenterX
+                                             metrics:nil
+                                               views:views]];
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
+                                             options:0
+                                             metrics:nil
+                                               views:views]];
+    
+    KLCPopup* popup = [KLCPopup popupWithContentView:contentView
+                                            showType:(KLCPopupShowType)KLCPopupShowTypeSlideInFromBottom
+                                         dismissType:(KLCPopupDismissType)KLCPopupDismissTypeSlideOutToBottom
+                                            maskType:(KLCPopupMaskType)KLCPopupMaskTypeDimmed
+                            dismissOnBackgroundTouch:YES
+                               dismissOnContentTouch:YES];
+    
+    [popup show];
+}
+
 
 - (void)showInitialSurveyThanks:(id)sender
 {

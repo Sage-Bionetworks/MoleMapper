@@ -18,9 +18,9 @@
     return @30;
 }
 
-//NEED TO TEST THIS TO MAKE SURE IT IS WORKING CORRECTLY
 -(BOOL)shouldShowFollowupSurvey
 {
+    return YES;
     BOOL shouldShowFollowupSurvey = NO;
     
     NSDate *now = [NSDate date];
@@ -106,6 +106,7 @@
     [[ORKOrderedTask alloc] initWithIdentifier:@"followupTask"
                                          steps:@[intro, followupInfo, thankYouStep]];
     
+    
     // Create a task view controller using the task and set a delegate.
     ORKTaskViewController *taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
     taskViewController.delegate = self;
@@ -129,36 +130,46 @@
             [ud setValue:dateOfLastSurveyCompleted forKey:@"dateOfLastSurveyCompleted"];
             
             NSDictionary *parsedData = [self parsedDataFromTaskResult:taskResult];
+            
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [ad.bridgeManager signInAndSendFollowupData:parsedData];
             
-            break;
+            if ([[parsedData valueForKey:@"moleRemoved"]  isEqual: @1])
+            {
+                [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
+                BodyMapViewController *bmvc = (BodyMapViewController *)self.presentingVC;
+                bmvc.shouldShowMoleRemovedPopup = YES;
+                break;
+            }
+            else
+            {
+                [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
+                break;
+            }
+            
         }
             
         case ORKTaskViewControllerFinishReasonFailed:
         {
-            NSLog(@"Failed to finish");
+            [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             break;
         }
         case ORKTaskViewControllerFinishReasonDiscarded:
         {
-            // Generally, discard the result.
-            // Consider clearing the contents of the output directory.
+            [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             break;
         }
             
         case ORKTaskViewControllerFinishReasonSaved:
         {
-            //NSData *data = [taskViewController restorationData];
-            // Store the restoration data persistently for later use.
-            // Normally, keep the output directory for when you will restore.
+            [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             break;
         }
             
     }
     
     // Then, dismiss the task view controller.
-    [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
+    //[self.presentingVC dismissViewControllerAnimated:YES completion:nil];
 }
 
 //Schema expected by Bridge for followup

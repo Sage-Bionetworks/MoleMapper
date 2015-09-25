@@ -753,8 +753,8 @@
 - (IBAction)deleteMolePinButtonTapped:(MolePin *)sender
 {
     self.moleToBeDeleted = sender;
-    NSString *title = [NSString stringWithFormat:@"Delete mole named %@?",sender.moleName];
-    UIAlertController *deleteMole = [UIAlertController alertControllerWithTitle:title message:@"If this mole was removed by a doctor, please tap the 'Mole Removed by Doctor' button" preferredStyle:UIAlertControllerStyleActionSheet];
+    NSString *title = [NSString stringWithFormat:@"Settings for mole named %@",sender.moleName];
+    UIAlertController *deleteMole = [UIAlertController alertControllerWithTitle:title message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete Mole from App" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
         [self deleteMole];
@@ -800,7 +800,19 @@
 
 -(void)moleWasRemoved
 {
+    if (self.moleToBeDeleted == nil) {NSLog(@"Attempting to specify a null mole as deleted");return;}
     NSLog(@"Mole: %@ was set to 'removed' by user",self.moleToBeDeleted.moleName);
+    
+    //Store the mole without an associated diagnosis first, then overwrite if user completes survey
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSMutableArray *removedMoleToDiagnoses = [ad.user.removedMolesToDiagnoses mutableCopy];
+    //Store a removedMole record with an empty diagnosis array for now until the user potentially enters diagnoses in survey
+    NSDictionary *removedMoleRecord = @{@"moleID" : self.moleToBeDeleted.moleID,
+                                        @"diagnoses" : @[]};
+    [removedMoleToDiagnoses addObject:removedMoleRecord];
+    ad.user.removedMolesToDiagnoses = removedMoleToDiagnoses;
+    
+    //Spin up survey about the removed mole
     self.removed = [[MoleWasRemovedRKModule alloc] init];
     self.removed.removedMole = self.moleToBeDeleted.mole;
     self.removed.presentingVC = self;

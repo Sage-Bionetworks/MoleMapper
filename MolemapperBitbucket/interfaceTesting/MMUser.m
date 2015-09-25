@@ -235,4 +235,20 @@
     [ud setBool:hasEnrolled forKey:@"userHasEnrolled"];
 }
 
+-(NSArray *)removedMolesToDiagnoses
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSArray *removedMolesToDiagnoses = [ud objectForKey:@"removedMolesToDiagnoses"];
+    return removedMolesToDiagnoses;
+}
+
+-(void)setRemovedMolesToDiagnoses:(NSArray *)removedMolesToDiagnoses
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if (removedMolesToDiagnoses != nil)
+    {
+        [ud setObject:removedMolesToDiagnoses forKey:@"removedMolesToDiagnoses"];
+    }
+}
+
 @end

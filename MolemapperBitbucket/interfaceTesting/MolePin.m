@@ -179,7 +179,9 @@
     
     UIButton *deleteMoleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     deleteMoleButton.frame = CGRectMake(0,0,30,30);
-    UIImage *deleteButtonImage = [UIImage imageNamed:@"trash.png"];
+    //UIImage *deleteButtonImage = [UIImage imageNamed:@"trash.png"];
+    UIImage *deleteButtonImage = [UIImage imageNamed:@"barButtonSettings"];
+    
     [deleteMoleButton setBackgroundImage:deleteButtonImage forState:UIControlStateNormal];
     [deleteMoleButton addTarget:self action:@selector(deleteMolePinOnZoneViewController) forControlEvents:UIControlEventTouchUpInside];
     

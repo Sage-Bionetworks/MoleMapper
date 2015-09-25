@@ -199,7 +199,7 @@
     
     UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by visiting the Profile tab" preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"User has left the onboarding process with cancel");
         [ad showBodyMap];
     }];

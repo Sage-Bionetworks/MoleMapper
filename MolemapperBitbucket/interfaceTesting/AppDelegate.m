@@ -245,11 +245,6 @@
         [standardUserDefaults setValue:defaultMoleNameGender forKey:@"moleNameGender"];
     }
     
-    if (![standardUserDefaults objectForKey:@"firstViewOfBodyMap"])
-    {
-        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewOfBodyMap"];
-    }
-    
     if (![standardUserDefaults objectForKey:@"firstViewPinButton"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewPinButton"];

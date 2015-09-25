@@ -38,4 +38,11 @@
 
 //Storing the NSData in documents directory and calling back up on the fly here
 @property (strong, nonatomic) UIImage *signatureImage;
+
+// This is an array of dictionaries that have the following structure
+// "moleID" -> (NSNumber *)moleID,
+// "diagnoses -> (NSArray *)[array of diagnoses (NSStrings)]
+// This is all stored in NSUserDefaults
+@property (strong, nonatomic) NSArray *removedMolesToDiagnoses;
+
 @end

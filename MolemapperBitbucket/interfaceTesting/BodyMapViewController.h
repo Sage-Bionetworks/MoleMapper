@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *flipButton;
 
 @property BOOL shouldShowSurveyCompletedThanks;
+@property BOOL shouldShowMoleRemovedPopup;
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
