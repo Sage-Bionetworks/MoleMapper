@@ -67,6 +67,9 @@
 		E61B0A581875E1530081FFA5 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = E61B0A571875E1530081FFA5 /* Measurement.m */; };
 		E61E726C1760EA3300DBB216 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E726B1760EA3300DBB216 /* MobileCoreServices.framework */; };
 		E62A0CAC1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */; settings = {ASSET_TAGS = (); }; };
+		E62A0D4B1BB4E3E5005FF87B /* CMSSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */; };
+		E62A0D4C1BB4E418005FF87B /* CMSSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E62A0D4D1BB4E436005FF87B /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D461BB4E398005FF87B /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E62CB4C6189583A00045ED4A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CB4C5189583A00045ED4A /* MessageUI.framework */; };
 		E62CB4C91895AF1A0045ED4A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */; };
 		E634434917E161BF00728FB6 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = E634434817E161BF00728FB6 /* Zone.m */; };
@@ -163,9 +166,37 @@
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = Charts;
 		};
-		4B1633121BB443C700ACE6B8 /* PBXContainerItemProxy */ = {
+		E62A0D3B1BB4E373005FF87B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */;
+			containerPortal = E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 601E8A421B2B58F000BB02FB;
+			remoteInfo = CMSSupport;
+		};
+		E62A0D3D1BB4E373005FF87B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 601E8A4D1B2B58F000BB02FB;
+			remoteInfo = CMSSupportTests;
+		};
+		E62A0D451BB4E398005FF87B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60674AE31B30A93900A1917D;
+			remoteInfo = openssl;
+		};
+		E62A0D471BB4E398005FF87B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60674AEE1B30A93900A1917D;
+			remoteInfo = opensslTests;
+		};
+		E62A0D491BB4E3D6005FF87B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 601E8A411B2B58F000BB02FB;
 			remoteInfo = CMSSupport;
@@ -205,34 +236,6 @@
 			remoteGlobalIDString = 80855F4F19BE258C006601C7;
 			remoteInfo = BridgeSDK;
 		};
-		E6FDF8E01B8BCE9300EE7037 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 601E8A421B2B58F000BB02FB;
-			remoteInfo = CMSSupport;
-		};
-		E6FDF8E21B8BCE9300EE7037 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 601E8A4D1B2B58F000BB02FB;
-			remoteInfo = CMSSupportTests;
-		};
-		E6FDF8EA1B8BCEB400EE7037 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6FDF8E41B8BCEB400EE7037 /* openssl.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 60674AE31B30A93900A1917D;
-			remoteInfo = openssl;
-		};
-		E6FDF8EC1B8BCEB400EE7037 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6FDF8E41B8BCEB400EE7037 /* openssl.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 60674AEE1B30A93900A1917D;
-			remoteInfo = opensslTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -242,6 +245,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E62A0D4D1BB4E436005FF87B /* openssl.framework in Embed Frameworks */,
+				E62A0D4C1BB4E418005FF87B /* CMSSupport.framework in Embed Frameworks */,
 				439C51401BA3633100A09FE1 /* Charts.framework in Embed Frameworks */,
 				E6FDF8B31B8BA24D00EE7037 /* BridgeSDK.framework in Embed Frameworks */,
 			);
@@ -355,6 +360,8 @@
 		E61E726B1760EA3300DBB216 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf"; sourceTree = "<group>"; };
 		E62A0CD61BB28EE1005FF87B /* MoleMapper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MoleMapper.entitlements; sourceTree = SOURCE_ROOT; };
+		E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CMSSupport.xcodeproj; path = interfaceTesting/CMSSupport/CMSSupport.xcodeproj; sourceTree = "<group>"; };
+		E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = interfaceTesting/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		E62CB4C5189583A00045ED4A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E62CB4C71895AF1A0045ED4A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -483,8 +490,6 @@
 		E6FDF8821B8AD47000EE7037 /* ThankYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThankYouViewController.h; sourceTree = "<group>"; };
 		E6FDF8831B8AD47000EE7037 /* ThankYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThankYouViewController.m; sourceTree = "<group>"; };
 		E6FDF8951B8B2EFC00EE7037 /* ohsu-molemapper.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ohsu-molemapper.pem"; sourceTree = "<group>"; };
-		E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CMSSupport.xcodeproj; path = interfaceTesting/CMSSupport/CMSSupport.xcodeproj; sourceTree = "<group>"; };
-		E6FDF8E41B8BCEB400EE7037 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = interfaceTesting/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		E6FDF8F31B8F17B000EE7037 /* QuizQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizQuestionViewController.h; sourceTree = "<group>"; };
 		E6FDF8F41B8F17B000EE7037 /* QuizQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizQuestionViewController.m; sourceTree = "<group>"; };
 		E6FDF8F91B916B0500EE7037 /* InitialSurveyRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSurveyRKModule.h; sourceTree = "<group>"; };
@@ -501,6 +506,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E62A0D4B1BB4E3E5005FF87B /* CMSSupport.framework in Frameworks */,
 				4B9EB5771BB2802D00560AC5 /* MapKit.framework in Frameworks */,
 				4B9EB56A1BB2802800560AC5 /* CoreLocation.framework in Frameworks */,
 				E6883B971B95DA9500F5A9A5 /* libc++.dylib in Frameworks */,
@@ -659,6 +665,24 @@
 				4BFF616A1BAC992100FE7853 /* SharingOptionsOnlyRKModule.m */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		E62A0D361BB4E373005FF87B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */,
+				E62A0D3E1BB4E373005FF87B /* CMSSupportTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E62A0D401BB4E397005FF87B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E62A0D461BB4E398005FF87B /* openssl.framework */,
+				E62A0D481BB4E398005FF87B /* opensslTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E6537EE71B801D5C00B38331 /* Onboarding */ = {
@@ -897,11 +921,11 @@
 		E6F93E8216DB273A0068B7B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */,
+				E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */,
 				4B9EB5761BB2802D00560AC5 /* MapKit.framework */,
 				4B9EB5691BB2802800560AC5 /* CoreLocation.framework */,
 				E6883B961B95DA9500F5A9A5 /* libc++.dylib */,
-				E6FDF8E41B8BCEB400EE7037 /* openssl.xcodeproj */,
-				E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */,
 				E6FC804C1AF8567400C460E9 /* HealthKit.framework */,
 				E6AC48C51A311F3700A9F118 /* libz.dylib */,
 				E6AC48C31A311F2100A9F118 /* SystemConfiguration.framework */,
@@ -976,24 +1000,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E6FDF8DB1B8BCE9200EE7037 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E6FDF8E11B8BCE9300EE7037 /* CMSSupport.framework */,
-				E6FDF8E31B8BCE9300EE7037 /* CMSSupportTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E6FDF8E51B8BCEB400EE7037 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E6FDF8EB1B8BCEB400EE7037 /* openssl.framework */,
-				E6FDF8ED1B8BCEB400EE7037 /* opensslTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F971DB6F63E180C8D2E90030 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,7 +1026,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4B1633131BB443C700ACE6B8 /* PBXTargetDependency */,
+				E62A0D4A1BB4E3D6005FF87B /* PBXTargetDependency */,
 				E6FDF8581B882B6500EE7037 /* PBXTargetDependency */,
 				439C51421BA3633100A09FE1 /* PBXTargetDependency */,
 			);
@@ -1068,12 +1074,12 @@
 					ProjectRef = 439C512E1BA3632400A09FE1 /* Charts.xcodeproj */;
 				},
 				{
-					ProductGroup = E6FDF8DB1B8BCE9200EE7037 /* Products */;
-					ProjectRef = E6FDF8DA1B8BCE9200EE7037 /* CMSSupport.xcodeproj */;
+					ProductGroup = E62A0D361BB4E373005FF87B /* Products */;
+					ProjectRef = E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */;
 				},
 				{
-					ProductGroup = E6FDF8E51B8BCEB400EE7037 /* Products */;
-					ProjectRef = E6FDF8E41B8BCEB400EE7037 /* openssl.xcodeproj */;
+					ProductGroup = E62A0D401BB4E397005FF87B /* Products */;
+					ProjectRef = E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1089,6 +1095,34 @@
 			fileType = wrapper.framework;
 			path = Charts.framework;
 			remoteRef = 439C51391BA3632400A09FE1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CMSSupport.framework;
+			remoteRef = E62A0D3B1BB4E373005FF87B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E62A0D3E1BB4E373005FF87B /* CMSSupportTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CMSSupportTests.xctest;
+			remoteRef = E62A0D3D1BB4E373005FF87B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E62A0D461BB4E398005FF87B /* openssl.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = openssl.framework;
+			remoteRef = E62A0D451BB4E398005FF87B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E62A0D481BB4E398005FF87B /* opensslTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = opensslTests.xctest;
+			remoteRef = E62A0D471BB4E398005FF87B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		E6FDF8501B882B2500EE7037 /* BridgeSDK.framework */ = {
@@ -1117,34 +1151,6 @@
 			fileType = wrapper.cfbundle;
 			path = BridgeSDKIntegrationTests.xctest;
 			remoteRef = E6FDF8551B882B2500EE7037 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E6FDF8E11B8BCE9300EE7037 /* CMSSupport.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CMSSupport.framework;
-			remoteRef = E6FDF8E01B8BCE9300EE7037 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E6FDF8E31B8BCE9300EE7037 /* CMSSupportTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CMSSupportTests.xctest;
-			remoteRef = E6FDF8E21B8BCE9300EE7037 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E6FDF8EB1B8BCEB400EE7037 /* openssl.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = openssl.framework;
-			remoteRef = E6FDF8EA1B8BCEB400EE7037 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E6FDF8ED1B8BCEB400EE7037 /* opensslTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = opensslTests.xctest;
-			remoteRef = E6FDF8EC1B8BCEB400EE7037 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1328,10 +1334,10 @@
 			name = Charts;
 			targetProxy = 439C51411BA3633100A09FE1 /* PBXContainerItemProxy */;
 		};
-		4B1633131BB443C700ACE6B8 /* PBXTargetDependency */ = {
+		E62A0D4A1BB4E3D6005FF87B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CMSSupport;
-			targetProxy = 4B1633121BB443C700ACE6B8 /* PBXContainerItemProxy */;
+			targetProxy = E62A0D491BB4E3D6005FF87B /* PBXContainerItemProxy */;
 		};
 		E6FDF8581B882B6500EE7037 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
