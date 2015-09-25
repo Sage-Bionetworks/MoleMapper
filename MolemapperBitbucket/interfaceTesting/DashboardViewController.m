@@ -42,10 +42,14 @@
     _isLoaded = YES;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     if (!_isLoaded)
+    {
+        [[DashboardModel sharedInstance] refreshContext];
+        [self setupCellList];
         [self.tableView reloadData];
+    }
     else _isLoaded = NO;
 }
 

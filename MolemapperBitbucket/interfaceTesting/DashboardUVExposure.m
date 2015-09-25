@@ -13,6 +13,7 @@
 @implementation DashboardUVExposure
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define dataRate 7
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -90,10 +91,10 @@
     
     @try
     {
-        NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+        //NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
         
-        //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
-        NSURL * url = [[NSURL alloc] initWithString:urlString];
+        NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+        //NSURL * url = [[NSURL alloc] initWithString:urlString];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 
         
@@ -178,9 +179,10 @@
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
     //int startPos = [self chartStartPos];
     
-    int startPos = [self getStartOrderPostion];
+    //add 2 to get it in the middle
+    int startPos = [self getStartOrderPostion] + 2;
     
-    for (int i = startPos; i < startPos + 7; i++)
+    for (int i = startPos; i < startPos + dataRate; i++)
     {
         NSString* dateTime = [[_jsonUVIndexDictionary objectAtIndex:i] objectForKey:@"DATE_TIME"];
         NSArray* dateTimeArray = [dateTime componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
@@ -193,7 +195,7 @@
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < dataRate + 1; i++)
     {
         int val = (int)[self getUVBasedIndex:i + startPos];
         [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
@@ -271,6 +273,11 @@
     
     if ([[dateTimeArray objectAtIndex:2] isEqualToString:@"PM"])
     {
+        if (hourInt == 12)
+        {
+            return [self getFirstOrderPosition:12: hourInt withDictionary:currentUvData];
+        }
+        
         if (hourInt == (int)currentHour - 12)
             return [self getFirstOrderPosition:(int)currentHour - 12: hourInt withDictionary:currentUvData];
     }
@@ -280,7 +287,7 @@
 
 - (int) getFirstOrderPosition: (int) currentHour : (int) hourInt withDictionary: (NSDictionary*) currentUvData
 {
-    int dataRate = 7;
+    //int _dataRate = 7;
     
     int order = (int)[(NSNumber*)[currentUvData objectForKey:@"ORDER"] integerValue];
     
