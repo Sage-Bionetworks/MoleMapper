@@ -91,10 +91,10 @@
     
     @try
     {
-        //NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+        NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
         
-        NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
-        //NSURL * url = [[NSURL alloc] initWithString:urlString];
+        //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+        NSURL * url = [[NSURL alloc] initWithString:urlString];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 
         
