@@ -13,7 +13,7 @@
 @implementation DashboardUVExposure
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define dataRate 7
+#define dataRate 9
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -92,9 +92,9 @@
     @try
     {
         NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+        NSURL * url = [[NSURL alloc] initWithString:urlString];
         
         //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
-        NSURL * url = [[NSURL alloc] initWithString:urlString];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 
         
@@ -293,8 +293,8 @@
     
     if (order - dataRate >= 1 && order + dataRate < [_jsonUVIndexDictionary count])
     {
-        //add +2 to offset position of data start
-        return ((order - dataRate) - 1) + 2;
+        //add +dataRate / 2 to offset position of data start
+        return ((order - dataRate) - 1) + dataRate / 3;
     }
     else if (order - dataRate < 1)
     {
