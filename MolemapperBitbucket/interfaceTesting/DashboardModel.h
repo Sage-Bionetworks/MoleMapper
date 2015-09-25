@@ -13,6 +13,9 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
+//local cache of the most recent UV data while fetching from EPA on refresh
+@property (strong, nonatomic) NSData *mostRecentStoredUVdata;
+
 + (id)sharedInstance;
 -(NSNumber *)daysUntilNextMeasurementPeriod;
 -(NSArray *)zoneNameToNumberOfMolesInZoneDictionary;

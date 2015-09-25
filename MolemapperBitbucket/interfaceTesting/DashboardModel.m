@@ -515,4 +515,20 @@
     return noDataLabel;
 }
 
+-(NSData *)mostRecentStoredUVdata
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *mostRecentStoredUVdata = [ud objectForKey:@"mostRecentStoredUVdata"];
+    return mostRecentStoredUVdata;
+}
+
+-(void)setMostRecentStoredUVdata:(NSData *)mostRecentStoredUVdata
+{
+    if (mostRecentStoredUVdata != nil)
+    {
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:mostRecentStoredUVdata forKey:@"mostRecentStoredUVdata"];
+    }
+}
+
 @end
