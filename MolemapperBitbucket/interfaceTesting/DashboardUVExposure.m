@@ -180,7 +180,7 @@
     //int startPos = [self chartStartPos];
     
     //add 2 to get it in the middle
-    int startPos = [self getStartOrderPostion] + 2;
+    int startPos = [self getStartOrderPostion];
     
     for (int i = startPos; i < startPos + dataRate; i++)
     {
@@ -293,7 +293,8 @@
     
     if (order - dataRate >= 1 && order + dataRate < [_jsonUVIndexDictionary count])
     {
-        return (order - dataRate) - 1;
+        //add +2 to offset position of data start
+        return ((order - dataRate) - 1) + 2;
     }
     else if (order - dataRate < 1)
     {
