@@ -275,6 +275,79 @@
 
 #pragma mark - KLCPopup
 
+-(void)showRememberCoinPopup:(id)sender
+{
+    // Generate content view to present
+    UIView* contentView = [[UIView alloc] init];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    contentView.backgroundColor = [UIColor whiteColor];
+    contentView.layer.cornerRadius = 12.0;
+    
+    UILabel* welcomeLabel = [[UILabel alloc] init];
+    welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    welcomeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    welcomeLabel.numberOfLines = 0;
+    welcomeLabel.backgroundColor = [UIColor clearColor];
+    welcomeLabel.textColor = [UIColor blackColor];
+    welcomeLabel.textAlignment = NSTextAlignmentCenter;
+    welcomeLabel.font = [UIFont systemFontOfSize:16.0];
+    welcomeLabel.text = @"Don't forget to include a reference like a coin in the measurement photo";
+    
+    UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"photoOfMole"]];
+    
+    UIButton* nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.translatesAutoresizingMaskIntoConstraints = NO;
+    nextButton.contentEdgeInsets = UIEdgeInsetsMake(12, 50, 12, 50);
+    nextButton.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nextButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
+    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    [nextButton setTitle:@"Got it" forState:UIControlStateNormal];
+    nextButton.layer.cornerRadius = 6.0;
+    [nextButton addTarget:self action:@selector(gotItButtonPressedMeasure:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton* demoOffButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    demoOffButton.translatesAutoresizingMaskIntoConstraints = NO;
+    demoOffButton.contentEdgeInsets = UIEdgeInsetsMake(14, 25, 14, 25);
+    demoOffButton.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:192.0/255.0 blue:192.0/255.0 alpha:0.9];
+    [demoOffButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [demoOffButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
+    demoOffButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    [demoOffButton setTitle:@"Turn Off Demo" forState:UIControlStateNormal];
+    demoOffButton.titleLabel.numberOfLines = 2;
+    demoOffButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    demoOffButton.layer.cornerRadius = 6.0;
+    [demoOffButton addTarget:self action:@selector(noMoreRemidersPressedMeasure:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:welcomeLabel];
+    [contentView addSubview:demoShot];
+    [contentView addSubview:demoOffButton];
+    [contentView addSubview:nextButton];
+    
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoShot, demoOffButton, welcomeLabel);
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(5)-[demoShot]-(16)-[welcomeLabel]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+                                             options:NSLayoutFormatAlignAllCenterX
+                                             metrics:nil
+                                               views:views]];
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
+                                             options:0
+                                             metrics:nil
+                                               views:views]];
+    
+    KLCPopup* popup = [KLCPopup popupWithContentView:contentView
+                                            showType:(KLCPopupShowType)KLCPopupShowTypeGrowIn
+                                         dismissType:(KLCPopupDismissType)KLCPopupDismissTypeShrinkOut
+                                            maskType:(KLCPopupMaskType)KLCPopupMaskTypeDimmed
+                            dismissOnBackgroundTouch:NO
+                               dismissOnContentTouch:NO];
+    
+    [popup show];
+}
+
 - (void)showMeasurePopup:(id)sender
 {
     // Generate content view to present
@@ -291,7 +364,7 @@
     welcomeLabel.textColor = [UIColor blackColor];
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
     welcomeLabel.font = [UIFont systemFontOfSize:16.0];
-    welcomeLabel.text = @"For a quick how-to movie\nof mole measurement,\ntap 'Demo'";
+    welcomeLabel.text = @"Step 4: Take a photo of the mole next to a reference object like a coin. Tap 'Demo' to see a brief movie of this process.";
     
     UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"measureDemoPhoto"]];
     
@@ -346,6 +419,26 @@
                                dismissOnContentTouch:NO];
     
     [popup show];
+}
+
+- (void)gotItButtonPressedMeasure:(id)sender
+{
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+    [self openCameraDirectlyWithoutPopup];
+}
+
+- (void)noMoreRemidersPressedMeasure:(id)sender
+{
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setValue:[NSNumber numberWithBool:NO] forKey:@"shouldShowRememberCoinPopup"];
+    [self openCameraDirectlyWithoutPopup];
 }
 
 - (void)nextButtonPressedMeasure:(id)sender
@@ -531,6 +624,19 @@
 
 - (IBAction)openCamera:(UIBarButtonItem *)sender
 {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if ([ud boolForKey:@"shouldShowRememberCoinPopup"] == YES)
+    {
+        [self showRememberCoinPopup:self];
+    }
+    else
+    {
+        [self launchCameraControllerFromViewController:self usingDelegate:self];
+    }
+}
+
+-(void)openCameraDirectlyWithoutPopup
+{
     [self launchCameraControllerFromViewController:self usingDelegate:self];
 }
 
@@ -545,7 +651,7 @@
     }
     UIImagePickerController *cameraController = [[UIImagePickerController alloc] init];
     cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    cameraController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    //cameraController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
     cameraController.allowsEditing = NO;
     cameraController.delegate = delegate;
     

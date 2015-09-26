@@ -2070,6 +2070,7 @@ Altruistic code-sharing by Chris Miles </string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="compareButton" destination="cKB-3N-etR" id="RzS-UR-PXR"/>
                         <outlet property="currentReference" destination="L6a-iW-IxJ" id="FxY-uh-G3A"/>

@@ -293,6 +293,10 @@
     {
         [standardUserDefaults setObject:[NSArray array] forKey:@"measurementsAlreadySentToBridge"];
     }
+    if (![standardUserDefaults objectForKey:@"shouldShowRememberCoinPopup"])
+    {
+        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowRememberCoinPopup"];
+    }
 }
 
 //Loads all zones into persistent storage if they don't yet exist there, and sets bool for has image for each zone

@@ -291,7 +291,7 @@
     welcomeLabel.textColor = [UIColor blackColor];
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
     welcomeLabel.font = [UIFont systemFontOfSize:16.0];
-    welcomeLabel.text = @"Take a photo of the zone\nthen drop in a mole pin";
+    welcomeLabel.text = @"Step 1: Take a photo of the whole zone area\nStep 2: Add a mole pin for each mole in the zone";
     
     UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zoneDemoPin"]];
     
@@ -437,7 +437,7 @@
     welcomeLabel.textColor = [UIColor blackColor];
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
     welcomeLabel.font = [UIFont systemFontOfSize:16.0];
-    welcomeLabel.text = @"To measure a mole, tap\nthe pin and then the measurement icon";
+    welcomeLabel.text = @"Step 3: To measure a mole, tap the pin and then the measurement icon";
     
     UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zoneDemoMeasure"]];
     
@@ -665,7 +665,7 @@
     UIImagePickerController *cameraController = [[UIImagePickerController alloc] init];
     
     cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    cameraController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    //cameraController.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
     cameraController.allowsEditing = NO;
     cameraController.delegate = delegate;
     
