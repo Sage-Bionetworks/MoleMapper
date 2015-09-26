@@ -195,6 +195,18 @@
     }
     tempCounter++;
     [ud setObject:[NSNumber numberWithLong:tempCounter] forKey:@"exportReminderCounter"];
+    
+    //If you don't have a valid zoneImage yet, then don't want to add a pin or export
+    if (self.hasValidImageData == NO)
+    {
+        self.addMolePin.enabled = NO;
+        self.exportButton.enabled = NO;
+    }
+    else
+    {
+        self.addMolePin.enabled = YES;
+        self.exportButton.enabled = YES;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

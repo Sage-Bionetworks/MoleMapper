@@ -35,7 +35,7 @@
 @property (nonatomic, strong) CMPopTipView *popTipViewDemoButton;
 @property (nonatomic, strong) CMPopTipView *popTipViewComparison;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *compareButton;
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *demoButton;
 
 //Will take strings from the reference field and convert to an absolute diameter (in millimeters)
@@ -204,6 +204,29 @@
         [self showPopTipViewDemoButton];
         [ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewMeasurement"];
     }
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    request.predicate = [NSPredicate predicateWithFormat:@"whichMole = %@", self.mole];
+    
+    NSError *error = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&error];
+    if ([matches count] == 0)
+    {
+        self.compareButton.enabled = NO;
+        self.exportButton.enabled = NO;
+    }
+    else if ([matches count] == 1)
+    {
+        self.compareButton.enabled = NO;
+        self.exportButton.enabled = YES;
+    }
+    else
+    {
+        self.compareButton.enabled = YES;
+        self.exportButton.enabled = YES;
+    }
+    
 
 }
 
@@ -625,7 +648,7 @@
 - (IBAction)openCamera:(UIBarButtonItem *)sender
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    if ([ud boolForKey:@"shouldShowRememberCoinPopup"] == YES)
+    if ([ud boolForKey:@"shouldShowRememberCoinPopup"] == YES || [ud boolForKey:@"showDemoInfo"] == YES)
     {
         [self showRememberCoinPopup:self];
     }

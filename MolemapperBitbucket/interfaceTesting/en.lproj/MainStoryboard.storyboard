@@ -2075,6 +2075,7 @@ Altruistic code-sharing by Chris Miles </string>
                         <outlet property="compareButton" destination="cKB-3N-etR" id="RzS-UR-PXR"/>
                         <outlet property="currentReference" destination="L6a-iW-IxJ" id="FxY-uh-G3A"/>
                         <outlet property="demoButton" destination="E7u-A9-sr9" id="VGj-pK-z8j"/>
+                        <outlet property="exportButton" destination="45I-mT-kEA" id="p42-Ud-ZjB"/>
                         <outlet property="moleNameTextField" destination="ttB-2C-Siv" id="21d-X2-GfQ"/>
                         <outlet property="moleSizeField" destination="lG7-U0-GTr" id="Tbj-2o-o97"/>
                         <outlet property="nudgeDown" destination="jfp-hy-M3s" id="TeL-FA-eZ7"/>
@@ -2233,7 +2234,7 @@ Altruistic code-sharing by Chris Miles </string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LrF-aI-9pc"/>
-        <segue reference="BBr-84-rPS"/>
+        <segue reference="9Va-Ir-QxI"/>
         <segue reference="S2T-Mw-bSz"/>
     </inferredMetricsTieBreakers>
 </document>

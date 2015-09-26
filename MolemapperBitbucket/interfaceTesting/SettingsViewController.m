@@ -183,6 +183,7 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     BOOL activateDemoSwitch = self.activateDemoSwitch.isOn;
     [ud setValue:[NSNumber numberWithBool:activateDemoSwitch] forKey:@"showDemoInfo"];
+    [ud setValue:[NSNumber numberWithBool:activateDemoSwitch] forKey:@"shouldShowRememberCoinPopup"];
 }
 
 
