@@ -19,12 +19,10 @@
 #import "MoleViewController.h"
 #import "AppDelegate.h"
 
-
 @interface DashboardViewController ()
 @end
 
 @implementation DashboardViewController
-
 
 - (void)viewDidLoad
 {
@@ -59,9 +57,8 @@
     [self setupCellList];
     [_refreshControl endRefreshing];
     [self.tableView reloadData];
-
-    /*
-    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    /*AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.context = ad.managedObjectContext;*/
 }
 
@@ -78,7 +75,7 @@
         
         [_cellList removeAllObjects];
     }
-
+    
     //DashboardActivityCompletionCell
     DashboardActivityCompletionCell *cell1 = (DashboardActivityCompletionCell *)[_tableView dequeueReusableCellWithIdentifier:@"DashboardActivityCompletionCell"];
     
@@ -217,13 +214,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSNumber *height = 0;
-
+    
     if (indexPath.row == 0)
     {
         DashboardActivityCompletionCell* cell = (DashboardActivityCompletionCell*)[_cellList objectAtIndex:indexPath.row];
         height = @(cell.bounds.size.height);
     }
-
+    
     if (indexPath.row == 1)
     {
         DashboardZoneDocumentationCell* cell = (DashboardZoneDocumentationCell*)[_cellList objectAtIndex:indexPath.row];

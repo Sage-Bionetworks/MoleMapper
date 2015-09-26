@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="315"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="315"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="314"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BNQ-8y-xr1" userLabel="Header">
@@ -35,12 +35,48 @@
                         <color key="backgroundColor" red="0.795245914" green="0.89705110079999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2c-KC-mne" userLabel="ChartView" customClass="LineChartView" customModule="Charts">
-                        <rect key="frame" x="8" y="84" width="304" height="222"/>
+                        <rect key="frame" x="8" y="108" width="304" height="198"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Area Highest UV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjT-30-GFc">
+                        <rect key="frame" x="8" y="62" width="94" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selected UV " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl7-nJ-4EZ">
+                        <rect key="frame" x="227" y="62" width="77" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFr-H6-dto">
+                        <rect key="frame" x="8" y="80" width="94" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEF-qB-aEe">
+                        <rect key="frame" x="231" y="79" width="73" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2t-tY-EMQ">
+                        <rect key="frame" x="113" y="79" width="94" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Time UV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gu8-KI-PbC">
+                        <rect key="frame" x="113" y="62" width="94" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="i2c-KC-mne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="76" id="0tk-4g-NGA"/>
+                    <constraint firstItem="i2c-KC-mne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="100" id="0tk-4g-NGA"/>
                     <constraint firstAttribute="bottomMargin" secondItem="i2c-KC-mne" secondAttribute="bottom" id="6vz-tc-vp9"/>
                     <constraint firstAttribute="trailingMargin" secondItem="i2c-KC-mne" secondAttribute="trailing" id="Of7-5X-pZT"/>
                     <constraint firstItem="i2c-KC-mne" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="uwJ-Ap-Zue"/>
@@ -50,6 +86,9 @@
                 <outlet property="chartView" destination="i2c-KC-mne" id="10C-pN-WOQ"/>
                 <outlet property="header" destination="BNQ-8y-xr1" id="1mA-hc-FbU"/>
                 <outlet property="headerTitle" destination="HFO-tW-P3P" id="NCY-wN-pRd"/>
+                <outlet property="highestUVLabel" destination="yFr-H6-dto" id="gse-ez-ysb"/>
+                <outlet property="selectedUVLabel" destination="tEF-qB-aEe" id="5Pr-7y-pkQ"/>
+                <outlet property="timeLabel" destination="O2t-tY-EMQ" id="piJ-Zf-103"/>
             </connections>
             <point key="canvasLocation" x="588" y="401.5"/>
         </tableViewCell>

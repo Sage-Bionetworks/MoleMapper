@@ -21,6 +21,19 @@
     _header.backgroundColor = [[DashboardModel sharedInstance] getColorForHeader];
     _headerTitle.textColor = [[DashboardModel sharedInstance] getColorForDashboardTextAndButtons];
     
+    _chartView.delegate = self;
+    
+    NSData *data = [[DashboardModel sharedInstance] mostRecentStoredUVdata];
+    
+    if (data != nil)
+    {
+        _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        //[self setupChartView];
+    }
+    //DEBUG
+    //[self setDescriptionLabels];
+    //[self getUVJsonDataWithZipCode:@""];
+    ///////
     [self setupLocationService];
 }
 
@@ -31,7 +44,7 @@
     NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
     NSLog(@"%@",theLocation);
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
+
     [geocoder reverseGeocodeLocation:_locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
         if(error){
             NSLog(@"%@", [error localizedDescription]);
@@ -40,6 +53,7 @@
         CLPlacemark *placemark = [placemarks lastObject];
         NSLog(@"%@", placemark.postalCode);
         
+        [self setDescriptionLabels];
         [self getUVJsonDataWithZipCode:placemark.postalCode];
     }];
 }
@@ -88,7 +102,6 @@
 
 -(void) getUVJsonDataWithZipCode: (NSString*) zipCode
 {
-    
     @try
     {
         NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
@@ -96,21 +109,22 @@
         
         //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-
         
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                                     completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
         {
-            
             if (data != nil)
             {
-                _jsonUVIndexDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                [self setupChartView];
-                NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+                [[DashboardModel sharedInstance] setMostRecentStoredUVdata:data];
+                NSArray* tempData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                if (tempData != _jsonUVIndexDictionary)
+                {
+                    _jsonUVIndexDictionary = tempData;
+                    NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+                    [self setupChartView];
+                }
             }
-            
         }];
-        
     }
     @catch (NSException * e) {
         NSLog(@"Exception: %@", e);
@@ -121,7 +135,7 @@
                                                             message:msg
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+                                                otherButtonTitles:nil];
         [alertView show];
     }
 }
@@ -160,7 +174,7 @@
     rightAxis.valueFormatter = [[NSNumberFormatter alloc] init];
     rightAxis.valueFormatter.maximumFractionDigits = 0;
     rightAxis.xOffset = 9.0;
-    
+
     ChartXAxis *xAxis = _chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
     xAxis.labelFont = [UIFont systemFontOfSize:9.f];
@@ -221,6 +235,62 @@
     _chartView.data = data;
 }
 
+-(void) setDescriptionLabels
+{
+    int highestUV = 0;
+    for (int i = 0; i < (int)[_jsonUVIndexDictionary count]; ++i)
+    {
+        int currentUv = [self getUVBasedIndex: i];
+        highestUV = currentUv > highestUV ? currentUv : highestUV;
+    }
+    
+    _highestUVLabel.text = [NSString stringWithFormat:@"%i", highestUV];
+    _timeLabel.text = [NSString stringWithFormat:@"%@", [self getCurrentTimeString]];
+    
+}
+
+-(NSString*) getCurrentTimeString
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:[NSDate date]];
+    NSInteger currentHour = [components hour];
+    
+    NSString* timeString = @"";
+    
+    if (currentHour > 12)
+        timeString = [NSString stringWithFormat:@"%i PM", (int)currentHour - 12];
+    
+    if (currentHour == 24)
+        timeString = [NSString stringWithFormat:@"%i AM", (int)currentHour - 12];
+    
+    if (currentHour < 12)
+        timeString = [NSString stringWithFormat:@"%i AM", (int)currentHour];
+    
+    if (currentHour == 12)
+        timeString = [NSString stringWithFormat:@"%i PM", (int)currentHour];
+    
+    
+    for (int i = 0; i < [_jsonUVIndexDictionary count]; ++i)
+    {
+        //need to put here for testing... need to change the calling methods tho...
+        NSDictionary* currentUvData = [_jsonUVIndexDictionary objectAtIndex:i];
+        NSString* dateTime = [currentUvData objectForKey:@"DATE_TIME"];
+        NSArray* dateTimeArray = [dateTime componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+        NSString* hourString = [dateTimeArray objectAtIndex:1];
+        NSString* firstChar = [hourString substringToIndex:1];
+        NSString* correctHourString = [firstChar isEqualToString:@"0"] ? [hourString componentsSeparatedByString:@"0"][1] : hourString;
+        int hourInt = [[correctHourString stringByTrimmingCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] intValue];
+        
+        if (hourInt == currentHour)
+        {
+            return [NSString stringWithFormat:@"%@ | %i", timeString, [self getUVBasedIndex:i]];
+            break;
+        }
+    }
+    
+    return @"";
+}
+
 -(int) getUVBasedIndex: (int) idx
 {
     NSDictionary* currentUvData = [_jsonUVIndexDictionary objectAtIndex:idx];
@@ -237,7 +307,11 @@
         highestUV = currentUv > highestUV ? currentUv : highestUV;
     }
     
-    return highestUV + 1;
+    if (highestUV % 2 > 0)
+        highestUV += 2;
+    else highestUV++;
+    
+    return highestUV;
 }
 
 -(int) getStartOrderPostion
@@ -314,5 +388,19 @@
     [[PopupManager sharedInstance] createPopupWithText:text];
 }
 
+#pragma mark - ChartViewDelegate
+
+- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
+{
+    NSString *selectedTime = (NSString*)[_chartView.data.xValsObjc objectAtIndex:entry.xIndex];
+    int selectedValue = entry.value;
+    
+    _selectedUVLabel.text = [NSString stringWithFormat:@"%@ | %i", selectedTime, selectedValue];
+}
+
+- (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
+{
+    _selectedUVLabel.text = [NSString stringWithFormat:@"- | -"];
+}
 
 @end
