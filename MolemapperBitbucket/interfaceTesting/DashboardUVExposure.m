@@ -13,6 +13,7 @@
 @implementation DashboardUVExposure
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 #define dataRate 9
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -258,7 +259,7 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:[NSDate date]];
     NSInteger currentHour = [components hour];
-    
+
     NSString* timeString = @"";
     BOOL moreThenTwelve = NO;
     
@@ -277,9 +278,14 @@
     else if (currentHour == 12)
         timeString = [NSString stringWithFormat:@"%i PM", (int)currentHour];
     
+    if (currentHour < 7 && currentHour > 3)
+    {
+        return [NSString stringWithFormat:@"%@ | -", timeString];
+    }
+    
     if (moreThenTwelve)
         currentHour -=  12;
-    
+
     for (int i = 0; i < [_jsonUVIndexDictionary count]; ++i)
     {
         //need to put here for testing... need to change the calling methods tho...
@@ -291,7 +297,10 @@
         NSString* correctHourString = [firstChar isEqualToString:@"0"] ? [hourString componentsSeparatedByString:@"0"][1] : hourString;
         int hourInt = [[correctHourString stringByTrimmingCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] intValue];
         
-        if (hourInt == currentHour)
+        NSString *currentTimeBase = [dateTimeArray objectAtIndex:2];
+        BOOL isTimeBaseCorrect = [timeString containsString:currentTimeBase];
+        
+        if (hourInt == currentHour && isTimeBaseCorrect)
         {
             return [NSString stringWithFormat:@"%@ | %i", timeString, [self getUVBasedIndex:i]];
             break;
@@ -351,19 +360,20 @@
     
     if ([[dateTimeArray objectAtIndex:2] isEqualToString:@"AM"])
     {
+        if (hourInt == 12 || hourInt == 0)
+            return [self getFirstOrderPosition:(int)currentHour: 12 withDictionary:currentUvData];
+        
         if (hourInt == (int)currentHour)
             return [self getFirstOrderPosition:(int)currentHour: hourInt withDictionary:currentUvData];
     }
     
     if ([[dateTimeArray objectAtIndex:2] isEqualToString:@"PM"])
     {
-        if (hourInt == 12)
-        {
-            return [self getFirstOrderPosition:12: hourInt withDictionary:currentUvData];
-        }
-        
         if (hourInt == (int)currentHour - 12)
             return [self getFirstOrderPosition:(int)currentHour - 12: hourInt withDictionary:currentUvData];
+        
+        if (hourInt == 12 && currentHour == 12)
+            return [self getFirstOrderPosition:12: hourInt withDictionary:currentUvData];
     }
     
     return -1;
@@ -371,21 +381,21 @@
 
 - (int) getFirstOrderPosition: (int) currentHour : (int) hourInt withDictionary: (NSDictionary*) currentUvData
 {
-    //int _dataRate = 7;
+    //int _dataRate = 9;
     
     int order = (int)[(NSNumber*)[currentUvData objectForKey:@"ORDER"] integerValue];
     
-    if (order - dataRate >= 1 && order + dataRate < [_jsonUVIndexDictionary count])
+    if (order - dataRate / 2 >= 1 && order + dataRate / 2 < [_jsonUVIndexDictionary count])
     {
-        return ((order - dataRate) - 1) + dataRate / 3;
+        return order - dataRate / 2;
     }
-    else if (order - dataRate < 1)
+    else if (order - dataRate / 2 < 1)
     {
         return 0;
     }
-    else if (order + dataRate >= [_jsonUVIndexDictionary count])
+    else if (order + dataRate / 2 >= [_jsonUVIndexDictionary count])
     {
-        return ((int)[_jsonUVIndexDictionary count] - dataRate) - 1;
+        return (int)[_jsonUVIndexDictionary count] - dataRate;
     }
     
     return nil;
@@ -397,26 +407,6 @@
     [[PopupManager sharedInstance] createPopupWithText:text];
 }
 
-/*
- if ([AVCaptureDevice respondsToSelector:@selector(requestAccessForMediaType: completionHandler:)]) {
- [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
- // Will get here on both iOS 7 & 8 even though camera permissions weren't required
- // until iOS 8. So for iOS 7 permission will always be granted.
- if (granted) {
- // Permission has been granted. Use dispatch_async for any UI updating
- // code because this block may be executed in a thread.
- dispatch_async(dispatch_get_main_queue(), ^{
- [self doStuff];
- });
- } else {
- // Permission has been denied.
- }
- }];
- } else {
- // We are on iOS <= 6. Just do what we need to do.
- [self doStuff];
- }
- */
 
 #pragma mark - ChartViewDelegate
 

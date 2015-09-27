@@ -9,6 +9,7 @@
 #import <MessageUI/MessageUI.h>
 #import "SMCalloutView.h"
 #import "CMPopTipView.h"
+#import <AVFoundation/AVCaptureDevice.h>
 
 @class MolePin;
 
@@ -17,7 +18,7 @@
                                                   UIGestureRecognizerDelegate,
                                                   UIScrollViewDelegate,
                                                   UIActionSheetDelegate,
-                                                  MFMailComposeViewControllerDelegate> 
+                                                  MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
