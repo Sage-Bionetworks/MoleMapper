@@ -130,7 +130,7 @@
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
-    request.predicate = [NSPredicate predicateWithFormat:@"whichZone = %@", zone];
+    request.predicate = [NSPredicate predicateWithFormat:@"whichZone.zoneID = %@", zone.zoneID];
     NSError *error = nil;
     
     NSArray *molesInProvidedZone = [context executeFetchRequest:request error:&error];
