@@ -22,6 +22,8 @@
 #import "HelpMovieViewController.h"
 #import "CMPopTipView.h"
 #import "KLCPopup.h"
+#import "ResearchKit.h"
+#import "MoleWasRemovedRKModule.h"
 
 @interface MoleViewController ()
 {
@@ -37,6 +39,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *compareButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *demoButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+
+@property (nonatomic, strong) MoleWasRemovedRKModule *removed;
 
 //Will take strings from the reference field and convert to an absolute diameter (in millimeters)
 @property (nonatomic, strong) ReferenceConverter *refConverter;
@@ -191,6 +196,31 @@
                                 target:self
                                 action:nil];
     self.navigationController.navigationBar.topItem.backBarButtonItem=btnBack;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    request.predicate = [NSPredicate predicateWithFormat:@"whichMole = %@", self.mole];
+    
+    NSError *error = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&error];
+    if ([matches count] == 0)
+    {
+        self.compareButton.enabled = NO;
+        self.exportButton.enabled = NO;
+        self.settingsButton.enabled = NO;
+    }
+    else if ([matches count] == 1)
+    {
+        self.compareButton.enabled = NO;
+        self.exportButton.enabled = YES;
+        self.settingsButton.enabled = YES;
+    }
+    else
+    {
+        self.compareButton.enabled = YES;
+        self.exportButton.enabled = YES;
+        self.settingsButton.enabled = YES;
+    }
+
 }
 
 //If you need to do any calculations based on the subviews having been laid out (like the measurement tools) do it below
@@ -204,30 +234,6 @@
         [self showPopTipViewDemoButton];
         [ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewMeasurement"];
     }
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
-    request.predicate = [NSPredicate predicateWithFormat:@"whichMole = %@", self.mole];
-    
-    NSError *error = nil;
-    NSArray *matches = [self.context executeFetchRequest:request error:&error];
-    if ([matches count] == 0)
-    {
-        self.compareButton.enabled = NO;
-        self.exportButton.enabled = NO;
-    }
-    else if ([matches count] == 1)
-    {
-        self.compareButton.enabled = NO;
-        self.exportButton.enabled = YES;
-    }
-    else
-    {
-        self.compareButton.enabled = YES;
-        self.exportButton.enabled = YES;
-    }
-    
-
 }
 
 //Save any changes to measurements upon leaving the screen, then clear all measurement-related properties
@@ -247,7 +253,12 @@
       inManagedObjectContext:self.context];
     }
     [self saveMeasurementData];
-
+    if (self.measurement)
+    {
+        AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [ad.bridgeManager signInAndSendMeasurements];
+    }
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -782,8 +793,7 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
                                     inManagedObjectContext:self.context];
     
     
-    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [ad.bridgeManager signInAndSendMeasurements];
+    
     return measurementName;
 }
 
@@ -829,8 +839,9 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
 
 - (IBAction)deleteButtonTapped
 {
-    NSString *title = [NSString stringWithFormat:@"Delete this measurement\nof %@?",self.measurement.whichMole.moleName];
-    UIAlertController *deleteMole = [UIAlertController alertControllerWithTitle:title message:@"If this mole was removed by a doctor, please tap the 'Mole Removed by Doctor' button" preferredStyle:UIAlertControllerStyleActionSheet];
+    Mole *moleToBeDeleted = self.measurement.whichMole;
+    NSString *title = [NSString stringWithFormat:@"Settings for this measurement of %@",moleToBeDeleted.moleName];
+    UIAlertController *deleteMole = [UIAlertController alertControllerWithTitle:title message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete Measurement from App" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
         [self deleteMole];
@@ -851,6 +862,28 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
     [self presentViewController:deleteMole animated:YES completion:nil];
 }
 
+-(void)moleWasRemoved
+{
+    if (self.measurement == nil) {NSLog(@"Attempting to specify a null mole as deleted");return;}
+    
+    NSLog(@"Mole: %@ was set to 'removed' by user",self.measurement.whichMole.moleName);
+    
+    //Store the mole without an associated diagnosis first, then overwrite if user completes survey
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSMutableArray *removedMoleToDiagnoses = [ad.user.removedMolesToDiagnoses mutableCopy];
+    //Store a removedMole record with an empty diagnosis array for now until the user potentially enters diagnoses in survey
+    NSDictionary *removedMoleRecord = @{@"moleID" : self.measurement.whichMole.moleID,
+                                        @"diagnoses" : @[]};
+    [removedMoleToDiagnoses addObject:removedMoleRecord];
+    ad.user.removedMolesToDiagnoses = removedMoleToDiagnoses;
+    
+    //Spin up survey about the removed mole
+    self.removed = [[MoleWasRemovedRKModule alloc] init];
+    self.removed.removedMole = self.measurement.whichMole;
+    self.removed.presentingVC = self;
+    [self.removed showMoleRemoved];
+}
+
 -(void)deleteMole
 {
     if (self.measurement)
@@ -862,11 +895,6 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
         self.measurement = [Measurement getMostRecentMoleMeasurementForMole:self.mole withContext:self.context];
     }
     [self.navigationController popViewControllerAnimated:YES];
-}
-
--(void)moleWasRemoved
-{
-    NSLog(@"Mole: %@ was set to 'removed' by user",self.measurement.whichMole.moleName);
 }
 
 -(void)cancelMoleDeletion
@@ -1035,7 +1063,11 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
                                         withAbsoluteReferenceDiameter:absoluteReferenceDiameter];
     
         //Round here to show user precision that is used for percent change calculations
-        NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([absoluteMoleDiameter floatValue] * 10) / 10];
+        NSString *formattedSize = @"0.0";
+        if ([absoluteMoleDiameter floatValue] > 0.0)
+        {
+            formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([absoluteMoleDiameter floatValue] * 10) / 10];
+        }
         formattedSize = [formattedSize stringByAppendingString:@" mm"];
         NSString *sizeText = @"Mole Size: ";
         sizeText = [sizeText stringByAppendingString:formattedSize];
@@ -1045,7 +1077,12 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
 
 -(void)updateMoleSizeFromCurrentMeasurement
 {
-    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.measurement.absoluteMoleDiameter floatValue] * 10) / 10];
+    NSString *formattedSize = @"0.0";
+    if ([self.measurement.absoluteMoleDiameter floatValue] > 0.0)
+    {
+        formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.measurement.absoluteMoleDiameter floatValue] * 10) / 10];
+    }
+    formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.measurement.absoluteMoleDiameter floatValue] * 10) / 10];
     formattedSize = [formattedSize stringByAppendingString:@" mm"];
     NSString *sizeText = @"Mole Size: ";
     sizeText = [sizeText stringByAppendingString:formattedSize];

@@ -231,60 +231,49 @@
         int firstValidMoleID = 1;
         [standardUserDefaults setInteger:firstValidMoleID forKey:@"nextMoleID"];
     }
-    
     //Setup default reference object (string
     if (![standardUserDefaults objectForKey:@"referenceObject"])
     {
         NSString *referenceObject = @"Dime";
         [standardUserDefaults setValue:referenceObject forKey:@"referenceObject"];
     }
-    
     if (![standardUserDefaults objectForKey:@"moleNameGender"])
     {
         NSString *defaultMoleNameGender = @"Random";
         [standardUserDefaults setValue:defaultMoleNameGender forKey:@"moleNameGender"];
     }
-    
     if (![standardUserDefaults objectForKey:@"firstViewPinButton"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewPinButton"];
     }
-    
     if (![standardUserDefaults objectForKey:@"exportReminderCounter"])
     {
         [standardUserDefaults setValue:@0 forKey:@"exportReminderCounter"];
     }
-    
     if (![standardUserDefaults objectForKey:@"firstViewMovePin"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewMovePin"];
     }
-    
     if (![standardUserDefaults objectForKey:@"firstViewMeasurement"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewMeasurement"];
     }
-    
     if (![standardUserDefaults objectForKey:@"firstViewCallout"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewCallout"];
     }
-    
     if (![standardUserDefaults objectForKey:@"showDemoInfo"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"showDemoInfo"];
     }
-    
     if (![standardUserDefaults objectForKey:@"shouldShowOnboarding"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowOnboarding"];
     }
-    
     if (![standardUserDefaults objectForKey:@"shouldShowIntroAndEligible"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowIntroAndEligible"];
     }
-    
     if (![standardUserDefaults objectForKey:@"shouldShowConsent"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"shouldShowConsent"];
@@ -296,6 +285,10 @@
     if (![standardUserDefaults objectForKey:@"shouldShowRememberCoinPopup"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowRememberCoinPopup"];
+    }
+    if (![standardUserDefaults objectForKey:@"removedMolesToDiagnoses"])
+    {
+        [standardUserDefaults setObject:[NSArray array] forKey:@"removedMolesToDiagnoses"];
     }
 }
 

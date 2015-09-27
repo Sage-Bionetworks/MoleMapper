@@ -40,6 +40,7 @@
 @property (strong, nonatomic) CMPopTipView *popTipViewPointToPinButton;
 @property (strong, nonatomic) CMPopTipView *popTipViewExport;
 @property (strong, nonatomic) CMPopTipView *popTipViewPinTap;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 
 @property (strong, nonatomic) MoleWasRemovedRKModule *removed;
 
@@ -157,6 +158,20 @@
     //}
     [self updateMolePinBarButtonStates];
     
+    //If you don't have a valid zoneImage yet, then don't want to add a pin or export or settings
+    if (self.hasValidImageData == NO)
+    {
+        self.addMolePin.enabled = NO;
+        self.exportButton.enabled = NO;
+        self.settingsButton.enabled = NO;
+    }
+    else
+    {
+        self.addMolePin.enabled = YES;
+        self.exportButton.enabled = YES;
+        self.settingsButton.enabled = YES;
+    }
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -196,17 +211,6 @@
     tempCounter++;
     [ud setObject:[NSNumber numberWithLong:tempCounter] forKey:@"exportReminderCounter"];
     
-    //If you don't have a valid zoneImage yet, then don't want to add a pin or export
-    if (self.hasValidImageData == NO)
-    {
-        self.addMolePin.enabled = NO;
-        self.exportButton.enabled = NO;
-    }
-    else
-    {
-        self.addMolePin.enabled = YES;
-        self.exportButton.enabled = YES;
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -733,6 +737,73 @@
 }
 
 #pragma mark - Handle Touch Events
+
+- (IBAction)settingsButtonTapped:(id)sender
+{
+    NSString *title = [NSString stringWithFormat:@"Settings for the %@ zone",self.zoneTitle];
+    UIAlertController *zoneSettings = [UIAlertController alertControllerWithTitle:title message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete the photo of this zone" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self showDeleteZoneWarning];
+    }];
+    
+    UIAlertAction *retakeZonePhoto = [UIAlertAction actionWithTitle:@"Retake photo of this zone" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self openCamera:self];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        //no action needed here because self-dismissal
+    }];
+    
+    [zoneSettings addAction:retakeZonePhoto];
+    [zoneSettings addAction:delete];
+    [zoneSettings addAction:cancel];
+    
+    [self presentViewController:zoneSettings animated:YES completion:nil];
+}
+
+-(void)showDeleteZoneWarning
+{
+    NSString *title = [NSString stringWithFormat:@"Are you sure you want to delete this zone photo?"];
+    UIAlertController *zoneSettings = [UIAlertController alertControllerWithTitle:title message:@"You will also lose all documented moles and measurements. This action cannot be undone." preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete Zone Photo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self deleteZonePhoto];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        //no action needed here because self-dismissal
+    }];
+    
+    [zoneSettings addAction:delete];
+    [zoneSettings addAction:cancel];
+    
+    [self presentViewController:zoneSettings animated:YES completion:nil];
+}
+
+-(void)deleteZonePhoto
+{
+    Zone *zone = [Zone zoneForZoneID:self.zoneID withZonePhotoFileName:nil inManagedObjectContext:self.context];
+    [self.context deleteObject:zone];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate saveContext];
+    
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *pathToZonePhoto = [Zone imageFullFilepathForZoneID:self.zoneID];
+    NSError *error;
+    BOOL success = [fileManager removeItemAtPath:pathToZonePhoto error:&error];
+    if (success)
+    {
+        NSLog(@"File deleted for zone:%@ ",self.zoneTitle);
+    }
+    else
+    {
+        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)addMolePinButtonTapped:(UIBarButtonItem *)sender
 {

@@ -33,9 +33,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Mole Map" image="moleMapUnselected" selectedImage="moleMapSelected" id="KFT-Uo-C9o"/>
                     <navigationItem key="navigationItem" id="Nck-qm-ows">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="jRp-By-RQ9">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="jRp-By-RQ9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bDt-RQ-7pD">
-                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <rect key="frame" x="274" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="-2" minY="-2" maxX="-2" maxY="-2"/>
                                 <state key="normal" image="barButtonSettings"/>
@@ -1542,12 +1542,19 @@ Altruistic code-sharing by Chris Miles </string>
                             <constraint firstItem="yuv-uB-SPN" firstAttribute="top" secondItem="z6P-7W-vMy" secondAttribute="top" id="yIE-Y4-VVC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YNJ-mp-kbv"/>
+                    <navigationItem key="navigationItem" id="YNJ-mp-kbv">
+                        <barButtonItem key="rightBarButtonItem" image="barButtonSettings" id="J59-v4-OQu">
+                            <connections>
+                                <action selector="settingsButtonTapped:" destination="NOT-gB-pO0" id="tZk-dm-htZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addMolePin" destination="RyG-pe-hRL" id="XjS-fG-YJ9"/>
                         <outlet property="exportButton" destination="Uwp-kR-u1F" id="LsJ-rB-c2e"/>
                         <outlet property="scrollView" destination="yuv-uB-SPN" id="VcD-Z0-V4Z"/>
+                        <outlet property="settingsButton" destination="J59-v4-OQu" id="kNJ-hc-lEZ"/>
                         <segue destination="7Pt-34-3sv" kind="push" identifier="GoToMoleView" id="9Va-Ir-QxI"/>
                     </connections>
                 </viewController>
@@ -2064,7 +2071,7 @@ Altruistic code-sharing by Chris Miles </string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uFI-9T-zLQ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="eOI-Pg-3Ut">
+                        <barButtonItem key="rightBarButtonItem" image="barButtonSettings" id="eOI-Pg-3Ut">
                             <connections>
                                 <action selector="deleteButtonTapped" destination="7Pt-34-3sv" id="l7c-QH-Low"/>
                             </connections>
@@ -2083,6 +2090,7 @@ Altruistic code-sharing by Chris Miles </string>
                         <outlet property="nudgeRight" destination="6R0-HM-FOm" id="qYc-JR-XOf"/>
                         <outlet property="nudgeUp" destination="u0f-d9-NMX" id="w0s-TG-ct0"/>
                         <outlet property="scrollView" destination="i1Z-zO-Igd" id="8lV-4R-ktY"/>
+                        <outlet property="settingsButton" destination="eOI-Pg-3Ut" id="OW1-gV-a5A"/>
                         <outlet property="stepperDecrement" destination="Lad-lc-aDp" id="AyR-p5-TQg"/>
                         <outlet property="stepperIncrement" destination="WW0-8g-rdr" id="Yio-9B-LIh"/>
                     </connections>
