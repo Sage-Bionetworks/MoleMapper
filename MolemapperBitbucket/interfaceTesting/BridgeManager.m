@@ -44,33 +44,30 @@
     }
     
     UIImage *signatureImage = ad.user.signatureImage;
-    
-    //Because all KeyChain-stored items are strings, have to go through conversion here
     NSNumber *sharingScope = ad.user.sharingScope;
-    //int *sharingScopeNumber = [sharingScope intValue];
     
     
     [SBBComponent(SBBConsentManager) consentSignature:name
                                             birthdate:birthdate
                                        signatureImage:signatureImage
                                           dataSharing:[sharingScope integerValue]
-                                           completion:^(id __unused responseObject, NSError * __unused error) {
-                                               dispatch_async(dispatch_get_main_queue(), ^{
-                                                   if (!error) {
-                                                       APCLogEventWithData(@"Network Event", (@{@"event_detail":@"User Consent Sent To Bridge"}));
-                                                   }
-                                                   else
-                                                   {
-                                                       NSLog(@"Did not send consent because of this error: %@",error);
-                                                       NSDictionary *responseDictionary = (NSDictionary *)responseObject;
-                                                   }
-                                                   
-                                                   if (completionBlock) {
-                                                       completionBlock(error);
-                                                   }
-                                               });
-                                           }];
-    
+                                           completion:^(id __unused responseObject,
+                                                        NSError * __unused error)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!error)
+            {
+                APCLogEventWithData(@"Network Event", (@{@"event_detail":@"User Consent Sent To Bridge"}));
+            }
+            else
+            {
+                NSLog(@"Did not send consent because of this error: %@",error);
+                //NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+            }
+                                                                
+            if (completionBlock) {completionBlock(error);}
+        });
+        }];
 }
 
 //Derived from APCUser+Bridge

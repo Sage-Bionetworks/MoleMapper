@@ -198,10 +198,12 @@
             ad.user.firstName = parsedData[@"firstName"];
             ad.user.lastName = parsedData[@"lastName"];
             ad.user.sharingScope = parsedData[@"sharingScope"];
+            ad.user.hasConsented = YES;
             
-            [ad.bridgeManager sendUserConsentedToBridgeOnCompletion:^(NSError *error){
-                ad.user.hasConsented = YES;
-            }];
+            //Can't send this until you have signed up first
+            //[ad.bridgeManager sendUserConsentedToBridgeOnCompletion:^(NSError *error){
+            //    ad.user.hasConsented = YES;
+            //}];
             
             [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [ad showOnboarding];

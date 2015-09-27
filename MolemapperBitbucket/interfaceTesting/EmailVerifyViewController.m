@@ -103,7 +103,7 @@ typedef void (^APCAlertDismisser) (void);
         {
             if (error.code == kSBBServerPreconditionNotMet)
             {
-                //[self getServerConsent]; Does this mean go out and get the consent?
+                [self getServerConsent];
             }
             
             else if (error.code == kAPCSigninErrorCode_NotSignedIn)
@@ -378,6 +378,49 @@ typedef void (^APCAlertDismisser) (void);
             callbackBlock ();
         }
     }
+}
+
+- (void) getServerConsent
+{
+    __weak EmailVerifyViewController * weakSelf = self;
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (ad.user.hasConsented) {
+        [ad.bridgeManager sendUserConsentedToBridgeOnCompletion: ^(NSError *error) {
+            [weakSelf handleConsentResponseWithError: error];
+        }];
+    }
+    else
+    {
+        // What happens here?  And what should?
+    }
+}
+
+- (void) handleConsentResponseWithError: (NSError *) error
+{
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (error)
+    {
+        [self showConsentError: error];
+    }
+    else
+    {
+        ad.user.hasConsented = YES;
+        [self checkSignInOnce];
+    }
+}
+
+- (void) showConsentError: (NSError *) error
+{
+    APCLogError2(error);
+    
+    [self hideSpinnerUsingAnimation: YES andThenDoThis:^{
+        
+        UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"User Consent Error", @"") message:error.localizedDescription];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }];
 }
 
 

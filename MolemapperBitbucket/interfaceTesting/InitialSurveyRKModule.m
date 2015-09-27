@@ -175,11 +175,14 @@
             
             [ad.bridgeManager signInAndSendInitialData:parsedData];
             
+            
+            /* This shouldn't be needed because all of the consent has been taken care of already during signup
             [ad.bridgeManager sendUserConsentedToBridgeOnCompletion:^(NSError *error){
                 NSLog(@"Updated birthdate for User Profile");
                 [ad.bridgeManager updateProfileOnCompletion:nil];
             }];
-            
+            */
+             
             [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [ad showBodyMap];
             break;

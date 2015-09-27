@@ -88,21 +88,16 @@
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             ad.user.bridgeSignInEmail = email;
             ad.user.bridgeSignInPassword = password;
-            
             [SBBComponent(SBBAuthManager) signUpWithEmail: email
                                                  username: email
                                                  password: password
                                                completion: ^(NSURLSessionDataTask * __unused task,
                                                              id __unused responseObject,
-                                                             NSError *error)
-             {
+                                                             NSError *error) {
                  dispatch_async(dispatch_get_main_queue(),^{
                      if (!error)
                      {
-                         NSLog(@"User Signed Up");
-                         EmailVerifyViewController *emailVerify = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"emailVerify"];
-                         [self.presentingVC presentViewController:emailVerify animated:YES completion:nil];
-                         
+                         NSLog(@"User is SIGNED UP before changing consent parameters");
                      }
                      else
                      {
@@ -111,7 +106,9 @@
                  });
              }];
             
-            [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
+            [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
+            EmailVerifyViewController *emailVerify = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"emailVerify"];
+            [self.presentingVC presentViewController:emailVerify animated:YES completion:nil];
             break;
         }
             

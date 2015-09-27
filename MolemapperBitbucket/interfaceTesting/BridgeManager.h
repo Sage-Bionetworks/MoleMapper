@@ -29,5 +29,4 @@
 //Sign in to Bridge and then send all Mole Measurements and their attendant photos
 -(void)signInAndSendMeasurements;
 
-
 @end
