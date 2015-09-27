@@ -783,6 +783,15 @@
 
 -(void)deleteZonePhoto
 {
+    [self.molePinsOnImage removeAllObjects];
+    for (UIView *view in self.zoneImageView.subviews)
+    {
+        if (view)
+        {
+            [view removeFromSuperview];
+        }
+    }
+    
     Zone *zone = [Zone zoneForZoneID:self.zoneID withZonePhotoFileName:nil inManagedObjectContext:self.context];
     [Zone deleteAllMolesInZone:zone inManagedObjectContext:self.context];
     
