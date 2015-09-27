@@ -24,6 +24,7 @@
 #import "KLCPopup.h"
 #import "ResearchKit.h"
 #import "MoleWasRemovedRKModule.h"
+#import "Zone+MakeAndMod.h"
 
 @interface MoleViewController ()
 {
@@ -116,6 +117,8 @@
         _isPresentView = NO;
     }
 
+    NSNumber *zoneID = [NSNumber numberWithInt:[self.mole.whichZone.zoneID intValue]];
+    self.navigationItem.title = [Zone zoneNameForZoneID:zoneID];
     self.automaticallyAdjustsScrollViewInsets = YES;
     vars = [VariableStore sharedVariableStore];
     vars.moleViewStepperIncrement = self.stepperIncrement;
@@ -895,6 +898,7 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
         self.measurement = [Measurement getMostRecentMoleMeasurementForMole:self.mole withContext:self.context];
     }
     [self.navigationController popViewControllerAnimated:YES];
+    [self closeViewController:self];
 }
 
 -(void)cancelMoleDeletion

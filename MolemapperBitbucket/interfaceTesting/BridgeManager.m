@@ -267,11 +267,10 @@
     
     for (Measurement *measurement in fetchedMeasurements)
     {
-#pragma warning CHANGE THIS BEFORE SHIP
-        //if ([measurementsAlreadySent containsObject:measurement.measurementID])
-        //{
-        //    continue; //Don't send duplicate measurements to Bridge
-        //}
+        if ([measurementsAlreadySent containsObject:measurement.measurementID])
+        {
+            continue; //Don't send duplicate measurements to Bridge
+        }
         
         //AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         //NSLog(@"BridgeSigninEmail = %@",ad.user.bridgeSignInEmail);

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "tvc_stats.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "tvcStats-1.png",
       "scale" : "2x"
     },
     {

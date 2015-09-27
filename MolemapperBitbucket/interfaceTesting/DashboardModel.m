@@ -200,13 +200,15 @@
 {
     NSMutableArray *allMoleMeasurements = [NSMutableArray array];
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Measurement" inManagedObjectContext:self.context];
-    [fetchRequest setEntity:entity];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
+    
     NSError *error = nil;
-    NSArray *matches = [self.context executeFetchRequest:fetchRequest error:&error];
-    for (Measurement *measure in matches)
+    NSArray *allMoles = [self.context executeFetchRequest:request error:&error];
+    
+    for (Mole *mole in allMoles)
     {
+        Measurement *measure = [Measurement getMostRecentMoleMeasurementForMole:mole withContext:self.context];
         if ([measure.absoluteMoleDiameter doubleValue] > 0.0)
         {
             [allMoleMeasurements addObject:measure.absoluteMoleDiameter];
