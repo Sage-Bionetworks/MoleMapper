@@ -22,4 +22,6 @@
 
 + (int)getNextValidMoleID;
 
++ (NSArray *)getAllMolesInCoreDatainManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

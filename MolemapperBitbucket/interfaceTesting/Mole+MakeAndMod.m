@@ -77,6 +77,15 @@
 //    return image;
 //}
 
++ (NSArray *)getAllMolesInCoreDatainManagedObjectContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    return matches;
+}
+
 + (UIImage *)mostRecentMeasurementImageForMole:(Mole *)mole inContext:(NSManagedObjectContext *)context
 {
     UIImage *image = nil;
