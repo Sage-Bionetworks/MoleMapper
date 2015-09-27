@@ -130,7 +130,7 @@
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
-    request.predicate = [NSPredicate predicateWithFormat:@"whichZone = %@", zone.zoneID];
+    request.predicate = [NSPredicate predicateWithFormat:@"whichZone = %@", zone];
     NSError *error = nil;
     
     NSArray *molesInProvidedZone = [context executeFetchRequest:request error:&error];
@@ -138,6 +138,8 @@
     {
         [context deleteObject:mole];
     }
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate saveContext];
 }
 
 + (UIImage *)imageForZoneName:(NSString *)zoneName
