@@ -85,10 +85,13 @@
     if (ad.user.bridgeSignInEmail) {profile.username = ad.user.bridgeSignInEmail;}
     if (ad.user.firstName) {profile.firstName = ad.user.firstName;}
     if (ad.user.lastName) {profile.lastName = ad.user.lastName;}
-    if (ad.user.zipCode) {profile.zipCode = ad.user.zipCode;}
-    if (ad.user.melanomaStatus) {profile.melanomaDiagnosis = ad.user.melanomaStatus;}
-    if (ad.user.familyHistory) {profile.familyHistory = ad.user.familyHistory;}
-    if (ad.user.birthdate) {profile.birthdate = ad.user.birthdate;}
+    
+    //**Note** As of most recent IRB submission, this data will not be transferred to Bridge Server Profile
+    // but will be securely stored locally in the keychain in case there is a change later
+    //if (ad.user.zipCode) {profile.zipCode = ad.user.zipCode;}
+    //if (ad.user.melanomaStatus) {profile.melanomaDiagnosis = ad.user.melanomaStatus;}
+    //if (ad.user.familyHistory) {profile.familyHistory = ad.user.familyHistory;}
+    //if (ad.user.birthdate) {profile.birthdate = ad.user.birthdate;}
     
     [SBBComponent(SBBUserManager) updateUserProfileWithProfile: profile
                                                     completion: ^(id __unused responseObject,
