@@ -31,6 +31,8 @@
 //Example: zone1100.png
 +(NSString *)imageFilenameForZoneID:(NSString *)zoneID;
 
++(void)deleteAllMolesInZone:(Zone *)zone inManagedObjectContext:(NSManagedObjectContext *)context
+
 //+(NSString *)zoneNameForZoneID:(NSString *)zoneID;
 
 //+(NSArray *)pointsForDrawingZoneForZoneID:(NSString *)zoneID;

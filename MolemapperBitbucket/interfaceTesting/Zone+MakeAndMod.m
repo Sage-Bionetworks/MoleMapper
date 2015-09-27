@@ -8,6 +8,7 @@
 
 #import "Zone+MakeAndMod.h"
 #import "AppDelegate.h"
+#import "Mole.h"
 
 @implementation Zone (MakeAndMod)
 
@@ -123,6 +124,20 @@
     
     return zone;
  
+}
+
++(void)deleteAllMolesInZone:(Zone *)zone inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Mole"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"moleID" ascending:YES]];
+    request.predicate = [NSPredicate predicateWithFormat:@"whichZone = %@", zone.zoneID];
+    NSError *error = nil;
+    
+    NSArray *molesInProvidedZone = [context executeFetchRequest:request error:&error];
+    for (Mole *mole in molesInProvidedZone)
+    {
+        [context deleteObject:mole];
+    }
 }
 
 + (UIImage *)imageForZoneName:(NSString *)zoneName

@@ -784,7 +784,7 @@
 -(void)deleteZonePhoto
 {
     Zone *zone = [Zone zoneForZoneID:self.zoneID withZonePhotoFileName:nil inManagedObjectContext:self.context];
-    zone.moles = nil;
+    
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate saveContext];
     
