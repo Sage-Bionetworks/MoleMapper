@@ -1,6 +1,6 @@
 //
 //  ZoneViewController.m
-//  
+//
 //
 
 
@@ -115,19 +115,20 @@
     self.oldZoomScale = self.scrollView.zoomScale;
     
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoneImageDoubleTapped:)];
-	[doubleTapRecognizer setNumberOfTapsRequired:2];
-	[doubleTapRecognizer setDelegate:self];
-	[self.zoneImageView addGestureRecognizer:doubleTapRecognizer];
+    [doubleTapRecognizer setNumberOfTapsRequired:2];
+    [doubleTapRecognizer setDelegate:self];
+    [self.zoneImageView addGestureRecognizer:doubleTapRecognizer];
     
     UITapGestureRecognizer *singleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoneImageSingleTapped:)];
-	[singleTapRecognizer setNumberOfTapsRequired:1];
+    [singleTapRecognizer setNumberOfTapsRequired:1];
     [singleTapRecognizer requireGestureRecognizerToFail: doubleTapRecognizer];
-	[singleTapRecognizer setDelegate:self];
-	[self.zoneImageView addGestureRecognizer:singleTapRecognizer];
+    [singleTapRecognizer setDelegate:self];
+    [self.zoneImageView addGestureRecognizer:singleTapRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _isDeleted = NO;
     //[vars configureScaledImageView:self.zoneImageView andScrollView:self.scrollView withImage:self.zoneImage]
     [super viewWillAppear:animated];
     self.scrollView.contentSize = self.zoneImageView.frame.size;
@@ -171,7 +172,7 @@
         self.exportButton.enabled = YES;
         self.settingsButton.enabled = YES;
     }
-
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -183,14 +184,14 @@
     {
         [self showPhotoPopup:self];
     }
-
+    
     /*
-    //If this isn't part of a demo and it's an undocumented zone, automatically open the camera
-    if (self.hasValidImageData == NO &&
-        [ud valueForKey:@"showDemoInfo"] == [NSNumber numberWithBool:NO])
-    {
-        [self openCamera:self];
-    }
+     //If this isn't part of a demo and it's an undocumented zone, automatically open the camera
+     if (self.hasValidImageData == NO &&
+     [ud valueForKey:@"showDemoInfo"] == [NSNumber numberWithBool:NO])
+     {
+     [self openCamera:self];
+     }
      */
     
     //If you are using demo mode or this is the first time you're seeing a valid photo
@@ -218,16 +219,20 @@
     //Set this flag to NO so that the animation doesn't occur upon returning from MeasurementView 'backwards' naviagtion
     //Will get set back to yes only on viewDidLoad coming from bodyMapViewController
     self.showMolePinDropAnimation = NO;
-    [self saveAllMolesOnScreen];
+    
+    if (!_isDeleted)
+        [self saveAllMolesOnScreen];
+    
     [self dismissAllCallouts];
     [self dismissAllPopTipViews];
     //Need to get rid of the scrollview delegate here because assign is used for
     //delegate assignment
-    }
+}
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [self.molePinsOnImage removeAllObjects];
+    self.molePinsOnImage = nil;
     for (UIView *view in self.zoneImageView.subviews)
     {
         if (view)
@@ -236,7 +241,7 @@
         }
     }
     self.scrollView.delegate = nil;
-
+    
 }
 
 #pragma mark - CMPopTipView methods
@@ -419,7 +424,7 @@
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
-
+    
     
     [contentView addConstraints:
      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
@@ -629,7 +634,7 @@
 }
 
 -(NSString *)recipientForEmail
-{    
+{
     NSString *emailRecipient = @"";
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     NSString *recipientFromUserDefaults = [standardUserDefaults valueForKey:@"emailForExport"];
@@ -783,15 +788,6 @@
 
 -(void)deleteZonePhoto
 {
-    [self.molePinsOnImage removeAllObjects];
-    for (UIView *view in self.zoneImageView.subviews)
-    {
-        if (view)
-        {
-            [view removeFromSuperview];
-        }
-    }
-    
     Zone *zone = [Zone zoneForZoneID:self.zoneID withZonePhotoFileName:nil inManagedObjectContext:self.context];
     [Zone deleteAllMolesInZone:zone inManagedObjectContext:self.context];
     
@@ -808,6 +804,7 @@
         NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
     }
     
+    _isDeleted = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -821,12 +818,12 @@
     [self addToMolePinsOnImageArray:molePin];
     Zone *zone = [Zone zoneForZoneID:self.zoneID withZonePhotoFileName:nil inManagedObjectContext:self.context];
     molePin.mole = [Mole moleWithMoleID:molePin.moleID
-            withMoleName:molePin.moleName
-                 atMoleX:nil
-                 atMoleY:nil
-                  inZone:zone
-  inManagedObjectContext:self.context];
-
+                           withMoleName:molePin.moleName
+                                atMoleX:nil
+                                atMoleY:nil
+                                 inZone:zone
+                 inManagedObjectContext:self.context];
+    
     [self updateMolePinBarButtonStates];
     
     
@@ -989,7 +986,7 @@
         CGRect newRect = CGRectMake(molePin.pinLocation_x, molePin.pinLocation_y, scaledWidth, scaledHeight);
         molePin.frame = newRect;
         molePin.center = newRect.origin;
-    }; 
+    };
 }
 
 #pragma mark - Random Helpers
@@ -1018,7 +1015,7 @@
         molePin.mostRecentMeasurement = [Measurement getMostRecentMoleMeasurementForMole:mole withContext:self.context];
         molePin.moleID = mole.moleID;
         molePin.moleName = mole.moleName;
-            
+        
         //Set up the MolePin artificially at the top of the screen (will drop down to actual place in viewWillAppear)
         CGRect frameAtTheTop = CGRectMake(molePin.frame.origin.x, 0, molePin.frame.size.width, molePin.frame.size.height);
         molePin.frame = frameAtTheTop;
@@ -1050,14 +1047,15 @@
                       inZone:zone
       inManagedObjectContext:self.context];
     }
-
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MolePin *)sender
 {
-    [self saveAllMolesOnScreen];
+    if (!_isDeleted)
+        [self saveAllMolesOnScreen];
+    
     if ([segue.identifier isEqualToString:@"GoToMoleView"])
     {
         MoleViewController *destVC = segue.destinationViewController;

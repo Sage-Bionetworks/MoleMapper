@@ -31,6 +31,8 @@
 @property (strong, nonatomic) MolePin *moleToBeDeleted;
 @property (strong, nonatomic) CMPopTipView *popTipViewGoToMeasure;
 
+@property BOOL isDeleted;
+
 
 - (IBAction)openCamera:(id)sender;
 - (IBAction)addMolePinButtonTapped:(UIBarButtonItem *)sender;

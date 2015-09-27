@@ -31,8 +31,9 @@
         //[self setupChartView];
     }
     //DEBUG
-    //[self setDescriptionLabels];
-    //[self getUVJsonDataWithZipCode:@""];
+    
+    [self getUVJsonDataWithZipCode:@""];
+    [self setDescriptionLabels];
     ///////
     [self setupLocationService];
 }
@@ -55,6 +56,7 @@
         
         [self setDescriptionLabels];
         [self getUVJsonDataWithZipCode:placemark.postalCode];
+        
     }];
 }
 
@@ -104,10 +106,10 @@
 {
     @try
     {
-        NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
-        NSURL * url = [[NSURL alloc] initWithString:urlString];
-        
-        //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+        //NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+        //NSURL * url = [[NSURL alloc] initWithString:urlString];
+        //
+        NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
@@ -154,6 +156,7 @@
     ChartYAxis *leftAxis = _chartView.leftAxis;
     [leftAxis removeAllLimitLines];
     leftAxis.customAxisMax = [self getHighestUVValueFromJson];
+    leftAxis.labelCount = [self getHighestUVValueFromJson];
     leftAxis.customAxisMin = 0;
     leftAxis.startAtZeroEnabled = NO;
     leftAxis.gridLineDashLengths = @[@1.f, @1.f];
@@ -167,6 +170,7 @@
     [rightAxis removeAllLimitLines];
     rightAxis.customAxisMax = [self getHighestUVValueFromJson];
     rightAxis.customAxisMin = 0;
+    rightAxis.labelCount = [self getHighestUVValueFromJson];
     rightAxis.startAtZeroEnabled = NO;
     rightAxis.gridLineDashLengths = @[@1.f, @1.f];
     rightAxis.drawLimitLinesBehindDataEnabled = YES;
@@ -209,7 +213,7 @@
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < dataRate + 1; i++)
+    for (int i = 0; i < dataRate; i++)
     {
         int val = (int)[self getUVBasedIndex:i + startPos];
         [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
@@ -256,19 +260,25 @@
     NSInteger currentHour = [components hour];
     
     NSString* timeString = @"";
+    BOOL moreThenTwelve = NO;
     
     if (currentHour > 12)
+    {
+        moreThenTwelve = YES;
         timeString = [NSString stringWithFormat:@"%i PM", (int)currentHour - 12];
-    
-    if (currentHour == 24)
+    }
+    else if (currentHour == 24)
+    {
+        moreThenTwelve = YES;
         timeString = [NSString stringWithFormat:@"%i AM", (int)currentHour - 12];
-    
-    if (currentHour < 12)
+    }
+    else if (currentHour < 12)
         timeString = [NSString stringWithFormat:@"%i AM", (int)currentHour];
-    
-    if (currentHour == 12)
+    else if (currentHour == 12)
         timeString = [NSString stringWithFormat:@"%i PM", (int)currentHour];
     
+    if (moreThenTwelve)
+        currentHour -=  12;
     
     for (int i = 0; i < [_jsonUVIndexDictionary count]; ++i)
     {
@@ -367,7 +377,6 @@
     
     if (order - dataRate >= 1 && order + dataRate < [_jsonUVIndexDictionary count])
     {
-        //add +dataRate / 2 to offset position of data start
         return ((order - dataRate) - 1) + dataRate / 3;
     }
     else if (order - dataRate < 1)
@@ -388,19 +397,40 @@
     [[PopupManager sharedInstance] createPopupWithText:text];
 }
 
+/*
+ if ([AVCaptureDevice respondsToSelector:@selector(requestAccessForMediaType: completionHandler:)]) {
+ [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+ // Will get here on both iOS 7 & 8 even though camera permissions weren't required
+ // until iOS 8. So for iOS 7 permission will always be granted.
+ if (granted) {
+ // Permission has been granted. Use dispatch_async for any UI updating
+ // code because this block may be executed in a thread.
+ dispatch_async(dispatch_get_main_queue(), ^{
+ [self doStuff];
+ });
+ } else {
+ // Permission has been denied.
+ }
+ }];
+ } else {
+ // We are on iOS <= 6. Just do what we need to do.
+ [self doStuff];
+ }
+ */
+
 #pragma mark - ChartViewDelegate
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
 {
-    NSString *selectedTime = (NSString*)[_chartView.data.xValsObjc objectAtIndex:entry.xIndex];
-    int selectedValue = entry.value;
+    //NSString *selectedTime = (NSString*)[_chartView.data.xValsObjc objectAtIndex:entry.xIndex];
+    //int selectedValue = entry.value;
     
-    _selectedUVLabel.text = [NSString stringWithFormat:@"%@ | %i", selectedTime, selectedValue];
+    //_selectedUVLabel.text = [NSString stringWithFormat:@"%@ | %i", selectedTime, selectedValue];
 }
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
 {
-    _selectedUVLabel.text = [NSString stringWithFormat:@"- | -"];
+    //_selectedUVLabel.text = [NSString stringWithFormat:@"- | -"];
 }
 
 @end

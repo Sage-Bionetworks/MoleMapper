@@ -23,7 +23,7 @@
 }
 @property (strong, nonatomic) IBOutlet UILabel *highestUVLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *selectedUVLabel;
+//@property (strong, nonatomic) IBOutlet UILabel *selectedUVLabel;
 
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property (strong, nonatomic) IBOutlet LineChartView *chartView;
