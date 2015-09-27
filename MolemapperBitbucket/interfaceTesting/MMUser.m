@@ -97,21 +97,17 @@
     }
 }
 
--(NSString *)sharingScope
+-(NSNumber *)sharingScope
 {
-    NSString *sharingScope = [APCKeychainStore stringForKey:@"sharingScope"];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSNumber *sharingScope = [ud objectForKey:@"sharingScope"];
     return sharingScope;
 }
 
--(void)setSharingScope:(NSString *)sharingScope
+-(void)setSharingScope:(NSNumber *)sharingScope
 {
-    if (sharingScope != nil)
-    {
-        [APCKeychainStore setString:sharingScope forKey:@"sharingScope"];
-    }else
-    {
-        [APCKeychainStore removeValueForKey:@"sharingScope"];
-    }
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:sharingScope forKey:@"sharingScope"];
 }
 
 -(NSString *)melanomaStatus

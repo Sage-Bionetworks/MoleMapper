@@ -97,32 +97,38 @@ typedef void (^APCAlertDismisser) (void);
 
 - (void) handleSigninResponseWithError: (NSError *) error
 {
-    if (error)
-    {
-        if (error.code == kSBBServerPreconditionNotMet)
-        {
-            //[self getServerConsent]; Does this mean go out and get the consent?
-        }
+    [self hideSpinnerUsingAnimation: YES andThenDoThis:^{
         
-        else if (error.code == kAPCSigninErrorCode_NotSignedIn)
+        if (error)
         {
-            [self showPleaseCheckEmailAlert];
+            if (error.code == kSBBServerPreconditionNotMet)
+            {
+                //[self getServerConsent]; Does this mean go out and get the consent?
+            }
+            
+            else if (error.code == kAPCSigninErrorCode_NotSignedIn)
+            {
+                [self showPleaseCheckEmailAlert];
+            }
+            
+            else
+            {
+                [self showSignInError: error];
+            }
         }
-        
         else
         {
-            [self showSignInError: error];
+            [self updateProfileOnCompletion: ^(NSError *error) {
+                APCLogError2 (error);
+            }];
+            
+            [self showThankYouPage];
         }
-    }
-    else
-    {
-        [self updateProfileOnCompletion: ^(NSError *error) {
-            APCLogError2 (error);
-        }];
+
         
-        [self showThankYouPage];
+    }];
+
     }
-}
 
 - (void) showThankYouPage
 {
@@ -255,6 +261,11 @@ typedef void (^APCAlertDismisser) (void);
                  {
                      ad.user.hasEnrolled = YES;
                      NSLog(@"User Successfully Signed In");
+                 }
+                 else
+                 {
+                     NSDictionary *reponseObject = (NSDictionary *)reponseObject;
+                     NSLog(@"User did NOT sign in because of error: %@",signInError);
                  }
                  
                  if (completionBlock)

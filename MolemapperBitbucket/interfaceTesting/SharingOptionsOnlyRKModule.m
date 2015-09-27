@@ -49,7 +49,7 @@
     {
         case ORKTaskViewControllerFinishReasonCompleted:
         {
-            NSString *sharingScope = @"";
+            NSNumber *sharingScope = @0;
             
             NSArray *firstLevelResults = taskResult.results;
             for (ORKCollectionResult *firstLevel in firstLevelResults)
@@ -65,9 +65,9 @@
                             ORKChoiceQuestionResult *sharingResult = (ORKChoiceQuestionResult *)secondLevel;
                             NSNumber *sharingScopeNumber = sharingResult.choiceAnswers[0];
                             sharingScopeNumber = sharingScopeNumber;
-                            if ([sharingScopeNumber  isEqual: @1]) {sharingScope = @"2";}
-                            else if ([sharingScopeNumber isEqual:@0]) {sharingScope = @"1";}
-                            else {sharingScope = @"0";}
+                            if ([sharingScopeNumber  isEqual: @1]) {sharingScope = @2;}
+                            else if ([sharingScopeNumber isEqual:@0]) {sharingScope = @1;}
+                            else {sharingScope = @0;}
                         }
                     }
                     

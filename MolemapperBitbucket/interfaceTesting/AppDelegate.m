@@ -79,7 +79,7 @@
     [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
-    [ud setBool:NO forKey:@"shouldShowConsent"];
+    [ud setBool:YES forKey:@"shouldShowConsent"];
     [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
     [ud setBool:NO forKey:@"shouldShowInitialSurvey"];
 }

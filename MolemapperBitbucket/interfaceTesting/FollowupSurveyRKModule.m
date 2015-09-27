@@ -20,6 +20,7 @@
 
 -(BOOL)shouldShowFollowupSurvey
 {
+    return YES;
     BOOL shouldShowFollowupSurvey = NO;
     
     NSDate *now = [NSDate date];

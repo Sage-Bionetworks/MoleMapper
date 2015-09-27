@@ -113,7 +113,7 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
         
         UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Leave Study" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             
-            ad.user.sharingScope = @"0";
+            ad.user.sharingScope = @0;
             ad.user.hasEnrolled = NO;
             ad.user.hasConsented = NO;
             ad.user.bridgeSignInEmail = nil;

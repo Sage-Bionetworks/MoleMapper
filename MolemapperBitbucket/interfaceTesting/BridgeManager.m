@@ -46,17 +46,23 @@
     UIImage *signatureImage = ad.user.signatureImage;
     
     //Because all KeyChain-stored items are strings, have to go through conversion here
-    NSString *sharingScopeString = ad.user.sharingScope;
-    NSNumber *sharingScopeNumber = @([sharingScopeString intValue]);
+    NSNumber *sharingScope = ad.user.sharingScope;
+    //int *sharingScopeNumber = [sharingScope intValue];
+    
     
     [SBBComponent(SBBConsentManager) consentSignature:name
                                             birthdate:birthdate
                                        signatureImage:signatureImage
-                                          dataSharing:[sharingScopeNumber integerValue]
+                                          dataSharing:[sharingScope integerValue]
                                            completion:^(id __unused responseObject, NSError * __unused error) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                    if (!error) {
                                                        APCLogEventWithData(@"Network Event", (@{@"event_detail":@"User Consent Sent To Bridge"}));
+                                                   }
+                                                   else
+                                                   {
+                                                       NSLog(@"Did not send consent because of this error: %@",error);
+                                                       NSDictionary *responseDictionary = (NSDictionary *)responseObject;
                                                    }
                                                    
                                                    if (completionBlock) {
@@ -164,14 +170,12 @@
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (!signInError)
                  {
-                     /*
                       NSDictionary *responseDictionary = (NSDictionary *) responseObject;
                       if (responseDictionary)
                       {
-                      NSNumber *dataSharing = responseDictionary[@"dataSharing"];
-                      NSLog(@"Data sharing scope integer is %@",dataSharing);
+                          NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                          NSLog(@"Data sharing scope integer is %@",dataSharing);
                       }
-                      */
                      
                      NSLog(@"User is Signed In");
                      [ad.bridgeManager zipEncryptAndShipFollowupData:followupData];
@@ -250,8 +254,12 @@
     
     //Using call from APCBaseTaskViewController here
     [uploader encryptAndUploadArchive:archive withCompletion:^(NSError *error) {
-        if (! error) { NSLog(@"Encrypt/uploading followup..."); }
-        else { APCLogError2(error); }
+            if (! error) {
+                            NSLog(@"Encrypt/uploading followup...");
+            }
+        else {
+            APCLogError2(error);
+        }
     }];
     
 }
@@ -283,7 +291,6 @@
         
         //Get .png file for Bridge File
         NSData *measurementPngData = [Measurement rawPngDataForMeasurement:measurement];
-        //NSData *measurementPngData = UIImagePNGRepresentation(self.testPng1);
         
         APCDataArchive *archive = [[APCDataArchive alloc] initWithReference:@"moleMeasurement"];
         [archive insertIntoArchive:measurementData filename:@"measurementData.json"];

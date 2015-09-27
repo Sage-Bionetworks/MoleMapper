@@ -28,9 +28,9 @@
 @property BOOL hasConsented;
 @property BOOL hasEnrolled;
 
-//Note that this is stored as @"0", @"1", @"2" which will be converted by SBBConsentManager to appropriate string
+//Note that this is stored as @0, @1, @2 which will be converted by SBBConsentManager to appropriate string
 //0 = no_sharing, 1 = sponsors_and_partners, 2 = all_qualified_researchers
-@property (strong, nonatomic) NSString *sharingScope;
+@property (strong, nonatomic) NSNumber *sharingScope;
 
 //Storing as NSDate here for the Profile because SBBConsentManager needs to have a date rather than a formatted
 //string like that in the initial data survey

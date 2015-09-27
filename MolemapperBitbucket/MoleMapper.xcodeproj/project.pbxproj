@@ -59,7 +59,6 @@
 		4BFF61871BAC9BFE00FE7853 /* CrossFadeSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF617B1BAC9BFE00FE7853 /* CrossFadeSegue.m */; settings = {ASSET_TAGS = (); }; };
 		4BFF61881BAC9BFE00FE7853 /* HeaderAddedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF617D1BAC9BFE00FE7853 /* HeaderAddedTVC.m */; settings = {ASSET_TAGS = (); }; };
 		4BFF61891BAC9BFE00FE7853 /* ORKAnswerFormat+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF617F1BAC9BFE00FE7853 /* ORKAnswerFormat+Helper.m */; settings = {ASSET_TAGS = (); }; };
-		4BFF618B1BAC9BFE00FE7853 /* SBBUserProfile+MoleMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF61831BAC9BFE00FE7853 /* SBBUserProfile+MoleMapper.m */; settings = {ASSET_TAGS = (); }; };
 		E604453818568AFA00AD75A1 /* StatisticsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E604453718568AFA00AD75A1 /* StatisticsTVC.m */; };
 		E604CD2619532D4500651A66 /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = E604CD2519532D4500651A66 /* SMCalloutView.m */; };
 		E60FC7921A12F5AB0036369F /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = E60FC7911A12F5AB0036369F /* CMPopTipView.m */; };
@@ -344,8 +343,6 @@
 		4BFF617D1BAC9BFE00FE7853 /* HeaderAddedTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderAddedTVC.m; sourceTree = "<group>"; };
 		4BFF617E1BAC9BFE00FE7853 /* ORKAnswerFormat+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ORKAnswerFormat+Helper.h"; sourceTree = "<group>"; };
 		4BFF617F1BAC9BFE00FE7853 /* ORKAnswerFormat+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ORKAnswerFormat+Helper.m"; sourceTree = "<group>"; };
-		4BFF61821BAC9BFE00FE7853 /* SBBUserProfile+MoleMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SBBUserProfile+MoleMapper.h"; sourceTree = "<group>"; };
-		4BFF61831BAC9BFE00FE7853 /* SBBUserProfile+MoleMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBBUserProfile+MoleMapper.m"; sourceTree = "<group>"; };
 		5F2A2DAC151494DC5633C638 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E0E2AD0012A56BE2CC311760 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E604453618568AFA00AD75A1 /* StatisticsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsTVC.h; sourceTree = "<group>"; };
@@ -862,8 +859,6 @@
 				E6883B9B1B95E3AB00F5A9A5 /* APCDataEncryptor.m */,
 				E6883B9C1B95E3AB00F5A9A5 /* APCDataUploader.h */,
 				E6883B9D1B95E3AB00F5A9A5 /* APCDataUploader.m */,
-				4BFF61821BAC9BFE00FE7853 /* SBBUserProfile+MoleMapper.h */,
-				4BFF61831BAC9BFE00FE7853 /* SBBUserProfile+MoleMapper.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -1268,7 +1263,6 @@
 				E61B0A581875E1530081FFA5 /* Measurement.m in Sources */,
 				E604453818568AFA00AD75A1 /* StatisticsTVC.m in Sources */,
 				4BFF61881BAC9BFE00FE7853 /* HeaderAddedTVC.m in Sources */,
-				4BFF618B1BAC9BFE00FE7853 /* SBBUserProfile+MoleMapper.m in Sources */,
 				43D9935D1BA5166D0077073D /* DashboardModel.m in Sources */,
 				E6A9B1251B35BEC9009B3393 /* DataExporter.m in Sources */,
 				E6883BA01B95E3AB00F5A9A5 /* APCDataUploader.m in Sources */,

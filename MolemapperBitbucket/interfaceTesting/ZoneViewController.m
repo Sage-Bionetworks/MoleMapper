@@ -784,10 +784,9 @@
 -(void)deleteZonePhoto
 {
     Zone *zone = [Zone zoneForZoneID:self.zoneID withZonePhotoFileName:nil inManagedObjectContext:self.context];
-    [self.context deleteObject:zone];
+    zone.moles = nil;
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate saveContext];
-    
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *pathToZonePhoto = [Zone imageFullFilepathForZoneID:self.zoneID];
