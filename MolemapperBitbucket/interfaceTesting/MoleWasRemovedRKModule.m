@@ -22,35 +22,20 @@
     
     introStep.image = [UIImage imageNamed:@"moleRemovedDemo"];
     
-    ORKTextChoice *diagnosisKeyword1 = [ORKTextChoice choiceWithText:@"Acral Melanoma" value:@"diagnosisKeyword1"];
-    ORKTextChoice *diagnosisKeyword2 = [ORKTextChoice choiceWithText:@"Atypical Nevus" value:@"diagnosisKeyword2"];
-    ORKTextChoice *diagnosisKeyword3 = [ORKTextChoice choiceWithText:@"Benign Nevus" value:@"diagnosisKeyword3"];
-    ORKTextChoice *diagnosisKeyword4 = [ORKTextChoice choiceWithText:@"Blue Nevus" value:@"diagnosisKeyword4"];
-    ORKTextChoice *diagnosisKeyword5 = [ORKTextChoice choiceWithText:@"Dysplastic Nevi" value:@"diagnosisKeyword5"];
-    ORKTextChoice *diagnosisKeyword6 = [ORKTextChoice choiceWithText:@"Melanoma In Situ" value:@"diagnosisKeyword6"];
-    ORKTextChoice *diagnosisKeyword7 = [ORKTextChoice choiceWithText:@"Metastatic Melanoma" value:@"diagnosisKeyword7"];
-    ORKTextChoice *diagnosisKeyword8 = [ORKTextChoice choiceWithText:@"Spitz Nevus" value:@"diagnosisKeyword8"];
-    ORKTextChoice *diagnosisKeyword9 = [ORKTextChoice choiceWithText:@"Superfical Spreading Melanoma" value:@"diagnosisKeyword9"];
-    ORKTextChoice *waiting = [ORKTextChoice choiceWithText:@"Waiting for Biopsy Report" value:@"waiting"];
-    ORKTextChoice *none = [ORKTextChoice choiceWithText:@"None of the above choices" value:@"none"];
+    ORKTextChoice *benign = [ORKTextChoice choiceWithText:@"Benign" detailText:@"No need for further re-excision or treatment" value:@"benign"];
+    ORKTextChoice *atypical = [ORKTextChoice choiceWithText:@"Atypical/pre-melanoma" detailText:@"Re-excision is needed to remove a larger area around the mole" value:@"atypical"];
+    ORKTextChoice *melanoma = [ORKTextChoice choiceWithText:@"Melanoma" detailText:@"Re-excision is needed and further treatment may be necessary" value:@"melanoma"];
+    ORKTextChoice *nonMelanomaSkinCancer = [ORKTextChoice choiceWithText:@"Non-melanoma skin cancer" detailText:@"Re-excision or further treatment may be necessary" value:@"nonMelanomaSkinCancer"];
+    ORKTextChoice *noFeedback = [ORKTextChoice choiceWithText:@"No biopsy report" detailText:@"You can request this information from your doctor and re-enter it here at any time" value:@"noFeedback"];
+    ORKTextChoice *forgot = [ORKTextChoice choiceWithText:@"I don't know" detailText:@"I did not understand or remember the details of the report" value:@"forgot"];
     
-    NSArray *diagnosisChoices = @[diagnosisKeyword1,
-                                  diagnosisKeyword2,
-                                  diagnosisKeyword3,
-                                  diagnosisKeyword4,
-                                  diagnosisKeyword5,
-                                  diagnosisKeyword6,
-                                  diagnosisKeyword7,
-                                  diagnosisKeyword8,
-                                  diagnosisKeyword9,
-                                  waiting,
-                                  none];
+    NSArray *diagnosisChoices = @[benign,atypical,melanoma,nonMelanomaSkinCancer,noFeedback,forgot];
     
     ORKTextChoiceAnswerFormat *diagnosis = [ORKAnswerFormat choiceAnswerFormatWithStyle:ORKChoiceAnswerStyleMultipleChoice textChoices:diagnosisChoices];
     //ORKValuePickerAnswerFormat *diagnosis =
     //[ORKValuePickerAnswerFormat valuePickerAnswerFormatWithTextChoices:diagnosisChoices];
     ORKQuestionStep *diagnosisStep = [ORKQuestionStep questionStepWithIdentifier:@"diagnosis"
-                                                                            title:@"Please select any terms that appear in your biopsy report"
+                                                                            title:@"What was the diagnosis from your doctor after your mole removal?"
                                                                            answer:diagnosis];
     ORKInstructionStep *sitePhotoStep = [[ORKInstructionStep alloc] initWithIdentifier:@"sitePhoto"];
     sitePhotoStep.title = @"Biopsy Site Photo";
