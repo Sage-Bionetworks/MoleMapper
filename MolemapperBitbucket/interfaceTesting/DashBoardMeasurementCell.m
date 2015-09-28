@@ -22,6 +22,13 @@
     
     _viewMoleBtn.layer.cornerRadius = 5; // this value vary as per your desire
     _viewMoleBtn.clipsToBounds = YES;
+    if ([[[DashboardModel sharedInstance] nameForBiggestMole] isEqualToString:@"No moles measured yet!"])
+    {
+        _viewMoleBtn.enabled = NO;
+        _viewMoleBtn.alpha = 0.5;
+        _viewMoleBtn.backgroundColor = [UIColor grayColor];
+    }
+    else {_viewMoleBtn.enabled = YES;}
     
     float lastFloat = ceilf([[[DashboardModel sharedInstance] sizeOfBiggestMole] floatValue]);
     _offset = lastFloat / 5.0f;
@@ -128,6 +135,7 @@
 }
 
 - (IBAction)presentMoleViewController:(UIButton *)sender {
+    
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle: nil];
     MoleViewController *moleViewController = (MoleViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"MoleViewController"];

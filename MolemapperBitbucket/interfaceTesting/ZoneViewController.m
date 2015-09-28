@@ -714,11 +714,38 @@
 {
     NSLog(@"%@", @"Denied camera access");
     
-    NSString *alertText;
-    NSString *alertButton;
-    
     BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString);
+    
+    UIAlertController *cameraPermissions = [UIAlertController alertControllerWithTitle:@"Camera Permissions" message:@"This app requires the use of the camera to document and measure moles.\n\nIf you have not done so already, please provide camera permissions in the settings for Mole Mapper" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *go;
     if (canOpenSettings)
+    {
+        go = [UIAlertAction actionWithTitle:@"Go to Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self.navigationController popViewControllerAnimated:NO];
+            [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+    }
+    else
+    {
+        go = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+    
+    [cameraPermissions addAction:go];
+    
+    [self presentViewController:cameraPermissions animated:YES completion:nil];
+    
+}
+
+/*
+     NSLog(@"%@", @"Denied camera access");
+     BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString);
+     NSString *alertText;
+     NSString *alertButton;
+     
+     if (canOpenSettings)
     {
         alertText = @"It looks like your privacy settings are preventing us from accessing your camera to do mole captureing. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Touch Privacy.\n\n3. Turn the Camera on.\n\n4. Open this app and try again.";
         
@@ -739,7 +766,7 @@
                           otherButtonTitles:nil];
     alert.tag = 1001;
     [alert show];
-}
+     }
 
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     // Is this my Alert View?
@@ -760,7 +787,8 @@
         }
     }
 }
-
+*/
+     
 //Note this is coming from http://www.instructables.com/id/How-to-use-the-camera-in-your-iOS-program/step3/launchCameraController/
 -(BOOL)launchCameraControllerFromViewController: (UIViewController *) controller usingDelegate: (id <UIImagePickerControllerDelegate, UINavigationControllerDelegate>) delegate
 {
