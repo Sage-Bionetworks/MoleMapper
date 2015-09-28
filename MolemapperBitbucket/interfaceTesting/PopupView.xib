@@ -11,13 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="280" height="226"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofR-5c-IC4">
-                    <rect key="frame" x="250" y="8" width="22" height="22"/>
-                    <color key="tintColor" red="0.0" green="0.6705882353" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <action selector="closeButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="lGq-DU-iDT"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpv-og-U4n">
                     <rect key="frame" x="15" y="21" width="250" height="197"/>
                     <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel convallis purus. Vestibulum fermentum felis quis diam convallis mollis. In id luctus ligula.</string>
@@ -27,10 +20,6 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="ofR-5c-IC4" secondAttribute="trailing" constant="8" id="NIL-a7-Xpg"/>
-                <constraint firstItem="ofR-5c-IC4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="mQA-MA-QA4"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="descriptionText" destination="Tpv-og-U4n" id="YRK-Pa-dZ0"/>

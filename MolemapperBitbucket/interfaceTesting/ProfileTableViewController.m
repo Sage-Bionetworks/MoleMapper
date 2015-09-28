@@ -113,16 +113,14 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
         
         UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Leave Study" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             
+            [ad.bridgeManager signInAndChangeSharingToScope:@0];
+            
             ad.user.sharingScope = @0;
             ad.user.hasEnrolled = NO;
             ad.user.hasConsented = NO;
             ad.user.bridgeSignInEmail = nil;
             ad.user.bridgeSignInPassword = nil;
             
-            [ad.bridgeManager sendUserConsentedToBridgeOnCompletion:^(NSError *error){
-                NSLog(@"User has changed their sharingScope to none");
-            }];
-
             self.enrollmentStatus.textLabel.text = @"Join Study";
             self.enrollmentStatus.detailTextLabel.text = @"Not Participating";
             self.enrollmentStatus.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:255.0 alpha:1.0];

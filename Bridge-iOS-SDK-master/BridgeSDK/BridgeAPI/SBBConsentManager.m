@@ -91,7 +91,6 @@ NSString * const kSBBMimeTypePng = @"image/png";
   }
     
   // Add sharing scope
-    id value = kSBBUserDataSharingScopeStrings[scope];
   [ResearchConsent setObject:kSBBUserDataSharingScopeStrings[scope] forKey:kSBBUserDataSharingScopeKey];
 
   return [self.networkManager post:kSBBConsentAPI headers:headers parameters:ResearchConsent

@@ -70,6 +70,33 @@
         }];
 }
 
+-(void)signInAndChangeSharingToScope:(NSNumber *)sharingScope
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+    {
+        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                password: ad.user.bridgeSignInPassword
+                                              completion: ^(NSURLSessionDataTask * __unused task,
+                                                            id responseObject,
+                                                            NSError *signInError)
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (!signInError)
+                 {
+                     NSLog(@"User is Signed In");
+                     [SBBComponent(SBBUserManager) dataSharing:[sharingScope integerValue]
+                                                    completion:^(id responseObject, NSError *error) {
+                                                        NSLog(@"Changed the sharing scope with this response: %@",(NSDictionary *)responseObject);
+                                                    }];
+                 }else{NSLog(@"Error signing In with this response: %@",(NSDictionary *)responseObject);}
+             });
+         }];
+    }
+    else{NSLog(@"Sign in failed because username and password not set");}
+}
+
+
 //Derived from APCUser+Bridge
 - (void) updateProfileOnCompletion:(void (^)(NSError *))completionBlock
 {
@@ -268,9 +295,10 @@
     NSError *error = nil;
     NSArray *fetchedMeasurements = [self.context executeFetchRequest:request error:&error];
     
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     //Contains a set of all of the measurementIDs that have successfully been sent
-    NSArray *immutable = [ud objectForKey:@"measurementsAlreadySentToBridge"];
+    NSArray *immutable = ad.user.measurementsAlreadySentToBridge;
     NSMutableArray *measurementsAlreadySent = [immutable mutableCopy];
     
     for (Measurement *measurement in fetchedMeasurements)
@@ -279,10 +307,6 @@
         {
             continue; //Don't send duplicate measurements to Bridge
         }
-        
-        //AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        //NSLog(@"BridgeSigninEmail = %@",ad.user.bridgeSignInEmail);
-        //NSLog(@"BridgeSigninPassword = %@",ad.user.bridgeSignInPassword);
         
         NSDictionary *measurementData = [self dictionaryForMeasurement:measurement];
         
@@ -300,15 +324,14 @@
             if (! error)
             {
                 NSLog(@"Encrypt/uploading mole measurement for mole: %@",measurement.whichMole.moleName);
-                //Ideally would only add here after successfully sent, but the whole archive is encrypted and sent off at this point
                 [measurementsAlreadySent addObject:measurement.measurementID];
             }
             else { APCLogError2(error); }
         }];
     }
+    //Add back the array of sent measurements in an immutable form
     NSArray *arrayWithAddedMeasurements = [NSArray arrayWithArray:measurementsAlreadySent];
-    
-    [ud setObject:arrayWithAddedMeasurements forKey:@"measurementsAlreadySentToBridge"];
+    ad.user.measurementsAlreadySentToBridge = arrayWithAddedMeasurements;
 }
 
 //Mole Measurement Schema

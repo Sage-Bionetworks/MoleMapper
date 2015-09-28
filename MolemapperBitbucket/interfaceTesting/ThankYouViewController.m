@@ -24,8 +24,10 @@
 
 - (IBAction)startMappingButtonTapped:(id)sender
 {
+    //At this point, you are officially done with the onboarding process
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:NO forKey:@"shouldShowInitialSurvey"];
+    [ud setBool:NO forKey:@"shouldShowOnboarding"];
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [ad showBodyMap];
 }

@@ -79,7 +79,7 @@
     {
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
         {
-            [self.locationManager requestAlwaysAuthorization];
+            [self.locationManager requestWhenInUseAuthorization];
             //[self getUVJsonDataByZipCode];
         }
     }
@@ -402,7 +402,7 @@
 }
 
 - (IBAction)popupPressed:(UIButton *)sender {
-    NSString *text = @"This localized UV Index forecast, provided by the US EPA, is on a scale of 0 (least risk) to 11 (most risk).\n\nTo enable, please activate Location Services in Settings. For more information, go to http://www2.epa.gov/sunsafety/uv-index-0";
+    NSString *text = @"This localized UV Index forecast operates on a scale of 0 (least risk) to 11 (most risk). UV indices for evening hours may be unavailable.\n\nThis information is provided by the US Environmental Protection Agency (EPA). For more information, please visit their website.";
     
     [[PopupManager sharedInstance] createPopupWithText:text];
 }

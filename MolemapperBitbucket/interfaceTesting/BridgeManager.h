@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
+-(void)signInAndChangeSharingToScope:(NSNumber *)sharingScope;
+
 //Sends consent information such as signature, sharing scope
 - (void)sendUserConsentedToBridgeOnCompletion:(void (^)(NSError *))completionBlock;
 

@@ -685,6 +685,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E62A0D591BB8C18C005FF87B /* Followup */ = {
+			isa = PBXGroup;
+			children = (
+				E6A9B12F1B4BFB4A009B3393 /* FollowupSurveyRKModule.h */,
+				E6A9B1301B4BFB4A009B3393 /* FollowupSurveyRKModule.m */,
+				E62A0D4E1BB500D0005FF87B /* MoleWasRemovedRKModule.h */,
+				E62A0D4F1BB500D0005FF87B /* MoleWasRemovedRKModule.m */,
+			);
+			name = Followup;
+			sourceTree = "<group>";
+		};
 		E6537EE71B801D5C00B38331 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,12 +831,8 @@
 			children = (
 				E6F7515A17BA98A400A7AB5A /* BodyMapViewController.h */,
 				E6F7515B17BA98A400A7AB5A /* BodyMapViewController.m */,
-				E6A9B12F1B4BFB4A009B3393 /* FollowupSurveyRKModule.h */,
-				E6A9B1301B4BFB4A009B3393 /* FollowupSurveyRKModule.m */,
 				E6F7517E17BA9B6A00A7AB5A /* ZoneViewController.h */,
 				E6F7517F17BA9B6A00A7AB5A /* ZoneViewController.m */,
-				E62A0D4E1BB500D0005FF87B /* MoleWasRemovedRKModule.h */,
-				E62A0D4F1BB500D0005FF87B /* MoleWasRemovedRKModule.m */,
 				E682EEB217076EBD007A0654 /* MoleViewController.h */,
 				E682EEB317076EBD007A0654 /* MoleViewController.m */,
 				E6944600198B130E003DD7BD /* HelpMovieViewController.h */,
@@ -959,6 +966,7 @@
 				E6537EE81B801DD600B38331 /* CoreData */,
 				E6883B7C1B95D36600F5A9A5 /* Data */,
 				43D993281BA506470077073D /* Dashboard */,
+				E62A0D591BB8C18C005FF87B /* Followup */,
 				E6537EE71B801D5C00B38331 /* Onboarding */,
 				4BFF615E1BAC95AF00FE7853 /* Profile */,
 				E6537EEC1B8022B800B38331 /* Helpers */,
@@ -1429,8 +1437,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dan Webster (27HCE7U32T)";
+				CODE_SIGN_ENTITLEMENTS = MoleMapper.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1448,7 +1456,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
 				PRODUCT_NAME = MoleMapper;
-				PROVISIONING_PROFILE = "97aa715c-6b92-4431-aefd-9fe250e4f49a";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
@@ -1465,8 +1473,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dan Webster (27HCE7U32T)";
+				CODE_SIGN_ENTITLEMENTS = MoleMapper.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1484,7 +1492,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
 				PRODUCT_NAME = MoleMapper;
-				PROVISIONING_PROFILE = "97aa715c-6b92-4431-aefd-9fe250e4f49a";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";

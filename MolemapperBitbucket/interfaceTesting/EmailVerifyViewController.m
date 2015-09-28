@@ -97,7 +97,7 @@ typedef void (^APCAlertDismisser) (void);
 
 - (void) handleSigninResponseWithError: (NSError *) error
 {
-    [self hideSpinnerUsingAnimation: YES andThenDoThis:^{
+    //[self hideSpinnerUsingAnimation: YES andThenDoThis:^{
         
         if (error)
         {
@@ -126,7 +126,7 @@ typedef void (^APCAlertDismisser) (void);
         }
 
         
-    }];
+    //}];
 
     }
 

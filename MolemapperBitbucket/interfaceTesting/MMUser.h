@@ -45,4 +45,7 @@
 // This is all stored in NSUserDefaults
 @property (strong, nonatomic) NSArray *removedMolesToDiagnoses;
 
+//Storage of all of the measurements (their measurementIDs) that have already been successfully shipped to Bridge
+@property (strong, nonatomic) NSArray *measurementsAlreadySentToBridge;
+
 @end

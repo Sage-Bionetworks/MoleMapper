@@ -247,4 +247,21 @@
     }
 }
 
+-(NSArray *)measurementsAlreadySentToBridge
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSArray *measurementsAlreadySentToBridge = [ud objectForKey:@"measurementsAlreadySentToBridge"];
+    return measurementsAlreadySentToBridge;
+}
+
+-(void)setMeasurementsAlreadySentToBridge:(NSArray *)measurementsAlreadySentToBridge
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if (measurementsAlreadySentToBridge != nil)
+    {
+        [ud setObject:measurementsAlreadySentToBridge forKey:@"measurementsAlreadySentToBridge"];
+    }
+
+}
+
 @end

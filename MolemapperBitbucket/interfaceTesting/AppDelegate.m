@@ -38,17 +38,6 @@
     self.dataUploader = [[APCDataUploader alloc] init];
     self.user = [[MMUser alloc] init];
     
-/*
-    if (self.user.bridgeSignInEmail && self.user.bridgeSignInPassword && self.user.hasEnrolled)
-    {
-        NSLog(@"Username: %@",self.user.bridgeSignInEmail);
-        NSLog(@"Password: %@",self.user.bridgeSignInPassword);
-        
-        [self.bridgeManager signInAndSendMeasurements];
-    }
-*/
-    
-    
     [self loadAllZonesWithContext:self.managedObjectContext];
     
     [self setupStdUserDefaults];
@@ -60,7 +49,7 @@
     [self renameLegacyStoredFilenamesInCoreData];
     
 [self setOnboardingBooleansBackToInitialValues];
-    
+    [self.bridgeManager signInAndSendMeasurements];
     if ([self shouldShowOnboarding])
     {
         [self showOnboarding];
@@ -75,13 +64,22 @@
 
 -(void)setOnboardingBooleansBackToInitialValues
 {
+    //[self clearMeasurementsAlreadySentForDebugging];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
-    [ud setBool:YES forKey:@"shouldShowConsent"];
+    [ud setBool:NO forKey:@"shouldShowConsent"];
     [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
-    [ud setBool:NO forKey:@"shouldShowInitialSurvey"];
+    [ud setBool:YES forKey:@"shouldShowInitialSurvey"];
+}
+
+-(void)clearMeasurementsAlreadySentForDebugging
+{
+    NSMutableArray *mutable = [self.user.measurementsAlreadySentToBridge mutableCopy];
+    [mutable removeAllObjects];
+    NSArray *empty = mutable;
+    self.user.measurementsAlreadySentToBridge = empty;
 }
 
 -(BOOL)shouldShowOnboarding

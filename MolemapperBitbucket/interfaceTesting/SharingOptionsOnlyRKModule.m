@@ -78,10 +78,7 @@
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             
             ad.user.sharingScope = sharingScope;
-            
-            [ad.bridgeManager sendUserConsentedToBridgeOnCompletion:^(NSError *error){
-                NSLog(@"User has changed their sharingScope to %@",sharingScope);
-            }];
+            [ad.bridgeManager signInAndChangeSharingToScope:sharingScope];
             
             break;
             
