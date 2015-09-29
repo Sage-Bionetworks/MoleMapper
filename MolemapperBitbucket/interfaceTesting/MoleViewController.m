@@ -25,6 +25,7 @@
 #import "ResearchKit.h"
 #import "MoleWasRemovedRKModule.h"
 #import "Zone+MakeAndMod.h"
+#import "DemoKLCPopupHelper.h"
 
 @interface MoleViewController ()
 {
@@ -385,72 +386,47 @@
     [popup show];
 }
 
+//Take a close-up photo of just one mole next to a reference object like a coin. Tap 'Demo' to see a movie of the measurement processStep 4: Take a photo of the mole next to a reference object like a coin. Tap 'Demo' to see a brief movie of this process.
+
 - (void)showMeasurePopup:(id)sender
 {
-    // Generate content view to present
-    UIView* contentView = [[UIView alloc] init];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    contentView.backgroundColor = [UIColor whiteColor];
-    contentView.layer.cornerRadius = 12.0;
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
+    NSString *descriptionText = @"Step 5: Take a close-up photo of just 1 mole next to a reference item like a coin. Tap 'Demo' to see an example video";
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoMeasureMovie"]];
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
-    UILabel* welcomeLabel = [[UILabel alloc] init];
-    welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    welcomeLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    welcomeLabel.numberOfLines = 0;
-    welcomeLabel.backgroundColor = [UIColor clearColor];
-    welcomeLabel.textColor = [UIColor blackColor];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.font = [UIFont systemFontOfSize:16.0];
-    welcomeLabel.text = @"Step 4: Take a photo of the mole next to a reference object like a coin. Tap 'Demo' to see a brief movie of this process.";
+    APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Next"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"Stop Demo"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
     
-    UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"measureDemoPhoto"]];
-    
-    UIButton* nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    nextButton.contentEdgeInsets = UIEdgeInsetsMake(12, 50, 12, 50);
-    nextButton.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [nextButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    [nextButton setTitle:@"Done" forState:UIControlStateNormal];
-    nextButton.layer.cornerRadius = 6.0;
-    [nextButton addTarget:self action:@selector(nextButtonPressedMeasure:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton* demoOffButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    demoOffButton.translatesAutoresizingMaskIntoConstraints = NO;
-    demoOffButton.contentEdgeInsets = UIEdgeInsetsMake(14, 25, 14, 25);
-    demoOffButton.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:192.0/255.0 blue:192.0/255.0 alpha:0.9];
-    [demoOffButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [demoOffButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    demoOffButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    [demoOffButton setTitle:@"Turn Off Demo" forState:UIControlStateNormal];
-    demoOffButton.titleLabel.numberOfLines = 2;
-    demoOffButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    demoOffButton.layer.cornerRadius = 6.0;
+    [nextButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [contentView addSubview:welcomeLabel];
-    [contentView addSubview:demoShot];
+    [contentView addSubview:description];
+    [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoShot, demoOffButton, welcomeLabel);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(5)-[demoShot]-(16)-[welcomeLabel]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
                                              options:0
                                              metrics:nil
                                                views:views]];
     
     KLCPopup* popup = [KLCPopup popupWithContentView:contentView
-                                            showType:(KLCPopupShowType)KLCPopupShowTypeGrowIn
-                                         dismissType:(KLCPopupDismissType)KLCPopupDismissTypeShrinkOut
+                                            showType:(KLCPopupShowType)KLCPopupShowTypeSlideInFromRight
+                                         dismissType:(KLCPopupDismissType)KLCPopupDismissTypeSlideOutToLeft
                                             maskType:(KLCPopupMaskType)KLCPopupMaskTypeDimmed
                             dismissOnBackgroundTouch:NO
                                dismissOnContentTouch:NO];

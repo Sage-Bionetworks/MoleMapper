@@ -2228,16 +2228,16 @@ Altruistic code-sharing by Chris Miles </string>
         <image name="lt-normal.png" width="64" height="80"/>
         <image name="moleMapSelected" width="25" height="25"/>
         <image name="moleMapUnselected" width="25" height="25"/>
-        <image name="ohsuLogoTVC" width="75" height="75"/>
+        <image name="ohsuLogoTVC" width="312" height="312"/>
         <image name="profileSelected" width="25" height="25"/>
         <image name="profileUnselected" width="25" height="25"/>
         <image name="roundedRectButtonBackground3.png" width="585" height="126"/>
         <image name="rt-normal.png" width="64" height="80"/>
-        <image name="tvc_credits" width="150" height="150"/>
-        <image name="tvc_faq" width="150" height="150"/>
-        <image name="tvc_feedback" width="150" height="150"/>
-        <image name="tvc_stats" width="148" height="148"/>
-        <image name="tvc_story" width="148" height="148"/>
+        <image name="tvc_credits" width="312" height="312"/>
+        <image name="tvc_faq" width="312" height="312"/>
+        <image name="tvc_feedback" width="312" height="312"/>
+        <image name="tvc_stats" width="312" height="312"/>
+        <image name="tvc_story" width="312" height="312"/>
         <image name="up-normal.png" width="80" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
