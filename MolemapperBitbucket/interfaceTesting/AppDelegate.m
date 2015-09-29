@@ -11,6 +11,8 @@
 #import "Zone+MakeAndMod.h"
 #import "Measurement.h"
 #import "Measurement+MakeAndMod.h"
+#import "Mole.h"
+#import "Mole+MakeAndMod.h"
 #import "IntroAndEligibleRKModule.h"
 #import "OnboardingViewController.h"
 #import "BodyMapViewController.h"
@@ -37,6 +39,8 @@
     self.bridgeManager.context = self.managedObjectContext;
     self.dataUploader = [[APCDataUploader alloc] init];
     self.user = [[MMUser alloc] init];
+    
+    [self clearCoreDataStoreOfInvalidMeasurements];
     
     [self loadAllZonesWithContext:self.managedObjectContext];
     
@@ -188,6 +192,7 @@
     for (Measurement *measurement in measurementMatches)
     {
         //2delimitDec_29,_2014_17colon45colon56.png
+        if (measurement.measurementID == nil) {continue;} //protect against nullified measurements?
         NSString *measurementID = measurement.measurementID;
         NSRange fullLength = NSMakeRange(0, [measurementID length]);
         
@@ -300,7 +305,26 @@
         [Zone zoneForZoneID:zoneID withZonePhotoFileName:nil inManagedObjectContext:context];
     }    
 }
-							
+
+-(void)clearCoreDataStoreOfInvalidMeasurements
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"whichMole" ascending:YES]];
+    NSArray *measurementMatches = [self.managedObjectContext executeFetchRequest:request error:nil];
+    
+    if (!measurementMatches || [measurementMatches count] == 0) {return;}
+    
+    for (Measurement *measurement in measurementMatches)
+    {
+        if (measurement.measurementID == nil)
+        {
+            NSLog(@"Measurement with invalid ID: %@",measurement.whichMole.moleName);
+            [self.managedObjectContext deleteObject:measurement];
+        }
+    }
+
+}
+    
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

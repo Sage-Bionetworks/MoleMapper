@@ -70,6 +70,7 @@
 		E62A0D4C1BB4E418005FF87B /* CMSSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E62A0D4D1BB4E436005FF87B /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D461BB4E398005FF87B /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E62A0D501BB500D0005FF87B /* MoleWasRemovedRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E62A0D4F1BB500D0005FF87B /* MoleWasRemovedRKModule.m */; settings = {ASSET_TAGS = (); }; };
+		E62A0D5C1BBA2A7A005FF87B /* DemoKLCPopupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E62A0D5B1BBA2A7A005FF87B /* DemoKLCPopupHelper.m */; settings = {ASSET_TAGS = (); }; };
 		E62CB4C6189583A00045ED4A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62CB4C5189583A00045ED4A /* MessageUI.framework */; };
 		E62CB4C91895AF1A0045ED4A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */; };
 		E634434917E161BF00728FB6 /* Zone.m in Sources */ = {isa = PBXBuildFile; fileRef = E634434817E161BF00728FB6 /* Zone.m */; };
@@ -362,6 +363,8 @@
 		E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = interfaceTesting/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		E62A0D4E1BB500D0005FF87B /* MoleWasRemovedRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleWasRemovedRKModule.h; sourceTree = "<group>"; };
 		E62A0D4F1BB500D0005FF87B /* MoleWasRemovedRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleWasRemovedRKModule.m; sourceTree = "<group>"; };
+		E62A0D5A1BBA2A7A005FF87B /* DemoKLCPopupHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoKLCPopupHelper.h; sourceTree = "<group>"; };
+		E62A0D5B1BBA2A7A005FF87B /* DemoKLCPopupHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoKLCPopupHelper.m; sourceTree = "<group>"; };
 		E62CB4C5189583A00045ED4A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E62CB4C71895AF1A0045ED4A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -822,6 +825,8 @@
 				E6FDF8801B8AC52600EE7037 /* UIAlertController+Helper.m */,
 				E6F7516D17BA9AF500A7AB5A /* VariableStore.h */,
 				E6F7516E17BA9AF500A7AB5A /* VariableStore.m */,
+				E62A0D5A1BBA2A7A005FF87B /* DemoKLCPopupHelper.h */,
+				E62A0D5B1BBA2A7A005FF87B /* DemoKLCPopupHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1250,6 +1255,7 @@
 				E64CE58E1B882443007105FB /* BridgeSignUpRKModule.m in Sources */,
 				E6A9B1311B4BFB4A009B3393 /* FollowupSurveyRKModule.m in Sources */,
 				4BC88CE71BB1463000687E68 /* DashboardUVExposure.m in Sources */,
+				E62A0D5C1BBA2A7A005FF87B /* DemoKLCPopupHelper.m in Sources */,
 				E6883B851B95D43E00F5A9A5 /* NSDate+Helper.m in Sources */,
 				E604CD2619532D4500651A66 /* SMCalloutView.m in Sources */,
 				E6FF63221791BFC000A1BC28 /* Zone+MakeAndMod.m in Sources */,

@@ -22,8 +22,10 @@
 #import "AppDelegate.h"
 #import "BodyMapViewController.h"
 #import "MMUser.h"
+#import "APCButton.h"
+#import "DemoKLCPopupHelper.h"
 
-@interface BodyMapViewController () <UIScrollViewDelegate, CMPopTipViewDelegate>
+@interface BodyMapViewController () <UIScrollViewDelegate>//, CMPopTipViewDelegate>
 {
     VariableStore *vars;
 }
@@ -38,8 +40,8 @@
 @property (strong, nonatomic) BodyBackView *bodyBack;
 @property (strong, nonatomic) HeadDetailView *headDetail;
 
-@property (strong, nonatomic) CMPopTipView *popTipViewWelcome;
-@property (strong, nonatomic) CMPopTipView *popTipViewOpaque;
+//@property (strong, nonatomic) CMPopTipView *popTipViewWelcome;
+//@property (strong, nonatomic) CMPopTipView *popTipViewOpaque;
 
 @property (strong, nonatomic) FollowupSurveyRKModule *followupSurveyModule;
 
@@ -163,8 +165,8 @@
     if ([standardUserDefaults valueForKey:@"showDemoInfo"] == [NSNumber numberWithBool:YES])
     {
         [self showWelcomePopup:self];
-        [self showPopTipViewWelcome];
-        [self showPopTipViewGreyedOut];
+        //[self showPopTipViewWelcome];
+        //[self showPopTipViewGreyedOut];
     }
     if (self.shouldShowMoleRemovedPopup)
     {
@@ -176,7 +178,7 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [vars clearTransparencyOfAllZones];
-    [self dismissAllPopTipViews];
+    //[self dismissAllPopTipViews];
 }
 
 - (UIView *)viewForZoomingInScrollView:scrollView
@@ -185,6 +187,7 @@
     return self.containerView;
 }
 
+/*
 #pragma mark CMPopTipView methods
 - (void)showPopTipViewWelcome
 {
@@ -222,6 +225,7 @@
     [self.popTipViewOpaque dismissAnimated:YES];
     [self.popTipViewWelcome dismissAnimated:YES];
 }
+ */
 
 #pragma mark KLCPopup
 - (void)showWelcomePopup:(id)sender
@@ -242,6 +246,20 @@
     welcomeLabel.font = [UIFont systemFontOfSize:20.0];
     welcomeLabel.text = @"Would you like a quick demo\nof how to map and\nmeasure your moles?";
     
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    
+    APCButton *acceptDemoButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Sure!"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    APCButton *rejectDemoButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"No Thanks"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 28, 10, 28)];
+    
+    [acceptDemoButton addTarget:self action:@selector(acceptDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [rejectDemoButton addTarget:self action:@selector(rejectDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    /*
     UIButton* acceptDemoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     acceptDemoButton.translatesAutoresizingMaskIntoConstraints = NO;
     acceptDemoButton.contentEdgeInsets = UIEdgeInsetsMake(10, 75, 10, 75);
@@ -264,7 +282,8 @@
     [rejectDemoButton setTitle:@"No, Thanks" forState:UIControlStateNormal];
     rejectDemoButton.layer.cornerRadius = 6.0;
     [rejectDemoButton addTarget:self action:@selector(rejectDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
+    */
+     
     UILabel* activateLaterLabel = [[UILabel alloc] init];
     activateLaterLabel.translatesAutoresizingMaskIntoConstraints = NO;
     activateLaterLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -303,6 +322,81 @@
                                dismissOnContentTouch:NO];
     
     [popup show];
+}
+
+- (void)acceptDemoButtonPressed:(id)sender
+{
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"showDemoInfo"];
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+    [self performSelector:@selector(showDemoTapOnZonePopup:) withObject:self afterDelay:0.4];
+}
+
+- (void)showDemoTapOnZonePopup:(id)sender
+{
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
+    NSString *descriptionText = @"Step 1: Tap on a zone of the body that you haven't documented with a photo yet";
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    
+    APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Next"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"Stop Demo"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
+    
+    [nextButton addTarget:self action:@selector(demoTapOnZoneNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:description];
+    [contentView addSubview:demoImage];
+    [contentView addSubview:demoOffButton];
+    [contentView addSubview:nextButton];
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+                                             options:NSLayoutFormatAlignAllCenterX
+                                             metrics:nil
+                                               views:views]];
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
+                                             options:0
+                                             metrics:nil
+                                               views:views]];
+    
+    KLCPopup* popup = [KLCPopup popupWithContentView:contentView
+                                            showType:(KLCPopupShowType)KLCPopupShowTypeSlideInFromRight
+                                         dismissType:(KLCPopupDismissType)KLCPopupDismissTypeSlideOutToLeft
+                                            maskType:(KLCPopupMaskType)KLCPopupMaskTypeDimmed
+                            dismissOnBackgroundTouch:YES
+                               dismissOnContentTouch:YES];
+    
+    [popup show];
+}
+ 
+- (void)demoTapOnZoneNextPressed:(id)sender
+{
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+}
+
+- (void)rejectDemoButtonPressed:(id)sender
+{
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"showDemoInfo"];
 }
 
 - (void)showMoleRemovedPopup:(id)sender
@@ -363,7 +457,6 @@
     
     [popup show];
 }
-
 
 - (void)showInitialSurveyThanks:(id)sender
 {
@@ -432,26 +525,6 @@
     [popup show];
 }
 
-- (void)acceptDemoButtonPressed:(id)sender
-{
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"showDemoInfo"];
-    if ([sender isKindOfClass:[UIView class]])
-    {
-        [(UIView*)sender dismissPresentingPopup];
-    }
-}
-
-- (void)rejectDemoButtonPressed:(id)sender
-{
-    if ([sender isKindOfClass:[UIView class]])
-    {
-        [(UIView*)sender dismissPresentingPopup];
-    }
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"showDemoInfo"];
-}
-
 - (void)okPressed:(id)sender
 {
     if ([sender isKindOfClass:[UIView class]])
@@ -509,12 +582,20 @@
         [self.scrollView zoomToRect:vars.contentRect animated:YES];
         self.navigationItem.title = self.currentViewTitle;
     }
-    [self dismissAllPopTipViews];
+    //[self dismissAllPopTipViews];
 }
 
 - (IBAction)flipButtonTapped:(UIButton *)sender
 {
-    [self dismissAllPopTipViews];
+    
+    //[self dismissAllPopTipViews];
+    
+    if (self.headDetail.alpha == 1.0) {
+        self.headDetail.alpha = 0.0;
+        [self.scrollView zoomToRect:vars.contentRect animated:NO];
+        self.navigationItem.title = self.currentViewTitle;
+    }
+
     [UIView transitionWithView:self.scrollView duration:0.4
                        options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^{

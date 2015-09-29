@@ -24,6 +24,7 @@
 #import "CMPopTipView.h"
 #import "KLCPopup.h"
 #import "MoleWasRemovedRKModule.h"
+#import "DemoKLCPopupHelper.h"
 
 @interface ZoneViewController () <UIScrollViewDelegate,CMPopTipViewDelegate>
 {
@@ -298,62 +299,36 @@
 
 - (void)showPhotoPopup:(id)sender
 {
-    // Generate content view to present
-    UIView* contentView = [[UIView alloc] init];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    contentView.backgroundColor = [UIColor whiteColor];
-    contentView.layer.cornerRadius = 12.0;
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
+    NSString *descriptionText = @"Step 2: Take a photo of the whole zone area. This may include many moles.";
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
-    UILabel* welcomeLabel = [[UILabel alloc] init];
-    welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    welcomeLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    welcomeLabel.numberOfLines = 0;
-    welcomeLabel.backgroundColor = [UIColor clearColor];
-    welcomeLabel.textColor = [UIColor blackColor];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.font = [UIFont systemFontOfSize:16.0];
-    welcomeLabel.text = @"Step 1: Take a photo of the whole zone area\nStep 2: Add a mole pin for each mole in the zone";
+    APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Next"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"Stop Demo"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
     
-    UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zoneDemoPin"]];
-    
-    UIButton* nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    nextButton.contentEdgeInsets = UIEdgeInsetsMake(12, 50, 12, 50);
-    nextButton.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [nextButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    nextButton.layer.cornerRadius = 6.0;
     [nextButton addTarget:self action:@selector(nextButtonPressedPhoto:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton* demoOffButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    demoOffButton.translatesAutoresizingMaskIntoConstraints = NO;
-    demoOffButton.contentEdgeInsets = UIEdgeInsetsMake(14, 24, 14, 24);
-    demoOffButton.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:192.0/255.0 blue:192.0/255.0 alpha:0.9];
-    [demoOffButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [demoOffButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    demoOffButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    [demoOffButton setTitle:@"Turn Off Demo" forState:UIControlStateNormal];
-    demoOffButton.titleLabel.numberOfLines = 1;
-    demoOffButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    demoOffButton.layer.cornerRadius = 6.0;
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [contentView addSubview:welcomeLabel];
-    [contentView addSubview:demoShot];
+    [contentView addSubview:description];
+    [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoShot, demoOffButton, welcomeLabel);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoShot]-(16)-[welcomeLabel]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
                                              options:0
                                              metrics:nil
                                                views:views]];
@@ -370,64 +345,36 @@
 
 - (void)showDragPopup:(id)sender
 {
-    // Generate content view to present
-    UIView* contentView = [[UIView alloc] init];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    contentView.backgroundColor = [UIColor whiteColor];
-    contentView.layer.cornerRadius = 12.0;
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
+    NSString *descriptionText = @"Step 3: Add a mole pin to the photo, then use the hand icon to drag the pin over a mole. Repeat for each mole.";
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
-    UILabel* welcomeLabel = [[UILabel alloc] init];
-    welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    welcomeLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    welcomeLabel.numberOfLines = 0;
-    welcomeLabel.backgroundColor = [UIColor clearColor];
-    welcomeLabel.textColor = [UIColor blackColor];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.font = [UIFont systemFontOfSize:16.0];
-    welcomeLabel.text = @"Use the hand icon to drag\nthe pin over your mole";
+    APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Next"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"Stop Demo"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
     
-    UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zoneDemoDrag"]];
-    
-    UIButton* nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    nextButton.contentEdgeInsets = UIEdgeInsetsMake(12, 50, 12, 50);
-    nextButton.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [nextButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    nextButton.layer.cornerRadius = 6.0;
     [nextButton addTarget:self action:@selector(nextButtonPressedDrag:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton* demoOffButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    demoOffButton.translatesAutoresizingMaskIntoConstraints = NO;
-    demoOffButton.contentEdgeInsets = UIEdgeInsetsMake(14, 24, 14, 24);
-    demoOffButton.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:192.0/255.0 blue:192.0/255.0 alpha:0.9];
-    [demoOffButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [demoOffButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    demoOffButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    [demoOffButton setTitle:@"Turn Off Demo" forState:UIControlStateNormal];
-    demoOffButton.titleLabel.numberOfLines = 1;
-    demoOffButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    demoOffButton.layer.cornerRadius = 6.0;
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [contentView addSubview:welcomeLabel];
-    [contentView addSubview:demoShot];
+    [contentView addSubview:description];
+    [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoShot, demoOffButton, welcomeLabel);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(5)-[demoShot]-(16)-[welcomeLabel]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
     
-    
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
                                              options:0
                                              metrics:nil
                                                views:views]];
@@ -440,67 +387,41 @@
                                dismissOnContentTouch:NO];
     
     [popup show];
+
 }
 
 - (void)showMeasurePopup:(id)sender
 {
-    // Generate content view to present
-    UIView* contentView = [[UIView alloc] init];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    contentView.backgroundColor = [UIColor whiteColor];
-    contentView.layer.cornerRadius = 12.0;
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
+    NSString *descriptionText = @"Step 4: To measure a mole, tap on a mole pin and then the measurement icon";
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
-    UILabel* welcomeLabel = [[UILabel alloc] init];
-    welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    welcomeLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    welcomeLabel.numberOfLines = 0;
-    welcomeLabel.backgroundColor = [UIColor clearColor];
-    welcomeLabel.textColor = [UIColor blackColor];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.font = [UIFont systemFontOfSize:16.0];
-    welcomeLabel.text = @"Step 3: To measure a mole, tap the pin and then the measurement icon";
+    APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Next"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"Stop Demo"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
     
-    UIImageView *demoShot = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zoneDemoMeasure"]];
-    
-    UIButton* nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    nextButton.contentEdgeInsets = UIEdgeInsetsMake(12, 50, 12, 50);
-    nextButton.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [nextButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    nextButton.layer.cornerRadius = 6.0;
     [nextButton addTarget:self action:@selector(nextButtonPressedMeasure:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton* demoOffButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    demoOffButton.translatesAutoresizingMaskIntoConstraints = NO;
-    demoOffButton.contentEdgeInsets = UIEdgeInsetsMake(14, 24, 14, 24);
-    demoOffButton.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:192.0/255.0 blue:192.0/255.0 alpha:0.9];
-    [demoOffButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [demoOffButton setTitleColor:[[nextButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    demoOffButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    [demoOffButton setTitle:@"Turn Off Demo" forState:UIControlStateNormal];
-    demoOffButton.titleLabel.numberOfLines = 1;
-    demoOffButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    demoOffButton.layer.cornerRadius = 6.0;
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [contentView addSubview:welcomeLabel];
-    [contentView addSubview:demoShot];
+    [contentView addSubview:description];
+    [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoShot, demoOffButton, welcomeLabel);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(5)-[demoShot]-(16)-[welcomeLabel]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
                                              options:0
                                              metrics:nil
                                                views:views]];
@@ -509,10 +430,11 @@
                                             showType:(KLCPopupShowType)KLCPopupShowTypeSlideInFromRight
                                          dismissType:(KLCPopupDismissType)KLCPopupDismissTypeSlideOutToLeft
                                             maskType:(KLCPopupMaskType)KLCPopupMaskTypeDimmed
-                            dismissOnBackgroundTouch:NO
-                               dismissOnContentTouch:NO];
+                            dismissOnBackgroundTouch:YES
+                               dismissOnContentTouch:YES];
     
     [popup show];
+
 }
 
 - (void)nextButtonPressedPhoto:(id)sender
