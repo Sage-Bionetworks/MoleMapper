@@ -15,7 +15,6 @@
     if (!_refToDiameter)
     {
         _refToDiameter = @{
-        @"None" : @0.0,
         @"Penny"   : @19.05,
         @"Nickel"  : @21.21,
         @"Dime"    : @17.91,

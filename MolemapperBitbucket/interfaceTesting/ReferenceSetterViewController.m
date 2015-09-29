@@ -22,7 +22,7 @@
     if (!_referencesInPicker)
     {
         _referencesInPicker =
-        @[@"None", @"Penny", @"Nickel", @"Dime", @"Quarter"];
+        @[@"Penny", @"Nickel", @"Dime", @"Quarter"];
     }
     return _referencesInPicker;
 }
@@ -53,7 +53,7 @@
     }
     else
     {
-        [self.pickerView selectRow:3 inComponent:0 animated:YES];
+        [self.pickerView selectRow:2 inComponent:0 animated:YES];
     }
 	
     if (self.measurement)

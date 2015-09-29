@@ -1046,7 +1046,12 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
         NSString *formattedSize = @"0.0";
         if ([absoluteMoleDiameter floatValue] > 0.0)
         {
+            self.stepperDecrement.enabled = YES;
             formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([absoluteMoleDiameter floatValue] * 10) / 10];
+        }
+        else
+        {
+            self.stepperDecrement.enabled = NO;
         }
         formattedSize = [formattedSize stringByAppendingString:@" mm"];
         NSString *sizeText = @"Mole Size: ";
