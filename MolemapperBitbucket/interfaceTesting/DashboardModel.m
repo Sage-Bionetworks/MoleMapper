@@ -123,7 +123,8 @@
 
 -(NSInteger) getAllZoneNumber
 {
-    return [[Zone allZoneIDs] count];
+    //This needs to be (- 2) because the head detail in front and back is double-counted and has no actual measurement
+    return [[Zone allZoneIDs] count] - 2;
 }
 
 -(UIColor*) getColorForHeader

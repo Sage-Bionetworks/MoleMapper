@@ -77,7 +77,7 @@
 -(NSString *)zonesDocumentedLabelString
 {
     int numberOfZonesDocumented = 0;
-    int totalNumberOfZones = 0;
+    NSUInteger totalNumberOfZones = [[Zone allZoneIDs] count] - 2;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Zone" inManagedObjectContext:self.context];
@@ -89,10 +89,10 @@
     
     for (Zone *zone in matches)
     {
-        totalNumberOfZones++;
+        //totalNumberOfZones++;
         if ([self imageFileExistsForZone:zone]) {numberOfZonesDocumented++;}
     }
-    NSString *label = [NSString stringWithFormat:@"%d / %d",numberOfZonesDocumented , totalNumberOfZones];
+    NSString *label = [NSString stringWithFormat:@"%d / %lu",numberOfZonesDocumented , (unsigned long)totalNumberOfZones];
     return label;
 }
 
