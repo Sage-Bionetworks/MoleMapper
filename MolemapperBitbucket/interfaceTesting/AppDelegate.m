@@ -53,7 +53,7 @@
     [self renameLegacyStoredFilenamesInCoreData];
     
 [self setOnboardingBooleansBackToInitialValues];
-    [self.bridgeManager signInAndSendMeasurements];
+//[self.bridgeManager signInAndSendMeasurements];
     if ([self shouldShowOnboarding])
     {
         [self showOnboarding];

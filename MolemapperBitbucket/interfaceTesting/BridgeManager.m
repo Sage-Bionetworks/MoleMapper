@@ -145,7 +145,7 @@
 -(void)signInAndSendInitialData:(NSDictionary *)initialData
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
     {
         [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
                                                 password: ad.user.bridgeSignInPassword
@@ -183,7 +183,7 @@
 -(void)signInAndSendFollowupData:(NSDictionary *)followupData
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
     {
         [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
                                                 password: ad.user.bridgeSignInPassword
@@ -218,7 +218,7 @@
 -(void)signInAndSendMeasurements
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
     {
         [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
                                                 password: ad.user.bridgeSignInPassword

@@ -104,6 +104,21 @@
     return image;
 }
 
++ (NSData *)mostRecentMeasurementDataForMole:(Mole *)mole inContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];
+    NSSortDescriptor *sortMeasurementsByDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    sortMeasurementsByDate = [sortMeasurementsByDate reversedSortDescriptor];
+    request.sortDescriptors = @[sortMeasurementsByDate];
+    request.predicate = [NSPredicate predicateWithFormat:@"whichMole = %@", mole];
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    Measurement *mostRecentMeasurement = [matches firstObject];
+    NSData *pngData = [NSData dataWithContentsOfFile:mostRecentMeasurement.measurementPhoto];
+    return pngData;
+}
+
 + (int)getNextValidMoleID
 {
     int moleID = nil;

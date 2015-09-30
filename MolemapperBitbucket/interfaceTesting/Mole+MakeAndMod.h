@@ -24,4 +24,6 @@
 
 + (NSArray *)getAllMolesInCoreDatainManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (NSData *)mostRecentMeasurementDataForMole:(Mole *)mole inContext:(NSManagedObjectContext *)context;
+
 @end

@@ -543,8 +543,9 @@
     NSString *emailTitle = [self emailTitleForMeasurement:self.measurement];
     NSString *messageBody = [self emailBodyForMeasurement:self.measurement];
     NSArray *toRecipents = [NSArray arrayWithObject:[self recipientForEmail]];
-    NSString *filePath = self.measurement.measurementID;
-    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    //NSString *filePath = [Measurement ] self.measurement.measurementID;
+    //NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    NSData *fileData = [Measurement rawPngDataForMeasurement:self.measurement];
     NSString *mimeType = @"image/png";
     NSString *fileName = @"filename";
     
