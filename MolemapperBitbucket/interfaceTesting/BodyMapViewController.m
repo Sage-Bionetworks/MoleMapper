@@ -39,6 +39,7 @@
 @property (strong, nonatomic) BodyFrontView *bodyFront;
 @property (strong, nonatomic) BodyBackView *bodyBack;
 @property (strong, nonatomic) HeadDetailView *headDetail;
+@property (weak, nonatomic) IBOutlet UIButton *consentButton;
 
 //@property (strong, nonatomic) CMPopTipView *popTipViewWelcome;
 //@property (strong, nonatomic) CMPopTipView *popTipViewOpaque;
@@ -156,7 +157,15 @@
     
     [vars animateTransparencyOfZonesWithPhotoDataOverDuration:1.25];
     [vars updateZoneButtonImages];
-
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (ad.user.hasConsented)
+    {
+        self.consentButton.hidden = YES;
+    }
+    else
+    {
+        self.consentButton.hidden = NO;
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -259,31 +268,6 @@
     [acceptDemoButton addTarget:self action:@selector(acceptDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [rejectDemoButton addTarget:self action:@selector(rejectDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    /*
-    UIButton* acceptDemoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    acceptDemoButton.translatesAutoresizingMaskIntoConstraints = NO;
-    acceptDemoButton.contentEdgeInsets = UIEdgeInsetsMake(10, 75, 10, 75);
-    acceptDemoButton.backgroundColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
-    [acceptDemoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [acceptDemoButton setTitleColor:[[acceptDemoButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    acceptDemoButton.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
-    [acceptDemoButton setTitle:@"Sure!" forState:UIControlStateNormal];
-    acceptDemoButton.layer.cornerRadius = 6.0;
-    [acceptDemoButton addTarget:self action:@selector(acceptDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton* rejectDemoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rejectDemoButton.translatesAutoresizingMaskIntoConstraints = NO;
-    rejectDemoButton.contentEdgeInsets = UIEdgeInsetsMake(10, 60, 10, 60);
-    rejectDemoButton.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:192.0/255.0 blue:192.0/255.0 alpha:0.9];
-    //rejectDemoButton.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:25.0/255.0 blue:25.0/255.0 alpha:0.75];
-    [rejectDemoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [rejectDemoButton setTitleColor:[[acceptDemoButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.6] forState:UIControlStateHighlighted];
-    rejectDemoButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    [rejectDemoButton setTitle:@"No, Thanks" forState:UIControlStateNormal];
-    rejectDemoButton.layer.cornerRadius = 6.0;
-    [rejectDemoButton addTarget:self action:@selector(rejectDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    */
-     
     UILabel* activateLaterLabel = [[UILabel alloc] init];
     activateLaterLabel.translatesAutoresizingMaskIntoConstraints = NO;
     activateLaterLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -332,7 +316,53 @@
     {
         [(UIView*)sender dismissPresentingPopup];
     }
-    [self performSelector:@selector(showDemoTapOnZonePopup:) withObject:self afterDelay:0.4];
+    [self performSelector:@selector(showThreeStepPopup:) withObject:self afterDelay:0.4];
+}
+
+- (void)showThreeStepPopup:(id)sender
+{
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
+    NSString *descriptionText = @"There are 3 steps to tracking a mole in this app:\n1. Map it\n2. Measure it\n3. Monitor it over time";
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    //UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    
+    APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Next"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"Stop Demo"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
+    
+    [nextButton addTarget:self action:@selector(demoTapOnZoneNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:description];
+    //[contentView addSubview:demoImage];
+    [contentView addSubview:demoOffButton];
+    [contentView addSubview:nextButton];
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoOffButton, description);
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+                                             options:NSLayoutFormatAlignAllCenterX
+                                             metrics:nil
+                                               views:views]];
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
+                                             options:0
+                                             metrics:nil
+                                               views:views]];
+    
+    KLCPopup* popup = [KLCPopup popupWithContentView:contentView
+                                            showType:(KLCPopupShowType)KLCPopupShowTypeSlideInFromRight
+                                         dismissType:(KLCPopupDismissType)KLCPopupDismissTypeSlideOutToLeft
+                                            maskType:(KLCPopupMaskType)KLCPopupMaskTypeDimmed
+                            dismissOnBackgroundTouch:NO
+                               dismissOnContentTouch:NO];
+    
+    [popup show];
 }
 
 - (void)showDemoTapOnZonePopup:(id)sender
@@ -380,7 +410,15 @@
     
     [popup show];
 }
- 
+
+-(void)demoThreeStepNextPressed:(id)sender
+{
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+}
+
 - (void)demoTapOnZoneNextPressed:(id)sender
 {
     if ([sender isKindOfClass:[UIView class]])
@@ -584,6 +622,14 @@
     }
     //[self dismissAllPopTipViews];
 }
+
+- (IBAction)consentButtonTapped:(id)sender
+{
+    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //Put up a prompt about going back to the consent process
+    [ad showOnboarding];
+}
+
 
 - (IBAction)flipButtonTapped:(UIButton *)sender
 {

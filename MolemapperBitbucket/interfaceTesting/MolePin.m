@@ -226,10 +226,10 @@
                                     animated:YES];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    if ([ud objectForKey:@"firstViewCallout"] == [NSNumber numberWithBool:YES])
+    if ([ud boolForKey:@"showDemoInfo"] == YES)
     {
         [vars.zoneViewController showPopTipViewGoToMeasure:self.calloutView.rightAccessoryView];
-        [ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewCallout"];
+        //[ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewCallout"];
     }
 
 }
@@ -252,7 +252,8 @@
     if (newState == MolePinStateNormal) {
         [self setImage:vars.molePinNormal forState:UIControlStateNormal];
         [self setImage:vars.molePinHighlighted forState:UIControlStateHighlighted];
-        self.panRecognizer.enabled = NO;
+        //Change this back to NO if you want to have only the select, then move behavior
+        self.panRecognizer.enabled = YES;
         self.longPressRecognizer.enabled = YES;
     } else {
         [self setImage:vars.molePinSelected forState:UIControlStateNormal];

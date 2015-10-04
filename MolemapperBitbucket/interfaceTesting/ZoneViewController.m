@@ -173,7 +173,6 @@
         self.exportButton.enabled = YES;
         self.settingsButton.enabled = YES;
     }
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -252,6 +251,14 @@
     NSString *message = @"Tap to drop\na mole pin";
     self.popTipViewPointToPinButton = [[CMPopTipView alloc] initWithMessage:message];
     self.popTipViewPointToPinButton.delegate = self;
+    self.popTipViewPointToPinButton.backgroundColor = [UIColor whiteColor];
+    self.popTipViewPointToPinButton.borderColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewPointToPinButton.borderWidth = 1.0;
+    self.popTipViewPointToPinButton.has3DStyle = NO;
+    self.popTipViewPointToPinButton.hasShadow = NO;
+    self.popTipViewPointToPinButton.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewPointToPinButton.titleFont = [UIFont systemFontOfSize:14.0 weight:0.5];
+    
     [self.popTipViewPointToPinButton presentPointingAtBarButtonItem:self.addMolePin animated:YES];
 }
 
@@ -260,6 +267,13 @@
     NSString *message = @"Export zone photo\nand mole data\nfor your records";
     self.popTipViewExport= [[CMPopTipView alloc] initWithMessage:message];
     self.popTipViewExport.delegate = self;
+    self.popTipViewExport.backgroundColor = [UIColor whiteColor];
+    self.popTipViewExport.borderColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewExport.borderWidth = 1.0;
+    self.popTipViewExport.has3DStyle = NO;
+    self.popTipViewExport.hasShadow = NO;
+    self.popTipViewExport.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewExport.titleFont = [UIFont systemFontOfSize:14.0 weight:0.5];
     [self.popTipViewExport presentPointingAtBarButtonItem:self.exportButton animated:YES];
 }
 
@@ -276,8 +290,17 @@
 
 -(void)showPopTipViewGoToMeasure:(UIView *)viewToPointAt
 {
-    NSString *message = @"Tap for mole\ndetails";
+    NSString *message = @"Tap to measure\nthis mole";
     self.popTipViewGoToMeasure = [[CMPopTipView alloc] initWithMessage:message];
+    self.popTipViewGoToMeasure.delegate = self;
+    self.popTipViewGoToMeasure.backgroundColor = [UIColor whiteColor];
+    self.popTipViewGoToMeasure.borderColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewGoToMeasure.borderWidth = 1.0;
+    self.popTipViewGoToMeasure.has3DStyle = NO;
+    self.popTipViewGoToMeasure.hasShadow = NO;
+    self.popTipViewGoToMeasure.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewGoToMeasure.titleFont = [UIFont systemFontOfSize:14.0 weight:0.5];
+    
     [self.popTipViewGoToMeasure presentPointingAtView:viewToPointAt inView:self.zoneImageView animated:YES];
 }
 

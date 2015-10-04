@@ -33,6 +33,16 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Mole Map" image="moleMapUnselected" selectedImage="moleMapSelected" id="KFT-Uo-C9o"/>
                     <navigationItem key="navigationItem" id="Nck-qm-ows">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Fj6-Ah-0RW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="evq-Tj-e9u">
+                                <rect key="frame" x="16" y="1" width="32" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="researchKit"/>
+                                <connections>
+                                    <action selector="consentButtonTapped:" destination="Pwp-8Y-V2F" eventType="touchUpInside" id="1s6-og-BnX"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Menu" id="jRp-By-RQ9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bDt-RQ-7pD">
                                 <rect key="frame" x="274" y="7" width="30" height="30"/>
@@ -46,6 +56,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="consentButton" destination="evq-Tj-e9u" id="jbO-1O-IN4"/>
                         <outlet property="scrollView" destination="5eF-NK-ORa" id="nED-ay-18n"/>
                         <segue destination="NOT-gB-pO0" kind="custom" identifier="GoToZoneView" customClass="CustomCrossFadeSegue" id="LrF-aI-9pc"/>
                     </connections>
@@ -1689,10 +1700,34 @@ Altruistic code-sharing by Chris Miles </string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="hco-9x-BXT">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="informationSheet" textLabel="lpP-zi-4Y9" style="IBUITableViewCellStyleDefault" id="o88-Bx-iPZ">
+                                        <rect key="frame" x="0.0" y="355" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o88-Bx-iPZ" id="XsL-MD-rZI">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Information Sheet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lpP-zi-4Y9">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="RHk-Af-c9d" kind="push" identifier="informationSheet" id="eAv-Hf-App"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="z9V-1q-72D">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="AQ6-Js-7Op" style="IBUITableViewCellStyleDefault" id="3rJ-PP-mKi">
-                                        <rect key="frame" x="0.0" y="355" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="419" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3rJ-PP-mKi" id="FX9-dz-Pbb">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -1716,7 +1751,7 @@ Altruistic code-sharing by Chris Miles </string>
                             <tableViewSection id="aQQ-kA-p9O">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="License Information" textLabel="mxU-Z0-hkw" style="IBUITableViewCellStyleDefault" id="2J5-9r-de8">
-                                        <rect key="frame" x="0.0" y="419" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="483" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2J5-9r-de8" id="mzf-ir-Kvn">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -2218,6 +2253,7 @@ Altruistic code-sharing by Chris Miles </string>
         <image name="ohsuLogoTVC" width="312" height="312"/>
         <image name="profileSelected" width="25" height="25"/>
         <image name="profileUnselected" width="25" height="25"/>
+        <image name="researchKit" width="32" height="42"/>
         <image name="roundedRectButtonBackground3.png" width="585" height="126"/>
         <image name="rt-normal.png" width="64" height="80"/>
         <image name="tvc_credits" width="312" height="312"/>
@@ -2228,8 +2264,9 @@ Altruistic code-sharing by Chris Miles </string>
         <image name="up-normal.png" width="80" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="eAv-Hf-App"/>
+        <segue reference="S2T-Mw-bSz"/>
         <segue reference="LrF-aI-9pc"/>
         <segue reference="9Va-Ir-QxI"/>
-        <segue reference="S2T-Mw-bSz"/>
     </inferredMetricsTieBreakers>
 </document>

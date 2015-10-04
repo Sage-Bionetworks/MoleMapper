@@ -40,7 +40,7 @@
     
     ORKInstructionStep *help = [[ORKInstructionStep alloc] initWithIdentifier:@"help"];
     help.title = @"Would you like to help our research?";
-    help.text = @"\nTap “Get Started” to learn about this iPhone-based research study run by OHSU and Sage Bionetworks or click “Cancel” to begin mapping";
+    help.text = @"\nTap “Get Started” to learn about this iPhone-based research study run by OHSU and Sage Bionetworks or tap “Cancel” to begin mapping";
     help.image = [UIImage imageNamed:@"ohsuSageLogos"];
     
     
@@ -67,11 +67,13 @@
                                                         answerFormat:age]];
     
     eligibilityForm.formItems = eligibilityItems;
+    eligibilityForm.optional = NO;
     
     introAndEligibleTask = [[ORKOrderedTask alloc] initWithIdentifier:@"introAndEligible"
                                                                 steps:@[intro,
                                                                         help,
                                                                         visualConsentStep,                                                                        eligibilityForm]];
+    
     ORKTaskViewController *taskViewController =
     [[ORKTaskViewController alloc] initWithTask:introAndEligibleTask taskRunUUID:nil];
     taskViewController.delegate = self;

@@ -108,6 +108,7 @@
 		E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */ = {isa = PBXBuildFile; fileRef = E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */; };
 		E688C92E186A049500E70BBA /* ReferenceSetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */; };
 		E691FE5A187A560300028548 /* learnMoreViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = E691FE59187A560300028548 /* learnMoreViewContoller.m */; };
+		E692C1B91BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */; settings = {ASSET_TAGS = (); }; };
 		E6944602198B130E003DD7BD /* HelpMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6944601198B130E003DD7BD /* HelpMovieViewController.m */; };
 		E6944604198B1A47003DD7BD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6944603198B1A47003DD7BD /* MediaPlayer.framework */; };
 		E6A9B1251B35BEC9009B3393 /* DataExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A9B1241B35BEC9009B3393 /* DataExporter.m */; };
@@ -433,6 +434,7 @@
 		E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceSetterViewController.m; sourceTree = "<group>"; };
 		E691FE58187A560300028548 /* learnMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = learnMoreViewController.h; sourceTree = "<group>"; };
 		E691FE59187A560300028548 /* learnMoreViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = learnMoreViewContoller.m; sourceTree = "<group>"; };
+		E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf"; sourceTree = "<group>"; };
 		E6944600198B130E003DD7BD /* HelpMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpMovieViewController.h; sourceTree = "<group>"; };
 		E6944601198B130E003DD7BD /* HelpMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpMovieViewController.m; sourceTree = "<group>"; };
 		E6944603198B1A47003DD7BD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -990,6 +992,7 @@
 				E6FDF87A1B89922C00EE7037 /* visitingDoctor@2x.m4v */,
 				E6FDF87B1B89922C00EE7037 /* recontact@2x.m4v */,
 				E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */,
+				E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */,
 				E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */,
 				E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */,
 				E6F93E8B16DB273B0068B7B6 /* MoleMapper-Info.plist */,
@@ -1191,6 +1194,7 @@
 				380B92211BAC50700026D052 /* DBSizeOverTimeCellTableViewCell.xib in Resources */,
 				4B6DB7AB1BA977AE000EE645 /* DashBoardMeasurementCell.xib in Resources */,
 				E65F29881972C421000F90BB /* appIcon.xcassets in Resources */,
+				E692C1B91BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf in Resources */,
 				E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -70,8 +70,8 @@
 {
     //[self clearMeasurementsAlreadySentForDebugging];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:YES forKey:@"shouldShowOnboarding"];
-    [ud setBool:YES forKey:@"shouldShowIntroAndEligible"];
+    [ud setBool:NO forKey:@"shouldShowOnboarding"];
+    [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
     [ud setBool:NO forKey:@"shouldShowConsent"];

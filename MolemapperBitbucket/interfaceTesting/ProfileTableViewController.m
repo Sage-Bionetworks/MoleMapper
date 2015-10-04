@@ -21,6 +21,7 @@
 //@property (weak, nonatomic) IBOutlet UITableViewCell *sharingOptions;
 
 #define NAME_OF_PRIVACY_POLICY_DOC @"PrivacyPolicy-MoleMapper-20Sept2015-EN"
+#define NAME_OF_INFORMATION_SHEET_DOC @"WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2"
 
 @end
 
@@ -73,7 +74,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -175,6 +176,11 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
     {
         ProfileRKLaunchPad *destVC = (ProfileRKLaunchPad *)[segue destinationViewController];
         destVC.shouldShowExternalID = YES;
+    }
+    else if ([segue.identifier isEqualToString:@"informationSheet"])
+    {
+        PDFViewerViewController *destVC = (PDFViewerViewController *)[segue destinationViewController];
+        destVC.filename = NAME_OF_INFORMATION_SHEET_DOC;
     }
 }
 

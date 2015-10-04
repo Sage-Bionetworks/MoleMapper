@@ -281,6 +281,14 @@
     NSString *message = @"How to measure\nyour moles";
     self.popTipViewDemoButton = [[CMPopTipView alloc] initWithMessage:message];
     self.popTipViewDemoButton.delegate = self;
+    self.popTipViewDemoButton.delegate = self;
+    self.popTipViewDemoButton.backgroundColor = [UIColor whiteColor];
+    self.popTipViewDemoButton.borderColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewDemoButton.borderWidth = 1.0;
+    self.popTipViewDemoButton.has3DStyle = NO;
+    self.popTipViewDemoButton.hasShadow = NO;
+    self.popTipViewDemoButton.textColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    self.popTipViewDemoButton.titleFont = [UIFont systemFontOfSize:14.0 weight:0.5];
     [self.popTipViewDemoButton presentPointingAtBarButtonItem:self.demoButton animated:YES];
 }
 
