@@ -16,10 +16,12 @@
 #import "QuizQuestionViewController.h"
 #import "InitialSurveyRKModule.h"
 #import "InfoScreensRKModule.h"
+#import "EligibilityTestRKModule.h"
 
 @interface OnboardingViewController ()
 
 @property (nonatomic, strong) IntroAndEligibleRKModule *introAndEligible;
+@property (nonatomic, strong) EligibilityTestRKModule *eligibilityTest;
 @property (nonatomic, strong) InfoScreensRKModule *infoScreens;
 @property (nonatomic, strong) ConsentRKModule *consent;
 @property (nonatomic, strong) BridgeSignUpRKModule *bridgeSignUp;
@@ -41,6 +43,13 @@
         self.introAndEligible = [[IntroAndEligibleRKModule alloc] init];
         self.introAndEligible.presentingVC = self;
         [self.introAndEligible showIntro];
+    }
+    
+    else if ([self shouldShowEligibilityTest])
+    {
+        self.eligibilityTest = [[EligibilityTestRKModule alloc] init];
+        self.eligibilityTest.presentingVC = self;
+        [self.eligibilityTest showEligibilityTest];
     }
     
     else if ([self shouldShowInfoScreens])
@@ -88,6 +97,13 @@
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     BOOL result = [ud boolForKey:@"shouldShowIntroAndEligible"];
+    return result;
+}
+
+-(BOOL)shouldShowEligibilityTest
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    BOOL result = [ud boolForKey:@"shouldShowEligibilityTest"];
     return result;
 }
 

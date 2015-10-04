@@ -18,6 +18,7 @@
 #import "BodyMapViewController.h"
 #import "DashboardViewController.h"
 #import <BridgeSDK/BridgeSDK.h>
+#import "APCStudyOverviewCollectionViewController.h"
 
 
 @implementation AppDelegate
@@ -56,7 +57,8 @@
 //[self.bridgeManager signInAndSendMeasurements];
     if ([self shouldShowOnboarding])
     {
-        [self showOnboarding];
+        [self showWelcomeScreenWithCarousel];
+        //[self showOnboarding];
     }
     else
     {
@@ -70,13 +72,16 @@
 {
     //[self clearMeasurementsAlreadySentForDebugging];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:NO forKey:@"shouldShowOnboarding"];
+    [ud setBool:YES forKey:@"shouldShowOnboarding"];
+    
     [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
     [ud setBool:NO forKey:@"shouldShowConsent"];
     [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
     [ud setBool:NO forKey:@"shouldShowInitialSurvey"];
+    
+    //[ud setBool:YES forKey:@"shouldShowEligibilityTest"];
 }
 
 -(void)clearMeasurementsAlreadySentForDebugging
@@ -101,13 +106,20 @@
     [self setUpRootViewController:onboarding];
 }
 
+-(void)showWelcomeScreenWithCarousel
+{
+    APCStudyOverviewCollectionViewController *welcome = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
+    [self setUpRootViewController:welcome];
+
+}
+
 - (void)showBodyMap
 {
     UITabBarController *tabBar = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"tabBar"];
     
     [UIView transitionWithView:self.window
                       duration:0.0
-                       options:UIViewAnimationOptionTransitionCrossDissolve
+                       options:UIViewAnimationOptionTransitionNone
                     animations:^{
                         self.window.rootViewController = tabBar;
                         [self.window makeKeyAndVisible];
@@ -124,7 +136,7 @@
         
     [UIView transitionWithView:self.window
                       duration:0.6
-                       options:UIViewAnimationOptionTransitionCrossDissolve
+                       options:UIViewAnimationOptionTransitionNone
                     animations:^{
                         self.window.rootViewController = navController;
                         [self.window makeKeyAndVisible];
@@ -220,7 +232,7 @@
 {
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
     pageControl.backgroundColor = [UIColor clearColor];
 }
 
@@ -277,6 +289,10 @@
     if (![standardUserDefaults objectForKey:@"shouldShowIntroAndEligible"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowIntroAndEligible"];
+    }
+    if (![standardUserDefaults objectForKey:@"shouldShowEligibilityTest"])
+    {
+        [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"shouldShowEligibilityTest"];
     }
     if (![standardUserDefaults objectForKey:@"shouldShowConsent"])
     {
