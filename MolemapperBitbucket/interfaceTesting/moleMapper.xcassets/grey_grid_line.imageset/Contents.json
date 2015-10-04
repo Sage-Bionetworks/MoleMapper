@@ -6,11 +6,11 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "grey_grid_line.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "MoleMapperLogoV2.png",
       "scale" : "3x"
     }
   ],

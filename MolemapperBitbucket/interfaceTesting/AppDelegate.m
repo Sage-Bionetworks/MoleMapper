@@ -19,6 +19,7 @@
 #import "DashboardViewController.h"
 #import <BridgeSDK/BridgeSDK.h>
 #import "APCStudyOverviewCollectionViewController.h"
+#import "WelcomeCarouselViewController.h"
 
 
 @implementation AppDelegate
@@ -53,8 +54,8 @@
     
     [self renameLegacyStoredFilenamesInCoreData];
     
-[self setOnboardingBooleansBackToInitialValues];
-//[self.bridgeManager signInAndSendMeasurements];
+    [self setOnboardingBooleansBackToInitialValues];
+    //[self.bridgeManager signInAndSendMeasurements];
     if ([self shouldShowOnboarding])
     {
         [self showWelcomeScreenWithCarousel];
@@ -108,8 +109,13 @@
 
 -(void)showWelcomeScreenWithCarousel
 {
-    APCStudyOverviewCollectionViewController *welcome = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
+    /*APCStudyOverviewCollectionViewController *welcome = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
+    [self setUpRootViewController:welcome];*/
+    
+    WelcomeCarouselViewController* welcome = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"WelcomeCarouselViewController"];
     [self setUpRootViewController:welcome];
+    
+    
 
 }
 

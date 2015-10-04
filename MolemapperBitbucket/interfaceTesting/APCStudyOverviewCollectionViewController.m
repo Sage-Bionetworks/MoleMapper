@@ -43,6 +43,7 @@
 #import "AppDelegate.h"
 #import "MMUser.h"
 #import "OnboardingViewController.h"
+#import <AFNetworkReachabilityManager.h>
 
 static NSString *kConsentEmailSubject = @"Consent Document";
 
@@ -354,6 +355,16 @@ static NSString *kConsentEmailSubject = @"Consent Document";
 - (IBAction)joinStudyTapped:(id)sender
 {
     //OnboardingViewController *onboarding = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"onboardingBase"];
+    
+    if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+    {
+        
+    }
+    else
+    {
+        
+    }
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];

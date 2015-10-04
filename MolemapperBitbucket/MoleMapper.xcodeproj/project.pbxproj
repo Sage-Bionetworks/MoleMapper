@@ -32,12 +32,17 @@
 		4B04CF881BA9A470000C05AB /* PopupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B04CF871BA9A470000C05AB /* PopupManager.m */; settings = {ASSET_TAGS = (); }; };
 		4B04CF971BA9A53F000C05AB /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B04CF961BA9A53F000C05AB /* PopupView.m */; settings = {ASSET_TAGS = (); }; };
 		4B04CF991BA9A577000C05AB /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B04CF981BA9A577000C05AB /* PopupView.xib */; settings = {ASSET_TAGS = (); }; };
+		4B1103A91BC1B00A00E98F24 /* WelcomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1103A71BC1B00A00E98F24 /* WelcomeCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		4B1103AA1BC1B00A00E98F24 /* WelcomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1103A81BC1B00A00E98F24 /* WelcomeCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		4B53FE071BC19B7400ED372C /* WelcomeCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B53FE061BC19B7400ED372C /* WelcomeCarouselViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4B6090851BA87E440042E9C5 /* DashboardZoneDocumentationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6090831BA87E440042E9C5 /* DashboardZoneDocumentationCell.m */; settings = {ASSET_TAGS = (); }; };
 		4B6090861BA87E440042E9C5 /* DashboardZoneDocumentationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6090841BA87E440042E9C5 /* DashboardZoneDocumentationCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4B6DB7AA1BA977AE000EE645 /* DashBoardMeasurementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6DB7A81BA977AE000EE645 /* DashBoardMeasurementCell.m */; settings = {ASSET_TAGS = (); }; };
 		4B6DB7AB1BA977AE000EE645 /* DashBoardMeasurementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6DB7A91BA977AE000EE645 /* DashBoardMeasurementCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4B7FCE981BAA34820064DEB6 /* DashboardSizeOvertimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7FCE961BAA34820064DEB6 /* DashboardSizeOvertimeCell.m */; settings = {ASSET_TAGS = (); }; };
 		4B7FCE991BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7FCE971BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib */; settings = {ASSET_TAGS = (); }; };
+		4B856D9D1BC1BADA00998175 /* HelpCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B856D9B1BC1BADA00998175 /* HelpCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		4B856D9E1BC1BADA00998175 /* HelpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B856D9C1BC1BADA00998175 /* HelpCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4B99E0D51BA9F575005B3B50 /* moleMapper.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */; settings = {ASSET_TAGS = (); }; };
 		4B9EB56A1BB2802800560AC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9EB5691BB2802800560AC5 /* CoreLocation.framework */; };
 		4B9EB5771BB2802D00560AC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9EB5761BB2802D00560AC5 /* MapKit.framework */; };
@@ -310,6 +315,11 @@
 		4B04CF951BA9A53F000C05AB /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupView.h; sourceTree = "<group>"; };
 		4B04CF961BA9A53F000C05AB /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupView.m; sourceTree = "<group>"; };
 		4B04CF981BA9A577000C05AB /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
+		4B1103A61BC1B00A00E98F24 /* WelcomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeCollectionViewCell.h; path = OnboardingCollectionViewCells/WelcomeCollectionViewCell.h; sourceTree = "<group>"; };
+		4B1103A71BC1B00A00E98F24 /* WelcomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WelcomeCollectionViewCell.m; path = OnboardingCollectionViewCells/WelcomeCollectionViewCell.m; sourceTree = "<group>"; };
+		4B1103A81BC1B00A00E98F24 /* WelcomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WelcomeCollectionViewCell.xib; path = OnboardingCollectionViewCells/WelcomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		4B53FE051BC19B7400ED372C /* WelcomeCarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeCarouselViewController.h; sourceTree = "<group>"; };
+		4B53FE061BC19B7400ED372C /* WelcomeCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeCarouselViewController.m; sourceTree = "<group>"; };
 		4B6090821BA87E440042E9C5 /* DashboardZoneDocumentationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardZoneDocumentationCell.h; sourceTree = "<group>"; };
 		4B6090831BA87E440042E9C5 /* DashboardZoneDocumentationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardZoneDocumentationCell.m; sourceTree = "<group>"; };
 		4B6090841BA87E440042E9C5 /* DashboardZoneDocumentationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardZoneDocumentationCell.xib; sourceTree = "<group>"; };
@@ -319,6 +329,9 @@
 		4B7FCE951BAA34820064DEB6 /* DashboardSizeOvertimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardSizeOvertimeCell.h; sourceTree = "<group>"; };
 		4B7FCE961BAA34820064DEB6 /* DashboardSizeOvertimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardSizeOvertimeCell.m; sourceTree = "<group>"; };
 		4B7FCE971BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardSizeOvertimeCell.xib; sourceTree = "<group>"; };
+		4B856D9A1BC1BADA00998175 /* HelpCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpCollectionViewCell.h; path = OnboardingCollectionViewCells/HelpCollectionViewCell.h; sourceTree = "<group>"; };
+		4B856D9B1BC1BADA00998175 /* HelpCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpCollectionViewCell.m; path = OnboardingCollectionViewCells/HelpCollectionViewCell.m; sourceTree = "<group>"; };
+		4B856D9C1BC1BADA00998175 /* HelpCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpCollectionViewCell.xib; path = OnboardingCollectionViewCells/HelpCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = moleMapper.xcassets; sourceTree = "<group>"; };
 		4B9EB5691BB2802800560AC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4B9EB5761BB2802D00560AC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -665,6 +678,19 @@
 			name = Popup;
 			sourceTree = "<group>";
 		};
+		4B11039A1BC1AFCE00E98F24 /* OnboardingCollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				4B1103A61BC1B00A00E98F24 /* WelcomeCollectionViewCell.h */,
+				4B1103A71BC1B00A00E98F24 /* WelcomeCollectionViewCell.m */,
+				4B1103A81BC1B00A00E98F24 /* WelcomeCollectionViewCell.xib */,
+				4B856D9A1BC1BADA00998175 /* HelpCollectionViewCell.h */,
+				4B856D9B1BC1BADA00998175 /* HelpCollectionViewCell.m */,
+				4B856D9C1BC1BADA00998175 /* HelpCollectionViewCell.xib */,
+			);
+			name = OnboardingCollectionViewCells;
+			sourceTree = "<group>";
+		};
 		4BC34EAF1BAC59100063F402 /* DashboardHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +762,7 @@
 		E6537EE71B801D5C00B38331 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				4B11039A1BC1AFCE00E98F24 /* OnboardingCollectionViewCells */,
 				E6443BFB1B78B8E9007DE110 /* onboarding.storyboard */,
 				E692C1BA1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.h */,
 				E692C1BB1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.m */,
@@ -763,6 +790,8 @@
 				E6FDF8FA1B916B0500EE7037 /* InitialSurveyRKModule.m */,
 				E6FDF8821B8AD47000EE7037 /* ThankYouViewController.h */,
 				E6FDF8831B8AD47000EE7037 /* ThankYouViewController.m */,
+				4B53FE051BC19B7400ED372C /* WelcomeCarouselViewController.h */,
+				4B53FE061BC19B7400ED372C /* WelcomeCarouselViewController.m */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -1237,7 +1266,9 @@
 				E6FDF8F81B91632900EE7037 /* recontact@2x.m4v in Resources */,
 				E692C1DA1BC18B1100BE9111 /* helpOurResearch.htm in Resources */,
 				380B921F1BAC50700026D052 /* DashboardMolyEstZone.xib in Resources */,
+				4B856D9E1BC1BADA00998175 /* HelpCollectionViewCell.xib in Resources */,
 				4BF5AAE01BA9833F0012B490 /* DashboardBiggestMoleCell.xib in Resources */,
+				4B1103AA1BC1B00A00E98F24 /* WelcomeCollectionViewCell.xib in Resources */,
 				4B6090861BA87E440042E9C5 /* DashboardZoneDocumentationCell.xib in Resources */,
 				E6F93E8E16DB273B0068B7B6 /* InfoPlist.strings in Resources */,
 				43D9933A1BA5067E0077073D /* DashboardActivityCompletionCell.xib in Resources */,
@@ -1353,6 +1384,7 @@
 				E6F7517417BA9B4500A7AB5A /* TagZone.m in Sources */,
 				E692C1D81BC177A000BE9111 /* EligibilityTestRKModule.m in Sources */,
 				4BFF61641BAC98CD00FE7853 /* ProfileRKLaunchPad.m in Sources */,
+				4B53FE071BC19B7400ED372C /* WelcomeCarouselViewController.m in Sources */,
 				E6FDF8781B896E9900EE7037 /* APCButton.m in Sources */,
 				E6F7518017BA9B6A00A7AB5A /* BodyFrontView.m in Sources */,
 				E6F7518117BA9B6A00A7AB5A /* BodyBackView.m in Sources */,
@@ -1369,6 +1401,7 @@
 				4B04CF971BA9A53F000C05AB /* PopupView.m in Sources */,
 				E6F7518417BA9B6A00A7AB5A /* ZoneViewController.m in Sources */,
 				E6FDF8FE1B91778400EE7037 /* InfoScreensRKModule.m in Sources */,
+				4B856D9D1BC1BADA00998175 /* HelpCollectionViewCell.m in Sources */,
 				3621641817CFB7EF00BE3CFB /* BaseZone.m in Sources */,
 				E6FDF8841B8AD47000EE7037 /* ThankYouViewController.m in Sources */,
 				E62CB4C91895AF1A0045ED4A /* SettingsViewController.m in Sources */,
@@ -1383,6 +1416,7 @@
 				3651E99717DED6CA0022DB2B /* CustomCrossFadeSegue.m in Sources */,
 				E6883B951B95D88400F5A9A5 /* APCUtilities.m in Sources */,
 				E6537EFF1B8156AD00B38331 /* DashboardViewController.m in Sources */,
+				4B1103A91BC1B00A00E98F24 /* WelcomeCollectionViewCell.m in Sources */,
 				E6443BFF1B78B955007DE110 /* OnboardingViewController.m in Sources */,
 				4BFF61611BAC974200FE7853 /* ProfileTableViewController.m in Sources */,
 				368E258317DF6B0600449267 /* ScreenHeights.m in Sources */,
