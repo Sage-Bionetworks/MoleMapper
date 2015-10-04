@@ -49,7 +49,7 @@ NSString *const kAPCStudyLandingCollectionViewCellIdentifier = @"APCStudyLanding
 
 - (void)setupAppearance
 {
-    self.logoImageView.image = [UIImage imageNamed:@"moleMapperIconLarge"];
+    self.logoImageView.image = [UIImage imageNamed:@"moleMapperIconSmall"];
     
     self.titleLabel.textColor = [UIColor appSecondaryColor1];
     self.titleLabel.font = [UIFont appLightFontWithSize:36.f];
