@@ -73,16 +73,17 @@
 {
     //[self clearMeasurementsAlreadySentForDebugging];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:NO forKey:@"shouldShowOnboarding"];
+    [ud setBool:YES forKey:@"shouldShowOnboarding"];
     
-    [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
+    [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
+    //[ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
     [ud setBool:NO forKey:@"shouldShowConsent"];
     [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
     [ud setBool:NO forKey:@"shouldShowInitialSurvey"];
     
-    //[ud setBool:YES forKey:@"shouldShowEligibilityTest"];
+    
 }
 
 -(void)clearMeasurementsAlreadySentForDebugging

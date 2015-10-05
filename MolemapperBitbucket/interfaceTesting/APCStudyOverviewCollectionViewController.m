@@ -198,7 +198,6 @@ static NSString *kConsentEmailSubject = @"Consent Document";
             landingCell.readConsentButton.hidden = NO;
         }
         cell = landingCell;
-        
     }
     else
     {
@@ -216,9 +215,7 @@ static NSString *kConsentEmailSubject = @"Consent Document";
     return cell;
 }
 
-- (CGSize) collectionView: (UICollectionView *) __unused collectionView
-				   layout: (UICollectionViewLayout*) __unused collectionViewLayout
-   sizeForItemAtIndexPath: (NSIndexPath *) __unused indexPath
+- (CGSize) collectionView: (UICollectionView *) __unused collectionView layout: (UICollectionViewLayout*) __unused collectionViewLayout sizeForItemAtIndexPath: (NSIndexPath *) __unused indexPath
 {
     return self.collectionView.bounds.size;
 }
