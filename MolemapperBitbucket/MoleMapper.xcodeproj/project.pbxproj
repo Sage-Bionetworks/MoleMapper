@@ -49,6 +49,8 @@
 		4BC594DE1BAAD18E00255F6F /* AnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC594DD1BAAD18E00255F6F /* AnimationManager.m */; settings = {ASSET_TAGS = (); }; };
 		4BC88CE71BB1463000687E68 /* DashboardUVExposure.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */; settings = {ASSET_TAGS = (); }; };
 		4BC88CE81BB1463000687E68 /* DashboardUVExposure.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */; settings = {ASSET_TAGS = (); }; };
+		4BD05B3F1BC2796C00FD6D85 /* InvolveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD05B3D1BC2796C00FD6D85 /* InvolveCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		4BD05B401BC2796C00FD6D85 /* InvolveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BD05B3E1BC2796C00FD6D85 /* InvolveCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4BF5AADF1BA9833F0012B490 /* DashboardBiggestMoleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF5AADD1BA9833F0012B490 /* DashboardBiggestMoleCell.m */; settings = {ASSET_TAGS = (); }; };
 		4BF5AAE01BA9833F0012B490 /* DashboardBiggestMoleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF5AADE1BA9833F0012B490 /* DashboardBiggestMoleCell.xib */; settings = {ASSET_TAGS = (); }; };
 		4BFF614F1BAC936B00FE7853 /* MMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF614E1BAC936B00FE7853 /* MMUser.m */; settings = {ASSET_TAGS = (); }; };
@@ -340,6 +342,9 @@
 		4BC88CE41BB1463000687E68 /* DashboardUVExposure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardUVExposure.h; sourceTree = "<group>"; };
 		4BC88CE51BB1463000687E68 /* DashboardUVExposure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardUVExposure.m; sourceTree = "<group>"; };
 		4BC88CE61BB1463000687E68 /* DashboardUVExposure.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardUVExposure.xib; sourceTree = "<group>"; };
+		4BD05B3C1BC2796C00FD6D85 /* InvolveCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InvolveCollectionViewCell.h; path = OnboardingCollectionViewCells/InvolveCollectionViewCell.h; sourceTree = "<group>"; };
+		4BD05B3D1BC2796C00FD6D85 /* InvolveCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InvolveCollectionViewCell.m; path = OnboardingCollectionViewCells/InvolveCollectionViewCell.m; sourceTree = "<group>"; };
+		4BD05B3E1BC2796C00FD6D85 /* InvolveCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InvolveCollectionViewCell.xib; path = OnboardingCollectionViewCells/InvolveCollectionViewCell.xib; sourceTree = "<group>"; };
 		4BF5AADC1BA9833F0012B490 /* DashboardBiggestMoleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardBiggestMoleCell.h; sourceTree = "<group>"; };
 		4BF5AADD1BA9833F0012B490 /* DashboardBiggestMoleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardBiggestMoleCell.m; sourceTree = "<group>"; };
 		4BF5AADE1BA9833F0012B490 /* DashboardBiggestMoleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardBiggestMoleCell.xib; sourceTree = "<group>"; };
@@ -687,6 +692,9 @@
 				4B856D9A1BC1BADA00998175 /* HelpCollectionViewCell.h */,
 				4B856D9B1BC1BADA00998175 /* HelpCollectionViewCell.m */,
 				4B856D9C1BC1BADA00998175 /* HelpCollectionViewCell.xib */,
+				4BD05B3C1BC2796C00FD6D85 /* InvolveCollectionViewCell.h */,
+				4BD05B3D1BC2796C00FD6D85 /* InvolveCollectionViewCell.m */,
+				4BD05B3E1BC2796C00FD6D85 /* InvolveCollectionViewCell.xib */,
 			);
 			name = OnboardingCollectionViewCells;
 			sourceTree = "<group>";
@@ -1280,6 +1288,7 @@
 				4B7FCE991BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib in Resources */,
 				380B92211BAC50700026D052 /* DBSizeOverTimeCellTableViewCell.xib in Resources */,
 				4B6DB7AB1BA977AE000EE645 /* DashBoardMeasurementCell.xib in Resources */,
+				4BD05B401BC2796C00FD6D85 /* InvolveCollectionViewCell.xib in Resources */,
 				E65F29881972C421000F90BB /* appIcon.xcassets in Resources */,
 				E692C1B91BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf in Resources */,
 				E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */,
@@ -1352,6 +1361,7 @@
 				E6FF63221791BFC000A1BC28 /* Zone+MakeAndMod.m in Sources */,
 				E63728801795BB6F000E2ADC /* MoleNameGenerator.m in Sources */,
 				4BFF61891BAC9BFE00FE7853 /* ORKAnswerFormat+Helper.m in Sources */,
+				4BD05B3F1BC2796C00FD6D85 /* InvolveCollectionViewCell.m in Sources */,
 				E6F7515C17BA98A400A7AB5A /* BodyMapViewController.m in Sources */,
 				E6883B941B95D88400F5A9A5 /* APCDeviceHardware.m in Sources */,
 				E6F7515F17BA991200A7AB5A /* OBShapedButton.m in Sources */,
