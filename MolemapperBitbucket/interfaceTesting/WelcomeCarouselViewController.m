@@ -9,6 +9,8 @@
 #import "WelcomeCarouselViewController.h"
 #import "WelcomeCollectionViewCell.h"
 #import "HelpCollectionViewCell.h"
+#import "AFNetworking.h"
+#import "AppDelegate.h"
 
 @interface WelcomeCarouselViewController ()
 
@@ -88,9 +90,49 @@
     if (!decelerate) _pageControll.currentPage = [self horizontalPageNumber:scrollView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)joinStudyTapped:(id)sender
+{
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+            [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
+            AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [ad showOnboarding];
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [ad showOnboarding];
+}
+
+- (IBAction)notReadyToJoinTapped:(id)sender
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by visiting the Profile tab" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSLog(@"User has left the onboarding process with cancel");
+        [ad showBodyMap];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    }];
+    
+    [leaveOnboarding addAction:leave];
+    [leaveOnboarding addAction:cancel];
+    
+    [self presentViewController:leaveOnboarding animated:YES completion:nil];
 }
 
 @end

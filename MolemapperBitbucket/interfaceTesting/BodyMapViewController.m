@@ -240,20 +240,12 @@
 - (void)showWelcomePopup:(id)sender
 {
     // Generate content view to present
-    UIView* contentView = [[UIView alloc] init];
-    contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    contentView.backgroundColor = [UIColor whiteColor];
-    contentView.layer.cornerRadius = 12.0;
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
     
-    UILabel* welcomeLabel = [[UILabel alloc] init];
-    welcomeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    welcomeLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    welcomeLabel.numberOfLines = 0;
-    welcomeLabel.backgroundColor = [UIColor clearColor];
-    welcomeLabel.textColor = [UIColor blackColor];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    welcomeLabel.font = [UIFont systemFontOfSize:20.0];
-    welcomeLabel.text = @"Would you like a quick demo\nof how to map and\nmeasure your moles?";
+    NSString *welcomeText = @"Would you like a quick demo of how to map and measure your moles?";
+    NSString *activateLaterText = @"You can activate the demo\nat any time in settings";
+    UILabel *welcomeLabel = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:welcomeText];
+    UILabel *activateLaterLabel = [DemoKLCPopupHelper labelForDemoWithFontSize:20.0 andText:activateLaterText];
     
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
     UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
@@ -268,31 +260,24 @@
     [acceptDemoButton addTarget:self action:@selector(acceptDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [rejectDemoButton addTarget:self action:@selector(rejectDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel* activateLaterLabel = [[UILabel alloc] init];
-    activateLaterLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    activateLaterLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    activateLaterLabel.numberOfLines = 0;
-    activateLaterLabel.backgroundColor = [UIColor clearColor];
-    activateLaterLabel.textColor = [UIColor blackColor];
-    activateLaterLabel.textAlignment = NSTextAlignmentCenter;
-    activateLaterLabel.font = [UIFont systemFontOfSize:12.0];
-    activateLaterLabel.text = @"You can activate the demo at any time in settings";
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blankPlaceHolder"]];
     
+    [contentView addSubview:demoImage];
     [contentView addSubview:welcomeLabel];
     [contentView addSubview:acceptDemoButton];
     [contentView addSubview:rejectDemoButton];
     [contentView addSubview:activateLaterLabel];
     
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, acceptDemoButton, rejectDemoButton, welcomeLabel, activateLaterLabel);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, demoImage, acceptDemoButton, rejectDemoButton, welcomeLabel, activateLaterLabel);
     
     [contentView addConstraints:
-    [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(16)-[welcomeLabel]-(24)-[acceptDemoButton]-[rejectDemoButton]-(24)-[activateLaterLabel]-(16)-|"
+    [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[demoImage]-(16)-[welcomeLabel]-(24)-[activateLaterLabel]-(24)-[acceptDemoButton]-[rejectDemoButton]-(16)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
      
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(18)-[welcomeLabel]-(18)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
                                              options:0
                                              metrics:nil
                                                views:views]];
@@ -308,23 +293,16 @@
     [popup show];
 }
 
-- (void)acceptDemoButtonPressed:(id)sender
-{
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"showDemoInfo"];
-    if ([sender isKindOfClass:[UIView class]])
-    {
-        [(UIView*)sender dismissPresentingPopup];
-    }
-    [self performSelector:@selector(showThreeStepPopup:) withObject:self afterDelay:0.4];
-}
+
 
 - (void)showThreeStepPopup:(id)sender
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
-    NSString *descriptionText = @"There are 3 steps to tracking a mole in this app:\n1. Map it\n2. Measure it\n3. Monitor it over time";
-    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
-    //UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
+    NSString *headerText = @"There are 3 steps to tracking a mole:";
+    NSString *descriptionText = @"1. Map it,\n2. Measure it,\n3. Monitor it monthly";
+    UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:20.0 andText:descriptionText];
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blankPlaceHolder"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
     UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
@@ -335,22 +313,25 @@
                                                                 withLabel:@"Stop Demo"
                                                            withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
     
-    [nextButton addTarget:self action:@selector(demoTapOnZoneNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [nextButton addTarget:self action:@selector(demoThreeStepNextPressed:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     [contentView addSubview:description];
-    //[contentView addSubview:demoImage];
+    [contentView addSubview:header];
+    [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoOffButton, description);
+    
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, demoImage, description, header,nextButton, demoOffButton);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[header]-(20)-[description]-(20)-[nextButton]-(10)-[demoOffButton]-(16)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[header]-(10)-|"
                                              options:0
                                              metrics:nil
                                                views:views]];
@@ -368,8 +349,8 @@
 - (void)showDemoTapOnZonePopup:(id)sender
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
-    NSString *descriptionText = @"Step 1: Tap on a zone of the body that you haven't documented with a photo yet";
-    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    NSString *descriptionText = @"To begin, tap on a zone of the body that doesn't have a photo yet";
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:20.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
     UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
@@ -411,12 +392,25 @@
     [popup show];
 }
 
+- (void)acceptDemoButtonPressed:(id)sender
+{
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"showDemoInfo"];
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+    [self performSelector:@selector(showThreeStepPopup:) withObject:self afterDelay:0.4];
+}
+
 -(void)demoThreeStepNextPressed:(id)sender
 {
     if ([sender isKindOfClass:[UIView class]])
     {
         [(UIView*)sender dismissPresentingPopup];
     }
+    //Call the next popup in the tutorial series
+    [self performSelector:@selector(showDemoTapOnZonePopup:) withObject:self afterDelay:0.4];
 }
 
 - (void)demoTapOnZoneNextPressed:(id)sender

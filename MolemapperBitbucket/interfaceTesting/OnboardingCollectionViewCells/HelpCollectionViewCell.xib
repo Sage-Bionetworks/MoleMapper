@@ -29,7 +29,7 @@
                             <constraint firstAttribute="height" constant="88" id="Hst-ol-MmN"/>
                             <constraint firstAttribute="width" constant="320" id="af2-It-5YO"/>
                         </constraints>
-                        <string key="text">Tap “Get Started” to learn about this iPhone-based research study run by OHSU and Sage Bionetworks or tap “Cancel” to begin mapping"</string>
+                        <string key="text">Tap Get Started to learn about this iPhone-based research study run by OHSU and Sage Bionetworks or tap Cancel to begin mapping"</string>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>

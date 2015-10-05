@@ -67,6 +67,7 @@
 - (IBAction)nudgeTouchDragOutside:(NudgeButton *)sender;
 - (IBAction)nudgeTouchUpInside:(NudgeButton *)sender;
 - (void)updateLocationWithChangeValue:(NudgeButton *)locationChangeValue;
+- (void)startDemoMovie;
 
 @property (strong, nonatomic) IBOutlet MeasuringTool *moleMeasure;
 @property (strong, nonatomic) IBOutlet MeasuringTool *referenceMeasure;

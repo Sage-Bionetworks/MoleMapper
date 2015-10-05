@@ -1152,6 +1152,9 @@ will be sent to you for your records.</string>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Join Study"/>
+                                        <connections>
+                                            <action selector="joinStudyTapped:" destination="whd-nO-fiI" eventType="touchUpInside" id="UPY-E3-ypx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vg-2x-awJ">
                                         <rect key="frame" x="16" y="52" width="288" height="30"/>
@@ -1161,6 +1164,9 @@ will be sent to you for your records.</string>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="Not ready to join study yet?"/>
+                                        <connections>
+                                            <action selector="notReadyToJoinTapped:" destination="whd-nO-fiI" eventType="touchUpInside" id="nJy-X8-gkf"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grey_grid_line" translatesAutoresizingMaskIntoConstraints="NO" id="Op4-Vw-kdK">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
@@ -1219,7 +1225,7 @@ will be sent to you for your records.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkA-5o-2pJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266" y="1184"/>
+            <point key="canvasLocation" x="253" y="1162"/>
         </scene>
         <!--Thank You View Controller-->
         <scene sceneID="w9G-Lo-8ya">

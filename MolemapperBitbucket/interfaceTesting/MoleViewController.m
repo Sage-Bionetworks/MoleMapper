@@ -26,6 +26,7 @@
 #import "MoleWasRemovedRKModule.h"
 #import "Zone+MakeAndMod.h"
 #import "DemoKLCPopupHelper.h"
+#import "DashboardViewController.h"
 
 @interface MoleViewController ()
 {
@@ -42,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *demoButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+@property BOOL shouldShowVideoPopup;
 
 @property (nonatomic, strong) MoleWasRemovedRKModule *removed;
 
@@ -109,9 +111,10 @@
 {
     [super viewDidLoad];
     
+    self.shouldShowVideoPopup = YES;
     if (_isPresentView)
     {
-        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeViewController)];
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(closeViewController)];
         self.navigationItem.leftBarButtonItem = barButtonItem;
         [barButtonItem setTarget:self];
         [barButtonItem setAction:@selector(closeViewController:)];
@@ -194,12 +197,14 @@
     //[self deselectMeasuringTools];
     [self selectMeasuringTool:self.selectedMeasuringTool];
     
+    self.navigationItem.hidesBackButton=YES;
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                                 initWithTitle:@"Done"
                                 style:UIBarButtonItemStylePlain
                                 target:self
-                                action:nil];
-    self.navigationController.navigationBar.topItem.backBarButtonItem=btnBack;
+                                action:@selector(backButtonAction:)];
+    //self.navigationController.navigationBar.topItem.backBarButtonItem=btnBack;
+    [self.navigationItem setLeftBarButtonItem:btnBack];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Measurement"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     request.predicate = [NSPredicate predicateWithFormat:@"whichMole = %@", self.mole];
@@ -227,16 +232,32 @@
 
 }
 
+-(void) backButtonAction:(id)sender
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    //You are about to leave after your first measurement
+    if ([ud objectForKey:@"showDemoInfo"] == [NSNumber numberWithBool:YES] && self.measurement)
+    {
+        [self showMonitorPopup:self];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
+
 //If you need to do any calculations based on the subviews having been laid out (like the measurement tools) do it below
 -(void)viewDidAppear:(BOOL)animated
 {
     [self updateMoleSizeFromOnScreenMeasurementTools];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    if ([ud objectForKey:@"firstViewMeasurement"] == [NSNumber numberWithBool:YES] || [ud objectForKey:@"showDemoInfo"] == [NSNumber numberWithBool:YES])
+    if (self.shouldShowVideoPopup && [ud objectForKey:@"showDemoInfo"] == [NSNumber numberWithBool:YES])
     {
         [self showMeasurePopup:self];
         [self showPopTipViewDemoButton];
-        [ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewMeasurement"];
+        self.shouldShowVideoPopup = NO;
     }
 }
 
@@ -394,34 +415,36 @@
     [popup show];
 }
 
-//Take a close-up photo of just one mole next to a reference object like a coin. Tap 'Demo' to see a movie of the measurement processStep 4: Take a photo of the mole next to a reference object like a coin. Tap 'Demo' to see a brief movie of this process.
-
 - (void)showMeasurePopup:(id)sender
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
-    NSString *descriptionText = @"Step 5: Take a close-up photo of just 1 mole next to a reference item like a coin. Tap 'Demo' to see an example video";
+    NSString *headerText = @"Step 2: Measure it";
+    NSString *descriptionText = @"Take a close-up photo of one mole next to a reference item like a coin. Tap Video to watch an example measurement";
+    UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoMeasureMovie"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
     UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
     APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
-                                                             withLabel:@"Next"
-                                                        withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+                                                             withLabel:@"Video"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 47, 10, 47)];
     APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
                                                                 withLabel:@"Stop Demo"
                                                            withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
     
-    [nextButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [nextButton addTarget:self action:@selector(nextButtonPressedMeasure:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:header];
     [contentView addSubview:description];
     [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[header]-(10)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
@@ -441,6 +464,57 @@
     
     [popup show];
 }
+
+- (void)showMonitorPopup:(id)sender
+{
+    UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
+    NSString *headerText = @"Step 3: Monitor it";
+    NSString *descriptionText = @"Monitor this mole by re-measuring it once a month. You can check the dashboard to see your progress and mole statistics. That's all for the demo, Happy Mapping!";
+    UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
+    UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
+    UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoMonitor"]];
+    UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
+    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    
+    APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
+                                                             withLabel:@"Dashboard"
+                                                        withEdgeInsets:UIEdgeInsetsMake(10, 26, 10, 26)];
+    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+                                                                withLabel:@"Done"
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    
+    [nextButton addTarget:self action:@selector(nextButtonPressedMonitor:) forControlEvents:UIControlEventTouchUpInside];
+    [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:header];
+    [contentView addSubview:description];
+    [contentView addSubview:demoImage];
+    [contentView addSubview:demoOffButton];
+    [contentView addSubview:nextButton];
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header, nextButton, demoImage, demoOffButton, description);
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[header]-(10)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
+                                             options:NSLayoutFormatAlignAllCenterX
+                                             metrics:nil
+                                               views:views]];
+    
+    [contentView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
+                                             options:0
+                                             metrics:nil
+                                               views:views]];
+    
+    KLCPopup* popup = [KLCPopup popupWithContentView:contentView
+                                            showType:(KLCPopupShowType)KLCPopupShowTypeSlideInFromRight
+                                         dismissType:(KLCPopupDismissType)KLCPopupDismissTypeSlideOutToLeft
+                                            maskType:(KLCPopupMaskType)KLCPopupMaskTypeDimmed
+                            dismissOnBackgroundTouch:NO
+                               dismissOnContentTouch:NO];
+    
+    [popup show];
+}
+
 
 - (void)gotItButtonPressedMeasure:(id)sender
 {
@@ -468,8 +542,31 @@
     {
         [(UIView*)sender dismissPresentingPopup];
     }
+    [self performSelector:@selector(startDemoMovie) withObject:self afterDelay:0.4];
+}
+
+- (void)nextButtonPressedMonitor:(id)sender
+{
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setValue:[NSNumber numberWithBool:NO] forKey:@"showDemoInfo"];
+
+    [self popToDashboardAtIndex:1];
+}
+
+-(void)popToDashboardAtIndex:(NSInteger)index;
+{
+    DashboardViewController * target = [[self.tabBarController viewControllers] objectAtIndex:index];
+    [target.navigationController popToRootViewControllerAnimated: YES];
+    [self.tabBarController setSelectedIndex:index];
+}
+
+-(void)startDemoMovie
+{
+    [self performSegueWithIdentifier:@"segueToHelp" sender:self];
 }
 
 - (void)demoOffButtonPressed:(id)sender
@@ -480,6 +577,7 @@
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setValue:[NSNumber numberWithBool:NO] forKey:@"showDemoInfo"];
+    [self popToDashboardAtIndex:0];
 }
 
 - (void)fieldCancelButtonPressed:(id)sender

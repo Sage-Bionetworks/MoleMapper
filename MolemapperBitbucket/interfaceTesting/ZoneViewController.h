@@ -46,6 +46,7 @@
 - (void)handleDoubleTapOnZoneImageBackground;
 - (void)handleZoneViewZoomScale:(float)newZoomScale;
 - (void)showPopTipViewGoToMeasure:(UIView *)viewToPointAt;
+- (void)showMeasurePopup:(id)sender;
 - (void)dismissAllPopTipViews;
 
 @end

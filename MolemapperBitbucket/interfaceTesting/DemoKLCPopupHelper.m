@@ -27,7 +27,7 @@
     description.lineBreakMode = NSLineBreakByWordWrapping;
     description.numberOfLines = 0;
     description.backgroundColor = [UIColor clearColor];
-    description.textColor = [UIColor blackColor];
+    description.textColor = [UIColor darkGrayColor];
     description.textAlignment = NSTextAlignmentCenter;
     description.font = [UIFont systemFontOfSize:fontSize];
     description.text = text;

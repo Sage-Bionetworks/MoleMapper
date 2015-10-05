@@ -152,6 +152,13 @@
     self.parentScrollView.panGestureRecognizer.enabled = YES;
     self.longPressRecognizer.enabled = YES;
     [vars.zoneViewController dismissAllPopTipViews];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    //This would mean you are in demo mode and probably just moved your first pin.
+    if ([ud boolForKey:@"showDemoInfo"] == YES)
+    {
+        [vars.zoneViewController showMeasurePopup:vars.zoneViewController];
+    }
 }
 
 - (IBAction)handleLongPress:(UILongPressGestureRecognizer *)recognizer

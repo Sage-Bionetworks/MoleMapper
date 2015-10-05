@@ -766,6 +766,8 @@
 				E6443BFB1B78B8E9007DE110 /* onboarding.storyboard */,
 				E692C1BA1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.h */,
 				E692C1BB1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.m */,
+				4B53FE051BC19B7400ED372C /* WelcomeCarouselViewController.h */,
+				4B53FE061BC19B7400ED372C /* WelcomeCarouselViewController.m */,
 				E6443BFD1B78B955007DE110 /* OnboardingViewController.h */,
 				E6443BFE1B78B955007DE110 /* OnboardingViewController.m */,
 				E6443C001B78C1D4007DE110 /* IntroAndEligibleRKModule.h */,
@@ -790,8 +792,6 @@
 				E6FDF8FA1B916B0500EE7037 /* InitialSurveyRKModule.m */,
 				E6FDF8821B8AD47000EE7037 /* ThankYouViewController.h */,
 				E6FDF8831B8AD47000EE7037 /* ThankYouViewController.m */,
-				4B53FE051BC19B7400ED372C /* WelcomeCarouselViewController.h */,
-				4B53FE061BC19B7400ED372C /* WelcomeCarouselViewController.m */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";

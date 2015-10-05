@@ -179,7 +179,7 @@
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    //Checking for valid Image data to prevent coming up after taking photo
+    //If this is the first time you are coming into the zone during a demo, show directions for taking photo
     if ([ud valueForKey:@"showDemoInfo"] == [NSNumber numberWithBool:YES] && self.hasValidImageData == NO)
     {
         [self showPhotoPopup:self];
@@ -194,15 +194,16 @@
      }
      */
     
-    //If you are using demo mode or this is the first time you're seeing a valid photo
-    if (([ud objectForKey:@"firstViewPinButton"] == [NSNumber numberWithBool:YES] && self.hasValidImageData) ||
-        ([ud valueForKey:@"showDemoInfo"] == [NSNumber numberWithBool:YES] && self.hasValidImageData))
+    //If you are using demo mode and you just took a photo
+    if ([ud valueForKey:@"showDemoInfo"] == [NSNumber numberWithBool:YES] && self.hasValidImageData == YES)
     {
         [self showPopTipViewPointToPinButton];
+        [self showDragPopup:self];
         [ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewPinButton"];
     }
     
     
+    /* Export not as necessary to highlight now that data held on Bridge/Synapse
     NSNumber *exportReminderCounter = [ud objectForKey:@"exportReminderCounter"];
     long tempCounter = [exportReminderCounter integerValue];
     if (tempCounter % 10 == 1 && self.hasValidImageData)
@@ -211,7 +212,7 @@
     }
     tempCounter++;
     [ud setObject:[NSNumber numberWithLong:tempCounter] forKey:@"exportReminderCounter"];
-    
+    */
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -323,7 +324,9 @@
 - (void)showPhotoPopup:(id)sender
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
-    NSString *descriptionText = @"Step 2: Take a photo of the whole zone area. This may include many moles.";
+    NSString *headerText = @"Step 1: Map it";
+    NSString *descriptionText = @"Now that you are in a zone, take a photo of the whole area by tapping the camera. This photo might include many moles.";
+    UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoPhoto"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
@@ -338,14 +341,17 @@
     
     [nextButton addTarget:self action:@selector(nextButtonPressedPhoto:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:header];
     [contentView addSubview:description];
     [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
+    
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header,nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
@@ -369,7 +375,9 @@
 - (void)showDragPopup:(id)sender
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
-    NSString *descriptionText = @"Step 3: Add a mole pin to the photo, then use the hand icon to drag the pin over a mole. Repeat for each mole.";
+    NSString *headerText = @"Step 1: Map it";
+    NSString *descriptionText = @"Great photo! Now, map where your moles are by adding a pin. Then drag that pin over to a mole.";
+    UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoDragPin"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
@@ -384,14 +392,16 @@
     
     [nextButton addTarget:self action:@selector(nextButtonPressedDrag:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:header];
     [contentView addSubview:description];
     [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
@@ -416,7 +426,9 @@
 - (void)showMeasurePopup:(id)sender
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
-    NSString *descriptionText = @"Step 4: To measure a mole, tap on a mole pin and then the measurement icon";
+    NSString *headerText = @"Step 2: Measure it";
+    NSString *descriptionText = @"To measure a mole, tap a mole pin and then the measurement icon";
+    UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoMeasure"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
@@ -431,14 +443,16 @@
     
     [nextButton addTarget:self action:@selector(nextButtonPressedMeasure:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [contentView addSubview:header];
     [contentView addSubview:description];
     [contentView addSubview:demoImage];
     [contentView addSubview:demoOffButton];
     [contentView addSubview:nextButton];
-    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
+    NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
@@ -467,7 +481,7 @@
         [(UIView*)sender dismissPresentingPopup];
     }
     //Call the next popup in the tutorial series
-    [self performSelector:@selector(showDragPopup:) withObject:self afterDelay:0.4];
+    //[self performSelector:@selector(showDragPopup:) withObject:self afterDelay:0.4];
 }
 
 - (void)nextButtonPressedDrag:(id)sender
@@ -476,7 +490,7 @@
     {
         [(UIView*)sender dismissPresentingPopup];
     }
-    [self performSelector:@selector(showMeasurePopup:) withObject:self afterDelay:0.4];
+    //[self performSelector:@selector(showMeasurePopup:) withObject:self afterDelay:0.4];
 }
 
 - (void)nextButtonPressedMeasure:(id)sender
@@ -484,11 +498,6 @@
     if ([sender isKindOfClass:[UIView class]])
     {
         [(UIView*)sender dismissPresentingPopup];
-    }
-    //Last demo slide will open the camera assuming no photo exists
-    if (self.hasValidImageData == NO)
-    {
-        [self openCamera:self];
     }
 }
 
