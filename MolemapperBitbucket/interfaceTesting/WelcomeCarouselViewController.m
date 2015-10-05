@@ -11,6 +11,7 @@
 #import "HelpCollectionViewCell.h"
 #import "AFNetworking.h"
 #import "AppDelegate.h"
+#import "InvolveCollectionViewCell.h"
 
 @interface WelcomeCarouselViewController ()
 
@@ -34,6 +35,10 @@
     
     UINib *nib2 = [UINib nibWithNibName:@"HelpCollectionViewCell" bundle:nil];
     [_onboardingCollectionView registerNib:nib2 forCellWithReuseIdentifier:@"HelpCollectionViewCell"];
+    
+    //InvolveCollectionViewCell
+    UINib *nib3 = [UINib nibWithNibName:@"InvolveCollectionViewCell" bundle:nil];
+    [_onboardingCollectionView registerNib:nib3 forCellWithReuseIdentifier:@"InvolveCollectionViewCell"];
 }
 
 -(void)setupCollectionViewCells
@@ -48,7 +53,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -63,6 +68,12 @@
     if (indexPath.row == 1)
     {
         HelpCollectionViewCell *cell = (HelpCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"HelpCollectionViewCell" forIndexPath:indexPath];
+        return cell;
+    }
+    
+    if (indexPath.row == 2)
+    {
+        InvolveCollectionViewCell *cell = (InvolveCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"InvolveCollectionViewCell" forIndexPath:indexPath];
         return cell;
     }
     

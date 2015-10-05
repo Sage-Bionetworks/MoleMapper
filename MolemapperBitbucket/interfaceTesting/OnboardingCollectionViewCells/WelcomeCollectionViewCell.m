@@ -27,6 +27,8 @@
 {
     switch (result) {
         case MFMailComposeResultCancelled:
+            controller.mailComposeDelegate = nil;
+            [controller dismissViewControllerAnimated:YES completion:nil];
             break;
         case MFMailComposeResultSaved:
             break;
@@ -37,8 +39,7 @@
         default:
             break;
     }
-    controller.mailComposeDelegate = nil;
-    [controller dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 @end
