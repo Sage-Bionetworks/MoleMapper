@@ -82,8 +82,6 @@
     [ud setBool:NO forKey:@"shouldShowConsent"];
     [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
     [ud setBool:NO forKey:@"shouldShowInitialSurvey"];
-    
-    
 }
 
 -(void)clearMeasurementsAlreadySentForDebugging

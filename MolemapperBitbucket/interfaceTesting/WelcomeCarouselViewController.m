@@ -146,4 +146,25 @@
     [self presentViewController:leaveOnboarding animated:YES completion:nil];
 }
 
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            
+            break;
+        case MFMailComposeResultSaved:
+            break;
+        case MFMailComposeResultSent:
+            break;
+        case MFMailComposeResultFailed:
+            break;
+        default:
+            break;
+    }
+    
+    //controller.mailComposeDelegate = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 @end

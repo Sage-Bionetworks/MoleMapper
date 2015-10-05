@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@import  MessageUI;
 
-@interface WelcomeCarouselViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface WelcomeCarouselViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *onboardingCollectionView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControll;
 

@@ -16,30 +16,13 @@
 
 - (IBAction)btnPressed:(UIButton *)sender {
     MFMailComposeViewController *mailComposeVC = [[MFMailComposeViewController alloc] init];
-    mailComposeVC.mailComposeDelegate = self;
+    mailComposeVC.mailComposeDelegate = _parentViewController       ;
     
     /*[mailComposeVC addAttachmentData:[self PDFDataOfConsent] mimeType:@"application/pdf" fileName:@"Consent"];
     [mailComposeVC setSubject:kConsentEmailSubject];*/
     [_parentViewController presentViewController:mailComposeVC animated:YES completion:NULL];
 }
 
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-    switch (result) {
-        case MFMailComposeResultCancelled:
-            controller.mailComposeDelegate = nil;
-            [controller dismissViewControllerAnimated:YES completion:nil];
-            break;
-        case MFMailComposeResultSaved:
-            break;
-        case MFMailComposeResultSent:
-            break;
-        case MFMailComposeResultFailed:
-            break;
-        default:
-            break;
-    }
-    
-}
+
 
 @end

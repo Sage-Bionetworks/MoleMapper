@@ -10,7 +10,7 @@
 #import "WelcomeCarouselViewController.h"
 @import MessageUI;
 
-@interface WelcomeCollectionViewCell : UICollectionViewCell <MFMailComposeViewControllerDelegate>
+@interface WelcomeCollectionViewCell : UICollectionViewCell 
 
 @property WelcomeCarouselViewController* parentViewController;
 - (IBAction)btnPressed:(UIButton *)sender;
