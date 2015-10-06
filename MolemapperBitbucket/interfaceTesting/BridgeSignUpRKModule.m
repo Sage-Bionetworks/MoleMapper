@@ -97,7 +97,7 @@
                  dispatch_async(dispatch_get_main_queue(),^{
                      if (!error)
                      {
-                         NSLog(@"User is SIGNED UP before changing consent parameters");
+                         NSLog(@"User is SIGNED UP");
                      }
                      else
                      {
