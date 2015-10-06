@@ -30,7 +30,7 @@
     //Set up the flags that the onboarding VC will use to launch consent and NOT intro
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"shouldShowInfoScreens"];
-    [ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
+    //[ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     
     //Launch onboarding as root VC again, will draw from environment variables to determine which VC to load
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];

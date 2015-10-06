@@ -157,8 +157,10 @@
     
     [vars animateTransparencyOfZonesWithPhotoDataOverDuration:1.25];
     [vars updateZoneButtonImages];
-    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (ad.user.hasConsented)
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    //If you have completed all the way through onboarding, hide the Beaker
+    if ([ud boolForKey:@"shouldShowOnboarding"] == NO)
     {
         self.consentButton.hidden = YES;
     }
@@ -626,7 +628,8 @@
     
     
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Join Study" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [ad showWelcomeScreenWithCarousel];
+        //This will allow you to go back to your 'saved place' in the onboarding process if you quit out
+        [ad showCorrectOnboardingScreenOrBodyMap];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){

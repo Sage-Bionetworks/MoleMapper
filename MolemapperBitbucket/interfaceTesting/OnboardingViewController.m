@@ -20,7 +20,7 @@
 
 @interface OnboardingViewController ()
 
-@property (nonatomic, strong) IntroAndEligibleRKModule *introAndEligible;
+//@property (nonatomic, strong) IntroAndEligibleRKModule *introAndEligible;
 @property (nonatomic, strong) EligibilityTestRKModule *eligibilityTest;
 @property (nonatomic, strong) InfoScreensRKModule *infoScreens;
 @property (nonatomic, strong) ConsentRKModule *consent;
@@ -38,14 +38,15 @@
     //When you get through a given Module, turn off the shouldShow in UserDefaults so a user doesn't have to see redundant data
     //Enable a complete reset (or complete disable) from the settings
     
-    if ([self shouldShowIntroAndEligible])
+    /*if ([self shouldShowIntroAndEligible])
     {
         self.introAndEligible = [[IntroAndEligibleRKModule alloc] init];
         self.introAndEligible.presentingVC = self;
         [self.introAndEligible showIntro];
     }
+     */
     
-    else if ([self shouldShowEligibilityTest])
+    if ([self shouldShowEligibilityTest])
     {
         self.eligibilityTest = [[EligibilityTestRKModule alloc] init];
         self.eligibilityTest.presentingVC = self;
@@ -93,12 +94,14 @@
     
 }
 
+/*
 -(BOOL)shouldShowIntroAndEligible
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     BOOL result = [ud boolForKey:@"shouldShowIntroAndEligible"];
     return result;
 }
+ */
 
 -(BOOL)shouldShowEligibilityTest
 {

@@ -54,19 +54,29 @@
     [self renameLegacyStoredFilenamesInCoreData];
     
     [self setOnboardingBooleansBackToInitialValues];
+
+//Do we want to try to send any unsent measurements here upon launch? Same for surveys?
 //[self.bridgeManager signInAndSendMeasurements];
     
-    if ([self shouldShowOnboarding])
+    [self showCorrectOnboardingScreenOrBodyMap];
+    
+    return YES;
+}
+
+-(void)showCorrectOnboardingScreenOrBodyMap
+{
+    if ([self shouldShowWelcomeScreenWithCarousel])
     {
         [self showWelcomeScreenWithCarousel];
-        //[self showOnboarding];
+    }
+    else if ([self shouldShowOnboarding])
+    {
+        [self showOnboarding];
     }
     else
     {
         [self showBodyMap];
     }
-    
-    return YES;
 }
 
 -(void)setOnboardingBooleansBackToInitialValues
@@ -74,7 +84,7 @@
     //[self clearMeasurementsAlreadySentForDebugging];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"shouldShowOnboarding"];
-    [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+    [ud setBool:YES forKey:@"shouldShowWelcomeScreenWithCarousel"];
     [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
     //[ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
@@ -105,6 +115,12 @@
     
     OnboardingViewController *onboarding = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"onboardingBase"];
     [self setUpRootViewController:onboarding];
+}
+
+-(BOOL)shouldShowWelcomeScreenWithCarousel
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud boolForKey:@"shouldShowWelcomeScreenWithCarousel"];
 }
 
 -(void)showWelcomeScreenWithCarousel
@@ -308,9 +324,9 @@
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowRememberCoinPopup"];
     }
-    if (![standardUserDefaults objectForKey:@"shouldShowWelcomeCarousel"])
+    if (![standardUserDefaults objectForKey:@"shouldShowWelcomeScreenWithCarousel"])
     {
-        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowWelcomeCarousel"];
+        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowWelcomeScreenWithCarousel"];
     }
     if (![standardUserDefaults objectForKey:@"removedMolesToDiagnoses"])
     {

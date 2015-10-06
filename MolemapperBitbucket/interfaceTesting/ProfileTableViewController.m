@@ -141,7 +141,7 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
         UIAlertAction *join = [UIAlertAction actionWithTitle:@"Join Study" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             [ad setOnboardingBooleansBackToInitialValues];
-            [ad showWelcomeScreenWithCarousel];
+            [ad showCorrectOnboardingScreenOrBodyMap];
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];

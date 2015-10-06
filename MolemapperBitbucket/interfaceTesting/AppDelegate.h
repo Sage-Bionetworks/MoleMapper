@@ -39,6 +39,7 @@
 - (void)showWelcomeScreenWithCarousel;
 - (void)showOnboarding;
 - (void)showBodyMap;
+- (void)showCorrectOnboardingScreenOrBodyMap;
 
 #define numberOfDaysInFollowupPeriod 30
 

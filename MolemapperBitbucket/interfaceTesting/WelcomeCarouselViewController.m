@@ -112,7 +112,7 @@
             NSLog(@"Is reachable");
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
             [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
-            [ud setBool:NO forKey:@"shouldShowWelcomeCarousel"];
+            [ud setBool:NO forKey:@"shouldShowWelcomeScreenWithCarousel"];
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [ad showOnboarding];
         }

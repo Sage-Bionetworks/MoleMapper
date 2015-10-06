@@ -54,6 +54,9 @@
         {
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
             
+            //You have gotten through the eligibility question, so this doesn't get shown again
+            //unless there is a reset
+            [ud setBool:NO forKey:@"shouldShowWelcomeScreenWithCarousel"];
             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
             [ud setBool:YES forKey:@"shouldShowInfoScreens"];
             
@@ -101,7 +104,7 @@
         case ORKTaskViewControllerFinishReasonFailed:
         {
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-            [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+            [ud setBool:YES forKey:@"shouldShowWelcomeScreenWithCarousel"];
             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
             [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [self leaveOnboardingByCancelTapped];
@@ -110,7 +113,7 @@
         case ORKTaskViewControllerFinishReasonDiscarded:
         {
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-            [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+            [ud setBool:YES forKey:@"shouldShowWelcomeScreenWithCarousel"];
             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
             [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [self leaveOnboardingByCancelTapped];
@@ -120,7 +123,7 @@
         case ORKTaskViewControllerFinishReasonSaved:
         {
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-            [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+            [ud setBool:YES forKey:@"shouldShowWelcomeScreenWithCarousel"];
             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
             [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [self leaveOnboardingByCancelTapped];
