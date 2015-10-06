@@ -129,7 +129,7 @@
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Internet Unavailable" message:@"You need to access the internet to register for this study. You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Internet Unavailable" message:@"You need to access the internet to register for this study. You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map. Your progress has been saved." preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"User has left the onboarding process with cancel");
@@ -157,7 +157,7 @@
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map. Your progress has been saved." preferredStyle:UIAlertControllerStyleActionSheet];
     
     
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

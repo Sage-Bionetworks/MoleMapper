@@ -86,12 +86,13 @@
     [ud setBool:YES forKey:@"shouldShowOnboarding"];
     [ud setBool:YES forKey:@"shouldShowWelcomeScreenWithCarousel"];
     [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
-    //[ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
     [ud setBool:NO forKey:@"shouldShowConsent"];
     [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
     [ud setBool:NO forKey:@"shouldShowInitialSurvey"];
+    
+    //[ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
 }
 
 -(void)clearMeasurementsAlreadySentForDebugging
@@ -104,7 +105,6 @@
 
 -(BOOL)shouldShowOnboarding
 {
-    //return YES;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud boolForKey:@"shouldShowOnboarding"];
 }
@@ -263,7 +263,7 @@
         int firstValidMoleID = 1;
         [standardUserDefaults setInteger:firstValidMoleID forKey:@"nextMoleID"];
     }
-    //Setup default reference object (string
+    //Setup default reference object
     if (![standardUserDefaults objectForKey:@"referenceObject"])
     {
         NSString *referenceObject = @"Dime";
@@ -274,25 +274,9 @@
         NSString *defaultMoleNameGender = @"Random";
         [standardUserDefaults setValue:defaultMoleNameGender forKey:@"moleNameGender"];
     }
-    if (![standardUserDefaults objectForKey:@"firstViewPinButton"])
-    {
-        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewPinButton"];
-    }
     if (![standardUserDefaults objectForKey:@"exportReminderCounter"])
     {
         [standardUserDefaults setValue:@0 forKey:@"exportReminderCounter"];
-    }
-    if (![standardUserDefaults objectForKey:@"firstViewMovePin"])
-    {
-        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewMovePin"];
-    }
-    if (![standardUserDefaults objectForKey:@"firstViewMeasurement"])
-    {
-        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewMeasurement"];
-    }
-    if (![standardUserDefaults objectForKey:@"firstViewCallout"])
-    {
-        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewCallout"];
     }
     if (![standardUserDefaults objectForKey:@"showDemoInfo"])
     {
@@ -302,12 +286,6 @@
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowOnboarding"];
     }
-    /*
-    if (![standardUserDefaults objectForKey:@"shouldShowIntroAndEligible"])
-    {
-        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowIntroAndEligible"];
-    }
-     */
     if (![standardUserDefaults objectForKey:@"shouldShowEligibilityTest"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"shouldShowEligibilityTest"];
@@ -332,6 +310,31 @@
     {
         [standardUserDefaults setObject:[NSArray array] forKey:@"removedMolesToDiagnoses"];
     }
+    
+    //Legacy values
+    /*
+     if (![standardUserDefaults objectForKey:@"firstViewPinButton"])
+     {
+     [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewPinButton"];
+     }
+     if (![standardUserDefaults objectForKey:@"firstViewMovePin"])
+     {
+     [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewMovePin"];
+     }
+     if (![standardUserDefaults objectForKey:@"firstViewMeasurement"])
+     {
+     [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewMeasurement"];
+     }
+     if (![standardUserDefaults objectForKey:@"firstViewCallout"])
+     {
+     [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"firstViewCallout"];
+     }
+     if (![standardUserDefaults objectForKey:@"shouldShowIntroAndEligible"])
+     {
+     [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowIntroAndEligible"];
+     }
+     */
+    
 }
 
 //Loads all zones into persistent storage if they don't yet exist there, and sets bool for has image for each zone

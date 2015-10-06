@@ -295,8 +295,6 @@
     [popup show];
 }
 
-
-
 - (void)showThreeStepPopup:(id)sender
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
@@ -403,6 +401,16 @@
         [(UIView*)sender dismissPresentingPopup];
     }
     [self performSelector:@selector(showThreeStepPopup:) withObject:self afterDelay:0.4];
+}
+
+- (void)demoOffButtonPressed:(id)sender
+{
+    if ([sender isKindOfClass:[UIView class]])
+    {
+        [(UIView*)sender dismissPresentingPopup];
+    }
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setValue:[NSNumber numberWithBool:NO] forKey:@"showDemoInfo"];
 }
 
 -(void)demoThreeStepNextPressed:(id)sender
@@ -624,7 +632,7 @@
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    UIAlertController *startOnboarding = [UIAlertController alertControllerWithTitle:@"Help Our Research?" message:@"Tap Join Study to learn about this iPhone-based research study run by OHSU and Sage Bionetworks" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *startOnboarding = [UIAlertController alertControllerWithTitle:@"Help Our Research?" message:@"Tap Join Study to learn about this iPhone-based research study run by OHSU and Sage Bionetworks.\n\nIf you have already begun the consent process, you will return to where you left off." preferredStyle:UIAlertControllerStyleActionSheet];
     
     
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Join Study" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

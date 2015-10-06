@@ -199,7 +199,7 @@
     {
         [self showPopTipViewPointToPinButton];
         [self showDragPopup:self];
-        [ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewPinButton"];
+        //[ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewPinButton"];
     }
     
     
@@ -278,6 +278,7 @@
     [self.popTipViewExport presentPointingAtBarButtonItem:self.exportButton animated:YES];
 }
 
+/*
 -(void)showPopTipViewMovePin
 {
     NSString *message = @"Move the pin crosshairs\nover a mole";
@@ -288,6 +289,7 @@
         [self.popTipViewPinTap presentPointingAtBarButtonItem:self.addMolePin animated:YES];
     }
 }
+ */
 
 -(void)showPopTipViewGoToMeasure:(UIView *)viewToPointAt
 {
@@ -897,12 +899,14 @@
     [self updateMolePinBarButtonStates];
     
     
+    /*
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     if ([ud objectForKey:@"firstViewMovePin"] == [NSNumber numberWithBool:YES])
     {
         [self showPopTipViewMovePin];
         [ud setObject:[NSNumber numberWithBool:NO] forKey:@"firstViewMovePin"];
     }
+     */
     
 }
 
