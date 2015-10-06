@@ -112,28 +112,52 @@
             NSLog(@"Is reachable");
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
             [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
+            [ud setBool:NO forKey:@"shouldShowWelcomeCarousel"];
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [ad showOnboarding];
         }
         else
         {
             NSLog(@"Is not reachable");
+            [self noInternetConnectivityAlertAndGoToBodyMap];
         }
     }];
-    
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
-    [ud setBool:NO forKey:@"shouldShowWelcomeCarousel"];
-    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [ad showOnboarding];
 }
+
+-(void)noInternetConnectivityAlertAndGoToBodyMap
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Internet Unavailable" message:@"You need to access the internet to register for this study. You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSLog(@"User has left the onboarding process with cancel");
+        [ad showBodyMap];
+    }];
+    
+    /*
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+        [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+        [ad showWelcomeScreenWithCarousel];
+    }];
+     */
+    
+    [leaveOnboarding addAction:leave];
+    //[leaveOnboarding addAction:cancel];
+    
+    [self presentViewController:leaveOnboarding animated:YES completion:nil];
+    
+}
+
 
 - (IBAction)notReadyToJoinTapped:(id)sender
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
-    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by visiting the Profile tab" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map" preferredStyle:UIAlertControllerStyleActionSheet];
     
     
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -177,7 +201,7 @@
     if (mc)
     {
         mc.mailComposeDelegate = self;
-        [mc setSubject:@"Mole Mapper Conset"];
+        [mc setSubject:@"Study Consent Document"];
         [mc setMessageBody:@"" isHTML:NO];
         [mc setToRecipients:@[@""]];
         //[mc addAttachmentData:fileData mimeType:mimeType fileName:fileName];

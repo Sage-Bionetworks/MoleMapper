@@ -16,6 +16,7 @@
 #import "APCDataArchiveUploader.h"
 #import "APCLog.h"
 #import "AppDelegate.h"
+#import "AFNetworking.h"
 
 
 
@@ -23,9 +24,11 @@
 @implementation BridgeManager
 
 
+
 //Derived from APCUser+Bridge
 - (void)sendUserConsentedToBridgeOnCompletion:(void (^)(NSError *))completionBlock
 {
+    
     AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *name = @"Name not provided";
     NSLog(@"firstName: %@, lastName: %@",ad.user.firstName, ad.user.lastName);
@@ -46,55 +49,83 @@
     UIImage *signatureImage = ad.user.signatureImage;
     NSNumber *sharingScope = ad.user.sharingScope;
     
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            [SBBComponent(SBBConsentManager) consentSignature:name
+                                                    birthdate:birthdate
+                                               signatureImage:signatureImage
+                                                  dataSharing:[sharingScope integerValue]
+                                                   completion:^(id __unused responseObject,
+                                                                NSError * __unused error)
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (!error)
+                     {
+                         APCLogEventWithData(@"Network Event", (@{@"event_detail":@"User Consent Sent To Bridge"}));
+                     }
+                     else
+                     {
+                         NSLog(@"Did not send consent because of this error: %@",error);
+                         //NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+                     }
+                     
+                     if (completionBlock) {completionBlock(error);}
+                 });
+             }];
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
     
-    [SBBComponent(SBBConsentManager) consentSignature:name
-                                            birthdate:birthdate
-                                       signatureImage:signatureImage
-                                          dataSharing:[sharingScope integerValue]
-                                           completion:^(id __unused responseObject,
-                                                        NSError * __unused error)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error)
-            {
-                APCLogEventWithData(@"Network Event", (@{@"event_detail":@"User Consent Sent To Bridge"}));
-            }
-            else
-            {
-                NSLog(@"Did not send consent because of this error: %@",error);
-                //NSDictionary *responseDictionary = (NSDictionary *)responseObject;
-            }
-                                                                
-            if (completionBlock) {completionBlock(error);}
-        });
-        }];
+    
 }
 
 -(void)signInAndChangeSharingToScope:(NSNumber *)sharingScope
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
-    {
-        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
-                                                password: ad.user.bridgeSignInPassword
-                                              completion: ^(NSURLSessionDataTask * __unused task,
-                                                            id responseObject,
-                                                            NSError *signInError)
-         {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (!signInError)
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword)
+            {
+                [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                        password: ad.user.bridgeSignInPassword
+                                                      completion: ^(NSURLSessionDataTask * __unused task,
+                                                                    id responseObject,
+                                                                    NSError *signInError)
                  {
-                     NSLog(@"User is Signed In");
-                     [SBBComponent(SBBUserManager) dataSharing:[sharingScope integerValue]
-                                                    completion:^(id responseObject, NSError *error) {
-                                                        NSLog(@"Changed the sharing scope with this response: %@",(NSDictionary *)responseObject);
-                                                    }];
-                 }else{NSLog(@"Error signing In with this response: %@",(NSDictionary *)responseObject);}
-             });
-         }];
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (!signInError)
+                         {
+                             NSLog(@"User is Signed In");
+                             [SBBComponent(SBBUserManager) dataSharing:[sharingScope integerValue]
+                                                            completion:^(id responseObject, NSError *error) {
+                                                                NSLog(@"Changed the sharing scope with this response: %@",(NSDictionary *)responseObject);
+                                                            }];
+                         }else{NSLog(@"Error signing In with this response: %@",(NSDictionary *)responseObject);}
+                     });
+                 }];
+            }
+            else{NSLog(@"Sign in failed because username and password not set");}
+
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
+    
     }
-    else{NSLog(@"Sign in failed because username and password not set");}
-}
 
 
 //Derived from APCUser+Bridge
@@ -123,21 +154,35 @@
     //if (ad.user.familyHistory) {profile.familyHistory = ad.user.familyHistory;}
     //if (ad.user.birthdate) {profile.birthdate = ad.user.birthdate;}
     
-    [SBBComponent(SBBUserManager) updateUserProfileWithProfile: profile
-                                                    completion: ^(id __unused responseObject,
-                                                                  NSError *error)
-     {
-         dispatch_async(dispatch_get_main_queue(), ^{
-             if (!error)
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            [SBBComponent(SBBUserManager) updateUserProfileWithProfile: profile
+                                                            completion: ^(id __unused responseObject,
+                                                                          NSError *error)
              {
-                 NSLog(@"User Profile Updated To Bridge");
-             }
-             if (completionBlock)
-             {
-                 completionBlock(error);
-             }
-         });
-     }];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (!error)
+                     {
+                         NSLog(@"User Profile Updated To Bridge");
+                     }
+                     if (completionBlock)
+                     {
+                         completionBlock(error);
+                     }
+                 });
+             }];
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
+    
+    
     
 }
 
@@ -145,111 +190,156 @@
 -(void)signInAndSendInitialData:(NSDictionary *)initialData
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
-    {
-        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
-                                                password: ad.user.bridgeSignInPassword
-                                              completion: ^(NSURLSessionDataTask * __unused task,
-                                                            id responseObject,
-                                                            NSError *signInError)
-         {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (!signInError)
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
+            {
+                [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                        password: ad.user.bridgeSignInPassword
+                                                      completion: ^(NSURLSessionDataTask * __unused task,
+                                                                    id responseObject,
+                                                                    NSError *signInError)
                  {
-                     /*
-                      NSDictionary *responseDictionary = (NSDictionary *) responseObject;
-                      if (responseDictionary)
-                      {
-                      NSNumber *dataSharing = responseDictionary[@"dataSharing"];
-                      NSLog(@"Data sharing scope integer is %@",dataSharing);
-                      }
-                      */
-                     
-                     NSLog(@"User is Signed In");
-                     [ad.bridgeManager zipEncryptAndShipInitialData:initialData];
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (!signInError)
+                         {
+                             /*
+                              NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                              if (responseDictionary)
+                              {
+                              NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                              NSLog(@"Data sharing scope integer is %@",dataSharing);
+                              }
+                              */
+                             
+                             NSLog(@"User is Signed In");
+                             [ad.bridgeManager zipEncryptAndShipInitialData:initialData];
+                         }
+                         else
+                         {
+                             NSLog(@"Error during log in before followup: %@",signInError);
+                         }
+                         
+                     });
                  }
-                 else
-                 {
-                     NSLog(@"Error during log in before followup: %@",signInError);
-                 }
-                 
-             });
-         }
-         ];
-    }
+                 ];
+            }
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
+    
+    
 }
 
 
 -(void)signInAndSendFollowupData:(NSDictionary *)followupData
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
-    {
-        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
-                                                password: ad.user.bridgeSignInPassword
-                                              completion: ^(NSURLSessionDataTask * __unused task,
-                                                            id responseObject,
-                                                            NSError *signInError)
-         {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (!signInError)
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
+            {
+                [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                        password: ad.user.bridgeSignInPassword
+                                                      completion: ^(NSURLSessionDataTask * __unused task,
+                                                                    id responseObject,
+                                                                    NSError *signInError)
                  {
-                      NSDictionary *responseDictionary = (NSDictionary *) responseObject;
-                      if (responseDictionary)
-                      {
-                          NSNumber *dataSharing = responseDictionary[@"dataSharing"];
-                          NSLog(@"Data sharing scope integer is %@",dataSharing);
-                      }
-                     
-                     NSLog(@"User is Signed In");
-                     [ad.bridgeManager zipEncryptAndShipFollowupData:followupData];
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (!signInError)
+                         {
+                             NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                             if (responseDictionary)
+                             {
+                                 NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                                 NSLog(@"Data sharing scope integer is %@",dataSharing);
+                             }
+                             
+                             NSLog(@"User is Signed In");
+                             [ad.bridgeManager zipEncryptAndShipFollowupData:followupData];
+                         }
+                         else
+                         {
+                             NSLog(@"Error during log in before followup: %@",signInError);
+                         }
+                         
+                     });
                  }
-                 else
-                 {
-                     NSLog(@"Error during log in before followup: %@",signInError);
-                 }
-                 
-             });
-         }
-         ];
-    }
+                 ];
+            }
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
+    
+    
 }
 
 -(void)signInAndSendMeasurements
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
-    {
-        [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
-                                                password: ad.user.bridgeSignInPassword
-                                              completion: ^(NSURLSessionDataTask * __unused task,
-                                                            id responseObject,
-                                                            NSError *signInError)
-         {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (!signInError)
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
+            {
+                [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                        password: ad.user.bridgeSignInPassword
+                                                      completion: ^(NSURLSessionDataTask * __unused task,
+                                                                    id responseObject,
+                                                                    NSError *signInError)
                  {
-                     /*
-                      NSDictionary *responseDictionary = (NSDictionary *) responseObject;
-                      if (responseDictionary)
-                      {
-                      NSNumber *dataSharing = responseDictionary[@"dataSharing"];
-                      NSLog(@"Data sharing scope integer is %@",dataSharing);
-                      }
-                      */
-                     
-                     NSLog(@"User is Signed In");
-                     [ad.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (!signInError)
+                         {
+                             /*
+                              NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                              if (responseDictionary)
+                              {
+                              NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                              NSLog(@"Data sharing scope integer is %@",dataSharing);
+                              }
+                              */
+                             
+                             NSLog(@"User is Signed In");
+                             [ad.bridgeManager zipEncryptAndShipAllMoleMeasurementData];
+                         }
+                         else
+                         {
+                             NSLog(@"Error during log in: %@",signInError);
+                         }
+                         
+                     });
                  }
-                 else
-                 {
-                     NSLog(@"Error during log in: %@",signInError);
-                 }
-                 
-             });
-         }
-         ];
-    }
+                 ];
+            }
+
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
+    
     
 }
 

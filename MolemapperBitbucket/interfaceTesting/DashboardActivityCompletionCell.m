@@ -36,9 +36,20 @@
 //logic if is today or not
 - (NSString*) setDateLabelTextWithDate
 {
-    NSString* text = @"";
+    NSString *text = @"";
+    NSNumber *daysUntilNextMonthlyFollowup = [[DashboardModel sharedInstance] daysUntilNextMeasurementPeriod];
+    if ([daysUntilNextMonthlyFollowup intValue] == 0) {daysUntilNextMonthlyFollowup = @30;}
+    if ([daysUntilNextMonthlyFollowup intValue] == 1)
+    {
+        text = [NSString stringWithFormat:@"%@ day until next monthly followup",daysUntilNextMonthlyFollowup];
+    }
+    else
+    {
+        text = [NSString stringWithFormat:@"%@ days until next monthly followup",daysUntilNextMonthlyFollowup];
+    }
     
-    if ([[DashboardModel sharedInstance] daysUntilNextMeasurementPeriod]/*[_dbModel daysSinceLastFollowup]*/ == 0)
+    /*
+    if ([[DashboardModel sharedInstance] daysUntilNextMeasurementPeriod] == 0)
     {
         text = [NSString stringWithFormat:@"Today, %@", [self getFormatedDate]];
     }
@@ -46,6 +57,7 @@
     {
         text = [NSString stringWithFormat:@"%@", [self getFormatedDate]];
     }
+    */
     
     return text;
 }

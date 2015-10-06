@@ -43,8 +43,8 @@
 {
     [_locationManager stopUpdatingLocation];
     
-    NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
-    NSLog(@"%@",theLocation);
+    //NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude];
+    //NSLog(@"%@",theLocation);
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 
     [geocoder reverseGeocodeLocation:_locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -123,7 +123,7 @@
                 if (tempData != _jsonUVIndexDictionary)
                 {
                     _jsonUVIndexDictionary = tempData;
-                    NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+                    //NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
                     [self setupChartView];
                 }
             }

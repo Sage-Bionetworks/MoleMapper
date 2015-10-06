@@ -116,15 +116,10 @@
 		E688C92E186A049500E70BBA /* ReferenceSetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */; };
 		E691FE5A187A560300028548 /* learnMoreViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = E691FE59187A560300028548 /* learnMoreViewContoller.m */; };
 		E692C1B91BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */; settings = {ASSET_TAGS = (); }; };
-		E692C1BC1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1BB1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E692C1BF1BC1618200BE9111 /* APCStudyLandingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1BE1BC1618200BE9111 /* APCStudyLandingCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		E692C1C21BC161A500BE9111 /* APCTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1C11BC161A500BE9111 /* APCTableViewItem.m */; settings = {ASSET_TAGS = (); }; };
-		E692C1C51BC161CE00BE9111 /* APCTintedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1C41BC161CE00BE9111 /* APCTintedTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1CC1BC1623100BE9111 /* APCAppearanceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1C71BC1623100BE9111 /* APCAppearanceInfo.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1CD1BC1623100BE9111 /* UIColor+APCAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1C91BC1623100BE9111 /* UIColor+APCAppearance.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1CE1BC1623100BE9111 /* UIFont+APCAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1CB1BC1623100BE9111 /* UIFont+APCAppearance.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1D11BC162B500BE9111 /* APCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1D01BC162B500BE9111 /* APCWebViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E692C1D41BC163CC00BE9111 /* APCStudyOverviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1D31BC163CC00BE9111 /* APCStudyOverviewCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1D81BC177A000BE9111 /* EligibilityTestRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1D71BC177A000BE9111 /* EligibilityTestRKModule.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1DA1BC18B1100BE9111 /* helpOurResearch.htm in Resources */ = {isa = PBXBuildFile; fileRef = E692C1D91BC18B1100BE9111 /* helpOurResearch.htm */; settings = {ASSET_TAGS = (); }; };
 		E692C2071BC341FA00BE9111 /* DetailTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C2061BC341FA00BE9111 /* DetailTextViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -465,14 +460,6 @@
 		E691FE58187A560300028548 /* learnMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = learnMoreViewController.h; sourceTree = "<group>"; };
 		E691FE59187A560300028548 /* learnMoreViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = learnMoreViewContoller.m; sourceTree = "<group>"; };
 		E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf"; sourceTree = "<group>"; };
-		E692C1BA1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewController.h; sourceTree = "<group>"; };
-		E692C1BB1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyOverviewCollectionViewController.m; sourceTree = "<group>"; };
-		E692C1BD1BC1618200BE9111 /* APCStudyLandingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyLandingCollectionViewCell.h; sourceTree = "<group>"; };
-		E692C1BE1BC1618200BE9111 /* APCStudyLandingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyLandingCollectionViewCell.m; sourceTree = "<group>"; };
-		E692C1C01BC161A500BE9111 /* APCTableViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCTableViewItem.h; sourceTree = "<group>"; };
-		E692C1C11BC161A500BE9111 /* APCTableViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCTableViewItem.m; sourceTree = "<group>"; };
-		E692C1C31BC161CE00BE9111 /* APCTintedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCTintedTableViewCell.h; sourceTree = "<group>"; };
-		E692C1C41BC161CE00BE9111 /* APCTintedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCTintedTableViewCell.m; sourceTree = "<group>"; };
 		E692C1C61BC1623100BE9111 /* APCAppearanceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCAppearanceInfo.h; sourceTree = "<group>"; };
 		E692C1C71BC1623100BE9111 /* APCAppearanceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCAppearanceInfo.m; sourceTree = "<group>"; };
 		E692C1C81BC1623100BE9111 /* UIColor+APCAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+APCAppearance.h"; sourceTree = "<group>"; };
@@ -481,8 +468,6 @@
 		E692C1CB1BC1623100BE9111 /* UIFont+APCAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+APCAppearance.m"; sourceTree = "<group>"; };
 		E692C1CF1BC162B500BE9111 /* APCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCWebViewController.h; sourceTree = "<group>"; };
 		E692C1D01BC162B500BE9111 /* APCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCWebViewController.m; sourceTree = "<group>"; };
-		E692C1D21BC163CC00BE9111 /* APCStudyOverviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewCell.h; sourceTree = "<group>"; };
-		E692C1D31BC163CC00BE9111 /* APCStudyOverviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyOverviewCollectionViewCell.m; sourceTree = "<group>"; };
 		E692C1D51BC166F200BE9111 /* APCUserInfoConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APCUserInfoConstants.h; sourceTree = "<group>"; };
 		E692C1D61BC177A000BE9111 /* EligibilityTestRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EligibilityTestRKModule.h; sourceTree = "<group>"; };
 		E692C1D71BC177A000BE9111 /* EligibilityTestRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EligibilityTestRKModule.m; sourceTree = "<group>"; };
@@ -777,14 +762,10 @@
 			children = (
 				4B11039A1BC1AFCE00E98F24 /* OnboardingCollectionViewCells */,
 				E6443BFB1B78B8E9007DE110 /* onboarding.storyboard */,
-				E692C1BA1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.h */,
-				E692C1BB1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.m */,
 				4B53FE051BC19B7400ED372C /* WelcomeCarouselViewController.h */,
 				4B53FE061BC19B7400ED372C /* WelcomeCarouselViewController.m */,
 				E6443BFD1B78B955007DE110 /* OnboardingViewController.h */,
 				E6443BFE1B78B955007DE110 /* OnboardingViewController.m */,
-				E6443C001B78C1D4007DE110 /* IntroAndEligibleRKModule.h */,
-				E6443C011B78C1D4007DE110 /* IntroAndEligibleRKModule.m */,
 				E692C1D61BC177A000BE9111 /* EligibilityTestRKModule.h */,
 				E692C1D71BC177A000BE9111 /* EligibilityTestRKModule.m */,
 				E6443C061B798093007DE110 /* EligibleViewController.h */,
@@ -805,6 +786,8 @@
 				E6FDF8FA1B916B0500EE7037 /* InitialSurveyRKModule.m */,
 				E6FDF8821B8AD47000EE7037 /* ThankYouViewController.h */,
 				E6FDF8831B8AD47000EE7037 /* ThankYouViewController.m */,
+				E6443C001B78C1D4007DE110 /* IntroAndEligibleRKModule.h */,
+				E6443C011B78C1D4007DE110 /* IntroAndEligibleRKModule.m */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -973,14 +956,6 @@
 				E6883B911B95D88400F5A9A5 /* APCDeviceHardware.m */,
 				4BFF61761BAC9BFE00FE7853 /* APCJSONSerializer.h */,
 				4BFF61771BAC9BFE00FE7853 /* APCJSONSerializer.m */,
-				E692C1D21BC163CC00BE9111 /* APCStudyOverviewCollectionViewCell.h */,
-				E692C1D31BC163CC00BE9111 /* APCStudyOverviewCollectionViewCell.m */,
-				E692C1BD1BC1618200BE9111 /* APCStudyLandingCollectionViewCell.h */,
-				E692C1BE1BC1618200BE9111 /* APCStudyLandingCollectionViewCell.m */,
-				E692C1C31BC161CE00BE9111 /* APCTintedTableViewCell.h */,
-				E692C1C41BC161CE00BE9111 /* APCTintedTableViewCell.m */,
-				E692C1C01BC161A500BE9111 /* APCTableViewItem.h */,
-				E692C1C11BC161A500BE9111 /* APCTableViewItem.m */,
 				E692C1C61BC1623100BE9111 /* APCAppearanceInfo.h */,
 				E692C1C71BC1623100BE9111 /* APCAppearanceInfo.m */,
 				E692C1D51BC166F200BE9111 /* APCUserInfoConstants.h */,
@@ -1352,7 +1327,6 @@
 				E6443C021B78C1D4007DE110 /* IntroAndEligibleRKModule.m in Sources */,
 				E6CFFE9917873FCB008ACEDC /* Measurement+MakeAndMod.m in Sources */,
 				E6883B9E1B95E3AB00F5A9A5 /* APCDataArchiveUploader.m in Sources */,
-				E692C1C21BC161A500BE9111 /* APCTableViewItem.m in Sources */,
 				E60FC7921A12F5AB0036369F /* CMPopTipView.m in Sources */,
 				E61B0A521874F6E20081FFA5 /* ReferenceConverter.m in Sources */,
 				E6443C051B798072007DE110 /* IneligibleViewController.m in Sources */,
@@ -1403,12 +1377,10 @@
 				E6FDF8781B896E9900EE7037 /* APCButton.m in Sources */,
 				E6F7518017BA9B6A00A7AB5A /* BodyFrontView.m in Sources */,
 				E6F7518117BA9B6A00A7AB5A /* BodyBackView.m in Sources */,
-				E692C1C51BC161CE00BE9111 /* APCTintedTableViewCell.m in Sources */,
 				E6FDF8751B892B6E00EE7037 /* EmailVerifyViewController.m in Sources */,
 				E6FDF8811B8AC52600EE7037 /* UIAlertController+Helper.m in Sources */,
 				4BFF616B1BAC992100FE7853 /* ExternalIDRKModule.m in Sources */,
 				E6F7518217BA9B6A00A7AB5A /* HeadDetailView.m in Sources */,
-				E692C1BF1BC1618200BE9111 /* APCStudyLandingCollectionViewCell.m in Sources */,
 				4BFF61721BAC9A5F00FE7853 /* PDFViewerViewController.m in Sources */,
 				E688C92E186A049500E70BBA /* ReferenceSetterViewController.m in Sources */,
 				43D993501BA514AA0077073D /* UAProgressView.m in Sources */,
@@ -1440,9 +1412,7 @@
 				E634434917E161BF00728FB6 /* Zone.m in Sources */,
 				E634434C17E161BF00728FB6 /* Mole.m in Sources */,
 				4BF5AADF1BA9833F0012B490 /* DashboardBiggestMoleCell.m in Sources */,
-				E692C1BC1BC1552F00BE9111 /* APCStudyOverviewCollectionViewController.m in Sources */,
 				E64808191820E5D400A7E644 /* MeasurementComparsionViewController.m in Sources */,
-				E692C1D41BC163CC00BE9111 /* APCStudyOverviewCollectionViewCell.m in Sources */,
 				E62A0D501BB500D0005FF87B /* MoleWasRemovedRKModule.m in Sources */,
 				E65CABB617ECF20100AAC5D3 /* UIImage+Extras.m in Sources */,
 				E6883B701B95D2EE00F5A9A5 /* APCDataArchive.m in Sources */,

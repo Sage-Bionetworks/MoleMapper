@@ -138,10 +138,10 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
     {
         UIAlertController *joinStudy = [UIAlertController alertControllerWithTitle:@"Join Study" message:@"Tap 'Join Study' to learn more about the research study, your eligibility, and the consent process" preferredStyle:UIAlertControllerStyleActionSheet];
         
-        UIAlertAction *join = [UIAlertAction actionWithTitle:@"Join Study" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        UIAlertAction *join = [UIAlertAction actionWithTitle:@"Join Study" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             [ad setOnboardingBooleansBackToInitialValues];
-            [ad showOnboarding];
+            [ad showWelcomeScreenWithCarousel];
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];

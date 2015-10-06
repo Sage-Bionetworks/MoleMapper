@@ -100,20 +100,29 @@
             
         case ORKTaskViewControllerFinishReasonFailed:
         {
-            [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
+            NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+            [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+            [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+            [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [self leaveOnboardingByCancelTapped];
             break;
         }
         case ORKTaskViewControllerFinishReasonDiscarded:
         {
-            [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
+            NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+            [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+            [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+            [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [self leaveOnboardingByCancelTapped];
             break;
         }
             
         case ORKTaskViewControllerFinishReasonSaved:
         {
-            [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
+            NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+            [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+            [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+            [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             [self leaveOnboardingByCancelTapped];
             break;
         }
@@ -127,9 +136,7 @@
 -(void)leaveOnboardingByCancelTapped
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    
-    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by visiting the Profile tab" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"User has left the onboarding process with cancel");
@@ -137,7 +144,6 @@
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-        [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
         [ad showWelcomeScreenWithCarousel];
     }];
     

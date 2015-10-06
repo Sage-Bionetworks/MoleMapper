@@ -18,7 +18,6 @@
 #import "BodyMapViewController.h"
 #import "DashboardViewController.h"
 #import <BridgeSDK/BridgeSDK.h>
-#import "APCStudyOverviewCollectionViewController.h"
 #import "WelcomeCarouselViewController.h"
 
 
@@ -56,6 +55,7 @@
     
     [self setOnboardingBooleansBackToInitialValues];
 //[self.bridgeManager signInAndSendMeasurements];
+    
     if ([self shouldShowOnboarding])
     {
         [self showWelcomeScreenWithCarousel];
@@ -109,14 +109,8 @@
 
 -(void)showWelcomeScreenWithCarousel
 {
-    /*APCStudyOverviewCollectionViewController *welcome = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"StudyOverviewVC"];
-    [self setUpRootViewController:welcome];*/
-    
     WelcomeCarouselViewController* welcome = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"WelcomeCarouselViewController"];
     [self setUpRootViewController:welcome];
-    
-    
-
 }
 
 - (void)showBodyMap
@@ -292,10 +286,12 @@
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowOnboarding"];
     }
+    /*
     if (![standardUserDefaults objectForKey:@"shouldShowIntroAndEligible"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowIntroAndEligible"];
     }
+     */
     if (![standardUserDefaults objectForKey:@"shouldShowEligibilityTest"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"shouldShowEligibilityTest"];

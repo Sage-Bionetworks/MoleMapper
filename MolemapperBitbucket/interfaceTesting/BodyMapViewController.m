@@ -619,9 +619,23 @@
 
 - (IBAction)consentButtonTapped:(id)sender
 {
-    AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    //Put up a prompt about going back to the consent process
-    [ad showOnboarding];
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    UIAlertController *startOnboarding = [UIAlertController alertControllerWithTitle:@"Help Our Research?" message:@"Tap Join Study to learn about this iPhone-based research study run by OHSU and Sage Bionetworks" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    
+    UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Join Study" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [ad showWelcomeScreenWithCarousel];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    }];
+    
+    [startOnboarding addAction:leave];
+    [startOnboarding addAction:cancel];
+    
+    [self presentViewController:startOnboarding animated:YES completion:nil];
 }
 
 

@@ -172,6 +172,7 @@
     
     NSInteger daysSinceLastSurvey = [self daysBetweenDate:lastTimeAsurveyWasTaken andDate:now];
     NSInteger daysUntilNextMeasurementPeriod = daysSinceLastSurvey % numberOfDaysInFollowupPeriod;
+    daysUntilNextMeasurementPeriod = numberOfDaysInFollowupPeriod - daysUntilNextMeasurementPeriod;
     NSNumber *returnValue = [NSNumber numberWithInteger:daysUntilNextMeasurementPeriod];
     return returnValue;
 }
