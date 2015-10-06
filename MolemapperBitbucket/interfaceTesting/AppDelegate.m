@@ -55,7 +55,7 @@
     [self renameLegacyStoredFilenamesInCoreData];
     
     [self setOnboardingBooleansBackToInitialValues];
-    //[self.bridgeManager signInAndSendMeasurements];
+//[self.bridgeManager signInAndSendMeasurements];
     if ([self shouldShowOnboarding])
     {
         [self showWelcomeScreenWithCarousel];
@@ -74,8 +74,8 @@
     //[self clearMeasurementsAlreadySentForDebugging];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"shouldShowOnboarding"];
-    
-    [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
+    [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+    [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
     //[ud setBool:NO forKey:@"shouldShowIntroAndEligible"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];
@@ -102,6 +102,7 @@
 -(void)showOnboarding
 {
     //OnboardingVC will check environment variables (NSUserDefaults) to see which part of onboarding to spin up
+    
     OnboardingViewController *onboarding = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"onboardingBase"];
     [self setUpRootViewController:onboarding];
 }
@@ -310,6 +311,10 @@
     if (![standardUserDefaults objectForKey:@"shouldShowRememberCoinPopup"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowRememberCoinPopup"];
+    }
+    if (![standardUserDefaults objectForKey:@"shouldShowWelcomeCarousel"])
+    {
+        [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowWelcomeCarousel"];
     }
     if (![standardUserDefaults objectForKey:@"removedMolesToDiagnoses"])
     {

@@ -66,6 +66,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtN-WK-mLP">
                         <rect key="frame" x="8" y="246" width="304" height="30"/>
                         <state key="normal" title="Learn about the study first"/>
+                        <connections>
+                            <action selector="showDetailText:" destination="gTV-IL-0wX" eventType="touchUpInside" id="J40-zn-Jje"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Take pictures and measurements of your moles over time and share your moledata with the study team" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNf-22-EyT">
                         <rect key="frame" x="30" y="183" width="260" height="63"/>

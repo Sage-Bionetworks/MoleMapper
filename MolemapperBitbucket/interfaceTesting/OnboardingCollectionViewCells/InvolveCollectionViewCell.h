@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WelcomeCarouselViewController.h"
 
 @interface InvolveCollectionViewCell : UICollectionViewCell
+
+- (IBAction)showDetailText:(UIButton *)sender;
+
+@property WelcomeCarouselViewController *parentViewController;
 
 @end

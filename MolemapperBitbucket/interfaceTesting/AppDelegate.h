@@ -36,6 +36,7 @@
 
 - (BOOL)shouldShowOnboarding;
 - (void)setOnboardingBooleansBackToInitialValues;
+- (void)showWelcomeScreenWithCarousel;
 - (void)showOnboarding;
 - (void)showBodyMap;
 

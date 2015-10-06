@@ -7,6 +7,7 @@
 //
 
 #import "InvolveCollectionViewCell.h"
+#import "DetailTextViewController.h"
 
 @implementation InvolveCollectionViewCell
 
@@ -14,4 +15,10 @@
     // Initialization code
 }
 
+- (IBAction)showDetailText:(UIButton *)sender
+{
+    DetailTextViewController *detail = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"DetailTextViewController"];
+    
+    [self.parentViewController presentViewController:detail animated:YES completion:nil];
+}
 @end

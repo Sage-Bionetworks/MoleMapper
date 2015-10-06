@@ -14,13 +14,9 @@
     // Initialization code
 }
 
-- (IBAction)btnPressed:(UIButton *)sender {
-    MFMailComposeViewController *mailComposeVC = [[MFMailComposeViewController alloc] init];
-    mailComposeVC.mailComposeDelegate = _parentViewController       ;
-    
-    /*[mailComposeVC addAttachmentData:[self PDFDataOfConsent] mimeType:@"application/pdf" fileName:@"Consent"];
-    [mailComposeVC setSubject:kConsentEmailSubject];*/
-    [_parentViewController presentViewController:mailComposeVC animated:YES completion:NULL];
+- (IBAction)btnPressed:(UIButton *)sender
+{
+    [_parentViewController presentMailVC];
 }
 
 

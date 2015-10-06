@@ -15,4 +15,6 @@
 
 @property NSMutableArray* cellContainer;
 
+-(void)presentMailVC;
+
 @end

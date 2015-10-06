@@ -74,6 +74,7 @@
     if (indexPath.row == 2)
     {
         InvolveCollectionViewCell *cell = (InvolveCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"InvolveCollectionViewCell" forIndexPath:indexPath];
+        cell.parentViewController = self;
         return cell;
     }
     
@@ -122,6 +123,7 @@
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:YES forKey:@"shouldShowEligibilityTest"];
+    [ud setBool:NO forKey:@"shouldShowWelcomeCarousel"];
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [ad showOnboarding];
 }
@@ -129,8 +131,10 @@
 - (IBAction)notReadyToJoinTapped:(id)sender
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
     UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by visiting the Profile tab" preferredStyle:UIAlertControllerStyleActionSheet];
+    
     
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"User has left the onboarding process with cancel");
@@ -164,6 +168,25 @@
     
     //controller.mailComposeDelegate = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+-(void)presentMailVC
+{
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    if (mc)
+    {
+        mc.mailComposeDelegate = self;
+        [mc setSubject:@"Mole Mapper Conset"];
+        [mc setMessageBody:@"" isHTML:NO];
+        [mc setToRecipients:@[@""]];
+        //[mc addAttachmentData:fileData mimeType:mimeType fileName:fileName];
+
+        [self presentViewController:mc animated:YES completion:NULL];
+    }
+    
+    /*[mailComposeVC addAttachmentData:[self PDFDataOfConsent] mimeType:@"application/pdf" fileName:@"Consent"];
+     [mailComposeVC setSubject:kConsentEmailSubject];*/
     
 }
 

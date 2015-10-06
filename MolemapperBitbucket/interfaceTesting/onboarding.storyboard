@@ -1566,6 +1566,58 @@ will be sent to you for your records.</string>
             </objects>
             <point key="canvasLocation" x="253" y="538"/>
         </scene>
+        <!--Detail Text View Controller-->
+        <scene sceneID="xez-8w-2W8">
+            <objects>
+                <viewController storyboardIdentifier="DetailTextViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gnf-6t-cKC" customClass="DetailTextViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bmh-5d-Mhn"/>
+                        <viewControllerLayoutGuide type="bottom" id="bFE-uo-JvW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RV3-oW-P07">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccb-1b-BPs">
+                                <rect key="frame" x="20" y="42" width="280" height="418"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="bqv-2O-lJA"/>
+                                    <constraint firstAttribute="height" constant="418" id="yfC-Jr-aei"/>
+                                </constraints>
+                                <mutableString key="text">Researchers from Sage Bionetworks (nonprofit) and OHSU Knight Cancer Institute invite you to participate in a research study about melanoma using Mole Mapper and Apple ResearchKit.  The aim of this study is to better understand skin biology and melanoma risks.  By analyzing the data from many Mole Mapper users we hope to better understand the variation in mole growth and cancer risks, and whether a mobile device can help people measure moles accurately and manage their skin health better.  By answering few questions about yourself, tracking your moles regularly and sharing your mole measurements you can help us learn how melanoma develops and what can be done to reduce risks of melanoma.  If you are over 18 years old, we invite you to join the study and declare war on melanoma.  Questions?  Please contact the study sponsor at +1 206-667-2115 or by email molemapperstudy@sagebase.org  Mole Mapper is a research study and does not provide medical advice, diagnosis or treatment.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M9-p4-8P5">
+                                <rect key="frame" x="252" y="11" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jKd-mX-2t0"/>
+                                    <constraint firstAttribute="width" constant="48" id="w6d-ob-4ZW"/>
+                                </constraints>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="Gnf-6t-cKC" eventType="touchUpInside" id="YIV-t4-Zf7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ccb-1b-BPs" firstAttribute="leading" secondItem="RV3-oW-P07" secondAttribute="leading" constant="20" id="1Ik-Yl-91N"/>
+                            <constraint firstItem="bFE-uo-JvW" firstAttribute="top" secondItem="ccb-1b-BPs" secondAttribute="bottom" constant="20" id="78B-ZZ-ylZ"/>
+                            <constraint firstItem="7M9-p4-8P5" firstAttribute="top" secondItem="RV3-oW-P07" secondAttribute="top" constant="11" id="OgP-vw-q97"/>
+                            <constraint firstItem="7M9-p4-8P5" firstAttribute="leading" secondItem="RV3-oW-P07" secondAttribute="leading" constant="252" id="dGj-GW-dPI"/>
+                            <constraint firstItem="ccb-1b-BPs" firstAttribute="top" secondItem="7M9-p4-8P5" secondAttribute="bottom" constant="1" id="fm1-36-0vQ"/>
+                            <constraint firstAttribute="trailing" secondItem="ccb-1b-BPs" secondAttribute="trailing" constant="20" id="kXc-qm-hZs"/>
+                            <constraint firstAttribute="trailing" secondItem="7M9-p4-8P5" secondAttribute="trailing" constant="20" id="sG3-KN-DTL"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lIr-N9-dMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="715" y="1162"/>
+        </scene>
     </scenes>
     <resources>
         <image name="grey_grid_line" width="1" height="1"/>

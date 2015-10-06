@@ -53,6 +53,7 @@
         case ORKTaskViewControllerFinishReasonCompleted:
         {
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+            
             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
             [ud setBool:YES forKey:@"shouldShowInfoScreens"];
             
@@ -126,6 +127,7 @@
 -(void)leaveOnboardingByCancelTapped
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
     UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by visiting the Profile tab" preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -135,7 +137,8 @@
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-    
+        [ud setBool:YES forKey:@"shouldShowWelcomeCarousel"];
+        [ad showWelcomeScreenWithCarousel];
     }];
     
     [leaveOnboarding addAction:leave];
