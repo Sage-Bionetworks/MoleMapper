@@ -28,9 +28,11 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import "ORKHeadlineLabel.h"
 #import "ORKHelpers.h"
 #import "ORKSkin.h"
+
 
 @implementation ORKHeadlineLabel
 
@@ -39,7 +41,7 @@
     const CGFloat defaultHeadlineSize = 17;
     
     UIWindow *window = [[[UIApplication sharedApplication] windows] firstObject];
-    ORKScreenType screenType = ORKGetScreenTypeForWindow(window);
+    ORKScreenType screenType = ORKGetVerticalScreenTypeForWindow(window);
     
     CGFloat fontSize = [[descriptor objectForKey: UIFontDescriptorSizeAttribute] doubleValue] - defaultHeadlineSize + ORKGetMetricForScreenType(surveyMode?ORKScreenMetricFontSizeSurveyHeadline: ORKScreenMetricFontSizeHeadline, screenType);
     CGFloat maxFontSize = ORKGetMetricForScreenType(surveyMode?ORKScreenMetricMaxFontSizeSurveyHeadline:ORKScreenMetricMaxFontSizeHeadline, screenType);
@@ -61,8 +63,7 @@
 }
 
 // Nasty override (hack)
-- (void)updateAppearance
-{
+- (void)updateAppearance {
     self.font = [self defaultFont];
     [self invalidateIntrinsicContentSize];
 }

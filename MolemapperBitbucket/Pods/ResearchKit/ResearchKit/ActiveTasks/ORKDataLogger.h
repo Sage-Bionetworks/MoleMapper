@@ -32,6 +32,7 @@
 #import <Foundation/Foundation.h>
 #import <ResearchKit/ORKDefines.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class ORKDataLogger;
@@ -94,13 +95,13 @@ ORK_CLASS_AVAILABLE
 /**
  Returns a data logger with an `ORKJSONLogFormatter`.
  
- @param url The URL of the directory in which to place log files.
- @param logName The prefix on the log file name in an ASCII string. Note that
-   the string must not contain the hyphen character ("-"), because a hyphen is used as a separator in the log naming scheme.
- @param delegate  The initial delegate. May be `nil`.
+ @param url         The URL of the directory in which to place log files.
+ @param logName     The prefix on the log file name in an ASCII string. Note that the string must not contain the hyphen character ("-"), because a hyphen is used as a separator in the log naming scheme.
+ @param delegate    The initial delegate. May be `nil`.
  */
 + (ORKDataLogger *)JSONDataLoggerWithDirectory:(NSURL *)url logName:(NSString *)logName delegate:(nullable id<ORKDataLoggerDelegate>)delegate;
 
+- (instancetype)init NS_UNAVAILABLE;
 
 /**
  Returns an initialized data logger using the specified URL, log name, formatter, and delegate.
@@ -110,6 +111,7 @@ ORK_CLASS_AVAILABLE
  the string must not contain the hyphen character ("-"), because a hyphen is used as a separator in the log naming scheme.
  @param formatter   The type of formatter to use for the log, such as `ORKJSONLogFormatter`.
  @param delegate    The initial delegate. May be `nil`.
+ 
  @return An initialized data logger.
  */
 - (instancetype)initWithDirectory:(NSURL *)url logName:(NSString *)logName formatter:(ORKLogFormatter *)formatter delegate:(nullable id<ORKDataLoggerDelegate>)delegate NS_DESIGNATED_INITIALIZER;
@@ -160,7 +162,8 @@ ORK_CLASS_AVAILABLE
  than through this object.
  
  @param block   The block to call during enumeration.
- @param error   Any error detected during the enumeration
+ @param error   Any error detected during the enumeration.
+ 
  @return `YES` if the enumeration was successful; otherwise, `NO`.
  */
 - (BOOL)enumerateLogs:(void (^)(NSURL *logFileUrl, BOOL *stop))block error:(NSError * __autoreleasing *)error;
@@ -174,7 +177,8 @@ ORK_CLASS_AVAILABLE
  than through this object.
  
  @param block   The block to call during enumeration.
- @param error   Any error detected during the enumeration
+ @param error   Any error detected during the enumeration.
+ 
  @return `YES` if the enumeration was successful; otherwise, `NO`.
  */
 - (BOOL)enumerateLogsNeedingUpload:(void (^)(NSURL *logFileUrl, BOOL *stop))block error:(NSError * __autoreleasing *)error;
@@ -188,7 +192,8 @@ ORK_CLASS_AVAILABLE
  than through this object.
  
  @param block   The block to call during enumeration.
- @param error   Any error detected during the enumeration
+ @param error   Any error detected during the enumeration.
+ 
  @return `YES` if the enumeration was successful; otherwise, `NO`.
  */
 - (BOOL)enumerateLogsAlreadyUploaded:(void (^)(NSURL *logFileUrl, BOOL *stop))block error:(NSError * __autoreleasing *)error;
@@ -204,6 +209,7 @@ ORK_CLASS_AVAILABLE
  
  @param object Should be an object of a class that is accepted by the logFormatter.
  @param error  Error output, if the append fails.
+ 
  @return `YES` if appending succeeds; otherwise, `NO`.
  */
 - (BOOL)append:(id)object error:(NSError * __autoreleasing *)error;
@@ -216,6 +222,7 @@ ORK_CLASS_AVAILABLE
  
  @param objects An array of objects of a class that is accepted by the logFormatter.
  @param error  Error output, if the append fails.
+ 
  @return `YES` if appending succeeds; otherwise, `NO`.
  */
 - (BOOL)appendObjects:(NSArray *)objects error:(NSError * __nullable __autoreleasing *)error;
@@ -224,6 +231,7 @@ ORK_CLASS_AVAILABLE
  Checks whether a file has been marked as uploaded.
  
  @param url     The URL to check.
+ 
  @return `YES` if the uploaded attribute has been set on the file and the file exists; otherwise,
          `NO`.
  */
@@ -240,6 +248,7 @@ ORK_CLASS_AVAILABLE
  @param uploaded    A Boolean value that indicates whether to mark the file uploaded or not uploaded.
  @param url         The URL to mark.
  @param error       The error that occurred, if the operation fails.
+ 
  @return `YES` if adding or removing the attribute succeeded; otherwise, `NO`.
  */
 - (BOOL)markFileUploaded:(BOOL)uploaded atURL:(NSURL *)url error:(NSError * __nullable __autoreleasing *)error;
@@ -253,20 +262,22 @@ ORK_CLASS_AVAILABLE
  
  @param fileURLs    The array of files that should be removed.
  @param error       The error that occurred, if the operation fails.
+ 
  @return `YES` if removing the files succeeded; otherwise, `NO`.
  */
-- (BOOL)removeUploadedFiles:(NSArray *)fileURLs withError:(NSError * __nullable __autoreleasing *)error;
+- (BOOL)removeUploadedFiles:(NSArray<NSURL *> *)fileURLs withError:(NSError * __nullable __autoreleasing *)error;
 
 /**
  Removes all files managed by this logger (files that have the `logName` prefix).
  
  @param error       The error that occurred, if operation fails.
+ 
  @return `YES` if removing the files succeeded.; otherwise, `NO`.
  */
 - (BOOL)removeAllFilesWithError:(NSError *__nullable __autoreleasing *)error;
 
-
 @end
+
 
 /**
  The `ORKLogFormatter` class represents the base (default) log formatter, which appends data
@@ -285,6 +296,7 @@ ORK_CLASS_AVAILABLE
  Returns a Boolean value that indicates whether the log formatter can serialize the specified type of object.
  
  @param c       The class of object to serialize.
+ 
  @return `YES` if the log formatter can serialize this object class; otherwise, `NO`.
  */
 - (BOOL)canAcceptLogObjectOfClass:(Class)c;
@@ -293,6 +305,7 @@ ORK_CLASS_AVAILABLE
  Returns a Boolean value that indicates whether the log formatter can serialize the specified type of object.
  
  @param object       The object to serialize.
+ 
  @return `YES` if the log formatter can serialize `object`; otherwise, `NO`
  */
 - (BOOL)canAcceptLogObject:(id)object;
@@ -304,6 +317,7 @@ ORK_CLASS_AVAILABLE
  
  @param fileHandle      The file handle to which to write.
  @param error           The error output, on failure.
+ 
  @return  `YES` if the write succeeds; otherwise, `NO`.
  */
 - (BOOL)beginLogWithFileHandle:(NSFileHandle *)fileHandle error:(NSError * __nullable __autoreleasing *)error;
@@ -314,6 +328,7 @@ ORK_CLASS_AVAILABLE
  @param object          The object to write.
  @param fileHandle      The file handle to which to write.
  @param error           The error output, on failure.
+ 
  @return `YES` if the write succeeds; otherwise, `NO`.
  */
 - (BOOL)appendObject:(id)object fileHandle:(NSFileHandle *)fileHandle error:(NSError * __nullable __autoreleasing *)error;
@@ -324,11 +339,13 @@ ORK_CLASS_AVAILABLE
  @param objects         The objects to write.
  @param fileHandle      The file handle to which to write.
  @param error           The error output, on failure.
+ 
  @return  `YES` if the write succeeds; otherwise, `NO`.
  */
 - (BOOL)appendObjects:(NSArray *)objects fileHandle:(NSFileHandle *)fileHandle error:(NSError * __nullable __autoreleasing *)error;
 
 @end
+
 
 /**
  The `ORKJSONLogFormatter` class represents a log formatter for producing JSON output.
@@ -352,7 +369,6 @@ ORK_CLASS_AVAILABLE
  The `ORKDataLoggerManagerDelegate` protocol defines methods a delegate can implement to receive notifications
  when the data loggers managed by a `ORKDataLoggerManager` reach a certain file size threshold.
  */
-
 ORK_CLASS_AVAILABLE
 @protocol ORKDataLoggerManagerDelegate <NSObject>
 
@@ -376,6 +392,7 @@ ORK_CLASS_AVAILABLE
 - (void)dataLoggerManager:(ORKDataLoggerManager *)dataLoggerManager totalBytesReachedThreshold:(unsigned long long)totalBytes;
 
 @end
+
 
 /**
  The `ORKDataLoggerManager` class represents a manager for multiple `ORKDataLogger` instances,
@@ -408,6 +425,8 @@ ORK_CLASS_AVAILABLE
 ORK_CLASS_AVAILABLE
 @interface ORKDataLoggerManager : NSObject <ORKDataLoggerDelegate>
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  Returns an initialized data logger manager using the specified directory and delegate.
  
@@ -415,6 +434,7 @@ ORK_CLASS_AVAILABLE
  
  @param directory       The file URL of the directory where the data loggers should coexist.
  @param delegate        The delegate to receive notifications.
+ 
  @return An initialized data logger manager.
  */
 - (instancetype)initWithDirectory:(NSURL *)directory delegate:(nullable id<ORKDataLoggerManagerDelegate>)delegate NS_DESIGNATED_INITIALIZER;
@@ -440,6 +460,7 @@ ORK_CLASS_AVAILABLE
  This method throws an exception if a logger already exists with the specified log name.
  
  @param logName     The log name prefix for the data logger.
+ 
  @return The `ORKDataLogger` object that was added.
  */
 - (ORKDataLogger *)addJSONDataLoggerForLogName:(NSString *)logName;
@@ -449,6 +470,7 @@ ORK_CLASS_AVAILABLE
  
  @param logName     The log name prefix for the data logger.
  @param formatter   The log formatter instance to use for this logger.
+ 
  @return The `ORKDataLogger` object that was added, or the existing one if one already existed for
  that log name.
  */
@@ -458,6 +480,7 @@ ORK_CLASS_AVAILABLE
  Retrieves the already existing data logger for a log name.
  
  @param logName     The log name prefix for the data logger.
+ 
  @return The `ORKDataLogger` object that was retrieved, or `nil` if one already existed for that log name.
  */
 - (nullable ORKDataLogger *)dataLoggerForLogName:(NSString *)logName;
@@ -470,7 +493,7 @@ ORK_CLASS_AVAILABLE
 - (void)removeDataLogger:(ORKDataLogger *)logger;
 
 /// Returns the set of log names of the data loggers managed by this object.
-- (NSArray *)logNames;
+- (NSArray<NSString *> *)logNames;
 
 /**
  Enumerates all the logs that need upload across all data loggers, sorted from oldest to first.
@@ -479,6 +502,7 @@ ORK_CLASS_AVAILABLE
  
  @param block       The block to call during enumeration.
  @param error       The error, on failure.
+ 
  @return `YES` if the enumeration succeeds; otherwise, `NO`.
  */
 - (BOOL)enumerateLogsNeedingUpload:(void (^)(ORKDataLogger *dataLogger, NSURL *logFileUrl, BOOL *stop))block error:(NSError * __autoreleasing *)error;
@@ -489,11 +513,12 @@ ORK_CLASS_AVAILABLE
  Use this method to indicate that the specified files should no longer be marked uploaded (for example, because
  the upload did not succeed).
  
- @param fileURLs     The array of file URLs that should no longer be marked uploaded.
+ @param fileURLs    The array of file URLs that should no longer be marked uploaded.
  @param error       The error, on failure.
+ 
  @return `YES` if the operation succeeds; otherwise, `NO`.
  */
-- (BOOL)unmarkUploadedFiles:(NSArray *)fileURLs error:(NSError * __nullable __autoreleasing *)error;
+- (BOOL)unmarkUploadedFiles:(NSArray<NSURL *> *)fileURLs error:(NSError * __nullable __autoreleasing *)error;
 
 /**
  Removes a set of uploaded files.
@@ -502,11 +527,12 @@ ORK_CLASS_AVAILABLE
  that may relate to any of the data loggers. It is an error to pass a URL which would not
  belong to one of the loggers managed by this manager.
  
- @param fileURLs     The array of file URLs that should be removed.
+ @param fileURLs    The array of file URLs that should be removed.
  @param error       The error, on failure.
+ 
  @return `YES` if the operation succeeds; otherwise, `NO`.
  */
-- (BOOL)removeUploadedFiles:(NSArray *)fileURLs error:(NSError * __nullable __autoreleasing *)error;
+- (BOOL)removeUploadedFiles:(NSArray<NSURL *> *)fileURLs error:(NSError * __nullable __autoreleasing *)error;
 
 /**
  Removes old and uploaded logs to bring total bytes down to a threshold.
@@ -514,16 +540,13 @@ ORK_CLASS_AVAILABLE
  This method removes uploaded logs first, followed by the oldest log files across
  all of the data loggers, until the total usage falls below a threshold.
  
- @param bytes       The threshold down to which to remove old log files. File
-                    removal stops when the total bytes managed by all the data
-                    loggers reaches this threshold.
+ @param bytes       The threshold down to which to remove old log files. File removal stops when the total bytes managed by all the data loggers reaches this threshold.
  @param error       The error, on failure.
+ 
  @return `YES` if the operation succeeds; otherwise, `NO`.
  */
 - (BOOL)removeOldAndUploadedLogsToThreshold:(unsigned long long)bytes error:(NSError * __nullable __autoreleasing *)error;
 
 @end
 
-
 NS_ASSUME_NONNULL_END
-

@@ -28,11 +28,16 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "ORKSpatialSpanGame.h"
 
-@implementation ORKSpatialSpanGame
-{
+#import "ORKSpatialSpanGame.h"
+#import "ORKHelpers.h"
+
+@implementation ORKSpatialSpanGame {
     NSInteger *_sequence;
+}
+
+- (instancetype)init {
+    ORKThrowMethodUnavailableException();
 }
 
 - (void)generateSequence {
@@ -81,12 +86,9 @@
         if (_sequence == NULL) {
             self = nil;
         }
-        
     }
     return self;
 }
-
-
 
 /// Step parameter is the step in the sequence; tileIndex is the value of that step of the sequence.
 - (void)enumerateSequenceWithHandler:(void(^)(NSInteger step, NSInteger tileIndex, BOOL isLastStep, BOOL *stop))handler {

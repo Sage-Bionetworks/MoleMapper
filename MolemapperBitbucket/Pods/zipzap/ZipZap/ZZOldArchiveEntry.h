@@ -18,6 +18,8 @@
 #import "ZZArchiveEntry.h"
 #import "ZZHeaders.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ZZOldArchiveEntry : ZZArchiveEntry
 
 @property (readonly, nonatomic) BOOL compressed;
@@ -29,8 +31,12 @@
 @property (readonly, nonatomic) mode_t fileMode;
 @property (readonly, nonatomic) NSString* fileName;
 
+- (instancetype)init NS_UNAVAILABLE;
+
 - (instancetype)initWithCentralFileHeader:(struct ZZCentralFileHeader*)centralFileHeader
 						  localFileHeader:(struct ZZLocalFileHeader*)localFileHeader
 								 encoding:(NSStringEncoding)encoding NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -33,9 +33,11 @@
 #import <HealthKit/HealthKit.h>
 #import <ResearchKit/ORKAnswerFormat.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 id ORKNullAnswerValue();
+BOOL ORKIsAnswerEmpty(__nullable id answer);
 
 NSString *ORKHKBiologicalSexString(HKBiologicalSex biologicalSex);
 NSString *ORKHKBloodTypeString(HKBloodType bloodType);
@@ -47,6 +49,7 @@ NSString *ORKQuestionTypeString(ORKQuestionType questionType);
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER; \
 @end
 
+ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKAnswerFormat);
 ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKImageChoiceAnswerFormat);
 ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKValuePickerAnswerFormat);
 ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTextChoiceAnswerFormat);
@@ -61,7 +64,9 @@ ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKContinuousScaleAnswerForm
 ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTextAnswerFormat);
 ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTimeIntervalAnswerFormat);
 
+
 @interface ORKAnswerFormat ()
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 - (ORKAnswerFormat *)impliedAnswerFormat;
 
@@ -74,12 +79,16 @@ ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTimeIntervalAnswerFormat)
 
 - (BOOL)isAnswerValidWithString:(nullable NSString *)text;
 
+- (BOOL)isAnswerValid:(id)answer;
+
 - (nullable NSString *)localizedInvalidValueStringWithAnswerString:(nullable NSString *)text;
 
 - (nonnull Class)questionResultClass;
+
 - (ORKQuestionResult *)resultWithIdentifier:(NSString *)identifier answer:(id)answer;
 
 @end
+
 
 @interface ORKNumericAnswerFormat ()
 
@@ -109,7 +118,8 @@ ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTimeIntervalAnswerFormat)
 
 @end
 
-@protocol ORKScaleAnswerFormatProvider<NSObject>
+
+@protocol ORKScaleAnswerFormatProvider <NSObject>
 
 - (nullable NSNumber *)minimumNumber;
 - (nullable NSNumber *)maximumNumber;
@@ -117,23 +127,31 @@ ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTimeIntervalAnswerFormat)
 - (nullable NSString *)localizedStringForNumber:(nullable NSNumber *)number;
 - (NSInteger)numberOfSteps;
 - (nullable NSNumber *)normalizedValueForNumber:(nullable NSNumber *)number;
+- (BOOL)isVertical;
+- (NSString *)maximumValueDescription;
+- (NSString *)minimumValueDescription;
+- (UIImage *)maximumImage;
+- (UIImage *)minimumImage;
 
 @end
 
-@interface ORKScaleAnswerFormat() <ORKScaleAnswerFormatProvider>
+
+@interface ORKScaleAnswerFormat () <ORKScaleAnswerFormatProvider>
 
 @end
 
-@interface ORKContinuousScaleAnswerFormat() <ORKScaleAnswerFormatProvider>
+
+@interface ORKContinuousScaleAnswerFormat () <ORKScaleAnswerFormatProvider>
 
 @end
 
 
-@interface ORKTextChoice() <ORKAnswerOption>
+@interface ORKTextChoice () <ORKAnswerOption>
 
 @end
 
-@interface ORKImageChoice() <ORKAnswerOption>
+
+@interface ORKImageChoice () <ORKAnswerOption>
 
 @end
 
@@ -143,6 +161,7 @@ ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTimeIntervalAnswerFormat)
 - (NSDate *)pickerDefaultDate;
 
 @end
+
 
 @interface ORKDateAnswerFormat ()
 
@@ -154,15 +173,20 @@ ORK_DESIGNATE_CODING_AND_SERIALIZATION_INITIALIZERS(ORKTimeIntervalAnswerFormat)
 
 @end
 
+
 @interface ORKTimeIntervalAnswerFormat ()
 
 - (NSTimeInterval)pickerDefaultDuration;
 
 @end
 
+
 @interface ORKTextAnswerFormat ()
 
+@property (nonatomic, assign, getter=isEmailAddress) BOOL emailAddress;
+
 @end
+
 
 @interface ORKAnswerDefaultSource : NSObject
 

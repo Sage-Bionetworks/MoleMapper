@@ -3,14 +3,18 @@
 //  ZipZap
 //
 //  Created by Glen Low on 12/01/13.
-//
+//  Copyright (c) 2013, Pixelglow Software. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 #import "ZZChannelOutput.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ZZDataChannelOutput : NSObject <ZZChannelOutput>
+
+- (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithData:(NSMutableData*)data NS_DESIGNATED_INITIALIZER;
 
@@ -25,3 +29,5 @@
 - (void)close;
 
 @end
+
+NS_ASSUME_NONNULL_END

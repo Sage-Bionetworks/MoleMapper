@@ -28,7 +28,12 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import <ResearchKit/ORKRecorder.h>
+#import <CoreLocation/CoreLocation.h>
+
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  The `ORKLocationRecorder` class represents a recorder for collecting location data from CoreLocation.
@@ -41,4 +46,25 @@
 ORK_CLASS_AVAILABLE
 @interface ORKLocationRecorder : ORKRecorder
 
+/**
+ Returns an initialized location recorder.
+ 
+ @param identifier          The unique identifier of the recorder (assigned by the recorder configuration).
+ @param step                The step that requested this recorder.
+ @param outputDirectory     The directory in which the location data should be stored.
+ 
+ @return An initialized location recorder.
+*/
+- (instancetype)initWithIdentifier:(NSString *)identifier
+                              step:(nullable ORKStep *)step
+                   outputDirectory:(nullable NSURL *)outputDirectory NS_DESIGNATED_INITIALIZER;
+
+
+/**
+ The location manager, if any, being used by this recorder.
+ */
+@property (nonatomic, strong, nullable, readonly) CLLocationManager *locationManager;
+
 @end
+
+NS_ASSUME_NONNULL_END

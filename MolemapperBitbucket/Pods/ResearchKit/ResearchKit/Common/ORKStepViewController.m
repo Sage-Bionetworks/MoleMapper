@@ -37,8 +37,8 @@
 #import "ORKHelpers.h"
 #import "UIBarButtonItem+ORKBarButtonItem.h"
 
-@interface ORKStepViewController ()
-{
+
+@interface ORKStepViewController () {
     BOOL _hasBeenPresented;
     BOOL _dismissing;
     BOOL _presentingAlert;
@@ -49,11 +49,11 @@
 
 @end
 
+
 @implementation ORKStepViewController
 
-- (void)initializeInternalButtonItems
-{
-    _internalBackButtonItem = [UIBarButtonItem obk_backBarButtonItemWithTarget:self action:@selector(goBackward)];
+- (void)initializeInternalButtonItems {
+    _internalBackButtonItem = [UIBarButtonItem ork_backBarButtonItemWithTarget:self action:@selector(goBackward)];
     _internalBackButtonItem.accessibilityLabel = ORKLocalizedString(@"AX_BUTTON_BACK", nil);
     _internalContinueButtonItem = [[UIBarButtonItem alloc] initWithTitle:ORKLocalizedString(@"BUTTON_NEXT", nil) style:UIBarButtonItemStylePlain target:self action:@selector(goForward)];
     _internalDoneButtonItem = [[UIBarButtonItem alloc] initWithTitle:ORKLocalizedString(@"BUTTON_DONE", nil) style:UIBarButtonItemStyleDone target:self action:@selector(goForward)];
@@ -63,18 +63,20 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-designated-initializers"
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    [self initializeInternalButtonItems];
+    if (self) {
+        [self initializeInternalButtonItems];
+    }
     return self;
 }
 #pragma clang diagnostic pop
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    [self initializeInternalButtonItems];
+    if (self) {
+        [self initializeInternalButtonItems];
+    }
     return self;
 }
 
@@ -97,17 +99,12 @@
 
     self.view.backgroundColor = ORKColor(ORKBackgroundColorKey);
     
-    [self setupButtons];
 }
 
-- (void)setupButtons
-{
-    if (self.hasPreviousStep == YES)
-    {
+- (void)setupButtons {
+    if (self.hasPreviousStep == YES) {
         [self ork_setBackButtonItem: _internalBackButtonItem];
-    }
-    else
-    {
+    } else {
         [self ork_setBackButtonItem:nil];
     }
     
@@ -120,14 +117,11 @@
     self.skipButtonItem = _internalSkipButtonItem;
 }
 
-- (void)setStep:(ORKStep *)step
-{
-    if (_hasBeenPresented)
-    {
+- (void)setStep:(ORKStep *)step {
+    if (_hasBeenPresented) {
         @throw [NSException exceptionWithName:NSGenericException reason:@"Cannot set step after presenting step view controller" userInfo:nil];
     }
-    if ( step && nil == [step identifier])
-    {
+    if ( step && nil == [step identifier]) {
         NSLog(@"%@ Step's identifier should not be nil.",  NSStringFromSelector(_cmd));
     }
     
@@ -139,22 +133,24 @@
     [self stepDidChange];
 }
 
-- (void)stepDidChange
-{
-    
+- (void)stepDidChange {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     ORK_Log_Debug(@"%@", self);
+    
+    // Required here (instead of viewDidLoad) because any custom buttons are set once the delegate responds to the stepViewControllerWillAppear,
+    // otherwise there is a minor visual glitch, where the original buttons are displayed on the UI for a short period. This is not placed after
+    // the delegate responds to the stepViewControllerWillAppear, so that the target from the button's item can be used, if the intention is to
+    // only modify the title of the button.
     [self setupButtons];
     
     if ([self.delegate respondsToSelector:@selector(stepViewControllerWillAppear:)]) {
         [self.delegate stepViewControllerWillAppear:self];
     }
-    
-    if (!_step)
-    {
+        
+    if (!_step) {
         @throw [NSException exceptionWithName:NSGenericException reason:@"Cannot present step view controller without a step" userInfo:nil];
     }
     _hasBeenPresented = YES;
@@ -189,12 +185,10 @@
     _dismissing = NO;
 }
 
-- (void)willNavigateDirection:(ORKStepViewControllerNavigationDirection)direction
-{
+- (void)willNavigateDirection:(ORKStepViewControllerNavigationDirection)direction {
 }
 
-- (void)setContinueButtonTitle:(NSString *)continueButtonTitle
-{
+- (void)setContinueButtonTitle:(NSString *)continueButtonTitle {
     self.internalContinueButtonItem.title = continueButtonTitle;
     self.internalDoneButtonItem.title = continueButtonTitle;
     
@@ -205,24 +199,21 @@
     return self.continueButtonItem.title;
 }
 
-- (void)setLearnMoreButtonTitle:(NSString *)learnMoreButtonTitle
-{
+- (void)setLearnMoreButtonTitle:(NSString *)learnMoreButtonTitle {
     self.learnMoreButtonItem.title = learnMoreButtonTitle;
+    self.learnMoreButtonItem = self.learnMoreButtonItem;
 }
 
-- (NSString *)learnMoreButtonTitle
-{
+- (NSString *)learnMoreButtonTitle {
     return self.learnMoreButtonItem.title;
 }
 
-- (void)setSkipButtonTitle:(NSString *)skipButtonTitle
-{
+- (void)setSkipButtonTitle:(NSString *)skipButtonTitle {
     self.internalSkipButtonItem.title = skipButtonTitle;
     self.skipButtonItem = self.internalSkipButtonItem;
 }
 
-- (NSString *)skipButtonTitle
-{
+- (NSString *)skipButtonTitle {
     return self.skipButtonItem.title;
 }
 
@@ -254,7 +245,6 @@
     [self updateNavRightBarButtonItem];
 }
 
-
 - (BOOL)hasPreviousStep {
     STRONGTYPE(self.delegate) delegate = self.delegate;
     if (delegate && [delegate respondsToSelector:@selector(stepViewControllerHasPreviousStep:)]) {
@@ -275,7 +265,7 @@
 
 - (ORKStepResult *)result {
     
-    ORKStepResult *sResult = [[ORKStepResult alloc] initWithStepIdentifier:(NSString *__nonnull)self.step.identifier results:@[]];
+    ORKStepResult *sResult = [[ORKStepResult alloc] initWithStepIdentifier:self.step.identifier results:@[]];
     sResult.startDate = self.presentedDate;
     sResult.endDate = self.dismissedDate? :[NSDate date];
     
@@ -290,10 +280,14 @@
     }
 }
 
+- (BOOL)hasBeenPresented {
+    return _hasBeenPresented;
+}
+
 #pragma mark - Action Handlers
 
 - (void)goForward {
-
+    
     STRONGTYPE(self.delegate) strongDelegate = self.delegate;
     [strongDelegate stepViewController:self didFinishWithNavigationDirection:ORKStepViewControllerNavigationDirectionForward];
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
@@ -307,26 +301,20 @@
 }
 
 - (void)skipForward {
-    
     [self goForward];
-    
 }
-
 
 - (ORKTaskViewController *)taskViewController {
-    UIPageViewController *pageVc = (UIPageViewController *)[self parentViewController];
-    if (pageVc && [pageVc isKindOfClass:[UIPageViewController class]]) {
-        UINavigationController *navVC = (UINavigationController *)[pageVc parentViewController];
-        ORKTaskViewController *taskVc = (ORKTaskViewController *)[navVC parentViewController];
-        if (taskVc && [taskVc isKindOfClass:[ORKTaskViewController class]]) {
-            return taskVc;
+    UIPageViewController *pageViewController = (UIPageViewController *)[self parentViewController];
+    if (pageViewController && [pageViewController isKindOfClass:[UIPageViewController class]]) {
+        UINavigationController *navigationController = (UINavigationController *)[pageViewController parentViewController];
+        ORKTaskViewController *taskViewController = (ORKTaskViewController *)[navigationController parentViewController];
+        if (taskViewController && [taskViewController isKindOfClass:[ORKTaskViewController class]]) {
+            return taskViewController;
         }
     }
-    
     return nil;
 }
-
-
 
 - (void)showValidityAlertWithMessage:(NSString *)text {
     
@@ -359,25 +347,22 @@
 
 #pragma mark - UIStateRestoring
 
+static NSString *const _ORKStepIdentifierRestoreKey = @"stepIdentifier";
+static NSString *const _ORKPresentedDateRestoreKey = @"presentedDate";
+static NSString *const _ORKOutputDirectoryKey = @"outputDirectory";
 
-static NSString * const _ORKStepIdentifierRestoreKey = @"stepIdentifier";
-static NSString * const _ORKPresentedDateRestoreKey = @"presentedDate";
-static NSString * const _ORKOutputDirectoryKey = @"outputDirectory";
-
-- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
-{
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
     [super encodeRestorableStateWithCoder:coder];
     
     [coder encodeObject:_step.identifier forKey:_ORKStepIdentifierRestoreKey];
     [coder encodeObject:_presentedDate forKey:_ORKPresentedDateRestoreKey];
-    [coder encodeObject:_outputDirectory forKey:_ORKOutputDirectoryKey];
+    [coder encodeObject:ORKBookmarkDataFromURL(_outputDirectory) forKey:_ORKOutputDirectoryKey];
 }
 
-- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
-{
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder {
     [super decodeRestorableStateWithCoder:coder];
     
-    self.outputDirectory = [coder decodeObjectOfClass:[NSURL class] forKey:_ORKOutputDirectoryKey];
+    self.outputDirectory = ORKURLFromBookmarkData([coder decodeObjectOfClass:[NSData class] forKey:_ORKOutputDirectoryKey]);
     
     if (! self.step) {
         // Just logging to the console in this case, since this can happen during a taskVC restoration of a dynamic task.
@@ -393,19 +378,13 @@ static NSString * const _ORKOutputDirectoryKey = @"outputDirectory";
                                        reason:[NSString stringWithFormat:@"Attempted to restore step with identifier %@ but got step identifier %@", _restoredStepIdentifier, self.step.identifier]
                                      userInfo:nil];
     }
-    
-    
 }
 
-
-+ (UIViewController *) viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
-{
-    ORKStepViewController *vc = [[[self class] alloc] initWithStep:nil];
-    vc.restorationIdentifier = [identifierComponents lastObject];
-    vc.restorationClass = self;
-    return vc;
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+    ORKStepViewController *viewController = [[[self class] alloc] initWithStep:nil];
+    viewController.restorationIdentifier = [identifierComponents lastObject];
+    viewController.restorationClass = self;
+    return viewController;
 }
-
 
 @end
-

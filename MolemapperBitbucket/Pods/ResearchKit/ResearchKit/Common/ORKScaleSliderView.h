@@ -28,15 +28,19 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import <UIKit/UIKit.h>
 #import <ResearchKit/ResearchKit.h>
 #import "ORKAnswerFormat_Internal.h"
+#import "ORKScaleSlider.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class ORKScaleRangeLabel;
 @class ORKScaleValueLabel;
-@class ORKScaleSlider;
+@class ORKScaleRangeDescriptionLabel;
+@class ORKScaleRangeImageView;
 
 @interface ORKScaleSliderView : UIView
 
@@ -49,6 +53,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) ORKScaleRangeLabel *leftRangeLabel;
 
 @property (nonatomic, strong, readonly) ORKScaleRangeLabel *rightRangeLabel;
+
+@property (nonatomic, strong, readonly) ORKScaleRangeImageView *leftRangeImageView;
+
+@property (nonatomic, strong, readonly) ORKScaleRangeImageView *rightRangeImageView;
+
+@property (nonatomic, strong, readonly) ORKScaleRangeDescriptionLabel *leftRangeDescriptionLabel;
+
+@property (nonatomic, strong, readonly) ORKScaleRangeDescriptionLabel *rightRangeDescriptionLabel;
 
 @property (nonatomic, strong, readonly) ORKScaleValueLabel *valueLabel;
 

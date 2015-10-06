@@ -28,9 +28,11 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import "ORKTableViewCell.h"
-#import "ORKHelpers.h"
+#import "ORKSkin.h"
 #import "ORKSelectionTitleLabel.h"
+
 
 @interface ORKTableViewCell ()
 
@@ -39,27 +41,25 @@
 
 @end
 
+
 @implementation ORKTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
         static UIColor *defaultSeparatorColor = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             UITableView *tableView = [[UITableView alloc] init];
             defaultSeparatorColor = [tableView separatorColor];
         });
-        if (! defaultSeparatorColor)
-        {
+        if (! defaultSeparatorColor) {
             defaultSeparatorColor = [UIColor lightGrayColor];
         }
         
         _orkSeparatorColor = defaultSeparatorColor;
-        _topSeparatorLeftInset = ORKStandardMarginForView(self);
-        _bottomSeparatorLeftInset = ORKStandardMarginForView(self);
+        _topSeparatorLeftInset = ORKStandardLeftMarginForTableViewCell(self);
+        _bottomSeparatorLeftInset = ORKStandardLeftMarginForTableViewCell(self);
         
         _topSeparator = [UIView new];
         _bottomSeparator = [UIView new];
@@ -70,14 +70,24 @@
     return self;
 }
 
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+- (void)updateSeparatorInsets {
+    
     if (self.topSeparatorLeftInset > 0) {
-        self.topSeparatorLeftInset = ORKStandardMarginForView(self);
+        self.topSeparatorLeftInset = ORKStandardLeftMarginForTableViewCell(self);
     }
     if (self.bottomSeparatorLeftInset > 0) {
-        self.bottomSeparatorLeftInset = ORKStandardMarginForView(self);
+        self.bottomSeparatorLeftInset = ORKStandardLeftMarginForTableViewCell(self);
     }
-    
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    [self updateSeparatorInsets];
+}
+
+- (void)setBounds:(CGRect)bounds {
+    [super setBounds:bounds];
+    [self updateSeparatorInsets];
 }
 
 - (void)setShowBottomSeparator:(BOOL)showBottomSeparator {
@@ -123,11 +133,9 @@
     } else {
         [_bottomSeparator removeFromSuperview];
     }
-    
 }
 
 - (void)init_ORKTableViewCell {
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateAppearance)
                                                  name:UIContentSizeCategoryDidChangeNotification
@@ -137,7 +145,6 @@
 }
 
 - (void)updateAppearance {
-    
     self.textLabel.font = [ORKSelectionTitleLabel defaultFont];
     [self invalidateIntrinsicContentSize];
 

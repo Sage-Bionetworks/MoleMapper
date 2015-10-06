@@ -28,8 +28,10 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import "ORKSpatialSpanGameState.h"
 #import "ORKSpatialSpanGame.h"
+#import "ORKHelpers.h"
 
 
 @implementation ORKSpatialSpanGameState {
@@ -37,6 +39,9 @@
     ORKSpatialSpanTargetState *_states;
 }
 
+- (instancetype)init {
+    ORKThrowMethodUnavailableException();
+}
 
 - (instancetype)initWithGame:(ORKSpatialSpanGame *)game {
     self = [super init];
@@ -58,7 +63,6 @@
         _states = NULL;
     }
 }
-
 
 - (void)reset {
     const NSInteger gameSize = [_game gameSize];
@@ -97,7 +101,6 @@
     
     return correct ? ORKSpatialSpanResultCorrect : ORKSpatialSpanResultIncorrect;
 }
-
 
 - (NSInteger)currentStepIndex {
     return [_plays count];

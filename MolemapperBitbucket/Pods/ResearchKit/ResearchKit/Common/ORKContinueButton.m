@@ -28,13 +28,14 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import "ORKContinueButton.h"
 #import "ORKSkin.h"
 
-static const CGFloat _ContinueButtonTouchMargin = 10;
 
-@implementation ORKContinueButton
-{
+static const CGFloat kContinueButtonTouchMargin = 10;
+
+@implementation ORKContinueButton {
     NSLayoutConstraint *_widthConstraint;
     NSLayoutConstraint *_heightConstraint;
 }
@@ -44,11 +45,9 @@ static const CGFloat _ContinueButtonTouchMargin = 10;
     if (self) {
         [self setTitle:title forState:UIControlStateNormal];
         self.isDoneButton = isDoneButton;
-        self.contentEdgeInsets = (UIEdgeInsets){.left=6,.right=6};
+        self.contentEdgeInsets = (UIEdgeInsets){.left=6, .right=6};
         
         [self setNeedsUpdateConstraints];
-        
-        
     }
     return self;
 }
@@ -57,43 +56,47 @@ static const CGFloat _ContinueButtonTouchMargin = 10;
     [self updateConstraintConstants];
 }
 
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [super traitCollectionDidChange: previousTraitCollection];
+    if (self.traitCollection.verticalSizeClass != previousTraitCollection.verticalSizeClass) {
+        [self updateConstraintConstants];
+    }
+}
 
 - (void)updateConstraintConstants {
+    ORKScreenType verticalScreenType = ORKGetVerticalScreenTypeForWindow(self.window);
+    CGFloat height = (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) ?
+        ORKGetMetricForScreenType(ORKScreenMetricContinueButtonHeightCompact, verticalScreenType) :
+        ORKGetMetricForScreenType(ORKScreenMetricContinueButtonHeightRegular, verticalScreenType);
+    _heightConstraint.constant = height;
     
-    UIWindow *window = [self window];
-    ORKScreenType screenType = ORKGetScreenTypeForWindow(window);
-    _widthConstraint.constant = ORKGetMetricForScreenType(ORKScreenMetricContinueButtonWidth, screenType);
+    _widthConstraint.constant = ORKGetMetricForWindow(ORKScreenMetricContinueButtonWidth, self.window);
 }
 
 - (void)updateConstraints {
-    if (! _heightConstraint) {
+    if (!_heightConstraint) {
         _heightConstraint = [NSLayoutConstraint constraintWithItem:self
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute
-                                                        multiplier:1
-                                                          constant:44];
+                                                        multiplier:1.0
+                                                          constant:0.0]; // constant will be set in updateConstraintConstants
         _heightConstraint.active = YES;
     }
-    if (! _widthConstraint) {
-        UIWindow *window = [self window];
-        ORKScreenType screenType = ORKGetScreenTypeForWindow(window);
+    if (!_widthConstraint) {
         _widthConstraint = [NSLayoutConstraint constraintWithItem:self
                                                         attribute:NSLayoutAttributeWidth
                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
                                                            toItem:nil
                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                       multiplier:1
-                                                         constant:ORKGetMetricForScreenType(ORKScreenMetricContinueButtonWidth, screenType)];
+                                                       multiplier:1.0
+                                                         constant:0.0]; // constant will be set in updateConstraintConstants
+        _widthConstraint.active = YES;
     }
-    _heightConstraint.active = YES;
-    _widthConstraint.active = YES;
+    [self updateConstraintConstants];
     [super updateConstraints];
-    
 }
-
-
 
 + (UIFont *)defaultFont {
     UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline];
@@ -101,10 +104,13 @@ static const CGFloat _ContinueButtonTouchMargin = 10;
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    CGRect outsetRect = UIEdgeInsetsInsetRect(self.bounds, (UIEdgeInsets){-_ContinueButtonTouchMargin,-_ContinueButtonTouchMargin,-_ContinueButtonTouchMargin,-_ContinueButtonTouchMargin});
+    CGRect outsetRect = UIEdgeInsetsInsetRect(self.bounds,
+                                              (UIEdgeInsets){-kContinueButtonTouchMargin,
+                                                             -kContinueButtonTouchMargin,
+                                                             -kContinueButtonTouchMargin,
+                                                             -kContinueButtonTouchMargin});
     BOOL isInside = [super pointInside:point withEvent:event] || CGRectContainsPoint(outsetRect, point);
     return isInside;
 }
 
 @end
-

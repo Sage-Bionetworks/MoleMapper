@@ -22,12 +22,13 @@
     
     introStep.image = [UIImage imageNamed:@"moleRemovedDemo"];
     
-    ORKTextChoice *benign = [ORKTextChoice choiceWithText:@"Benign" detailText:@"No need for further re-excision or treatment" value:@"benign"];
-    ORKTextChoice *atypical = [ORKTextChoice choiceWithText:@"Atypical/pre-melanoma" detailText:@"Re-excision is needed to remove a larger area around the mole" value:@"atypical"];
-    ORKTextChoice *melanoma = [ORKTextChoice choiceWithText:@"Melanoma" detailText:@"Re-excision is needed and further treatment may be necessary" value:@"melanoma"];
-    ORKTextChoice *nonMelanomaSkinCancer = [ORKTextChoice choiceWithText:@"Non-melanoma skin cancer" detailText:@"Re-excision or further treatment may be necessary" value:@"nonMelanomaSkinCancer"];
-    ORKTextChoice *noFeedback = [ORKTextChoice choiceWithText:@"No biopsy report" detailText:@"You can request this information from your doctor and re-enter it here at any time" value:@"noFeedback"];
-    ORKTextChoice *forgot = [ORKTextChoice choiceWithText:@"I don't know" detailText:@"I did not understand or remember the details of the report" value:@"forgot"];
+    
+    ORKTextChoice *benign = [ORKTextChoice choiceWithText:@"Benign" detailText:@"No need for further re-excision or treatment" value:@"benign" exclusive:YES];
+    ORKTextChoice *atypical = [ORKTextChoice choiceWithText:@"Atypical/pre-melanoma" detailText:@"Re-excision is needed to remove a larger area around the mole" value:@"atypical" exclusive:YES];
+    ORKTextChoice *melanoma = [ORKTextChoice choiceWithText:@"Melanoma" detailText:@"Re-excision is needed and further treatment may be necessary" value:@"melanoma" exclusive:YES];
+    ORKTextChoice *nonMelanomaSkinCancer = [ORKTextChoice choiceWithText:@"Non-melanoma skin cancer" detailText:@"Re-excision or further treatment may be necessary" value:@"nonMelanomaSkinCancer" exclusive:YES];
+    ORKTextChoice *noFeedback = [ORKTextChoice choiceWithText:@"No biopsy report" detailText:@"You can request this information from your doctor and re-enter it here at any time" value:@"noFeedback" exclusive:YES];
+    ORKTextChoice *forgot = [ORKTextChoice choiceWithText:@"I don't know" detailText:@"I did not understand or remember the details of the report" value:@"forgot" exclusive:YES];
     
     NSArray *diagnosisChoices = @[benign,atypical,melanoma,nonMelanomaSkinCancer,noFeedback,forgot];
     

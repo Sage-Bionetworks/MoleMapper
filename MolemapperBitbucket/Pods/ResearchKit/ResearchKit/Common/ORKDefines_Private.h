@@ -28,7 +28,9 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import <ResearchKit/ORKDefines.h>
+
 
 #define STRONGTYPE(x) __strong __typeof(x)
 
@@ -37,8 +39,8 @@ ORK_EXTERN NSBundle *ORKBundle() ORK_AVAILABLE_DECL;
 #define ORKLocalizedString(key, comment) \
 [ORKBundle() localizedStringForKey:(key) value:@"" table:nil]
 
-#define ORKDynamicCast(x, c) ((c *) ([x isKindOfClass:[c class]] ? x : nil))
-
+#define ORKLocalizedStringFromNumber(number) \
+[NSNumberFormatter localizedStringFromNumber:number numberStyle:NSNumberFormatterNoStyle]
 
 ORK_EXTERN NSString *ORKTimeOfDayStringFromComponents(NSDateComponents *dateComponents) ORK_AVAILABLE_DECL;
 ORK_EXTERN NSDateComponents *ORKTimeOfDayComponentsFromString(NSString *string) ORK_AVAILABLE_DECL;

@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 pod 'AFNetworking', '~> 2.5'
 platform :ios, '8.0'
-pod 'ResearchKit', '~> 1.0'
+pod 'ResearchKit', '~> 1.2'
 platform :ios, '8.0'
 pod 'KLCPopup', :head
 platform :ios, '8.0'

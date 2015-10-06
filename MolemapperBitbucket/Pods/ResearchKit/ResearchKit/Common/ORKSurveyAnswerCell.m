@@ -29,10 +29,10 @@
  */
 
 
-
 #import "ORKSurveyAnswerCell.h"
 #import "ORKHelpers.h"
 #import "ORKSkin.h"
+
 
 @interface ORKSurveyAnswerCell ()
 
@@ -42,6 +42,7 @@
 
 @end
 
+
 @implementation ORKSurveyAnswerCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
@@ -49,17 +50,15 @@
                          step:(ORKQuestionStep *)step
                        answer:(id)answer
                      delegate:(id<ORKSurveyAnswerCellDelegate>)delegate {
-
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
     if (self) {
         _delegate = delegate;
         // Set _answer first to resolve the dependency loop between setStep and setAnswer.
         _answer = answer;
         self.step  = step;
         self.answer = answer;
+        self.clipsToBounds = YES;
     }
-    
     return self;
 }
 
@@ -69,7 +68,6 @@
 }
 
 - (void)prepareView {
-    
     if (self.textField != nil || self.textView != nil) {
         [self registerForKeyboardNotifications];
     }
@@ -114,33 +112,25 @@
 }
 
 - (void)showValidityAlertWithMessage:(NSString *)text {
-    
     [self.delegate answerCell:self invalidInputAlertWithMessage:text];
 }
 
 #pragma mark - KeyboardNotifications
 
 // Call this method somewhere in your view controller setup code.
-- (void)registerForKeyboardNotifications
-{
-    
+- (void)registerForKeyboardNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillAppear:)
                                                  name:UIKeyboardWillShowNotification object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-    
 }
 
-
 // Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWillAppear:(NSNotification *)aNotification
-{
-    
+- (void)keyboardWillAppear:(NSNotification *)aNotification {
     UIView *inputView = self.textView == nil ? self.textField : self.textView;
     
     if (inputView == nil) {
@@ -154,7 +144,7 @@
     _cachedScrollIndicatorInsets = tableView.scrollIndicatorInsets;
     
     NSDictionary *info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGSize kbSize = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     kbSize.height = kbSize.height-44;
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
@@ -170,8 +160,7 @@
     
     desiredOffset.y = cellFrame.origin.y - (availFrame.size.height/2);
     
-    if (availFrame.size.height > cellFrame.size.height)
-    {
+    if (availFrame.size.height > cellFrame.size.height) {
         desiredOffset.y = cellFrame.origin.y - (availFrame.size.height - cellFrame.size.height) - (cellFrame.size.height -55);
     }
     desiredOffset.y = MAX(desiredOffset.y,0);
@@ -180,8 +169,7 @@
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillHide:(NSNotification *)aNotification
-{
+- (void)keyboardWillHide:(NSNotification *)aNotification {
     UIView *inputView = self.textView == nil ? self.textField : self.textView;
     
     if (inputView == nil) {
@@ -213,9 +201,8 @@
 }
 
 + (CGFloat)suggestedCellHeightForView:(UIView *)view {
-    ORKScreenType screenType = ORKGetScreenTypeForWindow(view.window);
+    ORKScreenType screenType = ORKGetVerticalScreenTypeForWindow(view.window);
     return ORKGetMetricForScreenType(ORKScreenMetricTableCellDefaultHeight, screenType);
 }
-
 
 @end

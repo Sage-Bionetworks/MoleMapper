@@ -28,6 +28,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import "ORKTappingContentView.h"
 #import "ORKActiveStepTimer.h"
 #import "ORKResult.h"
@@ -35,6 +36,10 @@
 #import "ORKSubheadlineLabel.h"
 #import "ORKTapCountLabel.h"
 #import "ORKHelpers.h"
+
+
+// #define LAYOUT_DEBUG 1
+
 
 @interface ORKTappingContentView ()
 
@@ -44,17 +49,18 @@
 
 @end
 
+
 @implementation ORKTappingContentView {
    
     NSArray *_constraints;
     ORKScreenType _screenType;
     UIView *_buttonContainer;
+    NSNumberFormatter *_formatter;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        
         _screenType = ORKScreenTypeiPhone4;
         _tapCaptionLabel = [ORKSubheadlineLabel new];
         _tapCaptionLabel.textAlignment = NSTextAlignmentCenter;
@@ -94,6 +100,13 @@
         [self setNeedsUpdateConstraints];
         
         _tapCountLabel.accessibilityTraits |= UIAccessibilityTraitUpdatesFrequently;
+        
+#if LAYOUT_DEBUG
+        self.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+        self.tapCaptionLabel.backgroundColor = [UIColor orangeColor];
+        self.tapCountLabel.backgroundColor = [UIColor greenColor];
+        _buttonContainer.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.25];
+#endif
     }
      return self;
 }
@@ -104,7 +117,12 @@
 }
 
 - (void)setTapCount:(NSUInteger)tapCount {
-    _tapCountLabel.text = [NSString stringWithFormat:@"%02lu", (unsigned long)tapCount];
+    if (_formatter == nil) {
+        _formatter = [NSNumberFormatter new];
+        _formatter.locale = [NSLocale currentLocale];
+        _formatter.minimumIntegerDigits = 2;
+    }
+    _tapCountLabel.text = [_formatter stringFromNumber:@(tapCount)];
 }
 
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated {
@@ -129,8 +147,23 @@
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
     [super willMoveToWindow:newWindow];
-    _screenType = ORKGetScreenTypeForWindow(newWindow);
+    _screenType = ORKGetVerticalScreenTypeForWindow(newWindow);
     [self setNeedsUpdateConstraints];
+}
+
+- (void)updateLayoutMargins {
+    CGFloat margin = ORKStandardHorizontalMarginForView(self);
+    self.layoutMargins = (UIEdgeInsets) { .left=margin*2, .right=margin*2 };
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    [self updateLayoutMargins];
+}
+
+- (void)setBounds:(CGRect)bounds {
+    [super setBounds:bounds];
+    [self updateLayoutMargins];
 }
 
 - (void)updateConstraints {
@@ -142,11 +175,20 @@
     ORKScreenType screenType = _screenType;
     const CGFloat HeaderBaselineToCaptionTop = ORKGetMetricForScreenType(ORKScreenMetricCaptionBaselineToTappingLabelTop, screenType);
     const CGFloat AssumedHeaderBaselineToStepViewTop = ORKGetMetricForScreenType(ORKScreenMetricLearnMoreBaselineToStepViewTop, screenType);
-    CGFloat margin = ORKStandardMarginForView(self);
-    self.layoutMargins = (UIEdgeInsets) { .left=margin*2, .right=margin*2 };
     
     static const CGFloat CaptionBaselineToTapCountBaseline = 56;
     static const CGFloat TapButtonBottomToBottom = 36;
+    
+    // On the iPhone, _progressView is positioned outside the bounds of this view, to be in-between the header and this view.
+    // On the iPad, we want to stretch this out a bit so it feels less compressed.
+    CGFloat progressViewOffset, topCaptionLabelOffset;
+    if (screenType == ORKScreenTypeiPad) {
+        progressViewOffset = 0;
+        topCaptionLabelOffset = AssumedHeaderBaselineToStepViewTop;
+    } else {
+        progressViewOffset = (HeaderBaselineToCaptionTop/3) - AssumedHeaderBaselineToStepViewTop;
+        topCaptionLabelOffset = HeaderBaselineToCaptionTop - AssumedHeaderBaselineToStepViewTop;
+    }
     
     NSMutableArray *constraints = [NSMutableArray array];
     
@@ -156,14 +198,14 @@
                                                         relatedBy:NSLayoutRelationEqual
                                                            toItem:self
                                                         attribute:NSLayoutAttributeTop
-                                                       multiplier:1 constant:(HeaderBaselineToCaptionTop/3) - AssumedHeaderBaselineToStepViewTop]];
+                                                       multiplier:1 constant:progressViewOffset]];
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:_tapCaptionLabel
                                                         attribute:NSLayoutAttributeTop
                                                         relatedBy:NSLayoutRelationEqual
                                                            toItem:self
                                                         attribute:NSLayoutAttributeTop
-                                                       multiplier:1 constant:(HeaderBaselineToCaptionTop - AssumedHeaderBaselineToStepViewTop)]];
+                                                       multiplier:1 constant:topCaptionLabelOffset]];
     
     [constraints addObject:[NSLayoutConstraint constraintWithItem:_tapCountLabel
                                                         attribute:NSLayoutAttributeFirstBaseline
@@ -231,7 +273,6 @@
                                                         attribute:NSLayoutAttributeCenterY
                                                        multiplier:1 constant:0]];
 
-    
     
     _constraints = constraints;
     [self addConstraints:_constraints];

@@ -31,9 +31,11 @@
 
 #import <ResearchKit/ORKStep.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class ORKAnswerFormat;
+@class ORKFormItem;
 
 /**
  The `ORKFormStep` class is a concrete subclass of `ORKStep`, used for presenting multiple questions
@@ -73,9 +75,10 @@ ORK_CLASS_AVAILABLE
  A form step that contains no items is considered invalid and an exception will be thrown
  when it is presented.
  */
-@property (nonatomic, copy, nullable) NSArray *formItems;
+@property (nonatomic, copy, nullable) NSArray<ORKFormItem *> *formItems;
 
 @end
+
 
 /**
  The `ORKFormItem` class represents a single item in a form step (`ORKFormStep`), and typically
@@ -130,7 +133,6 @@ ORK_CLASS_AVAILABLE
  
  If the descriptive text is sufficiently short, you can display it as a prompt next to the item.
  If it is too long to display next to the item, you can display it above the item.
- 
  */
 @property (nonatomic, copy, readonly, nullable) NSString *text;
 
@@ -139,7 +141,6 @@ ORK_CLASS_AVAILABLE
  
  You can display placeholder text in a text field or text area to help users understand how to answer the
  item's question. A placeholder string is not appropriate for choice-based answer formats.
- 
  */
 @property (nonatomic, copy, nullable) NSString *placeholder;
 

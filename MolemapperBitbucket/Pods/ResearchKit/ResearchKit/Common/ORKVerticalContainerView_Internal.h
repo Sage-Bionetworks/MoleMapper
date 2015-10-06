@@ -28,18 +28,19 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #import "ORKVerticalContainerView.h"
 #import "ORKSkin.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ORKVerticalContainerView ()
 
-@property (nonatomic, readonly) ORKScreenType screenType;
+@property (nonatomic, readonly) ORKScreenType verticalScreenType;
 
 - (void)updateConstraintConstants;
 
 @end
-
 
 NS_ASSUME_NONNULL_END
