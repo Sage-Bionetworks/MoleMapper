@@ -16,5 +16,6 @@
 @property BOOL shouldShowSharingOptions;
 @property BOOL shouldShowReviewConsent;
 @property BOOL shouldShowExternalID;
+@property BOOL shouldShowFeedback;
 
 @end

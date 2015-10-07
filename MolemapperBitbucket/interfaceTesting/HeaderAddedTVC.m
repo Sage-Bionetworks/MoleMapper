@@ -8,6 +8,8 @@
 
 #import "HeaderAddedTVC.h"
 #import "AppDelegate.h"
+#import "FeedbackRKModule.h"
+#import "ProfileRKLaunchPad.h"
 
 @implementation HeaderAddedTVC
 
@@ -21,6 +23,15 @@
     if (indexPath.section == 3)
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ohsu.edu/xd/health/services/dermatology/melanoma-community-registry/"]];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"feedback"])
+    {
+        ProfileRKLaunchPad *destVC = (ProfileRKLaunchPad *)[segue destinationViewController];
+        destVC.shouldShowFeedback = YES;
     }
 }
 

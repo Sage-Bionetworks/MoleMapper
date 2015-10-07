@@ -18,25 +18,21 @@
     ORKInstructionStep *introStep =
     [[ORKInstructionStep alloc] initWithIdentifier:@"intro"];
     introStep.title = @"Mole Removal Followup";
-    introStep.text = @"We would like to ask you about the results of your mole removal. If you do not have a report from your doctor yet, you can return at any time by tapping the icon highlighted below.";
+    introStep.text = @"We would like to ask you about the results of your mole removal. If you do not have the results from your doctor yet, you can return at any time by tapping the icon highlighted below.";
     
     introStep.image = [UIImage imageNamed:@"moleRemovedDemo"];
     
     
-    ORKTextChoice *benign = [ORKTextChoice choiceWithText:@"Benign" detailText:@"No need for further re-excision or treatment" value:@"benign" exclusive:YES];
-    ORKTextChoice *atypical = [ORKTextChoice choiceWithText:@"Atypical/pre-melanoma" detailText:@"Re-excision is needed to remove a larger area around the mole" value:@"atypical" exclusive:YES];
-    ORKTextChoice *melanoma = [ORKTextChoice choiceWithText:@"Melanoma" detailText:@"Re-excision is needed and further treatment may be necessary" value:@"melanoma" exclusive:YES];
-    ORKTextChoice *nonMelanomaSkinCancer = [ORKTextChoice choiceWithText:@"Non-melanoma skin cancer" detailText:@"Re-excision or further treatment may be necessary" value:@"nonMelanomaSkinCancer" exclusive:YES];
-    ORKTextChoice *noFeedback = [ORKTextChoice choiceWithText:@"No biopsy report" detailText:@"You can request this information from your doctor and re-enter it here at any time" value:@"noFeedback" exclusive:YES];
-    ORKTextChoice *forgot = [ORKTextChoice choiceWithText:@"I don't know" detailText:@"I did not understand or remember the details of the report" value:@"forgot" exclusive:YES];
+    ORKTextChoice *benign = [ORKTextChoice choiceWithText:@"No" detailText:@"No additional surgery was needed after my mole biopsy" value:@"benign" exclusive:YES];
+    ORKTextChoice *reExcision = [ORKTextChoice choiceWithText:@"Yes" detailText:@"Additional surgery was needed to remove a larger area around the mole" value:@"reExcision" exclusive:YES];
+    ORKTextChoice *unknown = [ORKTextChoice choiceWithText:@"Unknown" detailText:@"The results from this mole biopsy are not back yet" value:@"unknown" exclusive:YES];
     
-    NSArray *diagnosisChoices = @[benign,atypical,melanoma,nonMelanomaSkinCancer,noFeedback,forgot];
+    NSArray *diagnosisChoices = @[benign,reExcision,unknown];
     
     ORKTextChoiceAnswerFormat *diagnosis = [ORKAnswerFormat choiceAnswerFormatWithStyle:ORKChoiceAnswerStyleMultipleChoice textChoices:diagnosisChoices];
-    //ORKValuePickerAnswerFormat *diagnosis =
-    //[ORKValuePickerAnswerFormat valuePickerAnswerFormatWithTextChoices:diagnosisChoices];
+    
     ORKQuestionStep *diagnosisStep = [ORKQuestionStep questionStepWithIdentifier:@"diagnosis"
-                                                                            title:@"What was the diagnosis from your doctor after your mole removal?"
+                                                                            title:@"Did you need to have any additional surgery after your mole was removed?"
                                                                            answer:diagnosis];
     ORKInstructionStep *sitePhotoStep = [[ORKInstructionStep alloc] initWithIdentifier:@"sitePhoto"];
     sitePhotoStep.title = @"Biopsy Site Photo";

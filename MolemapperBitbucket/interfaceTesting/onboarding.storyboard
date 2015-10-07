@@ -1109,7 +1109,7 @@ will be sent to you for your records.</string>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="1b9-0U-szp"/>
                                     <constraint firstItem="KqU-ml-LBq" firstAttribute="top" secondItem="X5u-YW-zmN" secondAttribute="top" constant="27" id="1nx-43-NXj"/>
@@ -1159,7 +1159,7 @@ will be sent to you for your records.</string>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Join Study">
-                                            <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="joinStudyTapped:" destination="whd-nO-fiI" eventType="touchUpInside" id="UPY-E3-ypx"/>
@@ -1171,8 +1171,10 @@ will be sent to you for your records.</string>
                                             <constraint firstAttribute="width" constant="288" id="iEa-Zh-IDH"/>
                                             <constraint firstAttribute="height" constant="30" id="kek-iZ-Kb8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="Not ready to join study yet?"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Not ready to join the study yet?">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="notReadyToJoinTapped:" destination="whd-nO-fiI" eventType="touchUpInside" id="nJy-X8-gkf"/>
                                         </connections>
@@ -1185,7 +1187,7 @@ will be sent to you for your records.</string>
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="7Vg-2x-awJ" secondAttribute="bottom" constant="8" id="41u-50-Uhs"/>
                                     <constraint firstAttribute="trailing" secondItem="Op4-Vw-kdK" secondAttribute="trailing" id="A3z-zh-xhS"/>
@@ -1228,6 +1230,7 @@ will be sent to you for your records.</string>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="joinStudyButton" destination="Grm-9b-wAe" id="B4v-Xv-2gA"/>
                         <outlet property="onboardingCollectionView" destination="khC-Dr-PcU" id="8EO-88-kFa"/>
                         <outlet property="pageControll" destination="yLp-Fd-i7b" id="hNx-cE-2Cl"/>
                     </connections>

@@ -1,1 +1,0 @@
-PODS_ZIPZAP_OTHER_LDFLAGS = -l"z" -framework "Foundation" -framework "ImageIO"

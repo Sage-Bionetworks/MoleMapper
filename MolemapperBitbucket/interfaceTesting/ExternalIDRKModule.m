@@ -38,7 +38,6 @@
     ORKOrderedTask *task =
     [[ORKOrderedTask alloc] initWithIdentifier:@"externalID"
                                          steps:@[externalIDInfo]];
-
     
     // Create a task view controller using the task and set a delegate.
     ORKTaskViewController *taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];

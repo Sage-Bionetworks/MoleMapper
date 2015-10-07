@@ -255,6 +255,7 @@
     APCButton *acceptDemoButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
                                                              withLabel:@"Sure!"
                                                         withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
+    
     APCButton *rejectDemoButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
                                                                 withLabel:@"No Thanks"
                                                            withEdgeInsets:UIEdgeInsetsMake(10, 28, 10, 28)];
@@ -283,7 +284,6 @@
                                              options:0
                                              metrics:nil
                                                views:views]];
-    
     
     KLCPopup* popup = [KLCPopup popupWithContentView:contentView
                                             showType:(KLCPopupShowType)KLCPopupShowTypeSlideInFromRight

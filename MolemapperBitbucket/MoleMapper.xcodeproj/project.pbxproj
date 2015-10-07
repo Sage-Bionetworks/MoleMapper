@@ -114,6 +114,7 @@
 		E6883BA41B95E65000F5A9A5 /* APCCMS.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883BA31B95E65000F5A9A5 /* APCCMS.m */; };
 		E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */ = {isa = PBXBuildFile; fileRef = E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */; };
 		E688C92E186A049500E70BBA /* ReferenceSetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */; };
+		E68CC2621BC4CF6500FB81D6 /* FeedbackRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E68CC2611BC4CF6500FB81D6 /* FeedbackRKModule.m */; settings = {ASSET_TAGS = (); }; };
 		E691FE5A187A560300028548 /* learnMoreViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = E691FE59187A560300028548 /* learnMoreViewContoller.m */; };
 		E692C1B91BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */; settings = {ASSET_TAGS = (); }; };
 		E692C1CC1BC1623100BE9111 /* APCAppearanceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1C71BC1623100BE9111 /* APCAppearanceInfo.m */; settings = {ASSET_TAGS = (); }; };
@@ -457,6 +458,8 @@
 		E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roundedRectButtonBackground3.png; path = moleMapper.xcassets/roundedRectButtonBackground3.imageset/roundedRectButtonBackground3.png; sourceTree = "<group>"; };
 		E688C92C186A049500E70BBA /* ReferenceSetterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceSetterViewController.h; sourceTree = "<group>"; };
 		E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceSetterViewController.m; sourceTree = "<group>"; };
+		E68CC2601BC4CF6500FB81D6 /* FeedbackRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackRKModule.h; sourceTree = "<group>"; };
+		E68CC2611BC4CF6500FB81D6 /* FeedbackRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackRKModule.m; sourceTree = "<group>"; };
 		E691FE58187A560300028548 /* learnMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = learnMoreViewController.h; sourceTree = "<group>"; };
 		E691FE59187A560300028548 /* learnMoreViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = learnMoreViewContoller.m; sourceTree = "<group>"; };
 		E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf"; sourceTree = "<group>"; };
@@ -907,14 +910,8 @@
 				E6944601198B130E003DD7BD /* HelpMovieViewController.m */,
 				E62CB4C71895AF1A0045ED4A /* SettingsViewController.h */,
 				E62CB4C81895AF1A0045ED4A /* SettingsViewController.m */,
-				E691FE58187A560300028548 /* learnMoreViewController.h */,
-				E691FE59187A560300028548 /* learnMoreViewContoller.m */,
-				4BFF617C1BAC9BFE00FE7853 /* HeaderAddedTVC.h */,
-				4BFF617D1BAC9BFE00FE7853 /* HeaderAddedTVC.m */,
 				E688C92C186A049500E70BBA /* ReferenceSetterViewController.h */,
 				E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */,
-				E604453618568AFA00AD75A1 /* StatisticsTVC.h */,
-				E604453718568AFA00AD75A1 /* StatisticsTVC.m */,
 				E64808141820D43700A7E644 /* ComparisonPageViewController.h */,
 				E64808151820D43700A7E644 /* ComparisonPageViewController.m */,
 				E64808171820E5D400A7E644 /* MeasurementComparsionViewController.h */,
@@ -981,6 +978,21 @@
 			name = APC;
 			sourceTree = "<group>";
 		};
+		E68CC25F1BC4CEDC00FB81D6 /* Learn More */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF617C1BAC9BFE00FE7853 /* HeaderAddedTVC.h */,
+				4BFF617D1BAC9BFE00FE7853 /* HeaderAddedTVC.m */,
+				E691FE58187A560300028548 /* learnMoreViewController.h */,
+				E691FE59187A560300028548 /* learnMoreViewContoller.m */,
+				E604453618568AFA00AD75A1 /* StatisticsTVC.h */,
+				E604453718568AFA00AD75A1 /* StatisticsTVC.m */,
+				E68CC2601BC4CF6500FB81D6 /* FeedbackRKModule.h */,
+				E68CC2611BC4CF6500FB81D6 /* FeedbackRKModule.m */,
+			);
+			name = "Learn More";
+			sourceTree = "<group>";
+		};
 		E6F93E7416DB273A0068B7B6 = {
 			isa = PBXGroup;
 			children = (
@@ -1043,10 +1055,11 @@
 				E6883B7C1B95D36600F5A9A5 /* Data */,
 				43D993281BA506470077073D /* Dashboard */,
 				E62A0D591BB8C18C005FF87B /* Followup */,
+				E6537EEC1B8022B800B38331 /* Helpers */,
+				E68CC25F1BC4CEDC00FB81D6 /* Learn More */,
+				E6537EEB1B80223400B38331 /* MoleMeasurement */,
 				E6537EE71B801D5C00B38331 /* Onboarding */,
 				4BFF615E1BAC95AF00FE7853 /* Profile */,
-				E6537EEC1B8022B800B38331 /* Helpers */,
-				E6537EEB1B80223400B38331 /* MoleMeasurement */,
 				E6537EE91B80213A00B38331 /* ThirdParty */,
 				E6F93E8A16DB273B0068B7B6 /* Supporting Files */,
 			);
@@ -1367,6 +1380,7 @@
 				E6883BA41B95E65000F5A9A5 /* APCCMS.m in Sources */,
 				E6F7516F17BA9AF500A7AB5A /* VariableStore.m in Sources */,
 				4BFF61861BAC9BFE00FE7853 /* BlockOfTextViewController.m in Sources */,
+				E68CC2621BC4CF6500FB81D6 /* FeedbackRKModule.m in Sources */,
 				E6883B871B95D43E00F5A9A5 /* NSError+APCAdditions.m in Sources */,
 				4BFF616C1BAC992100FE7853 /* ReviewConsentOnlyRKModule.m in Sources */,
 				380B921E1BAC50700026D052 /* DashboardMolyEstZone.m in Sources */,
@@ -1541,6 +1555,7 @@
 					"values>/**",
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/**";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "interfaceTesting/MoleMapper-Prefix.pch";
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
@@ -1577,6 +1592,7 @@
 					"values>/**",
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/**";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "interfaceTesting/MoleMapper-Prefix.pch";
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;

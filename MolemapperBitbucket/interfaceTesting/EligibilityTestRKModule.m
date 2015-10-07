@@ -37,8 +37,29 @@
     [[ORKTaskViewController alloc] initWithTask:eligibleTask taskRunUUID:nil];
     taskViewController.delegate = self;
     taskViewController.showsProgressInNavigationBar = NO;
-    [self.presentingVC presentViewController:taskViewController animated:YES completion:nil];
     
+    [self.presentingVC presentViewController:taskViewController animated:YES completion:^(){
+    }];
+    
+}
+
+- (void)taskViewController:(ORKTaskViewController *)taskViewController
+stepViewControllerWillAppear:(ORKStepViewController *)stepViewController {
+    
+    /* Keeping solution from here (https://github.com/ResearchKit/ResearchKit/issues/328) as reference
+    if ([stepViewController.step.identifier isEqualToString: @"qid_001"]) {
+     
+         Example of customizing the back and cancel buttons in a way that's
+         visibly obvious.
+     
+        stepViewController.backButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back1"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:stepViewController.backButtonItem.target
+                                                                            action:stepViewController.backButtonItem.action];
+        stepViewController.cancelButtonItem = nil;
+    }
+    */
+    stepViewController.cancelButtonItem = nil;
 }
 
 - (void)taskViewController:(ORKTaskViewController *)taskViewController

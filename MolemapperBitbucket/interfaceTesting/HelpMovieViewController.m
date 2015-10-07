@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Help Demo";
+    self.title = @"Measurement Demo";
     // Do any additional setup after loading the view.
 }
 
@@ -40,7 +40,7 @@
 -(void)playMovie:(id)sender
 {
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:self.helpMovieName ofType:@"mov"]]];
-    self.moviePlayer.controlStyle = MPMovieControlStyleNone;
+    self.moviePlayer.controlStyle = MPMovieControlStyleDefault;
     CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
     CGFloat statusBarHeight = 20;
     CGFloat vertOffset = navBarHeight + statusBarHeight;
@@ -50,9 +50,12 @@
                                    self.view.frame.size.height - vertOffset);
     [self.moviePlayer.view setFrame:movieFrame];
     [self.moviePlayer play];
+    
     [self.view addSubview:self.moviePlayer.view];
     
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

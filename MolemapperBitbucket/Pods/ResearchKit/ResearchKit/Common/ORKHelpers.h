@@ -137,11 +137,13 @@ NSString *ORKSignatureStringFromDate(NSDate *date);
 
 NSURL *ORKCreateRandomBaseURL();
 
-#if defined(DEBUG) && DEBUG
-#  define ORK_Log_Debug(fmt,...) NSLog(@"%s %d " fmt, __PRETTY_FUNCTION__, __LINE__, ## __VA_ARGS__)
-#else
+
+//#if defined(DEBUG) && DEBUG
+//#  define ORK_Log_Debug(fmt,...) NSLog(@"%s %d " fmt, __PRETTY_FUNCTION__, __LINE__, ## __VA_ARGS__)
+//#else
 #  define ORK_Log_Debug(...)
-#endif
+//#endif
+
 
 #define ORK_Log_Oops(fmt,...) NSLog(@"[ORK][OOPS] %s %d " fmt, __PRETTY_FUNCTION__, __LINE__, ## __VA_ARGS__)
 

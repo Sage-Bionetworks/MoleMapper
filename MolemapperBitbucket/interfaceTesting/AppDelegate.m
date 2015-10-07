@@ -53,7 +53,7 @@
     
     [self renameLegacyStoredFilenamesInCoreData];
     
-    [self setOnboardingBooleansBackToInitialValues];
+    //[self setOnboardingBooleansBackToInitialValues];
 
 //Do we want to try to send any unsent measurements here upon launch? Same for surveys?
 //[self.bridgeManager signInAndSendMeasurements];

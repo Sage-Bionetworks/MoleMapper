@@ -11,12 +11,14 @@
 #import "SharingOptionsOnlyRKModule.h"
 #import "ReviewConsentOnlyRKModule.h"
 #import "ExternalIDRKModule.h"
+#import "FeedbackRKModule.h"
 
 @interface ProfileRKLaunchPad ()
 
 @property (nonatomic, strong) SharingOptionsOnlyRKModule *sharingModule;
 @property (nonatomic, strong) ReviewConsentOnlyRKModule *consentOnlyModule;
 @property (nonatomic, strong) ExternalIDRKModule *externalIDModule;
+@property (nonatomic, strong) FeedbackRKModule *feedbackModule;
 
 @end
 
@@ -44,6 +46,13 @@
         self.externalIDModule = [[ExternalIDRKModule alloc] init];
         self.externalIDModule.presentingVC = self;
         [self.externalIDModule showExternalID];
+    }
+    else if (self.shouldShowFeedback)
+    {
+        self.shouldShowExternalID = NO;
+        self.feedbackModule = [[FeedbackRKModule alloc] init];
+        self.feedbackModule.presentingVC = self;
+        [self.feedbackModule showFeedback];
     }
     else
     {

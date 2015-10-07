@@ -12,8 +12,11 @@
 #import "AFNetworking.h"
 #import "AppDelegate.h"
 #import "InvolveCollectionViewCell.h"
+#import "APCButton.h"
 
 @interface WelcomeCarouselViewController ()
+
+@property (weak, nonatomic) IBOutlet APCButton *joinStudyButton;
 
 @end
 
@@ -23,6 +26,9 @@
     [super viewDidLoad];
     
     _cellContainer = [[NSMutableArray alloc] init];
+    
+    self.joinStudyButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    [self.joinStudyButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
     //_cellContainer
     
