@@ -19,6 +19,9 @@
 
 +(UILabel *)labelForDemoWithFontSize:(float)fontSize andText:(NSString *)text;
 
-+(APCButton *)buttonForDemoWithColor:(UIColor *)color withLabel:(NSString *)label  withEdgeInsets:(UIEdgeInsets)insets;
++(APCButton *)buttonForDemoWithColor:(UIColor *)color withLabel:(NSString *)label withEdgeInsets:(UIEdgeInsets)insets;
+
++(UIButton *)demoOffButtonWithColor:(UIColor *)color withLabel:(NSString *)label;
+
 
 @end

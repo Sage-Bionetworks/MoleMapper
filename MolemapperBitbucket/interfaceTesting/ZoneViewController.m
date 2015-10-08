@@ -278,19 +278,6 @@
     [self.popTipViewExport presentPointingAtBarButtonItem:self.exportButton animated:YES];
 }
 
-/*
--(void)showPopTipViewMovePin
-{
-    NSString *message = @"Move the pin crosshairs\nover a mole";
-    if ([self.molePinsOnImage objectAtIndex:0] != nil)
-    {
-        self.popTipViewPinTap = [[CMPopTipView alloc] initWithMessage:message];
-        self.popTipViewPinTap.delegate = self;
-        [self.popTipViewPinTap presentPointingAtBarButtonItem:self.addMolePin animated:YES];
-    }
-}
- */
-
 -(void)showPopTipViewGoToMeasure:(UIView *)viewToPointAt
 {
     NSString *message = @"Tap to measure\nthis mole";
@@ -308,7 +295,7 @@
 }
 
 //Only Delegate method for CMPopTipView
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
+-(void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
     // User can tap CMPopTipView to dismiss it
     popTipView = nil;
 }
@@ -327,19 +314,17 @@
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
     NSString *headerText = @"Step 1: Map it";
-    NSString *descriptionText = @"Now that you are in a zone, take a photo of the whole area by tapping the camera. This photo might include many moles.";
+    NSString *descriptionText = @"Take a photo of the whole area by tapping the camera. This photo might include many moles.";
     UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoPhoto"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
-    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    //UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
     APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
                                                              withLabel:@"Next"
                                                         withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
-    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
-                                                                withLabel:@"Stop Demo"
-                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
+    UIButton *demoOffButton = [DemoKLCPopupHelper demoOffButtonWithColor:mmBlue withLabel:@"Turn Off Demonstration"];
     
     [nextButton addTarget:self action:@selector(nextButtonPressedPhoto:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -353,7 +338,7 @@
     NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header,nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(5)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
@@ -378,19 +363,17 @@
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
     NSString *headerText = @"Step 1: Map it";
-    NSString *descriptionText = @"Great photo! Now, map where your moles are by adding a pin. Then drag that pin over to a mole.";
+    NSString *descriptionText = @"Map where your moles are by adding a pin. Then drag that pin over to a mole.";
     UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoDragPin"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
-    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    //UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
     APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
                                                              withLabel:@"Next"
                                                         withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
-    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
-                                                                withLabel:@"Stop Demo"
-                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
+    UIButton *demoOffButton = [DemoKLCPopupHelper demoOffButtonWithColor:mmBlue withLabel:@"Turn Off Demonstration"];
     
     [nextButton addTarget:self action:@selector(nextButtonPressedDrag:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -403,7 +386,7 @@
     NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(5)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
@@ -429,19 +412,17 @@
 {
     UIView *contentView = [DemoKLCPopupHelper contentViewForDemo];
     NSString *headerText = @"Step 2: Measure it";
-    NSString *descriptionText = @"To measure a mole, tap a mole pin and then the measurement icon";
+    NSString *descriptionText = @"Tap a mole pin and then the measurement icon to measure a mole.";
     UILabel *header = [DemoKLCPopupHelper labelForDemoWithFontSize:24.0 andText:headerText];
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:16.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoMeasure"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
-    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    //UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
     APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
                                                              withLabel:@"Next"
                                                         withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
-    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
-                                                                withLabel:@"Stop Demo"
-                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
+    UIButton *demoOffButton = [DemoKLCPopupHelper demoOffButtonWithColor:mmBlue withLabel:@"Turn Off Demonstration"];
     
     [nextButton addTarget:self action:@selector(nextButtonPressedMeasure:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -454,7 +435,7 @@
     NSDictionary* views = NSDictionaryOfVariableBindings(contentView, header, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(10)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[demoImage]-(0)-[header]-(5)-[description]-(10)-[nextButton]-(10)-[demoOffButton]-(5)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];

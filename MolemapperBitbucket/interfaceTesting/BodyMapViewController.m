@@ -198,46 +198,6 @@
     return self.containerView;
 }
 
-/*
-#pragma mark CMPopTipView methods
-- (void)showPopTipViewWelcome
-{
-    NSString *message = @"Tap on a zone of the body\nto add photos";
-    CGRect  viewRect = CGRectMake(0, 0, self.view.bounds.size.width, 0);
-    UIView *viewToPointAt = [[UIView alloc] initWithFrame:viewRect];
-    viewToPointAt.hidden = YES;
-    [self.containerView addSubview:viewToPointAt];
-    self.popTipViewWelcome = [[CMPopTipView alloc] initWithMessage:message];
-    self.popTipViewWelcome.delegate = self;
-    [self.popTipViewWelcome presentPointingAtView:viewToPointAt inView:self.containerView animated:YES];
-}
-
--(void)showPopTipViewGreyedOut
-{
-    NSString *message = @"Dimmed zones don't\nhave photos yet.";
-    CGRect  viewRect = CGRectMake(175, 250, 130, 0);
-    UIView *viewToPointAt = [[UIView alloc] initWithFrame:viewRect];
-    viewToPointAt.hidden = YES;
-    [self.containerView addSubview:viewToPointAt];
-    self.popTipViewOpaque = [[CMPopTipView alloc] initWithMessage:message];
-    self.popTipViewOpaque.delegate = self;
-    [self.popTipViewOpaque presentPointingAtView:viewToPointAt inView:self.containerView animated:YES];
-}
-
-//Only Delegate method for CMPopTipView
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
-    // User can tap CMPopTipView to dismiss it
-    popTipView = nil;
-}
-
-//Cycles through the popTip properties and dismisses them
--(void)dismissAllPopTipViews
-{
-    [self.popTipViewOpaque dismissAnimated:YES];
-    [self.popTipViewWelcome dismissAnimated:YES];
-}
- */
-
 #pragma mark KLCPopup
 - (void)showWelcomePopup:(id)sender
 {
@@ -250,15 +210,18 @@
     UILabel *activateLaterLabel = [DemoKLCPopupHelper labelForDemoWithFontSize:20.0 andText:activateLaterText];
     
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
-    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    //UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
     APCButton *acceptDemoButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
                                                              withLabel:@"Sure!"
                                                         withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
     
-    APCButton *rejectDemoButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+    /*APCButton *rejectDemoButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
                                                                 withLabel:@"No Thanks"
                                                            withEdgeInsets:UIEdgeInsetsMake(10, 28, 10, 28)];
+    */
+    
+    UIButton *rejectDemoButton = [DemoKLCPopupHelper demoOffButtonWithColor:mmBlue withLabel:@"Turn Off Demonstration"];
     
     [acceptDemoButton addTarget:self action:@selector(acceptDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [rejectDemoButton addTarget:self action:@selector(rejectDemoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -274,11 +237,12 @@
     NSDictionary* views = NSDictionaryOfVariableBindings(contentView, demoImage, acceptDemoButton, rejectDemoButton, welcomeLabel, activateLaterLabel);
     
     [contentView addConstraints:
-    [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[demoImage]-(16)-[welcomeLabel]-(24)-[activateLaterLabel]-(24)-[acceptDemoButton]-[rejectDemoButton]-(16)-|"
+    
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[demoImage]-(16)-[welcomeLabel]-(24)-[activateLaterLabel]-(24)-[acceptDemoButton]-(10)-[rejectDemoButton]-(5)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
-     
+    
     [contentView addConstraints:
      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[welcomeLabel]-(10)-|"
                                              options:0
@@ -304,14 +268,17 @@
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:20.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blankPlaceHolder"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
-    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    //UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
     APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
                                                              withLabel:@"Next"
                                                         withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
-    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
+    
+    /*APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
                                                                 withLabel:@"Stop Demo"
-                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
+                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];*/
+    
+    UIButton *demoOffButton = [DemoKLCPopupHelper demoOffButtonWithColor:mmBlue withLabel:@"Turn Off Demonstration"];
     
     [nextButton addTarget:self action:@selector(demoThreeStepNextPressed:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -325,7 +292,7 @@
     NSDictionary* views = NSDictionaryOfVariableBindings(contentView, demoImage, description, header,nextButton, demoOffButton);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[header]-(20)-[description]-(20)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[header]-(20)-[description]-(20)-[nextButton]-(10)-[demoOffButton]-(5)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
@@ -353,14 +320,13 @@
     UILabel *description = [DemoKLCPopupHelper labelForDemoWithFontSize:20.0 andText:descriptionText];
     UIImageView *demoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoTapOnZone"]];
     UIColor *mmBlue = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:1.0 alpha:1.0];
-    UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
+    //UIColor *mmRed = [UIColor colorWithRed:(225.0/255.0) green:(25.0/255.0) blue:(25.0/255.0) alpha:0.75];
     
     APCButton *nextButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmBlue
                                                              withLabel:@"Next"
                                                         withEdgeInsets:UIEdgeInsetsMake(10, 50, 10, 50)];
-    APCButton *demoOffButton = [DemoKLCPopupHelper buttonForDemoWithColor:mmRed
-                                                                withLabel:@"Stop Demo"
-                                                           withEdgeInsets:UIEdgeInsetsMake(10, 25, 10, 25)];
+    
+    UIButton *demoOffButton = [DemoKLCPopupHelper demoOffButtonWithColor:mmBlue withLabel:@"Turn Off Demonstration"];
     
     [nextButton addTarget:self action:@selector(demoTapOnZoneNextPressed:) forControlEvents:UIControlEventTouchUpInside];
     [demoOffButton addTarget:self action:@selector(demoOffButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -371,11 +337,10 @@
     NSDictionary* views = NSDictionaryOfVariableBindings(contentView, nextButton, demoImage, demoOffButton, description);
     
     [contentView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(16)-|"
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(20)-[demoImage]-(0)-[description]-(16)-[nextButton]-(10)-[demoOffButton]-(5)-|"
                                              options:NSLayoutFormatAlignAllCenterX
                                              metrics:nil
                                                views:views]];
-    
     [contentView addConstraints:
      [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[description]-(10)-|"
                                              options:0

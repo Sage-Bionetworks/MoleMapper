@@ -45,4 +45,17 @@
     return button;
 }
 
++(UIButton *)demoOffButtonWithColor:(UIColor *)color withLabel:(NSString *)label
+{
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    button.layer.borderColor = [[UIColor clearColor] CGColor];
+    button.contentEdgeInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
+    [button setTitleColor:color forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
+    [button setTitle:label forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    return button;
+}
+
 @end

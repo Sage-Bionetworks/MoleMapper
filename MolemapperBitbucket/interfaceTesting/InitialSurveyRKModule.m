@@ -169,7 +169,7 @@
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
             [ud setValue:dateOfLastSurveyCompleted forKey:@"dateOfLastSurveyCompleted"];
             [ud setBool:YES forKey:@"showDemoInfo"];
-            
+            [ud setBool:NO forKey:@"shouldShowOnboarding"];
             NSDictionary *parsedData = [self parsedDataFromTaskResult:taskResult];
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             

@@ -89,10 +89,9 @@
 {
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     NSString *emailForExport = self.emailForExport.text;
-    if (![emailForExport isEqualToString:@""])
-    {
-        [standardUserDefaults setValue:emailForExport forKey:@"emailForExport"];
-    }
+    
+    [standardUserDefaults setValue:emailForExport forKey:@"emailForExport"];
+    
     NSString *selectedGender = self.gender[self.genderSegmentedControl.selectedSegmentIndex];
     [standardUserDefaults setValue:selectedGender forKey:@"moleNameGender"];
 }
