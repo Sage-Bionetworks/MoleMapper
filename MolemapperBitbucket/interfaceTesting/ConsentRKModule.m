@@ -209,12 +209,14 @@
             [ad showOnboarding];
             break;
             
-#pragma warning Make PDF and store here
-            
-            //[self.consentDocument makePDFWithCompletionHandler:^(NSData *pdfData, NSError *error)
-            //{
-            // Write the PDF data to disk, email it, display it, or send it to a server.
-            //}];
+            //This will be used in email verify view controller to allow sending to user
+            [self.consentDocument makePDFWithCompletionHandler:^(NSData *pdfData, NSError *error)
+            {
+                if (pdfData)
+                {
+                    ad.user.consentPDF = pdfData;
+                }
+            }];
         }
             
         case ORKTaskViewControllerFinishReasonFailed:

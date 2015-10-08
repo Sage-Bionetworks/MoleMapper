@@ -53,7 +53,7 @@
     
     [self renameLegacyStoredFilenamesInCoreData];
     
-    //[self setOnboardingBooleansBackToInitialValues];
+    [self setOnboardingBooleansBackToInitialValues];
 
 //Do we want to try to send any unsent measurements here upon launch? Same for surveys?
 //[self.bridgeManager signInAndSendMeasurements];
@@ -71,6 +71,17 @@
     }
     else if ([self shouldShowOnboarding])
     {
+        /*This is a serious of tracked booleans in NSUserDefaults that will switch on
+        as each step is completed, and then the previous step will be turned off,
+        thus allowing the state to be 'saved' if the user opts out at any point
+         See below for details on the various steps, which are all ResearchKit modules
+         that are spun up from the 'base class' onboardingViewController
+         [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+         [ud setBool:NO forKey:@"shouldShowInfoScreens"];
+         [ud setBool:NO forKey:@"shouldShowQuiz"];
+         [ud setBool:NO forKey:@"shouldShowConsent"];
+         [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
+         [ud setBool:NO forKey:@"shouldShowInitialSurvey"];*/
         [self showOnboarding];
     }
     else
@@ -79,12 +90,16 @@
     }
 }
 
+//Primarily used for reset or debugging
 -(void)setOnboardingBooleansBackToInitialValues
 {
     //[self clearMeasurementsAlreadySentForDebugging];
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setBool:YES forKey:@"shouldShowOnboarding"];
+    
+    //These 2 below should be set to Yes at the beginning to allow onboarding to proceed
     [ud setBool:YES forKey:@"shouldShowWelcomeScreenWithCarousel"];
+    [ud setBool:YES forKey:@"shouldShowOnboarding"];
+    //All of these below will be set to YES throughout the onboarding as each step is completed
     [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
     [ud setBool:NO forKey:@"shouldShowInfoScreens"];
     [ud setBool:NO forKey:@"shouldShowQuiz"];

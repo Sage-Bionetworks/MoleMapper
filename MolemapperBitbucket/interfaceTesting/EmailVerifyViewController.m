@@ -39,11 +39,12 @@ typedef void (^APCAlertDismisser) (void);
     //Set up a locally available bridgeManager instance to get/set usernames, passwords, profile attributes
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.logoImageView.image = [UIImage imageNamed:@"moleMapperIconSmall"];
+    self.logoImageView.image = [UIImage imageNamed:@"sunIcon"];
     NSString *email = ad.user.bridgeSignInEmail;
     self.emailLabel.text = email;
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"moleMapperLogo"]];
     [self hideSpinnerUsingAnimation: NO andThenDoThis: nil];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -62,6 +63,11 @@ typedef void (^APCAlertDismisser) (void);
     [super viewWillDisappear: animated];
 }
 
+- (IBAction)backButtonTapped:(id)sender
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [ad showOnboarding]; //go back to the BridgeSignUpVC
+}
 
 - (IBAction)changeEmailAddressTapped:(id)sender
 {
@@ -185,7 +191,7 @@ typedef void (^APCAlertDismisser) (void);
 {
     [self hideSpinnerUsingAnimation: YES andThenDoThis:^{
         
-        UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"Email Verification Resent", @"") message:error.localizedDescription];
+        UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"Email Verification Re-sent", @"") message:error.localizedDescription];
         
         [self presentViewController:alert animated:YES completion:nil];
         
@@ -207,7 +213,7 @@ typedef void (^APCAlertDismisser) (void);
 {
     [self hideSpinnerUsingAnimation: YES andThenDoThis:^{
         
-        NSString *message = @"\nYour email address has not yet been verified.\n\nPlease check your email for a message from Mole Mapper, and click the link in that message.";
+        NSString *message = @"\nYour email address has not yet been verified.\n\nPlease check your email for a message from Mole Mapper, and click the link in that message. You may also want to check your email account spam folder.";
         
         self.pleaseCheckEmailAlert = [UIAlertController alertControllerWithTitle: @"Please Check Your Email"
                                                                          message: message

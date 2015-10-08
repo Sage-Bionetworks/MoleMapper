@@ -46,6 +46,7 @@
 - (void)taskViewController:(ORKTaskViewController *)taskViewController
 stepViewControllerWillAppear:(ORKStepViewController *)stepViewController {
     
+    //This is a way to get rid of the cancel button
     /* Keeping solution from here (https://github.com/ResearchKit/ResearchKit/issues/328) as reference
     if ([stepViewController.step.identifier isEqualToString: @"qid_001"]) {
      
@@ -79,6 +80,7 @@ stepViewControllerWillAppear:(ORKStepViewController *)stepViewController {
             //unless there is a reset
             [ud setBool:NO forKey:@"shouldShowWelcomeScreenWithCarousel"];
             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+            [ud setBool:YES forKey:@"shouldShowOnboarding"];
             [ud setBool:YES forKey:@"shouldShowInfoScreens"];
             
             NSNumber *age;

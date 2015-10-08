@@ -393,15 +393,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rY1-UQ-4cG">
-                                <rect key="frame" x="135" y="85" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufe-9m-KY0">
+                                <rect key="frame" x="10" y="20" width="46" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="oJv-aI-m2C" eventType="touchUpInside" id="I2E-E2-2Mh"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rY1-UQ-4cG">
+                                <rect key="frame" x="135" y="41" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="EXG-fo-gMf"/>
                                     <constraint firstAttribute="height" constant="50" id="IVm-Ph-De5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc1-gL-JZB">
-                                <rect key="frame" x="16" y="146" width="288" height="70"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc1-gL-JZB">
+                                <rect key="frame" x="16" y="102" width="288" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="FCv-oe-NgQ"/>
                                 </constraints>
@@ -412,24 +419,23 @@ a verification email at</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="johnny@appleseed.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbi-hI-XhU">
-                                <rect key="frame" x="16" y="217" width="288" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="johnny@appleseed.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbi-hI-XhU">
+                                <rect key="frame" x="12" y="169" width="296" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="9y5-LK-qa6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.01176470588" green="0.62352941179999999" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaM-pY-KtY">
-                                <rect key="frame" x="49" y="237" width="222" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaM-pY-KtY">
+                                <rect key="frame" x="49" y="193" width="222" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="AHJ-RI-jhc"/>
                                     <constraint firstAttribute="width" constant="222" id="bSr-EY-hPQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Wrong email address? Tap here.">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -451,12 +457,16 @@ a verification email at</string>
                                 </constraints>
                                 <string key="text">A full copy of the consent agreement
 will be sent to you for your records.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fn-qh-5Du">
-                                <rect key="frame" x="135" y="85" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fn-qh-5Du">
+                                <rect key="frame" x="135" y="41" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="amn-T9-HY1"/>
+                                    <constraint firstAttribute="height" constant="50" id="sbn-r1-CKt"/>
+                                </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -478,8 +488,8 @@ will be sent to you for your records.</string>
                                     <action selector="resendEmail:" destination="oJv-aI-m2C" eventType="touchUpInside" id="CMb-rQ-gp0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1d-5o-1h1" customClass="APCButton">
-                                <rect key="frame" x="81" y="305" width="159" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1d-5o-1h1" customClass="APCButton">
+                                <rect key="frame" x="81" y="261" width="159" height="44"/>
                                 <color key="backgroundColor" red="0.81724121800000005" green="1" blue="0.97136515830000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="159" id="F47-et-HPu"/>
@@ -499,8 +509,8 @@ will be sent to you for your records.</string>
                                     <action selector="continueTapped:" destination="oJv-aI-m2C" eventType="touchUpInside" id="SD3-DF-d8M"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Once verified, tap below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL1-2k-7dt">
-                                <rect key="frame" x="16" y="271" width="288" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once verified, tap below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL1-2k-7dt">
+                                <rect key="frame" x="16" y="227" width="288" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="ETC-Ml-nCh"/>
                                 </constraints>
@@ -529,6 +539,12 @@ will be sent to you for your records.</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This may take a minute..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDh-DS-W7V">
+                                        <rect key="frame" x="52" y="328" width="216" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -542,8 +558,8 @@ will be sent to you for your records.</string>
                         <constraints>
                             <constraint firstItem="2Fn-qh-5Du" firstAttribute="top" secondItem="rY1-UQ-4cG" secondAttribute="top" id="0Dw-zN-WvW"/>
                             <constraint firstItem="HpV-RW-LHq" firstAttribute="top" secondItem="VoJ-Ko-O8v" secondAttribute="bottom" constant="105" id="2J5-Hv-CZh"/>
-                            <constraint firstItem="Pbi-hI-XhU" firstAttribute="top" secondItem="nc1-gL-JZB" secondAttribute="bottom" constant="1" id="3HW-hY-cOd"/>
-                            <constraint firstItem="SaM-pY-KtY" firstAttribute="top" secondItem="Pbi-hI-XhU" secondAttribute="bottom" constant="-8" id="4yg-xk-gDq"/>
+                            <constraint firstItem="Pbi-hI-XhU" firstAttribute="top" secondItem="nc1-gL-JZB" secondAttribute="bottom" constant="-3" id="3HW-hY-cOd"/>
+                            <constraint firstItem="SaM-pY-KtY" firstAttribute="top" secondItem="Pbi-hI-XhU" secondAttribute="bottom" constant="-4" id="4yg-xk-gDq"/>
                             <constraint firstItem="eL1-2k-7dt" firstAttribute="trailing" secondItem="voD-CB-AP1" secondAttribute="trailingMargin" id="5HI-gu-5ri"/>
                             <constraint firstItem="nc1-gL-JZB" firstAttribute="trailing" secondItem="voD-CB-AP1" secondAttribute="trailingMargin" id="9l6-Fx-u5Y"/>
                             <constraint firstItem="2Fn-qh-5Du" firstAttribute="leading" secondItem="rY1-UQ-4cG" secondAttribute="leading" id="ATh-UQ-Nzf"/>
@@ -552,16 +568,17 @@ will be sent to you for your records.</string>
                             <constraint firstItem="nc1-gL-JZB" firstAttribute="leading" secondItem="voD-CB-AP1" secondAttribute="leadingMargin" id="GNf-KO-DFb"/>
                             <constraint firstItem="eL1-2k-7dt" firstAttribute="top" secondItem="SaM-pY-KtY" secondAttribute="bottom" constant="5" id="GOs-ln-qYu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VoJ-Ko-O8v" secondAttribute="trailing" id="Kzh-Tk-W2V"/>
+                            <constraint firstItem="rY1-UQ-4cG" firstAttribute="top" secondItem="mhc-w9-zNm" secondAttribute="bottom" constant="21" id="M7b-QG-58a"/>
                             <constraint firstItem="nc1-gL-JZB" firstAttribute="top" secondItem="2Fn-qh-5Du" secondAttribute="bottom" constant="11" id="NO0-Qb-7ZE"/>
                             <constraint firstItem="VoJ-Ko-O8v" firstAttribute="leading" secondItem="voD-CB-AP1" secondAttribute="leadingMargin" id="NRP-sI-SLX"/>
-                            <constraint firstItem="Pbi-hI-XhU" firstAttribute="leading" secondItem="voD-CB-AP1" secondAttribute="leadingMargin" id="TyC-Ap-xqC"/>
+                            <constraint firstItem="Pbi-hI-XhU" firstAttribute="leading" secondItem="voD-CB-AP1" secondAttribute="leadingMargin" constant="-4" id="TyC-Ap-xqC"/>
                             <constraint firstAttribute="centerX" secondItem="T1d-5o-1h1" secondAttribute="centerX" constant="-0.5" id="VgA-k4-1gX"/>
                             <constraint firstItem="T1d-5o-1h1" firstAttribute="top" secondItem="eL1-2k-7dt" secondAttribute="bottom" constant="6" id="VoE-mF-u1e"/>
                             <constraint firstAttribute="centerX" secondItem="SaM-pY-KtY" secondAttribute="centerX" id="Zk1-Xe-niA"/>
                             <constraint firstItem="2Fn-qh-5Du" firstAttribute="trailing" secondItem="rY1-UQ-4cG" secondAttribute="trailing" id="dGV-4g-vSf"/>
                             <constraint firstAttribute="centerX" secondItem="rY1-UQ-4cG" secondAttribute="centerX" id="gD6-gF-yRg"/>
                             <constraint firstItem="2Fn-qh-5Du" firstAttribute="top" secondItem="mhc-w9-zNm" secondAttribute="bottom" constant="65" id="hi7-Wv-VjW"/>
-                            <constraint firstItem="Pbi-hI-XhU" firstAttribute="trailing" secondItem="voD-CB-AP1" secondAttribute="trailingMargin" id="iiF-q8-Fka"/>
+                            <constraint firstItem="Pbi-hI-XhU" firstAttribute="trailing" secondItem="voD-CB-AP1" secondAttribute="trailingMargin" constant="4" id="iiF-q8-Fka"/>
                             <constraint firstAttribute="centerX" secondItem="9Cm-gw-Fnd" secondAttribute="centerX" id="pWI-ot-ZEm"/>
                             <constraint firstItem="HpV-RW-LHq" firstAttribute="top" secondItem="XeW-U4-cjq" secondAttribute="bottom" constant="10" id="pjt-l2-Nt1"/>
                             <constraint firstItem="2Fn-qh-5Du" firstAttribute="bottom" secondItem="rY1-UQ-4cG" secondAttribute="bottom" id="qMS-Ic-rDb"/>
@@ -575,6 +592,7 @@ will be sent to you for your records.</string>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0Dw-zN-WvW"/>
+                                <exclude reference="hi7-Wv-VjW"/>
                             </mask>
                         </variation>
                     </view>

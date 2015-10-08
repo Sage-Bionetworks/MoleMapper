@@ -205,6 +205,26 @@
     [UIImagePNGRepresentation(signatureImage) writeToFile:[documentsDirectory stringByAppendingPathComponent:@"signatureImage.png"] options:NSAtomicWrite error:nil];
 }
 
+-(NSData *)consentPDF
+{
+    NSData *consentPDF = [NSData data];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *consentPDFfilename = @"consentDocument.pdf";
+    NSString *filepath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, consentPDFfilename];
+    if([[NSFileManager defaultManager] fileExistsAtPath:filepath])
+    {
+        consentPDF = [[NSFileManager defaultManager] contentsAtPath:filepath];
+    }
+    else{NSLog(@"Trying to retrieve PDF data that doesn't exist!");}
+    return consentPDF;
+}
+
+-(void)setConsentPDF:(NSData *)consentPDF
+{
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    [consentPDF writeToFile:[documentsDirectory stringByAppendingPathComponent:@"consentDocument.pdf"] atomically:YES];
+}
+
 -(BOOL)hasConsented
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];

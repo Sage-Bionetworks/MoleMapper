@@ -20,6 +20,7 @@
 
 -(BOOL)shouldShowFollowupSurvey
 {
+    //For debugging
     //return YES;
     BOOL shouldShowFollowupSurvey = NO;
     
@@ -67,7 +68,7 @@
     intro.title = @"Monthly Followup";
     intro.text = @"\nWe'd like to ask you 5 quick questions about your activities and health in the last month";
     
-    intro.image = [UIImage imageNamed:@"moleMapperIconLarge"];
+    intro.image = [UIImage imageNamed:@"sunIcon"];
 
     
     NSMutableArray *followupItems = [NSMutableArray new];

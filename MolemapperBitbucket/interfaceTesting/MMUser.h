@@ -39,6 +39,9 @@
 //Storing the NSData in documents directory and calling back up on the fly here
 @property (strong, nonatomic) UIImage *signatureImage;
 
+//Storing the NSData in documents directory and calling back up on the fly here
+@property (strong, nonatomic) NSData *consentPDF;
+
 // This is an array of dictionaries that have the following structure
 // "moleID" -> (NSNumber *)moleID,
 // "diagnoses -> (NSArray *)[array of diagnoses (NSStrings)]
