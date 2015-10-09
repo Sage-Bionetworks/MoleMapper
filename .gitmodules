@@ -1,0 +1,3 @@
+[submodule "Bridge-iOS-SDK-master"]
+	path = Bridge-iOS-SDK-master
+	url = https://github.com/Sage-Bionetworks/Bridge-iOS-SDK.git
