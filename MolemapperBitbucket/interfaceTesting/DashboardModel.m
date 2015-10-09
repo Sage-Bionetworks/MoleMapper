@@ -425,9 +425,9 @@
     float mostRecentDiameter = [mostRecent.absoluteMoleDiameter floatValue];
     //Round the floating point values so that small changes in size don't look out of place due mismatch between user-visible measurement (1 decimal) vs. behind the scenes precision
     
-    float initialRounded = ceilf(initialDiameter * 10.0f) / 10.0f;
-    float mostRecentRounded = ceilf(mostRecentDiameter * 10.0f) / 10.0f;
-    
+    float initialRounded = floorf(initialDiameter * 10 + 0.5) / 10;
+    float mostRecentRounded = floorf(mostRecentDiameter * 10 + 0.5) / 10;
+
     if (initialDiameter && mostRecentDiameter && initialDiameter != 0.0f)
     {
         float percentChangeFloat = ((mostRecentRounded / initialRounded) * 100.0f) - 100.0f;
