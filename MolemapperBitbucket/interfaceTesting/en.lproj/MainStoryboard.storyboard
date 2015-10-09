@@ -101,7 +101,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SoD-sv-JKh">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Help Us Improve" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SoD-sv-JKh">
                                                     <rect key="frame" x="74" y="0.0" width="211" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
@@ -1681,34 +1681,10 @@ Altruistic code-sharing by Chris Miles </string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="z2d-sM-28m">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="License Information" textLabel="8ek-FM-6Ty" style="IBUITableViewCellStyleDefault" id="oar-bv-9MT">
-                                        <rect key="frame" x="0.0" y="227" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oar-bv-9MT" id="IDB-5U-4qm">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="External ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8ek-FM-6Ty">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="ZjD-kc-tkV" kind="push" identifier="externalID" id="DVC-dN-oX7"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="lYA-cf-HhR">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="exD-WY-9Kf" style="IBUITableViewCellStyleDefault" id="nu0-LI-4uu">
-                                        <rect key="frame" x="0.0" y="291" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="227" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nu0-LI-4uu" id="0ky-Tc-qdg">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -1732,13 +1708,13 @@ Altruistic code-sharing by Chris Miles </string>
                             <tableViewSection id="hco-9x-BXT">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="informationSheet" textLabel="lpP-zi-4Y9" style="IBUITableViewCellStyleDefault" id="o88-Bx-iPZ">
-                                        <rect key="frame" x="0.0" y="355" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="291" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o88-Bx-iPZ" id="XsL-MD-rZI">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Information Sheet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lpP-zi-4Y9">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="OHSU Registry Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lpP-zi-4Y9">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
@@ -1756,7 +1732,7 @@ Altruistic code-sharing by Chris Miles </string>
                             <tableViewSection id="z9V-1q-72D">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="AQ6-Js-7Op" style="IBUITableViewCellStyleDefault" id="3rJ-PP-mKi">
-                                        <rect key="frame" x="0.0" y="419" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="355" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3rJ-PP-mKi" id="FX9-dz-Pbb">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -1780,7 +1756,7 @@ Altruistic code-sharing by Chris Miles </string>
                             <tableViewSection id="aQQ-kA-p9O">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="License Information" textLabel="mxU-Z0-hkw" style="IBUITableViewCellStyleDefault" id="2J5-9r-de8">
-                                        <rect key="frame" x="0.0" y="483" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="419" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2J5-9r-de8" id="mzf-ir-Kvn">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -2295,9 +2271,9 @@ Altruistic code-sharing by Chris Miles </string>
         <image name="up-normal.png" width="80" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eAv-Hf-App"/>
-        <segue reference="a4d-TD-0SY"/>
         <segue reference="QHA-vm-6oo"/>
+        <segue reference="A8B-ob-Cbt"/>
+        <segue reference="H10-hc-suL"/>
         <segue reference="cDv-kA-7Vi"/>
     </inferredMetricsTieBreakers>
 </document>

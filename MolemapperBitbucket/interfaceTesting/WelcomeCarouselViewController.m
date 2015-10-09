@@ -165,7 +165,6 @@
     
     UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"Go to Body Map" message:@"You can come back to the study enrollment process at any time by tapping the Beaker icon at the top of the Body Map. Your progress has been saved." preferredStyle:UIAlertControllerStyleActionSheet];
     
-    
     UIAlertAction *leave = [UIAlertAction actionWithTitle:@"Go to Body Map" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSLog(@"User has left the onboarding process with cancel");
         [ad showBodyMap];
@@ -210,14 +209,13 @@
         [mc setSubject:@"Study Consent Document"];
         [mc setMessageBody:@"" isHTML:NO];
         [mc setToRecipients:@[@""]];
-        //[mc addAttachmentData:fileData mimeType:mimeType fileName:fileName];
+        
+        NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"MM-ConsentformS0-clean_2015_10_08" ofType:@"pdf"];
+        NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
+        [mc addAttachmentData:pdfData mimeType:@"application/pdf" fileName:@"Consent Document.pdf"];
 
         [self presentViewController:mc animated:YES completion:NULL];
     }
-    
-    /*[mailComposeVC addAttachmentData:[self PDFDataOfConsent] mimeType:@"application/pdf" fileName:@"Consent"];
-     [mailComposeVC setSubject:kConsentEmailSubject];*/
-    
 }
 
 @end

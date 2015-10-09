@@ -97,6 +97,8 @@
 		E65CABB617ECF20100AAC5D3 /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E65CABB517ECF20100AAC5D3 /* UIImage+Extras.m */; };
 		E65CABBB17ED07BA00AAC5D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E65CABBA17ED07BA00AAC5D3 /* QuartzCore.framework */; };
 		E65F29881972C421000F90BB /* appIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E65F29871972C421000F90BB /* appIcon.xcassets */; };
+		E666F2FB1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */; settings = {ASSET_TAGS = (); }; };
+		E666F2FD1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */; settings = {ASSET_TAGS = (); }; };
 		E682EEB417076EBD007A0654 /* MoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E682EEB317076EBD007A0654 /* MoleViewController.m */; };
 		E6883B701B95D2EE00F5A9A5 /* APCDataArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B6F1B95D2EE00F5A9A5 /* APCDataArchive.m */; };
 		E6883B851B95D43E00F5A9A5 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B7E1B95D43E00F5A9A5 /* NSDate+Helper.m */; };
@@ -116,7 +118,6 @@
 		E688C92E186A049500E70BBA /* ReferenceSetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E688C92D186A049500E70BBA /* ReferenceSetterViewController.m */; };
 		E68CC2621BC4CF6500FB81D6 /* FeedbackRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E68CC2611BC4CF6500FB81D6 /* FeedbackRKModule.m */; settings = {ASSET_TAGS = (); }; };
 		E691FE5A187A560300028548 /* learnMoreViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = E691FE59187A560300028548 /* learnMoreViewContoller.m */; };
-		E692C1B91BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */; settings = {ASSET_TAGS = (); }; };
 		E692C1CC1BC1623100BE9111 /* APCAppearanceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1C71BC1623100BE9111 /* APCAppearanceInfo.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1CD1BC1623100BE9111 /* UIColor+APCAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1C91BC1623100BE9111 /* UIColor+APCAppearance.m */; settings = {ASSET_TAGS = (); }; };
 		E692C1CE1BC1623100BE9111 /* UIFont+APCAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E692C1CB1BC1623100BE9111 /* UIFont+APCAppearance.m */; settings = {ASSET_TAGS = (); }; };
@@ -425,6 +426,8 @@
 		E65CABB517ECF20100AAC5D3 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
 		E65CABBA17ED07BA00AAC5D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E65F29871972C421000F90BB /* appIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = appIcon.xcassets; sourceTree = "<group>"; };
+		E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf"; sourceTree = "<group>"; };
+		E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MM-ConsentformS0-clean_2015_10_08.pdf"; sourceTree = "<group>"; };
 		E682EEB217076EBD007A0654 /* MoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleViewController.h; sourceTree = "<group>"; };
 		E682EEB317076EBD007A0654 /* MoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleViewController.m; sourceTree = "<group>"; };
 		E6883B6E1B95D2EE00F5A9A5 /* APCDataArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCDataArchive.h; sourceTree = "<group>"; };
@@ -462,7 +465,6 @@
 		E68CC2611BC4CF6500FB81D6 /* FeedbackRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackRKModule.m; sourceTree = "<group>"; };
 		E691FE58187A560300028548 /* learnMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = learnMoreViewController.h; sourceTree = "<group>"; };
 		E691FE59187A560300028548 /* learnMoreViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = learnMoreViewContoller.m; sourceTree = "<group>"; };
-		E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf"; sourceTree = "<group>"; };
 		E692C1C61BC1623100BE9111 /* APCAppearanceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCAppearanceInfo.h; sourceTree = "<group>"; };
 		E692C1C71BC1623100BE9111 /* APCAppearanceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCAppearanceInfo.m; sourceTree = "<group>"; };
 		E692C1C81BC1623100BE9111 /* UIColor+APCAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+APCAppearance.h"; sourceTree = "<group>"; };
@@ -1076,8 +1078,9 @@
 				E6FDF87A1B89922C00EE7037 /* visitingDoctor@2x.m4v */,
 				E6FDF87B1B89922C00EE7037 /* recontact@2x.m4v */,
 				E692C1D91BC18B1100BE9111 /* helpOurResearch.htm */,
+				E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */,
 				E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */,
-				E692C1B81BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf */,
+				E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */,
 				E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */,
 				E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */,
 				E6F93E8B16DB273B0068B7B6 /* MoleMapper-Info.plist */,
@@ -1269,6 +1272,7 @@
 				380B921F1BAC50700026D052 /* DashboardMolyEstZone.xib in Resources */,
 				4B856D9E1BC1BADA00998175 /* HelpCollectionViewCell.xib in Resources */,
 				4BF5AAE01BA9833F0012B490 /* DashboardBiggestMoleCell.xib in Resources */,
+				E666F2FB1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf in Resources */,
 				4B1103AA1BC1B00A00E98F24 /* WelcomeCollectionViewCell.xib in Resources */,
 				4B6090861BA87E440042E9C5 /* DashboardZoneDocumentationCell.xib in Resources */,
 				E6F93E8E16DB273B0068B7B6 /* InfoPlist.strings in Resources */,
@@ -1277,13 +1281,13 @@
 				E6FDF8961B8B2EFC00EE7037 /* ohsu-molemapper.pem in Resources */,
 				E6AC48D31A3870AD00A9F118 /* measurementDemo_2014_12_09.mov in Resources */,
 				E6F93E9D16DB273B0068B7B6 /* MainStoryboard.storyboard in Resources */,
+				E666F2FD1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf in Resources */,
 				E6443BFC1B78B8E9007DE110 /* onboarding.storyboard in Resources */,
 				4B7FCE991BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib in Resources */,
 				380B92211BAC50700026D052 /* DBSizeOverTimeCellTableViewCell.xib in Resources */,
 				4B6DB7AB1BA977AE000EE645 /* DashBoardMeasurementCell.xib in Resources */,
 				4BD05B401BC2796C00FD6D85 /* InvolveCollectionViewCell.xib in Resources */,
 				E65F29881972C421000F90BB /* appIcon.xcassets in Resources */,
-				E692C1B91BC0C39800BE9111 /* WoM-Information.Sheet.revisions.TRACKED_2015_09_29v2.pdf in Resources */,
 				E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

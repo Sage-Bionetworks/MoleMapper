@@ -35,7 +35,7 @@
                                                       answerFormat:email]];
     
     
-    [signUpItems addObject:[[ORKFormItem alloc] initWithSectionTitle:@"Select your study login password"]];
+    [signUpItems addObject:[[ORKFormItem alloc] initWithSectionTitle:@"Create your study login password"]];
     
     ORKTextAnswerFormat *password = [ORKAnswerFormat textAnswerFormat];
     password.multipleLines = NO;

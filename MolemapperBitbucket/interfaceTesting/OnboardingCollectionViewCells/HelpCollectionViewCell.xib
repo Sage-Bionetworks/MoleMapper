@@ -23,12 +23,11 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-iz-EeG">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Join Study to learn about this research study run by OHSU and Sage Bionetworks or tap Not ready to begin mapping" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-iz-EeG">
                         <rect key="frame" x="8" y="188" width="304" height="95"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="320" id="hAr-AE-EnI"/>
                         </constraints>
-                        <string key="text">Tap Join Study to learn about this iPhone-based research study run by OHSU and Sage Bionetworks or tap the 'Not ready' text to begin mapping</string>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>

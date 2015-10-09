@@ -1342,9 +1342,25 @@ will be sent to you for your records.</string>
                                     <action selector="cancelButtonTapped:" destination="Gnf-6t-cKC" eventType="touchUpInside" id="YIV-t4-Zf7"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L0E-X9-YBz">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0E-X9-YBz">
                                 <rect key="frame" x="20" y="52" width="280" height="428"/>
-                                <string key="text">Researchers from Sage Bionetworks (nonprofit) and OHSU Knight Cancer Institute invite you to participate in a research study about melanoma using Mole Mapper and Apple ResearchKit.  The aim of this study is to better understand skin biology and melanoma risks.  By analyzing the data from many Mole Mapper users we hope to better understand the variation in mole growth and cancer risks, and whether a mobile device can help people measure moles accurately and manage their skin health better.  By answering few questions about yourself, tracking your moles regularly and sharing your mole measurements you can help us learn how melanoma develops and what can be done to reduce risks of melanoma.  If you are over 18 years old, we invite you to join the study and declare war on melanoma.  Questions?  Please contact the study sponsor at +1 206-667-2115 or by email molemapperstudy@sagebase.org  Mole Mapper is a research study and does not provide medical advice, diagnosis or treatment.</string>
+                                <mutableString key="text">Researchers from Sage Bionetworks (nonprofit) and OHSU Department of Dermatology invite you to participate in a research study about melanoma using Mole Mapper and Apple ResearchKit.
+  
+The aim of this study is to better understand skin biology and melanoma risks.  
+
+By analyzing the data from many Mole Mapper app users we hope to better understand the variation in mole growth and cancer risks, and whether a mobile device can help people measure moles accurately and manage their skin health better.
+
+By answering few questions about yourself, tracking your moles regularly and sharing your mole measurements, you can help us learn how melanoma develops and what can be done to reduce risks of melanoma. 
+
+If you are over 18 years old, we invite you to join the study and declare war on melanoma.
+
+Questions?  
+Please contact the Mole Mapper study sponsor at +1 206-667-2115 (toll-free +1-844-693-2137) or by email molemapperstudy@sagebase.org 
+
+For the Melanoma Community Registry, please contact the OHSU Research Integrity Office at 503-494-7887 or by email at WarOnMelanoma@ohsu.edu. 
+
+Mole Mapper is a research study and does not provide medical advice, diagnosis or treatment
+</mutableString>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
