@@ -24,8 +24,8 @@
     NSNumber* avSize = [[DashboardModel sharedInstance] sizeOfAverageMole];
     NSNumber* bgSize = [[DashboardModel sharedInstance] sizeOfBiggestMole];
     
-    float avRounded = ceilf([avSize floatValue] * 10.0f) / 10.0f;
-    float bgRounded = ceilf([bgSize floatValue] * 10.0f) / 10.0f;
+    float avRounded = [[DashboardModel sharedInstance] correctFloat:[avSize floatValue]];
+    float bgRounded = [[DashboardModel sharedInstance] correctFloat:[bgSize floatValue]];
     
     NSNumber* biggestScale = [NSNumber numberWithFloat:1.0f];
     NSNumber* averageScale = [NSNumber numberWithFloat:(float)[avSize floatValue]/(float)[bgSize floatValue]];

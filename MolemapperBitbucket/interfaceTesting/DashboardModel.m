@@ -425,8 +425,8 @@
     float mostRecentDiameter = [mostRecent.absoluteMoleDiameter floatValue];
     //Round the floating point values so that small changes in size don't look out of place due mismatch between user-visible measurement (1 decimal) vs. behind the scenes precision
     
-    float initialRounded = floorf(initialDiameter * 10 + 0.5) / 10;
-    float mostRecentRounded = floorf(mostRecentDiameter * 10 + 0.5) / 10;
+    float initialRounded = [self correctFloat:initialDiameter];
+    float mostRecentRounded = [self correctFloat:mostRecentDiameter];
 
     if (initialDiameter && mostRecentDiameter && initialDiameter != 0.0f)
     {
@@ -505,7 +505,7 @@
 
 -(float) correctFloat:(float) value
 {
-    return ceilf(value * 10.0f) / 10.0f;
+    return floorf(value * 10.0f + 0.5) / 10.0f;
 }
 
 -(UILabel*) getNoDataLabel
