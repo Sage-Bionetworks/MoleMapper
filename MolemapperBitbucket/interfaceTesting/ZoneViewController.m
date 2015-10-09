@@ -947,11 +947,16 @@
     //Store the mole without an associated diagnosis first, then overwrite if user completes survey
     AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSMutableArray *removedMoleToDiagnoses = [ad.user.removedMolesToDiagnoses mutableCopy];
-    //Store a removedMole record with an empty diagnosis array for now until the user potentially enters diagnoses in survey
-    NSDictionary *removedMoleRecord = @{@"moleID" : self.moleToBeDeleted.moleID,
-                                        @"diagnoses" : @[]};
+    
+    /*In future versions, will store a removedMole record with an empty diagnosis array for now until the user potentially enters diagnoses in survey.  For now, just put the diagnosis as "removed"
+    
+     */
+    NSDictionary *removedMoleRecord = @{@"moleID" : [self.moleToBeDeleted.moleID stringValue],
+                                        @"diagnoses" : @"removed"}; //This would normally be an empty array
     [removedMoleToDiagnoses addObject:removedMoleRecord];
     ad.user.removedMolesToDiagnoses = removedMoleToDiagnoses;
+    
+    [ad.bridgeManager signInAndSendRemovedMoleData:removedMoleRecord];
     
     //Spin up survey about the removed mole
     self.removed = [[MoleWasRemovedRKModule alloc] init];

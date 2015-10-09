@@ -14,6 +14,7 @@
 #import "Mole+MakeAndMod.h"
 #import "Zone.h"
 #import "Zone+MakeAndMod.h"
+#import "DashboardModel.h"
 
 @interface MeasurementComparsionViewController () <UIScrollViewDelegate>
 
@@ -86,7 +87,10 @@
     
     NSString *stringFromDate = [formatter stringFromDate:self.moleMeasurement.date];
     stringFromDate = [stringFromDate stringByAppendingString:@"\nMole Size: "];
-    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.moleMeasurement.absoluteMoleDiameter floatValue] * 10) / 10];
+    
+    float roundedDiameter = [[DashboardModel sharedInstance] correctFloat:[self.moleMeasurement.absoluteMoleDiameter floatValue]];
+    NSString* formattedSize = [NSString stringWithFormat:@"%.1f",roundedDiameter];
+    
     stringFromDate = [stringFromDate stringByAppendingString:formattedSize];
     stringFromDate = [stringFromDate stringByAppendingString:@" mm"];
     dateLabel.text = stringFromDate;

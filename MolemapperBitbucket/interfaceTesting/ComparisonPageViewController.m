@@ -12,6 +12,7 @@
 #import "Measurement.h"
 #import "Zone.h"
 #import "Zone+MakeAndMod.h"
+#import "DashboardModel.h"
 
 @interface ComparisonPageViewController ()
 
@@ -168,7 +169,8 @@
     NSString *stringFromDate = [formatter stringFromDate:measurement.date];
     stringFromDate = [stringFromDate stringByAppendingString:@": "];
     //ceilf(initialDiameter * 10.0f) / 10.0f;
-    NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([measurement.absoluteMoleDiameter floatValue] * 10.0f) / 10.0f];
+    float roundedDiameter = [[DashboardModel sharedInstance] correctFloat:[measurement.absoluteMoleDiameter floatValue]];
+    NSString* formattedSize = [NSString stringWithFormat:@"%.1f",roundedDiameter];
     stringFromDate = [stringFromDate stringByAppendingString:formattedSize];
     stringFromDate = [stringFromDate stringByAppendingString:@" mm\n"];
     

@@ -286,8 +286,6 @@
             NSLog(@"Is not reachable");
         }
     }];
-    
-    
 }
 
 -(void)signInAndSendMeasurements
@@ -339,14 +337,63 @@
             NSLog(@"Is not reachable");
         }
     }];
-    
-    
+}
+
+-(void)signInAndSendRemovedMoleData:(NSDictionary *)removedMoleData
+{
+    {
+        AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+            //check for isReachable here
+            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+            {
+                NSLog(@"Is reachable");
+                if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
+                {
+                    [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                            password: ad.user.bridgeSignInPassword
+                                                          completion: ^(NSURLSessionDataTask * __unused task,
+                                                                        id responseObject,
+                                                                        NSError *signInError)
+                     {
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             if (!signInError)
+                             {
+                                 NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                                 if (responseDictionary)
+                                 {
+                                     NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                                     NSLog(@"Data sharing scope integer is %@",dataSharing);
+                                 }
+                                 
+                                 NSLog(@"User is Signed In");
+                                 [ad.bridgeManager zipEncryptAndShipRemovedMoleData:removedMoleData];
+                             }
+                             else
+                             {
+                                 NSLog(@"Error during log in before removedMoleData: %@",signInError);
+                             }
+                             
+                         });
+                     }
+                     ];
+                }
+            }
+            else
+            {
+                NSLog(@"Is not reachable");
+            }
+        }];
+    }
+
 }
 
 -(void)zipEncryptAndShipInitialData:(NSDictionary *)initialData
 {
     APCDataArchive *archive = [[APCDataArchive alloc] initWithReference:@"initialData"];
-    //Note that contrary to documentation, you need the file extension here to be recognized by Bridge Server
+    //Note that contrary to documentation in AppCore, you need the file extension here to be recognized by Bridge Server
     [archive insertIntoArchive:initialData filename:@"initialData.json"];
     
     APCDataArchiveUploader *uploader = [[APCDataArchiveUploader alloc] init];
@@ -361,7 +408,7 @@
 -(void)zipEncryptAndShipFollowupData:(NSDictionary *)followupData
 {
     APCDataArchive *archive = [[APCDataArchive alloc] initWithReference:@"followup"];
-    //Note that contrary to documentation, you need the file extension here to be recognized by Bridge Server
+    //Note that contrary to documentation in AppCore, you need the file extension here to be recognized by Bridge Server
     [archive insertIntoArchive:followupData filename:@"followup.json"];
     
     APCDataArchiveUploader *uploader = [[APCDataArchiveUploader alloc] init];
@@ -422,6 +469,25 @@
     //Add back the array of sent measurements in an immutable form
     NSArray *arrayWithAddedMeasurements = [NSArray arrayWithArray:measurementsAlreadySent];
     ad.user.measurementsAlreadySentToBridge = arrayWithAddedMeasurements;
+}
+
+-(void)zipEncryptAndShipRemovedMoleData:(NSDictionary *)removedMoleData
+{
+    APCDataArchive *archive = [[APCDataArchive alloc] initWithReference:@"removedMoleData"];
+    //Note that contrary to documentation in AppCore, you need the file extension here to be recognized by Bridge Server
+    [archive insertIntoArchive:removedMoleData filename:@"removedMoleData.json"];
+    
+    APCDataArchiveUploader *uploader = [[APCDataArchiveUploader alloc] init];
+    
+    //Using call from APCBaseTaskViewController here
+    [uploader encryptAndUploadArchive:archive withCompletion:^(NSError *error) {
+        if (! error) {
+            NSLog(@"Encrypt/uploading removed mole...");
+        }
+        else {
+            APCLogError2(error);
+        }
+    }];
 }
 
 //Mole Measurement Schema

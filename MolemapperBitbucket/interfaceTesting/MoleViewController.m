@@ -27,6 +27,7 @@
 #import "Zone+MakeAndMod.h"
 #import "DemoKLCPopupHelper.h"
 #import "DashboardViewController.h"
+#import "DashboardModel.h"
 
 @interface MoleViewController ()
 {
@@ -291,7 +292,7 @@
         AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [ad.bridgeManager signInAndSendMeasurements];
     }
-    _isPresentView = NO;
+    //_isPresentView = NO;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -757,7 +758,8 @@
         
         NSString *stringFromDate = [formatter stringFromDate:measurement.date];
         stringFromDate = [stringFromDate stringByAppendingString:@": "];
-        NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([measurement.absoluteMoleDiameter floatValue] * 10.0f) / 10.0f];
+        float roundedDiameter = [[DashboardModel sharedInstance] correctFloat:[measurement.absoluteMoleDiameter floatValue]];
+        NSString* formattedSize = [NSString stringWithFormat:@"%.1f",roundedDiameter];
         stringFromDate = [stringFromDate stringByAppendingString:formattedSize];
         stringFromDate = [stringFromDate stringByAppendingString:@" mm\n"];
         measurementList = [measurementList stringByAppendingString:stringFromDate];
@@ -1215,7 +1217,8 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
         if ([absoluteMoleDiameter floatValue] > 0.0)
         {
             self.stepperDecrement.enabled = YES;
-            formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([absoluteMoleDiameter floatValue] * 10) / 10];
+            float roundedDiameter = [[DashboardModel sharedInstance] correctFloat:[absoluteMoleDiameter floatValue]];
+            formattedSize = [NSString stringWithFormat:@"%.1f",roundedDiameter];
         }
         else
         {
@@ -1233,9 +1236,11 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
     NSString *formattedSize = @"0.0";
     if ([self.measurement.absoluteMoleDiameter floatValue] > 0.0)
     {
-        formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.measurement.absoluteMoleDiameter floatValue] * 10) / 10];
+        float roundedDiameter = [[DashboardModel sharedInstance] correctFloat:[self.measurement.absoluteMoleDiameter floatValue]];
+        formattedSize = [NSString stringWithFormat:@"%.1f",roundedDiameter];
     }
-    formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.measurement.absoluteMoleDiameter floatValue] * 10) / 10];
+    float roundedDiameter = [[DashboardModel sharedInstance] correctFloat:[self.measurement.absoluteMoleDiameter floatValue]];
+    formattedSize = [NSString stringWithFormat:@"%.1f",roundedDiameter];
     formattedSize = [formattedSize stringByAppendingString:@" mm"];
     NSString *sizeText = @"Mole Size: ";
     sizeText = [sizeText stringByAppendingString:formattedSize];

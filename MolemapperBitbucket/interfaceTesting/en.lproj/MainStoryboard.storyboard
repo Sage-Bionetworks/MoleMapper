@@ -1699,9 +1699,6 @@ Altruistic code-sharing by Chris Miles </string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="ZjD-kc-tkV" kind="push" identifier="reviewConsent" id="S2T-Mw-bSz"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1786,11 +1783,13 @@ Altruistic code-sharing by Chris Miles </string>
                     <navigationItem key="navigationItem" id="DCt-xj-iCW"/>
                     <connections>
                         <outlet property="enrollmentStatus" destination="fml-pa-vQH" id="jcC-dD-jif"/>
+                        <segue destination="RHk-Af-c9d" kind="push" identifier="consentForm" id="kJ9-6H-gud"/>
+                        <segue destination="ZjD-kc-tkV" kind="push" identifier="consentScreens" id="i3w-zQ-RMt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spn-qW-iAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="206"/>
+            <point key="canvasLocation" x="76" y="206"/>
         </scene>
         <!--Viewer View Controller-->
         <scene sceneID="hGq-ew-MNO">
@@ -2272,8 +2271,8 @@ Altruistic code-sharing by Chris Miles </string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QHA-vm-6oo"/>
-        <segue reference="A8B-ob-Cbt"/>
-        <segue reference="H10-hc-suL"/>
+        <segue reference="i3w-zQ-RMt"/>
+        <segue reference="kJ9-6H-gud"/>
         <segue reference="cDv-kA-7Vi"/>
     </inferredMetricsTieBreakers>
 </document>

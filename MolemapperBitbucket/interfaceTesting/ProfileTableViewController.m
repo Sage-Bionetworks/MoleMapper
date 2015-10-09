@@ -22,6 +22,7 @@
 
 #define NAME_OF_PRIVACY_POLICY_DOC @"PrivacyPolicy-MoleMapper-20Sept2015-EN"
 #define NAME_OF_INFORMATION_SHEET_DOC @"WoM-Information.Sheet.revisions.TRACKED_2015_10_09"
+#define NAME_OF_CONSENT_FORM @"MM-ConsentformS0-clean_2015_10_08"
 
 @end
 
@@ -95,8 +96,36 @@
     {
         [self leaveOrJoinResearchStudyTapped:nil];
     }
+    if (indexPath.section == 2)
+    {
+        [self showChoiceForReviewConsent];
+    }
 }
 
+-(void)showChoiceForReviewConsent
+{
+    UIAlertController *leaveOnboarding = [UIAlertController alertControllerWithTitle:@"How would you like to review consent?" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *screens = [UIAlertAction actionWithTitle:@"Consent Screens" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+        [self performSegueWithIdentifier:@"consentScreens" sender:self];
+        
+    }];
+    
+    UIAlertAction *form = [UIAlertAction actionWithTitle:@"Conset Form" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [self performSegueWithIdentifier:@"consentForm" sender:self];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    }];
+    
+    [leaveOnboarding addAction:screens];
+    [leaveOnboarding addAction:form];
+    [leaveOnboarding addAction:cancel];
+    
+    [self presentViewController:leaveOnboarding animated:YES completion:nil];
+}
 /*
 UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedString(@"Email Verification Resent", @"") message:error.localizedDescription];
 
@@ -167,7 +196,7 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
         ProfileRKLaunchPad *destVC = (ProfileRKLaunchPad *)[segue destinationViewController];
         destVC.shouldShowSharingOptions = YES;
     }
-    else if ([segue.identifier isEqualToString:@"reviewConsent"])
+    else if ([segue.identifier isEqualToString:@"consentScreens"])
     {
         ProfileRKLaunchPad *destVC = (ProfileRKLaunchPad *)[segue destinationViewController];
         destVC.shouldShowReviewConsent = YES;
@@ -183,6 +212,12 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
     {
         PDFViewerViewController *destVC = (PDFViewerViewController *)[segue destinationViewController];
         destVC.filename = NAME_OF_INFORMATION_SHEET_DOC;
+    }
+    
+    else if ([segue.identifier isEqualToString:@"consentForm"])
+    {
+        PDFViewerViewController *destVC = (PDFViewerViewController *)[segue destinationViewController];
+        destVC.filename = NAME_OF_CONSENT_FORM;
     }
 }
 

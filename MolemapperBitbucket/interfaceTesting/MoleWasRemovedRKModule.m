@@ -15,13 +15,18 @@
 {
     ORKOrderedTask *task = nil;
     
+   
+    /* Don't need intro any more because that will be handled directly after the followup survey
+     Leaving out the survey question about diagnosis until next version and IRB approval.
+     Note that the diagnoses parsing code is still intact, but will not be used. The data transfer
+     will take place at the time of tapping the moleWasRemovedByDoctor button
+     
     ORKInstructionStep *introStep =
     [[ORKInstructionStep alloc] initWithIdentifier:@"intro"];
     introStep.title = @"Mole Removal Followup";
-    introStep.text = @"We would like to ask you about the results of your mole removal. If you do not have the results from your doctor yet, you can return at any time by tapping the icon highlighted below.";
+    introStep.text = @"Please navigate to the the mole that was removed and tap the settings button to inform us which mole was removed.";
     
     introStep.image = [UIImage imageNamed:@"moleRemovedDemo"];
-    
     
     ORKTextChoice *benign = [ORKTextChoice choiceWithText:@"No" detailText:@"No additional surgery was needed after my mole biopsy" value:@"benign" exclusive:YES];
     ORKTextChoice *reExcision = [ORKTextChoice choiceWithText:@"Yes" detailText:@"Additional surgery was needed to remove a larger area around the mole" value:@"reExcision" exclusive:YES];
@@ -34,6 +39,8 @@
     ORKQuestionStep *diagnosisStep = [ORKQuestionStep questionStepWithIdentifier:@"diagnosis"
                                                                             title:@"Did you need to have any additional surgery after your mole was removed?"
                                                                            answer:diagnosis];
+     */
+    
     ORKInstructionStep *sitePhotoStep = [[ORKInstructionStep alloc] initWithIdentifier:@"sitePhoto"];
     sitePhotoStep.title = @"Biopsy Site Photo";
     sitePhotoStep.text = @"When it is safe to do so without a bandage, please measure the area where the mole was removed in the same way you would measure your mole.\n\nThis will help us understand the results of your procedure.";
@@ -41,9 +48,9 @@
     
     ORKInstructionStep *thankYouStep = [[ORKInstructionStep alloc] initWithIdentifier:@"thankYou"];
     thankYouStep.title = @"Thank you";
-    thankYouStep.text = @"\nThe data you are contributing to this research will help us to understand and prevent skin cancer";
+    thankYouStep.text = @"\nThe data you are contributing to this research will help us to understand and prevent skin cancer.";
     
-    task = [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:@[introStep,diagnosisStep,sitePhotoStep,thankYouStep]];
+    task = [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:@[sitePhotoStep,thankYouStep]];
     ORKTaskViewController *taskViewController =
     [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
     taskViewController.delegate = self;
@@ -116,7 +123,8 @@
     NSMutableDictionary *parsedData = [NSMutableDictionary dictionary];
     NSArray *diagnosis = @[];
     
-        NSArray *firstLevelResults = taskResult.results;
+    
+    NSArray *firstLevelResults = taskResult.results;
         for (ORKCollectionResult *firstLevel in firstLevelResults)
         {
             if ([firstLevel.identifier isEqualToString:@"intro"])
@@ -131,12 +139,13 @@
                 {
                     if ([secondLevel isKindOfClass:[ORKChoiceQuestionResult class]])
                     {
-                        ORKChoiceQuestionResult *diagnosisResult = (ORKChoiceQuestionResult *)secondLevel;
-                        diagnosis = diagnosisResult.choiceAnswers;
+                        //ORKChoiceQuestionResult *diagnosisResult = (ORKChoiceQuestionResult *)secondLevel;
+                        //diagnosis = diagnosisResult.choiceAnswers;
                     }
                 }
             }
         }
+    
     
     [parsedData setObject:diagnosis forKey:@"diagnosis"];
     

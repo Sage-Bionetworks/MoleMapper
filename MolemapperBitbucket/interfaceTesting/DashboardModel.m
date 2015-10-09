@@ -425,13 +425,16 @@
     float mostRecentDiameter = [mostRecent.absoluteMoleDiameter floatValue];
     //Round the floating point values so that small changes in size don't look out of place due mismatch between user-visible measurement (1 decimal) vs. behind the scenes precision
     
-    float initialRounded = [self correctFloat:initialDiameter];
-    float mostRecentRounded = [self correctFloat:mostRecentDiameter];
+    //float initialRounded = [self correctFloat:initialDiameter];
+    //float mostRecentRounded = [self correctFloat:mostRecentDiameter];
 
     if (initialDiameter && mostRecentDiameter && initialDiameter != 0.0f)
     {
-        float percentChangeFloat = ((mostRecentRounded / initialRounded) * 100.0f) - 100.0f;
-        percentChange = [NSNumber numberWithFloat:percentChangeFloat];
+        float percentChangeFloat = -1.0 * (((initialDiameter - mostRecentDiameter)/ initialDiameter) * 100.0f);
+        //float percentChangeFloat = ((mostRecentDiameter / initialDiameter) * 100.0f) - 100.0f;
+        //float percentChangeFloat = ((mostRecentRounded / initialRounded) * 100.0f) - 100.0f;
+        float correctlyRoundedFloat = [self correctFloat:percentChangeFloat];
+        percentChange = [NSNumber numberWithFloat:correctlyRoundedFloat];
     }
     return percentChange;
 }

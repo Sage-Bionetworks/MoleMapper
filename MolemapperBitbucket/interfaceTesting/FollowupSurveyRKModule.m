@@ -20,8 +20,9 @@
 
 -(BOOL)shouldShowFollowupSurvey
 {
-    //For debugging
+    //For debugging the followup, which would otherwise only take place every 30 days
     //return YES;
+    
     BOOL shouldShowFollowupSurvey = NO;
     
     NSDate *now = [NSDate date];

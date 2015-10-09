@@ -10,6 +10,7 @@
 #import "Mole+MakeAndMod.h"
 #import "Mole.h"
 #import "AppDelegate.h"//
+#import "DashboardModel.h"
 
 @interface MolePin ()
 {
@@ -210,8 +211,8 @@
         NSString *subtitle = @"Mole Size: ";
         if (self.mostRecentMeasurement.absoluteMoleDiameter)
         {
-            
-            NSString* formattedSize = [NSString stringWithFormat:@"%.1f", ceilf([self.mostRecentMeasurement.absoluteMoleDiameter floatValue] * 10.0f) / 10.0f];
+            float roundedDiameter = [[DashboardModel sharedInstance] correctFloat:[self.mostRecentMeasurement.absoluteMoleDiameter floatValue]];
+            NSString* formattedSize = [NSString stringWithFormat:@"%.1f",roundedDiameter];
             subtitle = [subtitle stringByAppendingString:formattedSize];
             subtitle = [subtitle stringByAppendingString:@" mm"];
         }

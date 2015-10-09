@@ -31,4 +31,7 @@
 //Sign in to Bridge and then send all Mole Measurements and their attendant photos
 -(void)signInAndSendMeasurements;
 
+//Sign in to Bridge and then send diagnosis information about removed moles
+-(void)signInAndSendRemovedMoleData:(NSDictionary *)removedMoleData;
+
 @end
