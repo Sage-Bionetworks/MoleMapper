@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "SBBUserProfile+MoleMapper.h"
 #import "ResearchKit.h"
+#import "PopupManager.h"
 
 @interface SharingOptionsOnlyRKModule ()
 
@@ -76,6 +77,9 @@
             
             //Store appropriate values securely in MMUser as strings
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            NSString *text = @"Your selection for how your data is shared with researchers has been saved.";
+            [[PopupManager sharedInstance] createPopupWithText:text andSize:24.0];
             
             ad.user.sharingScope = sharingScope;
             [ad.bridgeManager signInAndChangeSharingToScope:sharingScope];

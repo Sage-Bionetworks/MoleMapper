@@ -8,6 +8,7 @@
 
 #import "FeedbackRKModule.h"
 #import "AppDelegate.h"
+#import "PopupManager.h"
 
 @implementation FeedbackRKModule
 
@@ -59,9 +60,9 @@
         {
             NSDictionary *parsedData = [self parsedDataFromTaskResult:taskResult];
             
+            
             //NSString *feedback = [parsedData valueForKey:@"feedback"];
             //Store this locally in a cache to send later if not connected?
-            
             AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [ad.bridgeManager signInAndSendFeedback:parsedData];
             
@@ -83,7 +84,11 @@
     }
     
     // Then, dismiss the task view controller.
+    NSString *text = @"Thank you for your help and feedback!";
+    [[PopupManager sharedInstance] createPopupWithText:text andSize:24.0];
+    
     [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
+    
     [self.presentingVC.navigationController popViewControllerAnimated:YES];;
     
 }

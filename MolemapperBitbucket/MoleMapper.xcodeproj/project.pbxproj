@@ -99,6 +99,7 @@
 		E65F29881972C421000F90BB /* appIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E65F29871972C421000F90BB /* appIcon.xcassets */; };
 		E666F2FB1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */; settings = {ASSET_TAGS = (); }; };
 		E666F2FD1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */; settings = {ASSET_TAGS = (); }; };
+		E666F30F1BC97E8C005E8504 /* ohsu-molemapper.pem in Resources */ = {isa = PBXBuildFile; fileRef = E666F30E1BC97E8C005E8504 /* ohsu-molemapper.pem */; settings = {ASSET_TAGS = (); }; };
 		E682EEB417076EBD007A0654 /* MoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E682EEB317076EBD007A0654 /* MoleViewController.m */; };
 		E6883B701B95D2EE00F5A9A5 /* APCDataArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B6F1B95D2EE00F5A9A5 /* APCDataArchive.m */; };
 		E6883B851B95D43E00F5A9A5 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B7E1B95D43E00F5A9A5 /* NSDate+Helper.m */; };
@@ -158,7 +159,6 @@
 		E6FDF8781B896E9900EE7037 /* APCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FDF8771B896E9900EE7037 /* APCButton.m */; };
 		E6FDF8811B8AC52600EE7037 /* UIAlertController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FDF8801B8AC52600EE7037 /* UIAlertController+Helper.m */; };
 		E6FDF8841B8AD47000EE7037 /* ThankYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FDF8831B8AD47000EE7037 /* ThankYouViewController.m */; };
-		E6FDF8961B8B2EFC00EE7037 /* ohsu-molemapper.pem in Resources */ = {isa = PBXBuildFile; fileRef = E6FDF8951B8B2EFC00EE7037 /* ohsu-molemapper.pem */; };
 		E6FDF8B31B8BA24D00EE7037 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6FDF8501B882B2500EE7037 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6FDF8F51B8F17B000EE7037 /* QuizQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FDF8F41B8F17B000EE7037 /* QuizQuestionViewController.m */; };
 		E6FDF8F61B91632900EE7037 /* secureDatabase@2x.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E6FDF8791B89922C00EE7037 /* secureDatabase@2x.m4v */; };
@@ -428,6 +428,7 @@
 		E65F29871972C421000F90BB /* appIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = appIcon.xcassets; sourceTree = "<group>"; };
 		E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf"; sourceTree = "<group>"; };
 		E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MM-ConsentformS0-clean_2015_10_08.pdf"; sourceTree = "<group>"; };
+		E666F30E1BC97E8C005E8504 /* ohsu-molemapper.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ohsu-molemapper.pem"; sourceTree = "<group>"; };
 		E682EEB217076EBD007A0654 /* MoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleViewController.h; sourceTree = "<group>"; };
 		E682EEB317076EBD007A0654 /* MoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleViewController.m; sourceTree = "<group>"; };
 		E6883B6E1B95D2EE00F5A9A5 /* APCDataArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCDataArchive.h; sourceTree = "<group>"; };
@@ -537,7 +538,6 @@
 		E6FDF8801B8AC52600EE7037 /* UIAlertController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Helper.m"; sourceTree = "<group>"; };
 		E6FDF8821B8AD47000EE7037 /* ThankYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThankYouViewController.h; sourceTree = "<group>"; };
 		E6FDF8831B8AD47000EE7037 /* ThankYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThankYouViewController.m; sourceTree = "<group>"; };
-		E6FDF8951B8B2EFC00EE7037 /* ohsu-molemapper.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ohsu-molemapper.pem"; sourceTree = "<group>"; };
 		E6FDF8F31B8F17B000EE7037 /* QuizQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizQuestionViewController.h; sourceTree = "<group>"; };
 		E6FDF8F41B8F17B000EE7037 /* QuizQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizQuestionViewController.m; sourceTree = "<group>"; };
 		E6FDF8F91B916B0500EE7037 /* InitialSurveyRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSurveyRKModule.h; sourceTree = "<group>"; };
@@ -1073,10 +1073,10 @@
 			isa = PBXGroup;
 			children = (
 				4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */,
-				E6FDF8951B8B2EFC00EE7037 /* ohsu-molemapper.pem */,
 				E6FDF8791B89922C00EE7037 /* secureDatabase@2x.m4v */,
 				E6FDF87A1B89922C00EE7037 /* visitingDoctor@2x.m4v */,
 				E6FDF87B1B89922C00EE7037 /* recontact@2x.m4v */,
+				E666F30E1BC97E8C005E8504 /* ohsu-molemapper.pem */,
 				E692C1D91BC18B1100BE9111 /* helpOurResearch.htm */,
 				E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */,
 				E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */,
@@ -1269,6 +1269,7 @@
 				E62A0CAC1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf in Resources */,
 				4B04CF991BA9A577000C05AB /* PopupView.xib in Resources */,
 				E6FDF8F81B91632900EE7037 /* recontact@2x.m4v in Resources */,
+				E666F30F1BC97E8C005E8504 /* ohsu-molemapper.pem in Resources */,
 				E692C1DA1BC18B1100BE9111 /* helpOurResearch.htm in Resources */,
 				380B921F1BAC50700026D052 /* DashboardMolyEstZone.xib in Resources */,
 				4B856D9E1BC1BADA00998175 /* HelpCollectionViewCell.xib in Resources */,
@@ -1279,7 +1280,6 @@
 				E6F93E8E16DB273B0068B7B6 /* InfoPlist.strings in Resources */,
 				43D9933A1BA5067E0077073D /* DashboardActivityCompletionCell.xib in Resources */,
 				4BC88CE81BB1463000687E68 /* DashboardUVExposure.xib in Resources */,
-				E6FDF8961B8B2EFC00EE7037 /* ohsu-molemapper.pem in Resources */,
 				E6AC48D31A3870AD00A9F118 /* measurementDemo_2014_12_09.mov in Resources */,
 				E6F93E9D16DB273B0068B7B6 /* MainStoryboard.storyboard in Resources */,
 				E666F2FD1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf in Resources */,

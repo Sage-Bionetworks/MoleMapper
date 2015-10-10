@@ -1783,6 +1783,7 @@ Altruistic code-sharing by Chris Miles </string>
                     <navigationItem key="navigationItem" id="DCt-xj-iCW"/>
                     <connections>
                         <outlet property="enrollmentStatus" destination="fml-pa-vQH" id="jcC-dD-jif"/>
+                        <outlet property="sharingOptions" destination="zVS-WQ-f9W" id="dyu-VK-Za4"/>
                         <segue destination="RHk-Af-c9d" kind="push" identifier="consentForm" id="kJ9-6H-gud"/>
                         <segue destination="ZjD-kc-tkV" kind="push" identifier="consentScreens" id="i3w-zQ-RMt"/>
                     </connections>

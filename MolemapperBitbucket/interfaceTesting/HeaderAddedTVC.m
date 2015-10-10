@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "FeedbackRKModule.h"
 #import "ProfileRKLaunchPad.h"
+#import "PopupManager.h"
 
 @implementation HeaderAddedTVC
 

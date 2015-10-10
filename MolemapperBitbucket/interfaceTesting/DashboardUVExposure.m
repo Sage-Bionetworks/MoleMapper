@@ -9,6 +9,7 @@
 #import "DashboardUVExposure.h"
 #import "DashboardModel.h"
 #import "PopupManager.h"
+#import "AFNetworkReachabilityManager.h"
 
 @implementation DashboardUVExposure
 
@@ -105,12 +106,62 @@
 
 -(void) getUVJsonDataWithZipCode: (NSString*) zipCode
 {
+    
+    
+        
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+            //check for isReachable here
+            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+            {
+                NSLog(@"Is reachable");
+                NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+                NSURL * url = [[NSURL alloc] initWithString:urlString];
+                //
+                //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+                NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+                
+                [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                                       completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+                 {
+                     if (data != nil)
+                     {
+                         [[DashboardModel sharedInstance] setMostRecentStoredUVdata:data];
+                         NSArray* tempData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                         if (tempData != _jsonUVIndexDictionary)
+                         {
+                             _jsonUVIndexDictionary = tempData;
+                             //NSLog(@"Async JSON: %@", _jsonUVIndexDictionary);
+                             [self setupChartView];
+                         }
+                     }
+                 }];
+            }
+            else
+            {
+                NSLog(@"Is not reachable");
+                
+                    NSString *titles = @"Service Unavailable";
+                    NSString *msg = @"Service is not available currently.";
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:titles
+                                                                        message:msg
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+            }
+        }];
+        
+        
+    
+
+    /*
     @try
     {
-        //NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
-        //NSURL * url = [[NSURL alloc] initWithString:urlString];
+        NSString* urlString = [NSString stringWithFormat:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/%@/JSON", zipCode];
+        NSURL * url = [[NSURL alloc] initWithString:urlString];
         //
-        NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
+        //NSURL * url = [[NSURL alloc] initWithString:@"http://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/20902/JSON"];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
@@ -141,6 +192,7 @@
                                                 otherButtonTitles:nil];
         [alertView show];
     }
+     */
 }
 
 -(void)setupChartView

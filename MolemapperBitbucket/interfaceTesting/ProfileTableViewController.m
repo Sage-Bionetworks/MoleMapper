@@ -18,7 +18,7 @@
 @interface ProfileTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *enrollmentStatus;
-//@property (weak, nonatomic) IBOutlet UITableViewCell *sharingOptions;
+@property (weak, nonatomic) IBOutlet UITableViewCell *sharingOptions;
 
 #define NAME_OF_PRIVACY_POLICY_DOC @"PrivacyPolicy-MoleMapper-20Sept2015-EN"
 #define NAME_OF_INFORMATION_SHEET_DOC @"WoM-Information.Sheet.revisions.TRACKED_2015_10_09"
@@ -61,12 +61,20 @@
         self.enrollmentStatus.textLabel.text = @"Leave Study";
         self.enrollmentStatus.detailTextLabel.text = @"Participating";
         self.enrollmentStatus.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:255.0 alpha:1.0];
+        self.sharingOptions.userInteractionEnabled = YES;
+        self.sharingOptions.textLabel.enabled = YES;
+        self.sharingOptions.detailTextLabel.enabled = YES;
+        self.sharingOptions.textLabel.alpha = 1.0;
     }
     else
     {
         self.enrollmentStatus.textLabel.text = @"Join Study";
         self.enrollmentStatus.detailTextLabel.text = @"Not Participating";
         self.enrollmentStatus.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:255.0 alpha:1.0];
+        self.sharingOptions.userInteractionEnabled = NO;
+        self.sharingOptions.textLabel.enabled = NO;
+        self.sharingOptions.detailTextLabel.enabled = NO;
+        self.sharingOptions.textLabel.alpha = 0.5;
     }
 }
 
@@ -154,6 +162,11 @@ UIAlertController *alert = [UIAlertController simpleAlertWithTitle:NSLocalizedSt
             self.enrollmentStatus.textLabel.text = @"Join Study";
             self.enrollmentStatus.detailTextLabel.text = @"Not Participating";
             self.enrollmentStatus.detailTextLabel.textColor = [UIColor colorWithRed:0.0 green:(122.0/255.0) blue:255.0 alpha:1.0];
+            
+            self.sharingOptions.userInteractionEnabled = NO;
+            self.sharingOptions.textLabel.enabled = NO;
+            self.sharingOptions.detailTextLabel.enabled = NO;
+            self.sharingOptions.textLabel.alpha = 0.5;
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];

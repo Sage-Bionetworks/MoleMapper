@@ -12,6 +12,8 @@
 
 +(id)sharedInstance;
 
--(void) createPopupWithText:(NSString*)text;
+-(void)createPopupWithText:(NSString*)text;
+
+-(void)createPopupWithText:(NSString *)text andSize:(CGFloat)fontSize;
 
 @end

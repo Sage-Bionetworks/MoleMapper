@@ -8,6 +8,7 @@
 
 #import "PopupManager.h"
 #import "PopupView.h"
+#import "DemoKLCPopupHelper.h"
 
 @implementation PopupManager
 
@@ -45,5 +46,34 @@
     popup.shouldDismissOnBackgroundTouch = YES;
     [popup show];
 }
+
+- (void) createPopupWithText:(NSString *)text andSize:(CGFloat)fontSize
+{
+    PopupView *containerView = [[[NSBundle mainBundle] loadNibNamed:@"PopupView" owner:self options:nil] lastObject];
+    
+    UIView* contentView = [[UIView alloc] init];
+    contentView.backgroundColor = [UIColor whiteColor];
+    CGSize size = containerView.bounds.size;
+    contentView.frame = CGRectMake(0.0, 0.0, size.width, size.height);
+    [contentView addSubview:containerView];
+    
+    KLCPopup* popup = [KLCPopup popupWithContentView:contentView];
+    containerView.popup = popup;
+    containerView.descriptionText.text = text;
+    containerView.descriptionText.textColor = [UIColor darkGrayColor];
+    containerView.descriptionText.font = [UIFont systemFontOfSize:fontSize];
+    
+    
+    contentView.layer.cornerRadius = 5;
+    contentView.layer.masksToBounds = YES;
+    containerView.layer.cornerRadius = 5;
+    containerView.layer.masksToBounds = YES;
+    
+    popup.shouldDismissOnBackgroundTouch = YES;
+    popup.shouldDismissOnContentTouch = YES;
+    popup.maskType = KLCPopupMaskTypeDimmed;
+    [popup show];
+}
+
 
 @end

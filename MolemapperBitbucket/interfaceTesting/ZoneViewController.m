@@ -952,7 +952,7 @@
     
      */
     NSDictionary *removedMoleRecord = @{@"moleID" : [self.moleToBeDeleted.moleID stringValue],
-                                        @"diagnoses" : @"removed"}; //This would normally be an empty array
+                                        @"diagnoses" : @[@"removed"]}; //This would normally be an empty array
     [removedMoleToDiagnoses addObject:removedMoleRecord];
     ad.user.removedMolesToDiagnoses = removedMoleToDiagnoses;
     

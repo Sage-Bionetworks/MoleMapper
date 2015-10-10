@@ -34,7 +34,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [BridgeSDK setupWithStudy:@"ohsu-molemapper"];
+    //[BridgeSDK setupWithStudy:@"ohsu-molemapper"];
+    [BridgeSDK setupWithStudy:@"ohsu-molemapper" environment:SBBEnvironmentProd];
     
     self.bridgeManager = [[BridgeManager alloc] init];
     self.bridgeManager.context = self.managedObjectContext;

@@ -23,8 +23,6 @@
 //Class to handle data transfer to BridgeServer
 @implementation BridgeManager
 
-
-
 //Derived from APCUser+Bridge
 - (void)sendUserConsentedToBridgeOnCompletion:(void (^)(NSError *))completionBlock
 {

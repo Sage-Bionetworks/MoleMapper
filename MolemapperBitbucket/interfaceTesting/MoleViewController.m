@@ -1021,8 +1021,11 @@ http://stackoverflow.com/questions/6821517/save-an-image-to-application-document
     AppDelegate *ad = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSMutableArray *removedMoleToDiagnoses = [ad.user.removedMolesToDiagnoses mutableCopy];
     //Store a removedMole record with an empty diagnosis array for now until the user potentially enters diagnoses in survey
-    NSDictionary *removedMoleRecord = @{@"moleID" : self.measurement.whichMole.moleID,
-                                        @"diagnoses" : @[]};
+    NSDictionary *removedMoleRecord = @{@"moleID" : [self.measurement.whichMole.moleID stringValue],
+                                        @"diagnoses" : @[@"removed"]};
+    
+    [ad.bridgeManager signInAndSendRemovedMoleData:removedMoleRecord];
+    
     [removedMoleToDiagnoses addObject:removedMoleRecord];
     ad.user.removedMolesToDiagnoses = removedMoleToDiagnoses;
     
