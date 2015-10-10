@@ -58,10 +58,12 @@
         case ORKTaskViewControllerFinishReasonCompleted:
         {
             NSDictionary *parsedData = [self parsedDataFromTaskResult:taskResult];
-            NSString *feedback = [parsedData valueForKey:@"feedback"];
-            AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             
-            //Send data to Bridge here
+            //NSString *feedback = [parsedData valueForKey:@"feedback"];
+            //Store this locally in a cache to send later if not connected?
+            
+            AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [ad.bridgeManager signInAndSendFeedback:parsedData];
             
             break;
         }
@@ -95,12 +97,12 @@
     NSArray *firstLevelResults = taskResult.results;
     for (ORKCollectionResult *firstLevel in firstLevelResults)
     {
-        if ([firstLevel.identifier isEqualToString:@"feedback"])
+        if ([firstLevel.identifier isEqualToString:@"feedbackFormStep"])
         {
             NSLog(@"Processing feedback here");
             for (ORKStepResult *secondLevel in firstLevel.results)
             {
-                if ([secondLevel.identifier isEqualToString:@"feedback"])
+                if ([secondLevel.identifier isEqualToString:@"feedbackItem"])
                 {
                     if ([secondLevel isKindOfClass:[ORKTextQuestionResult class]])
                     {

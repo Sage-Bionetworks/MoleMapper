@@ -76,12 +76,11 @@ stepViewControllerWillAppear:(ORKStepViewController *)stepViewController {
         {
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
             
-            //You have gotten through the eligibility question, so this doesn't get shown again
-            //unless there is a reset
+            /*Independent of the answer to the eligibility questions, you have gotten through the eligibility question, so this doesn't get shown again unless there is a reset. Set up the onboarding flow booleans here so that you don't go backwards and see redundant content if you leave and come back.
+             */
+            
             [ud setBool:NO forKey:@"shouldShowWelcomeScreenWithCarousel"];
             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
-            [ud setBool:YES forKey:@"shouldShowOnboarding"];
-            [ud setBool:YES forKey:@"shouldShowInfoScreens"];
             
             NSNumber *age;
             
@@ -114,11 +113,16 @@ stepViewControllerWillAppear:(ORKStepViewController *)stepViewController {
             OnboardingViewController *onboarding = (OnboardingViewController *)self.presentingVC;
             if ([age isEqual:@1])
             {
+                [ud setBool:YES forKey:@"shouldShowOnboarding"];
+                [ud setBool:YES forKey:@"shouldShowInfoScreens"];
                 [onboarding showEligibleForStudy];
             }
             else
             {
+                //Set onboarding to NO here so that you can't just re-enter through the beaker icon
+                [ud setBool:NO forKey:@"shouldShowOnboarding"];
                 [onboarding showIneligibleForStudy];
+                
             }
             [self.presentingVC dismissViewControllerAnimated:YES completion:nil];
             break;

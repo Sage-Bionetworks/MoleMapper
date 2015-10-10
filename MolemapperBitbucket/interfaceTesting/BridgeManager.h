@@ -34,4 +34,7 @@
 //Sign in to Bridge and then send diagnosis information about removed moles
 -(void)signInAndSendRemovedMoleData:(NSDictionary *)removedMoleData;
 
+//Sign in to Bridge and then send feedback information about removed moles
+-(void)signInAndSendFeedback:(NSDictionary *)feedbackData;
+
 @end

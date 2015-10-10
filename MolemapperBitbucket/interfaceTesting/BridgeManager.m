@@ -127,7 +127,6 @@
     
     }
 
-
 //Derived from APCUser+Bridge
 - (void) updateProfileOnCompletion:(void (^)(NSError *))completionBlock
 {
@@ -186,7 +185,6 @@
     
 }
 
-
 -(void)signInAndSendInitialData:(NSDictionary *)initialData
 {
     AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -238,7 +236,6 @@
     
     
 }
-
 
 -(void)signInAndSendFollowupData:(NSDictionary *)followupData
 {
@@ -390,6 +387,59 @@
 
 }
 
+-(void)signInAndSendFeedback:(NSDictionary *)feedbackData
+{
+    {
+        AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+            //check for isReachable here
+            if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+            {
+                NSLog(@"Is reachable");
+                if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
+                {
+                    [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                            password: ad.user.bridgeSignInPassword
+                                                          completion: ^(NSURLSessionDataTask * __unused task,
+                                                                        id responseObject,
+                                                                        NSError *signInError)
+                     {
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             if (!signInError)
+                             {
+                                 NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                                 if (responseDictionary)
+                                 {
+                                     NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                                     NSLog(@"Data sharing scope integer is %@",dataSharing);
+                                 }
+                                 
+                                 NSLog(@"User is Signed In");
+                                 [ad.bridgeManager zipEncryptAndShipFeedbackData:feedbackData];
+                             }
+                             else
+                             {
+                                 NSLog(@"Error during log in before sending feedback: %@",signInError);
+                             }
+                             
+                         });
+                     }
+                     ];
+                }
+            }
+            else
+            {
+                NSLog(@"Is not reachable");
+            }
+        }];
+    }
+    
+}
+
+#pragma mark - Packaging and shipping helpers
+
 -(void)zipEncryptAndShipInitialData:(NSDictionary *)initialData
 {
     APCDataArchive *archive = [[APCDataArchive alloc] initWithReference:@"initialData"];
@@ -483,6 +533,25 @@
     [uploader encryptAndUploadArchive:archive withCompletion:^(NSError *error) {
         if (! error) {
             NSLog(@"Encrypt/uploading removed mole...");
+        }
+        else {
+            APCLogError2(error);
+        }
+    }];
+}
+
+-(void)zipEncryptAndShipFeedbackData:(NSDictionary *)feedbackData
+{
+    APCDataArchive *archive = [[APCDataArchive alloc] initWithReference:@"userFeedback"];
+    //Note that contrary to documentation in AppCore, you need the file extension here to be recognized by Bridge Server
+    [archive insertIntoArchive:feedbackData filename:@"userFeedback.json"];
+    
+    APCDataArchiveUploader *uploader = [[APCDataArchiveUploader alloc] init];
+    
+    //Using call from APCBaseTaskViewController here
+    [uploader encryptAndUploadArchive:archive withCompletion:^(NSError *error) {
+        if (! error) {
+            NSLog(@"Encrypt/uploading feedback data...");
         }
         else {
             APCLogError2(error);
