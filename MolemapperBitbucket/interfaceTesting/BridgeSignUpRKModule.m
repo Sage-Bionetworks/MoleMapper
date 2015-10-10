@@ -78,7 +78,7 @@
             NSString *email = [parsedData valueForKey:@"email"];
             NSString *password = [parsedData valueForKey:@"password"];
             
-            if ([self NSStringIsValidEmail:email] == NO || password.length < 2)
+            if ([self NSStringIsValidEmail:email] == NO || password.length < 6)
             {
                 [self.presentingVC dismissViewControllerAnimated:NO completion:nil];
                 [self emailOrPasswordNotValid];
@@ -171,7 +171,7 @@
 
 -(void)emailOrPasswordNotValid
 {
-    UIAlertController *notValid = [UIAlertController alertControllerWithTitle:@"Invalid Email/Password" message:@"We detected an improperly formatted email address or a password shorter than 2 characters.  Please try with different information" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *notValid = [UIAlertController alertControllerWithTitle:@"Invalid Email/Password" message:@"We detected an improperly formatted email address or a password shorter than 6 characters.  Please try with different information" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *reEnter = [UIAlertAction actionWithTitle:@"Re-enter Email/Password" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
         [self showSignUp];

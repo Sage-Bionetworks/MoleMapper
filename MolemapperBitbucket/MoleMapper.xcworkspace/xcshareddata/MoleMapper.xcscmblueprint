@@ -1,39 +1,25 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "491967C1143572975A957DDC9735DD55FDB263A5",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "06177A35CB745C713D3C1441BF207130755329EE",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "491967C1143572975A957DDC9735DD55FDB263A5" : 0,
-    "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : 0,
     "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : 0,
-    "9CF6181E3789E3853840089C16D4B9FDDB9B31E2" : 0
+    "06177A35CB745C713D3C1441BF207130755329EE" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "90A67F5D-79A3-4687-B69D-8F8364DE85F4",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "491967C1143572975A957DDC9735DD55FDB263A5" : "MoleMapper",
-    "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : "MoleMapper\/interfaceTesting\/CMSSupport",
-    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : "MoleMapper\/interfaceTesting\/BridgeSDK",
-    "9CF6181E3789E3853840089C16D4B9FDDB9B31E2" : "ResearchKit"
+    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : "MoleMapperRK\/Bridge-iOS-SDK-master\/",
+    "06177A35CB745C713D3C1441BF207130755329EE" : "MoleMapperRK\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MoleMapper",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MoleMapper.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MolemapperBitbucket\/MoleMapper.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Sage-Bionetworks\/CMSSupport.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/DanWebster\/mole-mapper-rk.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/DanWebster\/molemapper.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "491967C1143572975A957DDC9735DD55FDB263A5"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ResearchKit\/ResearchKit.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9CF6181E3789E3853840089C16D4B9FDDB9B31E2"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "06177A35CB745C713D3C1441BF207130755329EE"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Sage-Bionetworks\/Bridge-iOS-SDK.git",

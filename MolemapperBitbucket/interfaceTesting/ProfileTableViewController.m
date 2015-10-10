@@ -112,7 +112,7 @@
         
     }];
     
-    UIAlertAction *form = [UIAlertAction actionWithTitle:@"Conset Form" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *form = [UIAlertAction actionWithTitle:@"Consent Form" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         [self performSegueWithIdentifier:@"consentForm" sender:self];
     }];
