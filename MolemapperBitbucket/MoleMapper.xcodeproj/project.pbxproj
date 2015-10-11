@@ -1148,7 +1148,7 @@
 				ORGANIZATIONNAME = "Webster Apps";
 				TargetAttributes = {
 					E6F93E7E16DB273A0068B7B6 = {
-						DevelopmentTeam = JR2A4Y6PCX;
+						DevelopmentTeam = KA9Z8R6M6K;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -1586,7 +1586,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.molemapper;
 				PRODUCT_NAME = MoleMapper;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1624,7 +1624,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.molemapper;
 				PRODUCT_NAME = MoleMapper;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
