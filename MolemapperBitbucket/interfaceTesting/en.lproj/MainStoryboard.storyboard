@@ -1102,7 +1102,7 @@ Cgo
                                     <fragment>
                                         <string key="content"> 
 
-Altruistic code-sharing by Chris Miles </string>
+Altruistic code-sharing by: Chris Miles </string>
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
@@ -1114,7 +1114,7 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content="(">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
@@ -1123,7 +1123,7 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content="http://github.com/chrismiles">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <string key="NSLink">https://github.com/chrismiles</string>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
@@ -1133,13 +1133,13 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content=")">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=", Nick Farina ">
+                                    <fragment content=", Nick Farina ">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
@@ -1151,7 +1151,7 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content="(">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
@@ -1160,7 +1160,7 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content="http://github.com/nfarina">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <string key="NSLink">https://github.com/nfarina</string>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
@@ -1170,13 +1170,13 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content=")">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=", István Karpács, Orlando Aleman ">
+                                    <fragment content=", István Karpács, Orlando Aleman ">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
@@ -1188,7 +1188,7 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content="(">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
@@ -1197,14 +1197,23 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content="http://github.com/orlandoaleman">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <string key="NSLink">https://github.com/orlandoaleman</string>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="), ">
+                                    <fragment content=")">
+                                        <attributes>
+                                            <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=", ">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
@@ -1213,7 +1222,7 @@ Altruistic code-sharing by Chris Miles </string>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="and Ole Begemann">
+                                    <fragment content="Daniel Gindi ">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
@@ -1222,7 +1231,25 @@ Altruistic code-sharing by Chris Miles </string>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" (">
+                                    <fragment content="(https://github.com/danielgindi)">
+                                        <attributes>
+                                            <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=", and Ole Begemann">
+                                        <attributes>
+                                            <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
@@ -1231,10 +1258,19 @@ Altruistic code-sharing by Chris Miles </string>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
+                                    <fragment content="(">
+                                        <attributes>
+                                            <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
                                     <fragment content="http://github.com/ole">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <string key="NSLink">https://github.com/ole</string>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
@@ -1244,7 +1280,7 @@ Altruistic code-sharing by Chris Miles </string>
                                     <fragment content=")">
                                         <attributes>
                                             <color key="NSColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
