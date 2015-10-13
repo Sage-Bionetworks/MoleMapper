@@ -373,6 +373,7 @@
 		4BFF617E1BAC9BFE00FE7853 /* ORKAnswerFormat+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ORKAnswerFormat+Helper.h"; sourceTree = "<group>"; };
 		4BFF617F1BAC9BFE00FE7853 /* ORKAnswerFormat+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ORKAnswerFormat+Helper.m"; sourceTree = "<group>"; };
 		5F2A2DAC151494DC5633C638 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		80357F271BCACB7C0028FD38 /* MoleMapper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MoleMapper.entitlements; sourceTree = SOURCE_ROOT; };
 		E0E2AD0012A56BE2CC311760 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E604453618568AFA00AD75A1 /* StatisticsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsTVC.h; sourceTree = "<group>"; };
 		E604453718568AFA00AD75A1 /* StatisticsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsTVC.m; sourceTree = "<group>"; };
@@ -1043,6 +1044,7 @@
 		E6F93E8916DB273B0068B7B6 /* MoleMapper */ = {
 			isa = PBXGroup;
 			children = (
+				80357F271BCACB7C0028FD38 /* MoleMapper.entitlements */,
 				E6F93E9B16DB273B0068B7B6 /* MainStoryboard.storyboard */,
 				E6F93E9216DB273B0068B7B6 /* AppDelegate.h */,
 				E6F93E9316DB273B0068B7B6 /* AppDelegate.m */,
@@ -1148,7 +1150,7 @@
 				ORGANIZATIONNAME = "Webster Apps";
 				TargetAttributes = {
 					E6F93E7E16DB273A0068B7B6 = {
-						DevelopmentTeam = JR2A4Y6PCX;
+						DevelopmentTeam = KA9Z8R6M6K;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -1567,11 +1569,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = MoleMapper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"<Multiple/**",
@@ -1586,7 +1588,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.molemapper;
 				PRODUCT_NAME = MoleMapper;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1605,11 +1607,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = MoleMapper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"<Multiple/**",
@@ -1624,7 +1626,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.ANCRapps.MoleMapper;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.molemapper;
 				PRODUCT_NAME = MoleMapper;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
