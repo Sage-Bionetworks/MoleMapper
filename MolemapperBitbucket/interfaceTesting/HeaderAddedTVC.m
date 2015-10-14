@@ -23,7 +23,7 @@
 {
     if (indexPath.section == 3)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ohsu.edu/xd/health/services/dermatology/melanoma-community-registry/"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.ohsu.edu/xd/health/services/dermatology/war-on-melanoma/melanoma-community-registry.cfm"]];
     }
 }
 
