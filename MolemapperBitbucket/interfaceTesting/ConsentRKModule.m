@@ -137,7 +137,14 @@
     self.consentDocument.title = @"Research Consent";
     self.consentDocument.signaturePageTitle = @"Participant Signature";
     self.consentDocument.signaturePageContent = @"Providing your signature is the final step to consenting to your participation in this research study";
+    NSError *error = nil;
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:@"MM-ConsentformS0-clean_2015_10_13"
+                                                         ofType:@"html"];
+    NSString *text = [NSString stringWithContentsOfFile:fullPath
+                                               encoding:NSUTF8StringEncoding
+                                                  error:&error];
     
+    self.consentDocument.htmlReviewContent = text;
     ORKConsentSignature *signature = [ORKConsentSignature signatureForPersonWithTitle:@"Participant Signature"
                                                                      dateFormatString:@"MMM dd,yyyy"
                                                                            identifier:@"participantSignature"];

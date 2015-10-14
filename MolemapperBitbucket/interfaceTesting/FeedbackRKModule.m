@@ -18,7 +18,7 @@
     ORKFormStep *feedbackInfo =
     [[ORKFormStep alloc] initWithIdentifier:@"feedbackFormStep"
                                       title:@"Feedback"
-                                       text:@"Our goal is to stop needless loss of life due to melanomas that can be detected early.\n\nThis app is only the first step, so help us to make it more useful to you and more powerful for physicians and scientists. Please provide us with anonymous feedback below"];
+                                       text:@"Please help us make this app more useful to you and more powerful for physicians and scientists. Please provide us with anonymous feedback below."];
     feedbackInfo.optional = NO;
     
     ORKTextAnswerFormat *feedbackAnswerFormat = [ORKTextAnswerFormat textAnswerFormat];
