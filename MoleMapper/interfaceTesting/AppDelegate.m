@@ -29,13 +29,13 @@
 
 -(NSString *)certificateFileName
 {
-    return @"ohsu-molemapper";
+    return @"ohsu-molemapper-staging";
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //[BridgeSDK setupWithStudy:@"ohsu-molemapper"];
-    [BridgeSDK setupWithStudy:@"ohsu-molemapper" environment:SBBEnvironmentProd];
+    [BridgeSDK setupWithStudy:@"ohsu-molemapper-staging" environment:SBBEnvironmentStaging];
     
     self.bridgeManager = [[BridgeManager alloc] init];
     self.bridgeManager.context = self.managedObjectContext;
