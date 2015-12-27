@@ -9,15 +9,15 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "90A67F5D-79A3-4687-B69D-8F8364DE85F4",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : "MoleMapperRK\/Bridge-iOS-SDK-master\/",
-    "06177A35CB745C713D3C1441BF207130755329EE" : "MoleMapperRK\/"
+    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : "MoleMapper\/Bridge-iOS-SDK-master\/",
+    "06177A35CB745C713D3C1441BF207130755329EE" : "MoleMapper\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MoleMapper",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MolemapperBitbucket\/MoleMapper.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MoleMapper\/MoleMapper.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/DanWebster\/mole-mapper-rk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Sage-Bionetworks\/MoleMapper.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "06177A35CB745C713D3C1441BF207130755329EE"
     },

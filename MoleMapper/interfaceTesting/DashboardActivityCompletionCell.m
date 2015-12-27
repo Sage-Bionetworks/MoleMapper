@@ -3,7 +3,6 @@
 //  UCSF Pride
 //
 //  Created by Christian Curiel on 5/17/15.
-//  Edited by István Karpács
 //  Copyright (c) 2015 Analog Republic. All rights reserved.
 //
 
