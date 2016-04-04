@@ -49,7 +49,7 @@
                                        text:@"Please help us make this app more useful to you and more powerful for physicians and scientists. Please provide us with anonymous feedback below."];
     feedbackInfo.optional = NO;
     
-    ORKTextAnswerFormat *feedbackAnswerFormat = [ORKTextAnswerFormat textAnswerFormat];
+    ORKTextAnswerFormat *feedbackAnswerFormat = [ORKTextAnswerFormat textAnswerFormatWithMaximumLength:500];
     feedbackAnswerFormat.multipleLines = YES;
     feedbackAnswerFormat.spellCheckingType = UITextSpellCheckingTypeDefault;
     feedbackAnswerFormat.autocapitalizationType = UITextAutocapitalizationTypeSentences;
