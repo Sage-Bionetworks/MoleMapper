@@ -38,6 +38,8 @@
 #import "AppDelegate.h"
 #import "PopupManager.h"
 
+NSUInteger const kFeedbackMaxLength = 2000;
+
 @implementation FeedbackRKModule
 
 -(void)showFeedback
@@ -49,7 +51,7 @@
                                        text:@"Please help us make this app more useful to you and more powerful for physicians and scientists. Please provide us with anonymous feedback below."];
     feedbackInfo.optional = NO;
     
-    ORKTextAnswerFormat *feedbackAnswerFormat = [ORKTextAnswerFormat textAnswerFormatWithMaximumLength:500];
+    ORKTextAnswerFormat *feedbackAnswerFormat = [ORKTextAnswerFormat textAnswerFormatWithMaximumLength:kFeedbackMaxLength];
     feedbackAnswerFormat.multipleLines = YES;
     feedbackAnswerFormat.spellCheckingType = UITextSpellCheckingTypeDefault;
     feedbackAnswerFormat.autocapitalizationType = UITextAutocapitalizationTypeSentences;
