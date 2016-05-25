@@ -93,28 +93,47 @@
 
 -(void)showCorrectOnboardingScreenOrBodyMap
 {
-    if ([self shouldShowWelcomeScreenWithCarousel])
+    //user.hasEnrolled and user.hasConsented track *almost* identically
+    if (self.user.hasEnrolled == YES)
     {
-        [self showWelcomeScreenWithCarousel];
+        /*
+         {
+         spin up a quiz-style screen with 'withdraw' and 'continue' (but longer)
+         withdraw -> leaveStudy methods, change nsuserdefaults, take to bodyMap, can re-enroll at any time by tapping the beaker icon (may not need to send to Server?)
+         continue ->
+         //Sends consent information such as signature, sharing scope
+         - (void)sendUserConsentedToBridgeOnCompletion:(void (^)(NSError *))completionBlock;
+         [self showBodyMap];
+         
+         }
+         */
     }
-    else if ([self shouldShowOnboarding])
-    {
-        /*This is a serious of tracked booleans in NSUserDefaults that will switch on
-        as each step is completed, and then the previous step will be turned off,
-        thus allowing the state to be 'saved' if the user opts out at any point
-         See below for details on the various steps, which are all ResearchKit modules
-         that are spun up from the 'base class' onboardingViewController
-         [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
-         [ud setBool:NO forKey:@"shouldShowInfoScreens"];
-         [ud setBool:NO forKey:@"shouldShowQuiz"];
-         [ud setBool:NO forKey:@"shouldShowConsent"];
-         [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
-         [ud setBool:NO forKey:@"shouldShowInitialSurvey"];*/
-        [self showOnboarding];
-    }
+         
     else
     {
-        [self showBodyMap];
+        if ([self shouldShowWelcomeScreenWithCarousel])
+        {
+            [self showWelcomeScreenWithCarousel];
+        }
+        else if ([self shouldShowOnboarding])
+        {
+            /*This is a series of tracked booleans in NSUserDefaults that will switch on
+            as each step is completed, and then the previous step will be turned off,
+            thus allowing the state to be 'saved' if the user opts out at any point
+             See below for details on the various steps, which are all ResearchKit modules
+             that are spun up from the 'base class' onboardingViewController
+             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+             [ud setBool:NO forKey:@"shouldShowInfoScreens"];
+             [ud setBool:NO forKey:@"shouldShowQuiz"];
+             [ud setBool:NO forKey:@"shouldShowConsent"];
+             [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
+             [ud setBool:NO forKey:@"shouldShowInitialSurvey"];*/
+            [self showOnboarding];
+        }
+        else
+        {
+            [self showBodyMap];
+        }
     }
 }
 
