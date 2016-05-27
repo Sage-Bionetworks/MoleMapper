@@ -48,7 +48,7 @@
     ORKFormStep *eligibilityForm =
     [[ORKFormStep alloc] initWithIdentifier:@"eligibility"
                                       title:@"Study Eligibility"
-                                       text:@"This study is designed for people at least 18 years old who are comfortable using an iPhone and the iPhone camera"];
+                                       text:@"This study is designed for people at least 18 years old who are comfortable using a smartphone camera"];
     
     ORKAnswerFormat *age = [ORKAnswerFormat booleanAnswerFormat];
     [eligibilityItems addObject:[[ORKFormItem alloc] initWithIdentifier:@"age"

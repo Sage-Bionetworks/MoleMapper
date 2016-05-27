@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -23,7 +23,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Join Study to learn about this research study run by OHSU and Sage Bionetworks or tap &quot;Not ready&quot; to begin mapping" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-iz-EeG">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Join Study to learn about this research study run by OHSU or tap &quot;Not ready&quot; to begin mapping" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-iz-EeG">
                         <rect key="frame" x="8" y="188" width="304" height="95"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="320" id="hAr-AE-EnI"/>
@@ -37,7 +37,7 @@
                             </mask>
                         </variation>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ohsuSageLogos" translatesAutoresizingMaskIntoConstraints="NO" id="fWn-Ss-D7P">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ohsuLogoSquare" translatesAutoresizingMaskIntoConstraints="NO" id="fWn-Ss-D7P">
                         <rect key="frame" x="36" y="8" width="248" height="92"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="304" id="Dmf-I1-8O1"/>
@@ -78,6 +78,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ohsuSageLogos" width="248" height="113"/>
+        <image name="ohsuLogoSquare" width="450" height="450"/>
     </resources>
 </document>

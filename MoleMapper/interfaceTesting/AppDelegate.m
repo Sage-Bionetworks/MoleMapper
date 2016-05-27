@@ -56,13 +56,24 @@
 
 -(NSString *)certificateFileName
 {
+    
+    /*This is the default for a production release, and make sure to switch .pems before release to app store*/
+    //return @"ohsu-molemapper";
+    
+    /*This is the default for QA,*/
     return @"ohsu-molemapper-staging";
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[BridgeSDK setupWithStudy:@"ohsu-molemapper"];
-    [BridgeSDK setupWithStudy:@"ohsu-molemapper-staging" environment:SBBEnvironmentStaging];
+    /*This is the setup for a production release*/
+    [BridgeSDK setupWithStudy:@"ohsu-molemapper"];
+    
+    /*This is the setup for normal QA purposes*/
+    //[BridgeSDK setupWithStudy:@"ohsu-molemapper" environment:SBBEnvironmentStaging];
+    
+    /*For testing against a filtered app version; Anything over build version 0 will return with 'validation failed' in json response. ohsu-molemapper-staging .pem can be used here*/
+    //[BridgeSDK setupWithStudy:@"killswitch" environment:SBBEnvironmentProd];
     
     self.bridgeManager = [[BridgeManager alloc] init];
     self.bridgeManager.context = self.managedObjectContext;
