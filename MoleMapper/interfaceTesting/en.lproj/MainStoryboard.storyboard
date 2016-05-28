@@ -527,7 +527,7 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">:  If you have questions at any time before, during, or after the study, you can contact:
+                                        <string key="content">:  If you have questions at any time before, during, or after the study, you can contact: 
 Dr. Sancy Leachman, Principal Investigator, at 1-844-300-SPOT (7768) or WarOnMelanoma@OHSU.edu, or Tracy Petrie, Co-Investigator at molemapper@ohsu.edu.
 
 </string>
@@ -561,29 +561,8 @@ Dr. Sancy Leachman, Principal Investigator, at 1-844-300-SPOT (7768) or WarOnMel
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=": For questions, comments or requests regarding the privacy policy or our processing of your information, please contact:  ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="privacypolicy@sagebase.org">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <url key="NSLink" string="mailto:privacypolicy@sagebase.org"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="7.5" paragraphSpacingBefore="7.5" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                            <integer key="NSUnderline" value="1"/>
-                                        </attributes>
-                                    </fragment>
                                     <fragment>
-                                        <string key="content" base64-UTF8="YES">
-Cg
+                                        <string key="content">: For questions, comments or requests regarding the privacy policy or our processing of your information, please see our privacy policy on the Profile page of the app.
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
@@ -594,52 +573,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">Independent Contact: If you are not satisfied with how this study is being conducted, if you have questions about your rights as a research participant or if you have questions, concerns, input, or complaints about the research, please contact the Western Institutional Review Board (WIRB) to speak to someone independent of the research team:
-
-Western Institutional Review Board</string>
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="-35.900001525878906"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="®">
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="-35.900001525878906"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                            <integer key="NSSuperScript" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" (WIRB">
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="-35.900001525878906"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="®">
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="-35.900001525878906"/>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                            <integer key="NSSuperScript" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">)
+                                        <string key="content">Independent Contact: You may also contact OHSU's Institutional Review Board at (503) 494-7887 or irb@ohsu.edu if your questions, concerns, or complaints are not being answered by the research team; you want to talk to someone besides the research team; you have questions about our rights as a research subject; or you want to get more information or provide input about this research. 
 </string>
                                         <attributes>
                                             <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
@@ -647,40 +581,6 @@ Western Institutional Review Board</string>
                                                 <tabStops>
                                                     <textTab alignment="left" location="-35.900001525878906"/>
                                                 </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">1019 39th Avenue SE Suite 120
-Puyallup, WA 98374-2115
-Telephone:  1-800-562-4789 or 360-252-2500
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">E-mail: Help@wirb.com.
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
-WIRB is a group of people who perform independent review of research.
-
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="432" defaultTabInterval="36">
-                                                <tabStops/>
                                             </paragraphStyle>
                                         </attributes>
                                     </fragment>

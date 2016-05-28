@@ -135,6 +135,7 @@
 		E6AC48C61A311F3700A9F118 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E6AC48C51A311F3700A9F118 /* libz.dylib */; };
 		E6AC48C71A31255B00A9F118 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FF6315179140A000A1BC28 /* CoreData.framework */; };
 		E6AC48D31A3870AD00A9F118 /* measurementDemo_2014_12_09.mov in Resources */ = {isa = PBXBuildFile; fileRef = E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */; };
+		E6BFEC5C1CF8E25D00C3B9F0 /* ReconsentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BFEC5B1CF8E25D00C3B9F0 /* ReconsentViewController.m */; };
 		E6CFFE6F1785E3AF008ACEDC /* InterfaceTesting.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6CFFE6D1785E3AF008ACEDC /* InterfaceTesting.xcdatamodeld */; };
 		E6CFFE8D1787248D008ACEDC /* Mole+MakeAndMod.m in Sources */ = {isa = PBXBuildFile; fileRef = E6CFFE8C1787248D008ACEDC /* Mole+MakeAndMod.m */; };
 		E6CFFE9917873FCB008ACEDC /* Measurement+MakeAndMod.m in Sources */ = {isa = PBXBuildFile; fileRef = E6CFFE9817873FCB008ACEDC /* Measurement+MakeAndMod.m */; };
@@ -493,6 +494,8 @@
 		E6AC48C31A311F2100A9F118 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6AC48C51A311F3700A9F118 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = measurementDemo_2014_12_09.mov; sourceTree = "<group>"; };
+		E6BFEC5A1CF8E25D00C3B9F0 /* ReconsentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReconsentViewController.h; sourceTree = "<group>"; };
+		E6BFEC5B1CF8E25D00C3B9F0 /* ReconsentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReconsentViewController.m; sourceTree = "<group>"; };
 		E6CFFE6E1785E3AF008ACEDC /* InterfaceTesting.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InterfaceTesting.xcdatamodel; sourceTree = "<group>"; };
 		E6CFFE8B1787248D008ACEDC /* Mole+MakeAndMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mole+MakeAndMod.h"; sourceTree = "<group>"; };
 		E6CFFE8C1787248D008ACEDC /* Mole+MakeAndMod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mole+MakeAndMod.m"; sourceTree = "<group>"; };
@@ -770,6 +773,8 @@
 			children = (
 				4B11039A1BC1AFCE00E98F24 /* OnboardingCollectionViewCells */,
 				E6443BFB1B78B8E9007DE110 /* onboarding.storyboard */,
+				E6BFEC5A1CF8E25D00C3B9F0 /* ReconsentViewController.h */,
+				E6BFEC5B1CF8E25D00C3B9F0 /* ReconsentViewController.m */,
 				4B53FE051BC19B7400ED372C /* WelcomeCarouselViewController.h */,
 				4B53FE061BC19B7400ED372C /* WelcomeCarouselViewController.m */,
 				E6443BFD1B78B955007DE110 /* OnboardingViewController.h */,
@@ -1422,6 +1427,7 @@
 				4BFF616B1BAC992100FE7853 /* ExternalIDRKModule.m in Sources */,
 				E6F7518217BA9B6A00A7AB5A /* HeadDetailView.m in Sources */,
 				4BFF61721BAC9A5F00FE7853 /* PDFViewerViewController.m in Sources */,
+				E6BFEC5C1CF8E25D00C3B9F0 /* ReconsentViewController.m in Sources */,
 				E688C92E186A049500E70BBA /* ReferenceSetterViewController.m in Sources */,
 				43D993501BA514AA0077073D /* UAProgressView.m in Sources */,
 				361E4F151833F25200D1F5D8 /* StepperButton.m in Sources */,

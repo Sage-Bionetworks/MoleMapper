@@ -46,6 +46,7 @@
 #import "DashboardViewController.h"
 #import <BridgeSDK/BridgeSDK.h>
 #import "WelcomeCarouselViewController.h"
+#import "ReconsentViewController.h"
 
 
 @implementation AppDelegate
@@ -104,20 +105,9 @@
 
 -(void)showCorrectOnboardingScreenOrBodyMap
 {
-    //user.hasEnrolled and user.hasConsented track *almost* identically
-    if (self.user.hasEnrolled == YES)
+    if ([self shouldShowReconsentScreen])
     {
-        /*
-         {
-         spin up a quiz-style screen with 'withdraw' and 'continue' (but longer)
-         withdraw -> leaveStudy methods, change nsuserdefaults, take to bodyMap, can re-enroll at any time by tapping the beaker icon (may not need to send to Server?)
-         continue ->
-         //Sends consent information such as signature, sharing scope
-         - (void)sendUserConsentedToBridgeOnCompletion:(void (^)(NSError *))completionBlock;
-         [self showBodyMap];
-         
-         }
-         */
+        [self showReconsentScreen];
     }
          
     else
@@ -174,6 +164,36 @@
     [mutable removeAllObjects];
     NSArray *empty = mutable;
     self.user.measurementsAlreadySentToBridge = empty;
+}
+
+//user.hasEnrolled and user.hasConsented track *almost* identically
+//Build version 4 is a new study with OHSU as sole study sponsor
+-(BOOL)shouldShowReconsentScreen
+{
+    BOOL shouldShowReconsentScreen = NO;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    int appVersion = [[mainBundle objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] intValue];
+    
+//ONLY USED FOR DEBUGGING, CHANGE THIS BACK OR
+    [ud setBool:NO forKey:@"reconsentHasBeenSeen"];
+//ONLY USED FOR DEBUGGING, CHANGE THIS BACK
+    
+    if (appVersion == 4 &&
+        self.user.hasEnrolled == YES &&
+        [ud boolForKey:@"reconsentHasBeenSeen"] == NO)
+    {
+        shouldShowReconsentScreen = YES;
+    }
+    
+    return shouldShowReconsentScreen;
+}
+
+-(void)showReconsentScreen
+{
+    ReconsentViewController *reconsent = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"reconsent"];
+    [self setUpRootViewController:reconsent];
 }
 
 -(BOOL)shouldShowOnboarding
@@ -378,6 +398,10 @@
     if (![standardUserDefaults objectForKey:@"shouldShowWelcomeScreenWithCarousel"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowWelcomeScreenWithCarousel"];
+    }
+    if (![standardUserDefaults objectForKey:@"reconsentHasBeenSeen"])
+    {
+        [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"reconsentHasBeenSeen"];
     }
     if (![standardUserDefaults objectForKey:@"removedMolesToDiagnoses"])
     {
