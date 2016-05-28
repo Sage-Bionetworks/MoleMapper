@@ -463,6 +463,76 @@
     
 }
 
+-(void)signInAndReEmailConsentDocForSubpopulation:(NSString *)subpopGuid andCompletionBlock:(void (^)(NSError *))completionBlock
+{
+    AppDelegate *ad = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"Is reachable");
+            if (ad.user.bridgeSignInEmail && ad.user.bridgeSignInPassword && ad.user.hasConsented == YES)
+            {
+                [SBBComponent(SBBAuthManager) signInWithUsername: ad.user.bridgeSignInEmail
+                                                        password: ad.user.bridgeSignInPassword
+                                                      completion: ^(NSURLSessionDataTask * __unused task,
+                                                                    id responseObject,
+                                                                    NSError *signInError)
+                 {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (!signInError)
+                         {
+                             NSDictionary *responseDictionary = (NSDictionary *) responseObject;
+                             if (responseDictionary)
+                             {
+                                 NSNumber *dataSharing = responseDictionary[@"dataSharing"];
+                                 NSLog(@"Data sharing scope integer is %@",dataSharing);
+                             }
+                             
+                             NSLog(@"Sending Re-consent email...");
+                             [self emailConsentDocForSubpopulation:subpopGuid WithCompletionBlock:completionBlock];
+                         }
+                         else
+                         {
+                             NSLog(@"Error during log in before Re-sending Consent: %@",signInError);
+                         }
+                         
+                     });
+                 }
+                 ];
+            }
+        }
+        else
+        {
+            NSLog(@"Is not reachable");
+        }
+    }];
+}
+
+
+-(void)emailConsentDocForSubpopulation:(NSString *)subpopGuid WithCompletionBlock:(void (^)(NSError *))completionBlock
+{
+    [SBBComponent(SBBConsentManager)emailConsentForSubpopulation:subpopGuid completion:^(id __unused responseObject,
+                                                                                              NSError * __unused error)
+     {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             if (!error)
+             {
+                 APCLogEventWithData(@"Network Event", (@{@"event_detail":@"Reconsent email sent to User"}));
+             }
+             else
+             {
+                 NSLog(@"Did not send consent because of this error: %@",error);
+                 //NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+             }
+             
+             if (completionBlock) {completionBlock(error);}
+         });
+     }];
+}
+
 #pragma mark - Packaging and shipping helpers
 
 -(void)zipEncryptAndShipInitialData:(NSDictionary *)initialData

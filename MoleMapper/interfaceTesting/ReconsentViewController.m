@@ -98,34 +98,8 @@
         NSLog(@"Remember that you need register for the study first here. Turn off the reconsent module in AppDelegate and consent in first.");
     }
     
-    //This currently sends a passwor reset, which is not what we want, will need to swap in another BridgeSDK call to send consent. Need to figure out what that is
-    [SBBComponent(SBBAuthManager) signUpWithEmail: email
-                                         username: email
-                                         password: password
-                                       completion: ^(NSURLSessionDataTask * __unused task,
-                                                     id __unused responseObject,
-                                                     NSError *error) {
-                                           dispatch_async(dispatch_get_main_queue(),^{
-                                               if (!error)
-                                               {
-                                                   NSLog(@"User is SIGNED UP for reconsent successfully");
-                                               }
-                                               else
-                                               {
-                                                   NSLog(@"error: %@",error);
-                                               }
-                                           });
-                                       }];
-    
-    //Below fails because consentSignature already exists
-    /*
-     if (ad.user.hasConsented) {
-     [ad.bridgeManager sendUserConsentedToBridgeOnCompletion: ^(NSError *error) {
-     //[weakSelf handleConsentResponseWithError: error];
-     }];
-     }
-     */
-    
+    //NEED TO FIND OUT WHAT THE SUBPOPULATION STRING IS
+    [ad.bridgeManager signInAndReEmailConsentDocForSubpopulation:@"OHSU Consent" andCompletionBlock:nil];
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setValue:[NSNumber numberWithBool:YES] forKey:@"reconsentHasBeenSeen"];

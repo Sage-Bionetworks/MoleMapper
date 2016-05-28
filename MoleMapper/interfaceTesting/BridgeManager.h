@@ -65,4 +65,7 @@
 //Sign in to Bridge and then send feedback information about removed moles
 -(void)signInAndSendFeedback:(NSDictionary *)feedbackData;
 
+//Sign in to Bridge and then send consent document to users in group
+-(void)signInAndReEmailConsentDocForSubpopulation:(nonnull NSString *)subpopGuid andCompletionBlock:( void (^)(NSError *))completionBlock;
+
 @end
