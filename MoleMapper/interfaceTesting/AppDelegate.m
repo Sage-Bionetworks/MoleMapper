@@ -107,7 +107,7 @@
 {
     if ([self shouldShowReconsentScreen])
     {
-        [self showReconsentScreen];
+        [self showReconsentScreen];return;
     }
          
     else

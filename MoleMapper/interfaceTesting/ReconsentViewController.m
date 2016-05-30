@@ -98,8 +98,8 @@
         NSLog(@"Remember that you need register for the study first here. Turn off the reconsent module in AppDelegate and consent in first.");
     }
     
-    //NEED TO FIND OUT WHAT THE SUBPOPULATION STRING IS
-    [ad.bridgeManager signInAndReEmailConsentDocForSubpopulation:@"OHSU Consent" andCompletionBlock:nil];
+    //Subpopulation GUID should be coming back in the Bridge-Session, this is hard-coded in
+    [ad.bridgeManager signInAndReEmailConsentDocForSubpopulation:@"ohsu-molemapper" andCompletionBlock:nil];
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setValue:[NSNumber numberWithBool:YES] forKey:@"reconsentHasBeenSeen"];

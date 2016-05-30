@@ -489,6 +489,9 @@
                              {
                                  NSNumber *dataSharing = responseDictionary[@"dataSharing"];
                                  NSLog(@"Data sharing scope integer is %@",dataSharing);
+                                 NSString *subpopGUID = responseDictionary[@"consentStatuses"][@"ohsu-molemapper"][@"subpopulationGuid"];
+                                 NSLog(@"SubpopGuid: %@",subpopGuid);
+                                 
                              }
                              
                              NSLog(@"Sending Re-consent email...");
