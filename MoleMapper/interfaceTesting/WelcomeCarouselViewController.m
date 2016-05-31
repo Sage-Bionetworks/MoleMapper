@@ -46,6 +46,8 @@
 
 @property (weak, nonatomic) IBOutlet APCButton *joinStudyButton;
 
+#define NAME_OF_CONSENT_FORM @"consentForm_16038_2016_05_27"
+
 @end
 
 @implementation WelcomeCarouselViewController
@@ -238,7 +240,7 @@
         [mc setMessageBody:@"" isHTML:NO];
         [mc setToRecipients:@[@""]];
         
-        NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"MM-ConsentformS0-clean_2015_10_08" ofType:@"pdf"];
+        NSString *pdfPath = [[NSBundle mainBundle] pathForResource:NAME_OF_CONSENT_FORM ofType:@"pdf"];
         NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
         [mc addAttachmentData:pdfData mimeType:@"application/pdf" fileName:@"Consent Document.pdf"];
 

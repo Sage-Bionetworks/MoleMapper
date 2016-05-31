@@ -72,7 +72,6 @@
 		E61B0A521874F6E20081FFA5 /* ReferenceConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = E61B0A511874F6E20081FFA5 /* ReferenceConverter.m */; };
 		E61B0A581875E1530081FFA5 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = E61B0A571875E1530081FFA5 /* Measurement.m */; };
 		E61E726C1760EA3300DBB216 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E726B1760EA3300DBB216 /* MobileCoreServices.framework */; };
-		E62A0CAC1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */; };
 		E62A0D4B1BB4E3E5005FF87B /* CMSSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */; };
 		E62A0D4C1BB4E418005FF87B /* CMSSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D3C1BB4E373005FF87B /* CMSSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E62A0D4D1BB4E436005FF87B /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E62A0D461BB4E398005FF87B /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -93,14 +92,12 @@
 		E64808161820D43700A7E644 /* ComparisonPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64808151820D43700A7E644 /* ComparisonPageViewController.m */; };
 		E64808191820E5D400A7E644 /* MeasurementComparsionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E64808181820E5D400A7E644 /* MeasurementComparsionViewController.m */; };
 		E64CE58E1B882443007105FB /* BridgeSignUpRKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E64CE58D1B882443007105FB /* BridgeSignUpRKModule.m */; };
-		E651A7B41BCE107D009F21DA /* MM-ConsentformS0-clean_2015_10_13.html in Resources */ = {isa = PBXBuildFile; fileRef = E651A7B31BCE107D009F21DA /* MM-ConsentformS0-clean_2015_10_13.html */; };
 		E6537EFF1B8156AD00B38331 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6537EFE1B8156AD00B38331 /* DashboardViewController.m */; };
 		E6537F051B8543C400B38331 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6537F041B8543C400B38331 /* BridgeManager.m */; };
 		E65CABB617ECF20100AAC5D3 /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E65CABB517ECF20100AAC5D3 /* UIImage+Extras.m */; };
 		E65CABBB17ED07BA00AAC5D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E65CABBA17ED07BA00AAC5D3 /* QuartzCore.framework */; };
 		E65F29881972C421000F90BB /* appIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E65F29871972C421000F90BB /* appIcon.xcassets */; };
 		E666F2FB1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */; };
-		E666F2FD1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */; };
 		E682EEB417076EBD007A0654 /* MoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E682EEB317076EBD007A0654 /* MoleViewController.m */; };
 		E6883B701B95D2EE00F5A9A5 /* APCDataArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B6F1B95D2EE00F5A9A5 /* APCDataArchive.m */; };
 		E6883B851B95D43E00F5A9A5 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B7E1B95D43E00F5A9A5 /* NSDate+Helper.m */; };
@@ -136,6 +133,9 @@
 		E6AC48C71A31255B00A9F118 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FF6315179140A000A1BC28 /* CoreData.framework */; };
 		E6AC48D31A3870AD00A9F118 /* measurementDemo_2014_12_09.mov in Resources */ = {isa = PBXBuildFile; fileRef = E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */; };
 		E6BFEC5C1CF8E25D00C3B9F0 /* ReconsentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BFEC5B1CF8E25D00C3B9F0 /* ReconsentViewController.m */; };
+		E6BFEC5F1CFCFF8400C3B9F0 /* consentForm_16038_2016_05_27.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6BFEC5D1CFCFF8400C3B9F0 /* consentForm_16038_2016_05_27.pdf */; };
+		E6BFEC601CFCFF8400C3B9F0 /* privacyPolicy_2016_05_27.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6BFEC5E1CFCFF8400C3B9F0 /* privacyPolicy_2016_05_27.pdf */; };
+		E6BFEC621CFD40FA00C3B9F0 /* consentForm_16038_2016_05_27.html in Resources */ = {isa = PBXBuildFile; fileRef = E6BFEC611CFD40FA00C3B9F0 /* consentForm_16038_2016_05_27.html */; };
 		E6CFFE6F1785E3AF008ACEDC /* InterfaceTesting.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6CFFE6D1785E3AF008ACEDC /* InterfaceTesting.xcdatamodeld */; };
 		E6CFFE8D1787248D008ACEDC /* Mole+MakeAndMod.m in Sources */ = {isa = PBXBuildFile; fileRef = E6CFFE8C1787248D008ACEDC /* Mole+MakeAndMod.m */; };
 		E6CFFE9917873FCB008ACEDC /* Measurement+MakeAndMod.m in Sources */ = {isa = PBXBuildFile; fileRef = E6CFFE9817873FCB008ACEDC /* Measurement+MakeAndMod.m */; };
@@ -388,7 +388,6 @@
 		E61B0A561875E1530081FFA5 /* Measurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Measurement.h; sourceTree = "<group>"; };
 		E61B0A571875E1530081FFA5 /* Measurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Measurement.m; sourceTree = "<group>"; };
 		E61E726B1760EA3300DBB216 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf"; sourceTree = "<group>"; };
 		E62A0D351BB4E373005FF87B /* CMSSupport.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CMSSupport.xcodeproj; path = interfaceTesting/CMSSupport/CMSSupport.xcodeproj; sourceTree = "<group>"; };
 		E62A0D3F1BB4E397005FF87B /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = interfaceTesting/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		E62A0D4E1BB500D0005FF87B /* MoleWasRemovedRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleWasRemovedRKModule.h; sourceTree = "<group>"; };
@@ -422,7 +421,6 @@
 		E64808181820E5D400A7E644 /* MeasurementComparsionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementComparsionViewController.m; sourceTree = "<group>"; };
 		E64CE58C1B882443007105FB /* BridgeSignUpRKModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSignUpRKModule.h; sourceTree = "<group>"; };
 		E64CE58D1B882443007105FB /* BridgeSignUpRKModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSignUpRKModule.m; sourceTree = "<group>"; };
-		E651A7B31BCE107D009F21DA /* MM-ConsentformS0-clean_2015_10_13.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "MM-ConsentformS0-clean_2015_10_13.html"; sourceTree = "<group>"; };
 		E6537EFD1B8156AD00B38331 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		E6537EFE1B8156AD00B38331 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		E6537F031B8543C400B38331 /* BridgeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeManager.h; sourceTree = "<group>"; };
@@ -432,7 +430,6 @@
 		E65CABBA17ED07BA00AAC5D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E65F29871972C421000F90BB /* appIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = appIcon.xcassets; sourceTree = "<group>"; };
 		E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf"; sourceTree = "<group>"; };
-		E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MM-ConsentformS0-clean_2015_10_08.pdf"; sourceTree = "<group>"; };
 		E682EEB217076EBD007A0654 /* MoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleViewController.h; sourceTree = "<group>"; };
 		E682EEB317076EBD007A0654 /* MoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleViewController.m; sourceTree = "<group>"; };
 		E6883B6E1B95D2EE00F5A9A5 /* APCDataArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCDataArchive.h; sourceTree = "<group>"; };
@@ -496,6 +493,9 @@
 		E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = measurementDemo_2014_12_09.mov; sourceTree = "<group>"; };
 		E6BFEC5A1CF8E25D00C3B9F0 /* ReconsentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReconsentViewController.h; sourceTree = "<group>"; };
 		E6BFEC5B1CF8E25D00C3B9F0 /* ReconsentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReconsentViewController.m; sourceTree = "<group>"; };
+		E6BFEC5D1CFCFF8400C3B9F0 /* consentForm_16038_2016_05_27.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = consentForm_16038_2016_05_27.pdf; sourceTree = "<group>"; };
+		E6BFEC5E1CFCFF8400C3B9F0 /* privacyPolicy_2016_05_27.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = privacyPolicy_2016_05_27.pdf; sourceTree = "<group>"; };
+		E6BFEC611CFD40FA00C3B9F0 /* consentForm_16038_2016_05_27.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = consentForm_16038_2016_05_27.html; sourceTree = "<group>"; };
 		E6CFFE6E1785E3AF008ACEDC /* InterfaceTesting.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InterfaceTesting.xcdatamodel; sourceTree = "<group>"; };
 		E6CFFE8B1787248D008ACEDC /* Mole+MakeAndMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mole+MakeAndMod.h"; sourceTree = "<group>"; };
 		E6CFFE8C1787248D008ACEDC /* Mole+MakeAndMod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mole+MakeAndMod.m"; sourceTree = "<group>"; };
@@ -1081,18 +1081,18 @@
 		E6F93E8A16DB273B0068B7B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E6BFEC5D1CFCFF8400C3B9F0 /* consentForm_16038_2016_05_27.pdf */,
+				E6BFEC5E1CFCFF8400C3B9F0 /* privacyPolicy_2016_05_27.pdf */,
+				E6BFEC611CFD40FA00C3B9F0 /* consentForm_16038_2016_05_27.html */,
 				E631D48A1C1BA27500BA2A80 /* ohsu-molemapper-staging.pem */,
 				4B99E0D41BA9F575005B3B50 /* moleMapper.xcassets */,
 				E6FDF8791B89922C00EE7037 /* secureDatabase@2x.m4v */,
 				E6FDF87A1B89922C00EE7037 /* visitingDoctor@2x.m4v */,
 				E6FDF87B1B89922C00EE7037 /* recontact@2x.m4v */,
 				E692C1D91BC18B1100BE9111 /* helpOurResearch.htm */,
-				E651A7B31BCE107D009F21DA /* MM-ConsentformS0-clean_2015_10_13.html */,
-				E666F2FC1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf */,
 				E6883BA51B969CDF00F5A9A5 /* roundedRectButtonBackground3.png */,
 				E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */,
 				E6AC48D21A3870AD00A9F118 /* measurementDemo_2014_12_09.mov */,
-				E62A0CAB1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf */,
 				E6F93E8B16DB273B0068B7B6 /* MoleMapper-Info.plist */,
 				E6F93E8C16DB273B0068B7B6 /* InfoPlist.strings */,
 				E6F93E8F16DB273B0068B7B6 /* main.m */,
@@ -1276,10 +1276,9 @@
 				E6FDF8F61B91632900EE7037 /* secureDatabase@2x.m4v in Resources */,
 				4B99E0D51BA9F575005B3B50 /* moleMapper.xcassets in Resources */,
 				E6FDF8F71B91632900EE7037 /* visitingDoctor@2x.m4v in Resources */,
-				E62A0CAC1BB27C49005FF87B /* PrivacyPolicy-MoleMapper-20Sept2015-EN.pdf in Resources */,
 				4B04CF991BA9A577000C05AB /* PopupView.xib in Resources */,
+				E6BFEC5F1CFCFF8400C3B9F0 /* consentForm_16038_2016_05_27.pdf in Resources */,
 				E6FDF8F81B91632900EE7037 /* recontact@2x.m4v in Resources */,
-				E651A7B41BCE107D009F21DA /* MM-ConsentformS0-clean_2015_10_13.html in Resources */,
 				E692C1DA1BC18B1100BE9111 /* helpOurResearch.htm in Resources */,
 				380B921F1BAC50700026D052 /* DashboardMolyEstZone.xib in Resources */,
 				4B856D9E1BC1BADA00998175 /* HelpCollectionViewCell.xib in Resources */,
@@ -1288,12 +1287,13 @@
 				4B1103AA1BC1B00A00E98F24 /* WelcomeCollectionViewCell.xib in Resources */,
 				4B6090861BA87E440042E9C5 /* DashboardZoneDocumentationCell.xib in Resources */,
 				E6F93E8E16DB273B0068B7B6 /* InfoPlist.strings in Resources */,
+				E6BFEC621CFD40FA00C3B9F0 /* consentForm_16038_2016_05_27.html in Resources */,
 				43D9933A1BA5067E0077073D /* DashboardActivityCompletionCell.xib in Resources */,
 				4BC88CE81BB1463000687E68 /* DashboardUVExposure.xib in Resources */,
 				E6AC48D31A3870AD00A9F118 /* measurementDemo_2014_12_09.mov in Resources */,
+				E6BFEC601CFCFF8400C3B9F0 /* privacyPolicy_2016_05_27.pdf in Resources */,
 				E6F93E9D16DB273B0068B7B6 /* MainStoryboard.storyboard in Resources */,
 				E631D48B1C1BA27500BA2A80 /* ohsu-molemapper-staging.pem in Resources */,
-				E666F2FD1BC7F603005E8504 /* MM-ConsentformS0-clean_2015_10_08.pdf in Resources */,
 				E6443BFC1B78B8E9007DE110 /* onboarding.storyboard in Resources */,
 				4B7FCE991BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib in Resources */,
 				380B92211BAC50700026D052 /* DBSizeOverTimeCellTableViewCell.xib in Resources */,

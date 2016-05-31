@@ -48,9 +48,9 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *enrollmentStatus;
 @property (weak, nonatomic) IBOutlet UITableViewCell *sharingOptions;
 
-#define NAME_OF_PRIVACY_POLICY_DOC @"PrivacyPolicy-MoleMapper-20Sept2015-EN"
+#define NAME_OF_PRIVACY_POLICY_DOC @"privacyPolicy_2016_05_27"
 #define NAME_OF_INFORMATION_SHEET_DOC @"WoM-Information.Sheet.revisions.TRACKED_2015_10_09"
-#define NAME_OF_CONSENT_FORM @"MM-ConsentformS0-clean_2015_10_08"
+#define NAME_OF_CONSENT_FORM @"consentForm_16038_2016_05_27"
 
 @end
 

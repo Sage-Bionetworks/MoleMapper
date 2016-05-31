@@ -59,6 +59,8 @@
 @property (strong,nonatomic) NSString *withdrawDetails;
 @property (strong,nonatomic) NSString *sharingStepDetails;
 
+#define NAME_OF_CONSENT_FORM @"consentForm_16038_2016_05_27"
+
 @end
 
 @implementation ConsentRKModule
@@ -166,7 +168,7 @@
     self.consentDocument.signaturePageTitle = @"Participant Signature";
     self.consentDocument.signaturePageContent = @"Providing your signature is the final step to consenting to your participation in this research study";
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:@"MM-ConsentformS0-clean_2015_10_13"
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:NAME_OF_CONSENT_FORM
                                                          ofType:@"html"];
     NSString *text = [NSString stringWithContentsOfFile:fullPath
                                                encoding:NSUTF8StringEncoding
