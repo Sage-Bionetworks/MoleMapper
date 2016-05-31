@@ -177,7 +177,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Learn More"/>
                                 <connections>
-                                    <segue destination="0Oh-sT-ICk" kind="show" id="9og-in-nCL"/>
+                                    <segue destination="Ye3-kn-ha4" kind="show" identifier="consentForm" id="fal-ct-We7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -210,41 +210,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3L0-Mf-OhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-105" y="2503"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="bZ3-wC-Ezm">
-            <objects>
-                <viewController id="0Oh-sT-ICk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Efb-2T-xL2"/>
-                        <viewControllerLayoutGuide type="bottom" id="WTp-Hm-wle"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YEY-gR-uT7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SfS-hu-9qh">
-                                <rect key="frame" x="20" y="64" width="280" height="416"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">This is all of the text that will be in the reconsent details.  All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.   All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.   All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.   All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.   All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.   All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.   </mutableString>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="SfS-hu-9qh" firstAttribute="centerX" secondItem="YEY-gR-uT7" secondAttribute="centerX" id="JIU-uU-cne"/>
-                            <constraint firstItem="SfS-hu-9qh" firstAttribute="top" secondItem="Efb-2T-xL2" secondAttribute="bottom" id="Rhv-h9-hVL"/>
-                            <constraint firstItem="SfS-hu-9qh" firstAttribute="leading" secondItem="YEY-gR-uT7" secondAttribute="leadingMargin" constant="4" id="v6d-8l-FtY"/>
-                            <constraint firstItem="SfS-hu-9qh" firstAttribute="bottom" secondItem="WTp-Hm-wle" secondAttribute="top" id="zkl-Yq-kzr"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TJH-AT-RXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="253" y="2503"/>
         </scene>
         <!--Eligible View Controller-->
         <scene sceneID="bRw-LG-VWc">
@@ -363,6 +328,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSP-0S-0Wx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971" y="1820"/>
+        </scene>
+        <!--Viewer View Controller-->
+        <scene sceneID="xxN-Y7-mrF">
+            <objects>
+                <viewController id="Ye3-kn-ha4" customClass="PDFViewerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jN2-LM-uzy"/>
+                        <viewControllerLayoutGuide type="bottom" id="cfb-q1-KQD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ptm-hP-I7h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EcK-3v-jij">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="pdfWebView" destination="EcK-3v-jij" id="5WR-mu-s3S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QsZ-xd-iYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="268" y="2503"/>
         </scene>
         <!--Quiz Question View Controller-->
         <scene sceneID="RlB-1B-SsI">

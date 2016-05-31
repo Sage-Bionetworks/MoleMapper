@@ -38,10 +38,13 @@
 #import "AppDelegate.h"
 #import "BridgeManager.h"
 #import <BridgeSDK/BridgeSDK.h>
+#import "PDFViewerViewController.h"
 
 @interface ReconsentViewController ()
 
 @end
+
+#define NAME_OF_CONSENT_FORM @"consentForm_16038_2016_05_27"
 
 @implementation ReconsentViewController
 
@@ -108,19 +111,14 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"consentForm"])
+    {
+        PDFViewerViewController *destVC = (PDFViewerViewController *)[segue destinationViewController];
+        destVC.filename = NAME_OF_CONSENT_FORM;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
