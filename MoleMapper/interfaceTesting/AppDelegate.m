@@ -58,17 +58,17 @@
 -(NSString *)certificateFileName
 {
     
-    /*This is the default for a production release, and make sure to switch .pems before release to app store*/
-    //return @"ohsu-molemapper";
+    /*This is the default for a production release, and make sure to add in the production .pem before testing and before releasing to app store, but TAKE IT OUT before committing to a public repo*/
+    return @"ohsu-molemapper-production";
     
     /*This is the default for QA,*/
-    return @"ohsu-molemapper-staging";
+    //return @"ohsu-molemapper-staging";
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /*This is the setup for a production release*/
-    [BridgeSDK setupWithStudy:@"ohsu-molemapper"];
+    [BridgeSDK setupWithStudy:@"ohsu-molemapper" environment:SBBEnvironmentProd];
     
     /*This is the setup for normal QA purposes*/
     //[BridgeSDK setupWithStudy:@"ohsu-molemapper" environment:SBBEnvironmentStaging];
