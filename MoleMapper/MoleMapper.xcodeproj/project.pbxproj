@@ -98,7 +98,6 @@
 		E65F29881972C421000F90BB /* appIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E65F29871972C421000F90BB /* appIcon.xcassets */; };
 		E666F2FB1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */; };
 		E682EEB417076EBD007A0654 /* MoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E682EEB317076EBD007A0654 /* MoleViewController.m */; };
-		E685B6561CFEAA05000C3E0C /* ohsu-molemapper-production.pem in Resources */ = {isa = PBXBuildFile; fileRef = E685B6551CFEAA05000C3E0C /* ohsu-molemapper-production.pem */; };
 		E6883B701B95D2EE00F5A9A5 /* APCDataArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B6F1B95D2EE00F5A9A5 /* APCDataArchive.m */; };
 		E6883B851B95D43E00F5A9A5 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B7E1B95D43E00F5A9A5 /* NSDate+Helper.m */; };
 		E6883B861B95D43E00F5A9A5 /* NSDateComponents+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6883B801B95D43E00F5A9A5 /* NSDateComponents+Helper.m */; };
@@ -431,7 +430,6 @@
 		E666F2FA1BC7EF04005E8504 /* WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "WoM-Information.Sheet.revisions.TRACKED_2015_10_09.pdf"; sourceTree = "<group>"; };
 		E682EEB217076EBD007A0654 /* MoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleViewController.h; sourceTree = "<group>"; };
 		E682EEB317076EBD007A0654 /* MoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleViewController.m; sourceTree = "<group>"; };
-		E685B6551CFEAA05000C3E0C /* ohsu-molemapper-production.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ohsu-molemapper-production.pem"; sourceTree = "<group>"; };
 		E6883B6E1B95D2EE00F5A9A5 /* APCDataArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCDataArchive.h; sourceTree = "<group>"; };
 		E6883B6F1B95D2EE00F5A9A5 /* APCDataArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCDataArchive.m; sourceTree = "<group>"; };
 		E6883B7D1B95D43E00F5A9A5 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
@@ -1081,7 +1079,6 @@
 		E6F93E8A16DB273B0068B7B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E685B6551CFEAA05000C3E0C /* ohsu-molemapper-production.pem */,
 				E6BFEC5D1CFCFF8400C3B9F0 /* consentForm_16038_2016_05_27.pdf */,
 				E6BFEC5E1CFCFF8400C3B9F0 /* privacyPolicy_2016_05_27.pdf */,
 				E6BFEC611CFD40FA00C3B9F0 /* consentForm_16038_2016_05_27.html */,
@@ -1297,7 +1294,6 @@
 				4B7FCE991BAA34820064DEB6 /* DashboardSizeOvertimeCell.xib in Resources */,
 				380B92211BAC50700026D052 /* DBSizeOverTimeCellTableViewCell.xib in Resources */,
 				4B6DB7AB1BA977AE000EE645 /* DashBoardMeasurementCell.xib in Resources */,
-				E685B6561CFEAA05000C3E0C /* ohsu-molemapper-production.pem in Resources */,
 				4BD05B401BC2796C00FD6D85 /* InvolveCollectionViewCell.xib in Resources */,
 				E65F29881972C421000F90BB /* appIcon.xcassets in Resources */,
 				E6883BA61B969CDF00F5A9A5 /* roundedRectButtonBackground3.png in Resources */,

@@ -177,7 +177,7 @@
     int appVersion = [[mainBundle objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] intValue];
     
 //ONLY USED FOR DEBUGGING, CHANGE THIS BACK OR
-    [ud setBool:NO forKey:@"reconsentHasBeenSeen"];
+    //[ud setBool:NO forKey:@"reconsentHasBeenSeen"];
 //ONLY USED FOR DEBUGGING, CHANGE THIS BACK
     
     if (appVersion == 4 &&
