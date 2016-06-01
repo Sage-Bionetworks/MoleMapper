@@ -45,7 +45,7 @@
 #import "AppDelegate.h"
 #import "AFNetworking.h"
 
-
+#define SUBPOPULATION_GUID @"2e367b99-b5af-452d-8f6c-7e45f1ff756c"
 
 //Class to handle data transfer to BridgeServer
 @implementation BridgeManager
@@ -62,7 +62,7 @@
         name = [NSString stringWithFormat:@"%@ %@",ad.user.firstName,ad.user.lastName];
     }
     
-    /*Because user has not entered their birthdate yet (will happen in initial survey), but
+    /*Because user may not have entered their birthdate yet (will happen in initial survey), but
     the bridge server call to set the consent needs a non-nill date, need to put something in,
     and this will be overwritten later when the initial survey is completed */
     NSDate *birthdate = [NSDate dateWithTimeIntervalSince1970:0.0];
@@ -80,11 +80,7 @@
         if ([[AFNetworkReachabilityManager sharedManager] isReachable])
         {
             NSLog(@"Is reachable");
-            [SBBComponent(SBBConsentManager) consentSignature:name
-                                                    birthdate:birthdate
-                                               signatureImage:signatureImage
-                                                  dataSharing:[sharingScope integerValue]
-                                                   completion:^(id __unused responseObject,
+            [SBBComponent(SBBConsentManager) consentSignature:name forSubpopulationGuid:SUBPOPULATION_GUID birthdate:birthdate signatureImage:signatureImage dataSharing:[sharingScope integerValue] completion:^(id __unused responseObject,
                                                                 NSError * __unused error)
              {
                  dispatch_async(dispatch_get_main_queue(), ^{
@@ -490,7 +486,7 @@
                                  NSNumber *dataSharing = responseDictionary[@"dataSharing"];
                                  NSLog(@"Data sharing scope integer is %@",dataSharing);
                                  NSString *subpopGUID = responseDictionary[@"consentStatuses"][@"ohsu-molemapper"][@"subpopulationGuid"];
-                                 NSLog(@"SubpopGuid: %@",subpopGuid);
+                                 NSLog(@"SubpopGuid: %@",subpopGUID);
                                  
                              }
                              
@@ -513,7 +509,6 @@
         }
     }];
 }
-
 
 -(void)emailConsentDocForSubpopulation:(NSString *)subpopGuid WithCompletionBlock:(void (^)(NSError *))completionBlock
 {
