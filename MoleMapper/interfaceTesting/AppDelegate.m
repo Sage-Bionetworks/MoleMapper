@@ -46,6 +46,7 @@
 #import "DashboardViewController.h"
 #import <BridgeSDK/BridgeSDK.h>
 #import "WelcomeCarouselViewController.h"
+#import "ReconsentViewController.h"
 
 
 @implementation AppDelegate
@@ -56,13 +57,24 @@
 
 -(NSString *)certificateFileName
 {
-    return @"ohsu-molemapper-staging";
+    
+    /*This is the default for a production release, and make sure to add in the production .pem before testing and before releasing to app store, but TAKE IT OUT before committing to a public repo*/
+    return @"ohsu-molemapper-production";
+    
+    /*This is the default for QA,*/
+    //return @"ohsu-molemapper-staging";
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[BridgeSDK setupWithStudy:@"ohsu-molemapper"];
-    [BridgeSDK setupWithStudy:@"ohsu-molemapper-staging" environment:SBBEnvironmentStaging];
+    /*This is the setup for a production release*/
+    [BridgeSDK setupWithStudy:@"ohsu-molemapper" environment:SBBEnvironmentProd];
+    
+    /*This is the setup for normal QA purposes*/
+    //[BridgeSDK setupWithStudy:@"ohsu-molemapper" environment:SBBEnvironmentStaging];
+    
+    /*For testing against a filtered app version; Anything over build version 0 will return with 'validation failed' in json response. ohsu-molemapper-staging .pem can be used here*/
+    //[BridgeSDK setupWithStudy:@"killswitch" environment:SBBEnvironmentProd];
     
     self.bridgeManager = [[BridgeManager alloc] init];
     self.bridgeManager.context = self.managedObjectContext;
@@ -93,28 +105,36 @@
 
 -(void)showCorrectOnboardingScreenOrBodyMap
 {
-    if ([self shouldShowWelcomeScreenWithCarousel])
+    if ([self shouldShowReconsentScreen])
     {
-        [self showWelcomeScreenWithCarousel];
+        [self showReconsentScreen];
     }
-    else if ([self shouldShowOnboarding])
-    {
-        /*This is a serious of tracked booleans in NSUserDefaults that will switch on
-        as each step is completed, and then the previous step will be turned off,
-        thus allowing the state to be 'saved' if the user opts out at any point
-         See below for details on the various steps, which are all ResearchKit modules
-         that are spun up from the 'base class' onboardingViewController
-         [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
-         [ud setBool:NO forKey:@"shouldShowInfoScreens"];
-         [ud setBool:NO forKey:@"shouldShowQuiz"];
-         [ud setBool:NO forKey:@"shouldShowConsent"];
-         [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
-         [ud setBool:NO forKey:@"shouldShowInitialSurvey"];*/
-        [self showOnboarding];
-    }
+         
     else
     {
-        [self showBodyMap];
+        if ([self shouldShowWelcomeScreenWithCarousel])
+        {
+            [self showWelcomeScreenWithCarousel];
+        }
+        else if ([self shouldShowOnboarding])
+        {
+            /*This is a series of tracked booleans in NSUserDefaults that will switch on
+            as each step is completed, and then the previous step will be turned off,
+            thus allowing the state to be 'saved' if the user opts out at any point
+             See below for details on the various steps, which are all ResearchKit modules
+             that are spun up from the 'base class' onboardingViewController
+             [ud setBool:NO forKey:@"shouldShowEligibilityTest"];
+             [ud setBool:NO forKey:@"shouldShowInfoScreens"];
+             [ud setBool:NO forKey:@"shouldShowQuiz"];
+             [ud setBool:NO forKey:@"shouldShowConsent"];
+             [ud setBool:NO forKey:@"shouldShowBridgeSignup"];
+             [ud setBool:NO forKey:@"shouldShowInitialSurvey"];*/
+            [self showOnboarding];
+        }
+        else
+        {
+            [self showBodyMap];
+        }
     }
 }
 
@@ -144,6 +164,36 @@
     [mutable removeAllObjects];
     NSArray *empty = mutable;
     self.user.measurementsAlreadySentToBridge = empty;
+}
+
+//user.hasEnrolled and user.hasConsented track *almost* identically
+//Build version 4 is a new study with OHSU as sole study sponsor
+-(BOOL)shouldShowReconsentScreen
+{
+    BOOL shouldShowReconsentScreen = NO;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    int appVersion = [[mainBundle objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] intValue];
+    
+//ONLY USED FOR DEBUGGING, CHANGE THIS BACK OR
+    //[ud setBool:NO forKey:@"reconsentHasBeenSeen"];
+//ONLY USED FOR DEBUGGING, CHANGE THIS BACK
+    
+    if (appVersion == 4 &&
+        self.user.hasEnrolled == YES &&
+        [ud boolForKey:@"reconsentHasBeenSeen"] == NO)
+    {
+        shouldShowReconsentScreen = YES;
+    }
+    
+    return shouldShowReconsentScreen;
+}
+
+-(void)showReconsentScreen
+{
+    ReconsentViewController *reconsent = [[UIStoryboard storyboardWithName:@"onboarding" bundle:nil] instantiateViewControllerWithIdentifier:@"reconsent"];
+    [self setUpRootViewController:reconsent];
 }
 
 -(BOOL)shouldShowOnboarding
@@ -348,6 +398,10 @@
     if (![standardUserDefaults objectForKey:@"shouldShowWelcomeScreenWithCarousel"])
     {
         [standardUserDefaults setValue:[NSNumber numberWithBool:YES] forKey:@"shouldShowWelcomeScreenWithCarousel"];
+    }
+    if (![standardUserDefaults objectForKey:@"reconsentHasBeenSeen"])
+    {
+        [standardUserDefaults setValue:[NSNumber numberWithBool:NO] forKey:@"reconsentHasBeenSeen"];
     }
     if (![standardUserDefaults objectForKey:@"removedMolesToDiagnoses"])
     {

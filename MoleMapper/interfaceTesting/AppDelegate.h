@@ -66,6 +66,7 @@
 - (void)showOnboarding;
 - (void)showBodyMap;
 - (void)showCorrectOnboardingScreenOrBodyMap;
+- (void)showReconsentScreen; //specific for transition from Sage -> OHSU study host 2.0 -> 2.1
 
 #define numberOfDaysInFollowupPeriod 30
 

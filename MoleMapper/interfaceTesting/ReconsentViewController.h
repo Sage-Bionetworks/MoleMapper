@@ -1,8 +1,8 @@
 //
-//  BridgeManager.h
+//  ReconsentViewController.h
 //  MoleMapper
 //
-//  Created by Dan Webster on 8/19/15.
+//  Created by Dan Webster on 5/27/16.
 // Copyright (c) 2016, OHSU. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification,
@@ -34,39 +34,8 @@
 //
 
 
-#import <Foundation/Foundation.h>
-#import "APCDataArchive.h"
-#import <BridgeSDK/BridgeSDK.h>
-#import "SBBUserProfile+MoleMapper.h"
+#import <UIKit/UIKit.h>
 
-@interface BridgeManager : NSObject
-
-@property (strong, nonatomic) NSManagedObjectContext *context;
-
--(void)signInAndChangeSharingToScope:(NSNumber *)sharingScope;
-
-//Sends consent information such as signature, sharing scope
-- (void)sendUserConsentedToBridgeOnCompletion:(void (^)(NSError *))completionBlock;
-
-- (void) updateProfileOnCompletion:(void (^)(NSError *))completionBlock;
-
-//This includes the consent data and initial survey/demographic info or the followup survey data
--(void)signInAndSendInitialData:(NSDictionary *)initialData;
-
-//This includes the followup survey
--(void)signInAndSendFollowupData:(NSDictionary *)followupData;
-
-//Sign in to Bridge and then send all Mole Measurements and their attendant photos
--(void)signInAndSendMeasurements;
-
-//Sign in to Bridge and then send diagnosis information about removed moles
--(void)signInAndSendRemovedMoleData:(NSDictionary *)removedMoleData;
-
-//Sign in to Bridge and then send feedback information about removed moles
--(void)signInAndSendFeedback:(NSDictionary *)feedbackData;
-
-//Sign in to Bridge and then send consent document to users in group
--(void)signInAndReEmailConsentDocForSubpopulation:(nonnull NSString *)subpopGuid andCompletionBlock:( void ( ^ _Nullable )( NSError * _Nullable ))completionBlock;
-
+@interface ReconsentViewController : UIViewController
 
 @end
